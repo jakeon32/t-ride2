@@ -8,7 +8,8 @@ const MatchingLogic: React.FC = () => {
       description: "노선·정류장 기반, 시간표에 따라 운행",
       icon: (
         <svg className="w-6 h-6 text-[#1e293b]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h8a2 2 0 012 2v9.383a1 1 0 01-.26.671l-1.385 1.554a.75.75 0 01-.56.257l-.372-.008a3 3 0 01-5.846 0l-.372.008a.75.75 0 01-.56-.257l-1.385-1.554a1 1 0 01-.26-.671V9a2 2 0 012-2z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h8M8 17h.01M16 17h.01" />
         </svg>
       ),
       features: [
@@ -23,8 +24,8 @@ const MatchingLogic: React.FC = () => {
       description: "원하는 시간과 동선으로 단독 이동",
       icon: (
         <svg className="w-6 h-6 text-[#1e293b]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 011 1v2a1 1 0 01-1 1h-1m-4-14H5a1 1 0 00-1 1v3a1 1 0 001 1h9z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l2-4h10l2 4m-14 0h14m-14 0v6a1 1 0 001 1h2a1 1 0 001-1v-1h6v1a1 1 0 001 1h2a1 1 0 001-1v-6" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 14h2M16 14h2" />
         </svg>
       ),
       features: [
