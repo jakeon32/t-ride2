@@ -16,20 +16,20 @@ const Hero: React.FC = () => {
           <div className="absolute inset-0 bg-black/0" />
 
           <div className="absolute inset-0 flex flex-col justify-center items-center text-center p-6 md:p-12 z-10">
-            <div className="bg-white/30 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-white/40 shadow-2xl max-w-4xl mx-auto">
-              <h1 className="display-font text-[13vw] md:text-[9rem] font-bold text-slate-900 uppercase tracking-tighter leading-[0.85] drop-shadow-sm opacity-90 mb-4 whitespace-nowrap">
-                T-Ride
+            <div className="bg-white/30 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-white/40 shadow-2xl max-w-4xl mx-auto text-left md:text-center">
+              <h1 className="display-font text-3xl md:text-6xl font-extrabold text-slate-900 leading-tight mb-6 break-keep">
+                목적지 기반 이동 통합 솔루션, <br className="hidden md:block" /> T-Ride
               </h1>
-              <p className="text-slate-800 text-sm md:text-lg font-bold max-w-xl mx-auto mb-8 leading-relaxed break-keep">
-                공항부터 테마파크까지, 당신의 모든 목적지를 <br className="hidden md:block" /> 가장 스마트한 방식으로 연결합니다.
+              <p className="text-slate-800 text-sm md:text-xl font-medium max-w-2xl mx-auto mb-10 leading-relaxed break-keep">
+                목적지와 목적에 맞게 셔틀버스와 프라이빗 이동을 선택해보세요.
               </p>
 
-              <div className="flex items-center justify-center space-x-4">
-                <button className="bg-slate-900 text-white px-6 md:px-8 py-3 rounded-full text-xs md:text-sm font-bold uppercase tracking-wide hover:bg-slate-800 transition-all shadow-xl hover:shadow-2xl hover:-translate-y-0.5">
-                  여행 시작하기
+              <div className="flex flex-col md:flex-row items-stretch md:items-center justify-center gap-3 md:gap-4">
+                <button className="bg-[#151b26] text-white px-8 md:px-10 py-4 rounded-[14px] text-base font-bold tracking-tight hover:bg-slate-800 transition-all shadow-lg">
+                  카테고리 둘러보기
                 </button>
-                <button className="bg-white/80 backdrop-blur-md border border-white/50 text-slate-900 px-6 md:px-8 py-3 rounded-full text-xs md:text-sm font-bold uppercase tracking-wide hover:bg-white transition-all">
-                  목적지 둘러보기
+                <button className="bg-white text-slate-900 border border-slate-200 px-8 md:px-10 py-4 rounded-[14px] text-base font-bold tracking-tight hover:bg-slate-50 transition-all shadow-sm">
+                  고객센터
                 </button>
               </div>
             </div>
