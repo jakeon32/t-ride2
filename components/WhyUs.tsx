@@ -50,7 +50,7 @@ const WhyUs: React.FC = () => {
           {/* Left Content */}
           <div className="space-y-6 md:space-y-8">
             <h2 className="display-font text-3xl md:text-5xl font-bold text-slate-900 leading-tight tracking-tight break-keep">
-              T-Ride를 선택해야 하는<br className="hidden md:block" /> 4가지 이유
+              T-Ride가 선택받는 이유
             </h2>
             <p className="text-slate-600 text-sm md:text-base leading-relaxed break-keep">
               가장 합리적이고 편리한 목적지 도달, T-Ride가 제공하는 차별화된 이동 경험을 만나보세요.
