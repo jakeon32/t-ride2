@@ -10,10 +10,7 @@ const Footer: React.FC = () => {
           <div className="space-y-8 flex-grow">
             <div className="space-y-4">
               <div className="flex items-center space-x-2">
-                <div className="w-10 h-10 bg-[#1e293b] rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-xl">T</span>
-                </div>
-                <span className="text-2xl font-bold text-[#1e293b] tracking-tight">T-Ride</span>
+                <span className="font-extrabold tracking-tighter text-2xl text-[#0f172a]"><span className="text-blue-600">T</span>-Ride<span className="text-blue-600">.</span></span>
               </div>
               <p className="text-[#64748b] text-lg max-w-md leading-relaxed">
                 목적지 기반 이동 통합 서비스. 셔틀과 프라이빗 이동을 비교하고 빠르게 문의하세요.
