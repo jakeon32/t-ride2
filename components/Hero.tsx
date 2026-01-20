@@ -17,8 +17,9 @@ const Hero: React.FC = () => {
 
           <div className="absolute inset-0 flex flex-col justify-center items-center text-center p-6 md:p-12 z-10">
             <div className="max-w-4xl mx-auto text-left md:text-center">
-              <h1 className="display-font text-3xl md:text-6xl font-extrabold text-white leading-tight mb-6 break-keep drop-shadow-md">
-                목적지 기반 이동 통합 솔루션, <br className="hidden md:block" /> T-Ride
+              <span className="block text-xl md:text-3xl font-bold text-white/90 mb-2 md:mb-4 tracking-wider uppercase">T-Ride</span>
+              <h1 className="display-font text-3xl md:text-6xl font-extrabold text-white leading-snug mb-6 break-keep drop-shadow-md">
+                목적지 기반 이동 통합 솔루션
               </h1>
               <p className="text-white/90 text-sm md:text-xl font-medium max-w-2xl mx-auto mb-10 leading-relaxed break-keep drop-shadow-sm">
                 목적지와 목적에 맞게 셔틀버스와 프라이빗 이동을 선택해보세요.
