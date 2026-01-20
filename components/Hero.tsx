@@ -25,7 +25,7 @@ const Hero: React.FC = () => {
               </p>
 
               <div className="flex flex-col md:flex-row items-stretch md:items-center justify-center gap-3 md:gap-4">
-                <button className="bg-white/20 backdrop-blur-md border border-white/30 text-white px-8 md:px-10 py-4 rounded-[14px] text-base font-bold tracking-tight hover:bg-white/30 transition-all shadow-lg">
+                <button className="bg-black text-white px-8 md:px-10 py-4 rounded-[14px] text-base font-bold tracking-tight hover:bg-slate-900 transition-all shadow-lg border border-white/10">
                   카테고리 둘러보기
                 </button>
                 <button className="bg-white/10 backdrop-blur-sm border border-white/20 text-white px-8 md:px-10 py-4 rounded-[14px] text-base font-bold tracking-tight hover:bg-white/20 transition-all shadow-sm">
