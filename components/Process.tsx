@@ -54,8 +54,8 @@ const destinations = [
 
 const Process: React.FC = () => {
   return (
-    <section id="process" className="py-16 md:py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-6 md:px-8">
+    <section id="process" className="py-16 md:py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-5 md:px-8">
         {/* Section Header */}
         <div className="mb-10 md:mb-12">
           <span className="inline-block bg-[#f1f5f9] text-[#475569] text-[11px] md:text-[12px] font-bold px-3 py-1 rounded mb-3 md:mb-4">
@@ -82,7 +82,7 @@ const Process: React.FC = () => {
               </div>
 
               {/* Content Area */}
-              <div className="p-6 md:p-8 flex flex-col flex-grow">
+              <div className="p-5 md:p-8 flex flex-col flex-grow">
                 <div className="flex justify-between items-center mb-2">
                   <h3 className="text-lg md:text-xl font-bold text-[#1e293b] tracking-tight">{dest.title}</h3>
                   <span className="bg-[#f8fafc] border border-[#e2e8f0] text-[#64748b] text-[10px] font-bold px-2 py-0.5 rounded">

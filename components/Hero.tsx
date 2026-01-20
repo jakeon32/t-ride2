@@ -3,10 +3,10 @@ import heroBg from '../assets/hero-bg.png';
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative w-full bg-white pt-6 pb-20 px-4 md:px-6">
+    <section className="relative w-full bg-white pt-6 pb-16 md:pb-20 px-5 md:px-6">
       <div className="max-w-7xl mx-auto relative cursor-pointer group">
-        <div className="absolute inset-0 rounded-[2.5rem] bg-black/5 blur-2xl transform translate-y-4 md:translate-y-8 z-0"></div>
-        <div className="relative h-[500px] md:h-[600px] w-full rounded-[2.5rem] overflow-hidden">
+        <div className="absolute inset-0 rounded-[1.5rem] md:rounded-[2.5rem] bg-black/5 blur-2xl transform translate-y-4 md:translate-y-8 z-0"></div>
+        <div className="relative h-[400px] md:h-[540px] w-full rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden">
           <img
             src={heroBg}
             alt="Landscape"
@@ -25,9 +25,9 @@ const Hero: React.FC = () => {
               </p>
 
               <div className="flex flex-col md:flex-row items-stretch md:items-center justify-center gap-3 md:gap-4">
-                <button className="bg-black text-white px-8 md:px-10 py-4 rounded-[14px] text-base font-bold tracking-tight hover:bg-slate-900 transition-all shadow-lg border border-gray-600/50">
+                <a href="#inventory" className="bg-black text-white px-8 md:px-10 py-4 rounded-[14px] text-base font-bold tracking-tight hover:bg-slate-900 transition-all shadow-lg border border-gray-600/50 text-center">
                   카테고리 둘러보기
-                </button>
+                </a>
                 <button className="bg-white/10 backdrop-blur-sm border border-white/20 text-white px-8 md:px-10 py-4 rounded-[14px] text-base font-bold tracking-tight hover:bg-white/20 transition-all shadow-sm">
                   고객센터
                 </button>

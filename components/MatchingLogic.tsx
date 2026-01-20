@@ -2,6 +2,24 @@
 import React from 'react';
 
 const MatchingLogic: React.FC = () => {
+  const pastelColors = [
+    'text-slate-300',
+    'text-rose-200',
+    'text-sky-200',
+    'text-amber-200',
+    'text-emerald-200',
+    'text-violet-200',
+  ];
+
+  const [colorIndex, setColorIndex] = React.useState(0);
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setColorIndex((prev) => (prev + 1) % pastelColors.length);
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
+
   const comparisonData = [
     {
       type: "셔틀 (버스)",
@@ -38,8 +56,8 @@ const MatchingLogic: React.FC = () => {
   ];
 
   return (
-    <section id="matching" className="py-20 md:py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-6 md:px-8">
+    <section id="matching" className="py-16 md:py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-5 md:px-8">
         <div className="text-center mb-12 md:mb-16 space-y-3 md:space-y-4">
           <div className="flex items-center justify-center mb-2">
             <span className="bg-[#f1f5f9] text-[#475569] text-[11px] md:text-[12px] font-bold px-3 py-1 rounded">
@@ -47,7 +65,7 @@ const MatchingLogic: React.FC = () => {
             </span>
           </div>
           <h2 className="display-font text-4xl md:text-6xl font-extrabold tracking-tight text-[#1e293b] leading-tight">
-            셔틀 <span className="text-slate-300">vs</span> 프라이빗
+            셔틀 <span className={`inline-block translate-y-[-0.1em] transition-colors duration-700 ${pastelColors[colorIndex]}`}>vs</span> 프라이빗
           </h2>
           <p className="text-[#64748b] text-base md:text-lg font-medium px-4">목적에 따라 최적의 이동 방식을 선택하세요</p>
           <div className="w-12 md:w-16 h-1 bg-blue-600 mx-auto mt-4 md:mt-8 rounded-full" />
@@ -57,7 +75,7 @@ const MatchingLogic: React.FC = () => {
           {comparisonData.map((item, idx) => (
             <div
               key={idx}
-              className="bg-white p-8 md:p-12 rounded-3xl md:rounded-[2.5rem] border border-slate-100 card-shadow hover:border-blue-100 transition-all duration-300 group"
+              className="bg-white p-6 md:p-12 rounded-2xl md:rounded-[2.5rem] border border-slate-100 card-shadow hover:border-blue-100 transition-all duration-300 group"
             >
               <div className="flex items-start gap-5 md:gap-6 mb-8 md:mb-10">
                 <div className="w-12 h-12 md:w-16 md:h-16 bg-slate-50 rounded-xl md:rounded-2xl flex items-center justify-center shrink-0 border border-slate-100 group-hover:bg-blue-50 transition-colors">

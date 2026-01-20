@@ -43,8 +43,8 @@ const WhyUs: React.FC = () => {
   ];
 
   return (
-    <section id="why" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-6 md:px-8">
+    <section id="why" className="py-16 md:py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-5 md:px-8">
         <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-center">
 
           {/* Left Content */}
@@ -84,8 +84,8 @@ const WhyUs: React.FC = () => {
           {/* Right Cards */}
           <div className="space-y-4">
             {points.map((point, i) => (
-              <div key={i} className="flex items-center p-6 bg-[#93A2B7] rounded-3xl hover:bg-[#8392A7] transition-all cursor-pointer group">
-                <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shrink-0 shadow-sm mr-6">
+              <div key={i} className="flex items-center p-4 md:p-6 bg-[#93A2B7] rounded-2xl md:rounded-3xl hover:bg-[#8392A7] transition-all cursor-pointer group">
+                <div className="w-12 h-12 md:w-16 md:h-16 bg-white rounded-xl md:rounded-2xl flex items-center justify-center shrink-0 shadow-sm mr-4 md:mr-6">
                   {point.icon}
                 </div>
                 <div>

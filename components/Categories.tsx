@@ -12,8 +12,8 @@ const categories = [
 
 const Categories: React.FC = () => {
   return (
-    <section id="inventory" className="py-20 bg-slate-50">
-      <div className="max-w-7xl mx-auto px-6 md:px-8">
+    <section id="inventory" className="py-16 md:py-24 bg-slate-50">
+      <div className="max-w-7xl mx-auto px-5 md:px-8">
 
         <div className="mb-10 text-left">
           <span className="bg-[#f1f5f9] text-[#475569] text-[11px] md:text-[12px] font-bold px-3 py-1 rounded inline-block mb-3">
@@ -35,7 +35,7 @@ const Categories: React.FC = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90" />
 
-              <div className="absolute bottom-0 left-0 p-6 w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+              <div className="absolute bottom-0 left-0 p-4 md:p-6 w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
                 <span className="inline-block bg-blue-600 text-white text-[10px] font-bold px-2 py-1 rounded mb-2 shadow-sm">
                   {cat.type}
                 </span>
@@ -46,11 +46,6 @@ const Categories: React.FC = () => {
           ))}
         </div>
 
-        <div className="mt-12 text-center md:hidden">
-          <button className="bg-slate-900 text-white px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest">
-            전체 보기
-          </button>
-        </div>
       </div>
     </section >
   );
