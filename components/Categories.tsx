@@ -17,10 +17,11 @@ const Categories: React.FC = () => {
 
         <div className="flex justify-between items-end mb-10">
           <div>
-            <h2 className="display-font text-3xl font-bold text-slate-900 mb-2">Top Destinations</h2>
+            <h2 className="display-font text-3xl font-bold text-slate-900 mb-2">어디로 이동하시나요?</h2>
           </div>
-          <p className="text-slate-500 text-sm max-w-sm text-right hidden md:block">
-            From island escapes to cool mountain towns, discover where your next journey will take you.
+          <p className="text-slate-500 text-sm max-w-sm text-right hidden md:block break-keep">
+            목적지에 가장 최적화된 모빌리티 인벤토리를 확인하세요.<br />
+            T-Ride가 준비한 6가지 핵심 카테고리입니다.
           </p>
         </div>
 
@@ -57,7 +58,7 @@ const Categories: React.FC = () => {
 
         <div className="mt-12 text-center md:hidden">
           <button className="bg-slate-900 text-white px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest">
-            View All
+            전체 보기
           </button>
         </div>
       </div>

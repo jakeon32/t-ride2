@@ -19,16 +19,16 @@ const Hero: React.FC = () => {
             <h1 className="display-font text-[5rem] md:text-[11rem] font-bold text-white uppercase tracking-tighter leading-[0.85] drop-shadow-lg opacity-90">
               T-Ride
             </h1>
-            <p className="text-white/90 text-sm md:text-lg font-medium max-w-xl mx-auto mt-4 md:mt-6 mb-8 drop-shadow-md leading-relaxed">
-              Discover breathtaking destinations with curated tours,<br className="hidden md:block" /> local insights, and hassle-free planning all in one platform.
+            <p className="text-white/90 text-sm md:text-lg font-medium max-w-xl mx-auto mt-4 md:mt-6 mb-8 drop-shadow-md leading-relaxed break-keep">
+              공항부터 테마파크까지, 당신의 모든 목적지를 <br className="hidden md:block" /> 가장 스마트한 방식으로 연결합니다.
             </p>
 
             <div className="flex items-center space-x-4">
               <button className="bg-white text-slate-900 px-6 md:px-8 py-3 rounded-full text-xs md:text-sm font-bold uppercase tracking-wide hover:bg-slate-100 transition-all shadow-xl hover:shadow-2xl hover:-translate-y-0.5">
-                Plan Your Trip
+                여행 시작하기
               </button>
               <button className="bg-white/20 backdrop-blur-md border border-white/30 text-white px-6 md:px-8 py-3 rounded-full text-xs md:text-sm font-bold uppercase tracking-wide hover:bg-white/30 transition-all">
-                Explore Destinations
+                목적지 둘러보기
               </button>
             </div>
           </div>
