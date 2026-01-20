@@ -1,5 +1,5 @@
-
 import React from 'react';
+import heroBg from '../assets/hero-bg.png';
 
 const Hero: React.FC = () => {
   return (
@@ -8,26 +8,26 @@ const Hero: React.FC = () => {
         <div className="absolute inset-0 rounded-[2.5rem] bg-black/5 blur-2xl transform translate-y-4 md:translate-y-8 z-0"></div>
         <div className="relative h-[500px] md:h-[600px] w-full rounded-[2.5rem] overflow-hidden">
           <img
-            src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?q=80&w=2568&auto=format&fit=crop"
+            src={heroBg}
             alt="Landscape"
             className="w-full h-full object-cover transform scale-105 group-hover:scale-100 transition-transform duration-1000 ease-out"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-          <div className="absolute inset-0 bg-black/10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-black/0" />
 
           <div className="absolute inset-0 flex flex-col justify-center items-center text-center p-6 md:p-12 z-10">
-            <h1 className="display-font text-[5rem] md:text-[11rem] font-bold text-white uppercase tracking-tighter leading-[0.85] drop-shadow-lg opacity-90">
+            <h1 className="display-font text-[5rem] md:text-[11rem] font-bold text-slate-900 uppercase tracking-tighter leading-[0.85] drop-shadow-sm opacity-90">
               T-Ride
             </h1>
-            <p className="text-white/90 text-sm md:text-lg font-medium max-w-xl mx-auto mt-4 md:mt-6 mb-8 drop-shadow-md leading-relaxed break-keep">
+            <p className="text-slate-700/90 text-sm md:text-lg font-medium max-w-xl mx-auto mt-4 md:mt-6 mb-8 leading-relaxed break-keep">
               공항부터 테마파크까지, 당신의 모든 목적지를 <br className="hidden md:block" /> 가장 스마트한 방식으로 연결합니다.
             </p>
 
             <div className="flex items-center space-x-4">
-              <button className="bg-white text-slate-900 px-6 md:px-8 py-3 rounded-full text-xs md:text-sm font-bold uppercase tracking-wide hover:bg-slate-100 transition-all shadow-xl hover:shadow-2xl hover:-translate-y-0.5">
+              <button className="bg-slate-900 text-white px-6 md:px-8 py-3 rounded-full text-xs md:text-sm font-bold uppercase tracking-wide hover:bg-slate-800 transition-all shadow-xl hover:shadow-2xl hover:-translate-y-0.5">
                 여행 시작하기
               </button>
-              <button className="bg-white/20 backdrop-blur-md border border-white/30 text-white px-6 md:px-8 py-3 rounded-full text-xs md:text-sm font-bold uppercase tracking-wide hover:bg-white/30 transition-all">
+              <button className="bg-white/80 backdrop-blur-md border border-slate-200 text-slate-900 px-6 md:px-8 py-3 rounded-full text-xs md:text-sm font-bold uppercase tracking-wide hover:bg-white transition-all">
                 목적지 둘러보기
               </button>
             </div>
