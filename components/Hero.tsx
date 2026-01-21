@@ -12,15 +12,15 @@ const Hero: React.FC = () => {
             alt="Landscape"
             className="w-full h-full object-cover transform scale-105 group-hover:scale-100 transition-transform duration-1000 ease-out"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-black/30" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-black/15" />
           <div className="absolute inset-0 bg-black/0" />
 
           <div className="absolute inset-0 flex flex-col justify-center items-center text-center p-6 md:p-12 z-10">
             <div className="max-w-4xl mx-auto text-left md:text-center">
-              <h1 className="display-font text-6xl md:text-[10rem] font-extrabold text-white leading-[0.85] mb-4 md:mb-6 tracking-tighter drop-shadow-lg">
+              <h1 className="display-font text-6xl md:text-[10rem] font-extrabold text-white leading-[0.85] mb-4 md:mb-6 tracking-tighter [text-shadow:_0_4px_20px_rgba(0,0,0,0.5)]">
                 T-RIDE
               </h1>
-              <p className="text-xl md:text-3xl font-bold text-white/90 mb-10 tracking-wide drop-shadow-md">
+              <p className="text-xl md:text-3xl font-bold text-white mb-10 tracking-wide [text-shadow:_0_2px_12px_rgba(0,0,0,0.4)]">
                 목적지에 맞게, 이동을 선택하다
               </p>
 

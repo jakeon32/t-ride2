@@ -25,9 +25,15 @@ const MatchingLogic: React.FC = () => {
       type: "셔틀 (버스)",
       description: "노선·정류장 기반, 시간표에 따라 운행",
       icon: (
-        <svg className="w-6 h-6 text-[#1e293b]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h8a2 2 0 012 2v9.383a1 1 0 01-.26.671l-1.385 1.554a.75.75 0 01-.56.257l-.372-.008a3 3 0 01-5.846 0l-.372.008a.75.75 0 01-.56-.257l-1.385-1.554a1 1 0 01-.26-.671V9a2 2 0 012-2z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h8M8 17h.01M16 17h.01" />
+        <svg className="w-8 h-8 md:w-10 md:h-10 text-[#1e293b]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
+          {/* Bus Icon - Lucide */}
+          <path d="M8 6v6" />
+          <path d="M15 6v6" />
+          <path d="M2 12h19.6" />
+          <path d="M18 18h3s.5-1.7.8-2.8c.1-.4.2-.8.2-1.2 0-.4-.1-.8-.2-1.2l-1.4-5C20.1 6.8 19.1 6 18 6H4a2 2 0 0 0-2 2v10h3" />
+          <circle cx="7" cy="18" r="2" />
+          <path d="M9 18h5" />
+          <circle cx="16" cy="18" r="2" />
         </svg>
       ),
       features: [
@@ -41,9 +47,12 @@ const MatchingLogic: React.FC = () => {
       type: "프라이빗 (전용 밴)",
       description: "원하는 시간과 동선으로 단독 이동",
       icon: (
-        <svg className="w-6 h-6 text-[#1e293b]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l2-4h10l2 4m-14 0h14m-14 0v6a1 1 0 001 1h2a1 1 0 001-1v-1h6v1a1 1 0 001 1h2a1 1 0 001-1v-6" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 14h2M16 14h2" />
+        <svg className="w-8 h-8 md:w-10 md:h-10 text-[#1e293b]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
+          {/* Car Icon - Lucide */}
+          <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2" />
+          <circle cx="7" cy="17" r="2" />
+          <path d="M9 17h6" />
+          <circle cx="17" cy="17" r="2" />
         </svg>
       ),
       features: [
@@ -71,31 +80,31 @@ const MatchingLogic: React.FC = () => {
           <div className="w-12 md:w-16 h-1 bg-blue-600 mx-auto mt-4 md:mt-8 rounded-full" />
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-6 md:gap-8">
           {comparisonData.map((item, idx) => (
             <div
               key={idx}
               className="bg-white p-6 md:p-12 rounded-2xl md:rounded-[2.5rem] border border-slate-100 card-shadow hover:border-blue-100 transition-all duration-300 group"
             >
-              <div className="flex items-start gap-5 md:gap-6 mb-8 md:mb-10">
-                <div className="w-12 h-12 md:w-16 md:h-16 bg-slate-50 rounded-xl md:rounded-2xl flex items-center justify-center shrink-0 border border-slate-100 group-hover:bg-blue-50 transition-colors">
+              <div className="flex items-start gap-4 md:gap-5 mb-6 md:mb-8">
+                <div className="w-14 h-14 md:w-16 md:h-16 bg-slate-50 rounded-xl md:rounded-2xl flex items-center justify-center shrink-0 border border-slate-100 group-hover:bg-blue-50 transition-colors">
                   {item.icon}
                 </div>
                 <div>
-                  <h3 className="text-xl md:text-2xl font-extrabold text-[#1e293b] mb-1 md:mb-2">{item.type}</h3>
-                  <p className="text-sm md:text-base text-[#64748b] font-medium leading-relaxed">{item.description}</p>
+                  <h3 className="text-lg md:text-xl font-bold text-[#1e293b] mb-1">{item.type}</h3>
+                  <p className="text-sm text-[#64748b] leading-relaxed">{item.description}</p>
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-y-3 md:gap-y-4 gap-x-4 md:gap-x-6">
+              <div className="grid grid-cols-2 gap-y-3 gap-x-4">
                 {item.features.map((feature, fIdx) => (
-                  <div key={fIdx} className="flex items-center gap-2 md:gap-3">
-                    <div className="w-4 h-4 md:w-5 md:h-5 rounded-full bg-slate-50 flex items-center justify-center border border-slate-200">
-                      <svg className="w-2.5 h-2.5 md:w-3 md:h-3 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <div key={fIdx} className="flex items-center gap-2">
+                    <div className="w-4 h-4 rounded-full bg-slate-50 flex items-center justify-center border border-slate-200">
+                      <svg className="w-2.5 h-2.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
-                    <span className="text-[12px] md:text-sm font-bold text-slate-600">{feature}</span>
+                    <span className="text-[13px] font-medium text-slate-600">{feature}</span>
                   </div>
                 ))}
               </div>

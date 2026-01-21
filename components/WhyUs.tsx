@@ -49,6 +49,11 @@ const WhyUs: React.FC = () => {
 
           {/* Left Content */}
           <div className="space-y-6 md:space-y-8">
+            <div>
+              <span className="bg-[#f1f5f9] text-[#475569] text-[11px] md:text-[12px] font-bold px-3 py-1 rounded">
+                Why T-Ride
+              </span>
+            </div>
             <h2 className="display-font text-3xl md:text-5xl font-bold text-slate-900 leading-tight tracking-tight break-keep">
               T-Ride가 선택받는 이유
             </h2>
@@ -56,27 +61,27 @@ const WhyUs: React.FC = () => {
               가장 합리적이고 편리한 목적지 도달, T-Ride가 제공하는 차별화된 이동 경험을 만나보세요.
             </p>
 
-            <div className="flex space-x-4 pt-4">
+            <div className="flex space-x-6 md:space-x-8 pt-6">
               <div className="flex flex-col items-center">
-                <div className="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center text-white mb-2">
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                <div className="w-14 h-14 md:w-16 md:h-16 bg-slate-800 rounded-full flex items-center justify-center text-white mb-3 shadow-md">
+                  <svg className="w-6 h-6 md:w-7 md:h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                 </div>
-                <span className="text-[10px] font-bold text-slate-900 uppercase">12k+</span>
-                <span className="text-[9px] text-slate-500">누적 이용자</span>
+                <span className="text-sm md:text-base font-bold text-slate-900 uppercase">12k+</span>
+                <span className="text-xs text-slate-500 font-medium">누적 이용자</span>
               </div>
               <div className="flex flex-col items-center">
-                <div className="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center text-white mb-2">
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                <div className="w-14 h-14 md:w-16 md:h-16 bg-slate-800 rounded-full flex items-center justify-center text-white mb-3 shadow-md">
+                  <svg className="w-6 h-6 md:w-7 md:h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                 </div>
-                <span className="text-[10px] font-bold text-slate-900 uppercase">10yrs</span>
-                <span className="text-[9px] text-slate-500">운영 노하우</span>
+                <span className="text-sm md:text-base font-bold text-slate-900 uppercase">10yrs</span>
+                <span className="text-xs text-slate-500 font-medium">운영 노하우</span>
               </div>
               <div className="flex flex-col items-center">
-                <div className="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center text-white mb-2">
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                <div className="w-14 h-14 md:w-16 md:h-16 bg-slate-800 rounded-full flex items-center justify-center text-white mb-3 shadow-md">
+                  <svg className="w-6 h-6 md:w-7 md:h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                 </div>
-                <span className="text-[10px] font-bold text-slate-900 uppercase">50+</span>
-                <span className="text-[9px] text-slate-500">제휴 목적지</span>
+                <span className="text-sm md:text-base font-bold text-slate-900 uppercase">50+</span>
+                <span className="text-xs text-slate-500 font-medium">제휴 목적지</span>
               </div>
             </div>
           </div>
