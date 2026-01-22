@@ -1,9 +1,11 @@
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [lang, setLang] = useState<'KR' | 'EN'>('KR');
+  const [isLangOpen, setIsLangOpen] = useState(false);
+  const langRef = useRef<HTMLDivElement>(null);
 
   const menuItems = [
     { label: '공항', href: '#airport' },
@@ -13,6 +15,22 @@ const Navbar: React.FC = () => {
     { label: '공연/이벤트', href: '#event' },
     { label: '근교·여행', href: '#travel' },
   ];
+
+  const languages = [
+    { code: 'KR', label: '한국어' },
+    { code: 'EN', label: 'English' },
+  ];
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (langRef.current && !langRef.current.contains(event.target as Node)) {
+        setIsLangOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   return (
     <nav className="sticky top-0 left-0 right-0 bg-white z-50 border-b border-slate-100">
@@ -38,13 +56,36 @@ const Navbar: React.FC = () => {
             고객센터
           </a>
 
-          {/* Language Toggle */}
-          <button
-            onClick={() => setLang(lang === 'KR' ? 'EN' : 'KR')}
-            className="text-[12px] font-bold text-slate-500 hover:text-black px-2 py-1.5 rounded transition-colors"
-          >
-            {lang === 'KR' ? 'EN' : 'KR'}
-          </button>
+          {/* Language Dropdown */}
+          <div className="relative" ref={langRef}>
+            <button
+              onClick={() => setIsLangOpen(!isLangOpen)}
+              className="flex items-center gap-1 text-[12px] font-bold text-slate-500 hover:text-black px-2 py-1.5 rounded transition-colors"
+            >
+              {lang}
+              <svg className={`w-3 h-3 transition-transform ${isLangOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            {isLangOpen && (
+              <div className="absolute top-full right-0 mt-1 bg-white border border-slate-200 rounded-lg shadow-lg py-1 min-w-[100px] z-50">
+                {languages.map((language) => (
+                  <button
+                    key={language.code}
+                    onClick={() => {
+                      setLang(language.code as 'KR' | 'EN');
+                      setIsLangOpen(false);
+                    }}
+                    className={`w-full text-left px-3 py-2 text-[12px] hover:bg-slate-50 transition-colors ${
+                      lang === language.code ? 'font-bold text-blue-600' : 'text-slate-600'
+                    }`}
+                  >
+                    {language.label}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
 
           {/* Login Button */}
           <button className="hidden md:block text-[12px] font-bold text-white bg-[#0f172a] px-5 py-2.5 rounded-full hover:bg-slate-800 transition-all shadow-lg shadow-slate-200">
