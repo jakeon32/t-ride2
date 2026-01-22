@@ -33,6 +33,11 @@ const Navbar: React.FC = () => {
 
         {/* Right Side Actions */}
         <div className="flex items-center space-x-2 md:space-x-3">
+          {/* Customer Service */}
+          <a href="#contact" className="hidden md:block text-[12px] font-medium text-slate-600 hover:text-black transition-colors">
+            고객센터
+          </a>
+
           {/* Language Toggle */}
           <button
             onClick={() => setLang(lang === 'KR' ? 'EN' : 'KR')}
@@ -40,11 +45,6 @@ const Navbar: React.FC = () => {
           >
             {lang === 'KR' ? 'EN' : 'KR'}
           </button>
-
-          {/* Customer Service */}
-          <a href="#contact" className="hidden md:block text-[12px] font-medium text-slate-600 hover:text-black transition-colors">
-            고객센터
-          </a>
 
           {/* Login Button */}
           <button className="hidden md:block text-[12px] font-bold text-white bg-[#0f172a] px-5 py-2.5 rounded-full hover:bg-slate-800 transition-all shadow-lg shadow-slate-200">
