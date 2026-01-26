@@ -1,19 +1,21 @@
 
 import React, { useState, useRef, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [lang, setLang] = useState<'KR' | 'EN'>('KR');
   const [isLangOpen, setIsLangOpen] = useState(false);
   const langRef = useRef<HTMLDivElement>(null);
+  const location = useLocation();
 
   const menuItems = [
-    { label: '공항', href: '#airport' },
-    { label: '레저', href: '#leisure' },
-    { label: '쇼핑', href: '#shopping' },
-    { label: '테마파크', href: '#themepark' },
-    { label: '공연/이벤트', href: '#event' },
-    { label: '근교·여행', href: '#travel' },
+    { label: '공항', href: '/airport' },
+    { label: '레저', href: '/leisure' },
+    { label: '쇼핑', href: '/#shopping' },
+    { label: '테마파크', href: '/#themepark' },
+    { label: '공연/이벤트', href: '/#event' },
+    { label: '근교·여행', href: '/#travel' },
   ];
 
   const languages = [
@@ -32,21 +34,39 @@ const Navbar: React.FC = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  const isHome = location.pathname === '/';
+
   return (
     <nav className="sticky top-0 left-0 right-0 bg-white z-50 border-b border-slate-100">
       <div className="max-w-7xl mx-auto px-5 md:px-8 h-16 md:h-20 flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center space-x-2 cursor-pointer">
+        <Link to="/" className="flex items-center space-x-2 cursor-pointer">
           <span className="font-extrabold tracking-tighter text-xl md:text-2xl text-[#0f172a]"><span className="text-blue-600">T</span>-Ride<span className="text-blue-600">.</span></span>
-        </div>
+        </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center space-x-8 text-[13px] font-medium text-slate-600">
-          {menuItems.map((item) => (
-            <a key={item.href} href={item.href} className="hover:text-black transition-colors">
-              {item.label}
-            </a>
-          ))}
+          {menuItems.map((item) => {
+            // If it's an anchor link and we are on home, use standard anchor behavior if you prefer,
+            // but strictly sticking to Link or a tag with complete path '/#...' usually works.
+            // However, for smooth scrolling on the same page, specific handling might be needed.
+            // For now, let's use standard anchor tags with full paths for simplicity unless it's a route.
+            const isRoute = !item.href.includes('#');
+
+            if (isRoute) {
+              return (
+                <Link key={item.href} to={item.href} className="hover:text-black transition-colors">
+                  {item.label}
+                </Link>
+              );
+            } else {
+              return (
+                <a key={item.href} href={item.href} className="hover:text-black transition-colors">
+                  {item.label}
+                </a>
+              );
+            }
+          })}
         </div>
 
         {/* Right Side Actions */}
@@ -76,9 +96,8 @@ const Navbar: React.FC = () => {
                       setLang(language.code as 'KR' | 'EN');
                       setIsLangOpen(false);
                     }}
-                    className={`w-full text-left px-3 py-2 text-[12px] hover:bg-slate-50 transition-colors ${
-                      lang === language.code ? 'font-bold text-blue-600' : 'text-slate-600'
-                    }`}
+                    className={`w-full text-left px-3 py-2 text-[12px] hover:bg-slate-50 transition-colors ${lang === language.code ? 'font-bold text-blue-600' : 'text-slate-600'
+                      }`}
                   >
                     {language.label}
                   </button>
@@ -114,16 +133,32 @@ const Navbar: React.FC = () => {
       {isMenuOpen && (
         <div className="lg:hidden bg-white border-t border-slate-100 shadow-lg">
           <div className="max-w-7xl mx-auto px-5 py-4 space-y-1">
-            {menuItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="block px-4 py-3 text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-black rounded-xl transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {item.label}
-              </a>
-            ))}
+            {menuItems.map((item) => {
+              const isRoute = !item.href.includes('#');
+              if (isRoute) {
+                return (
+                  <Link
+                    key={item.href}
+                    to={item.href}
+                    className="block px-4 py-3 text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-black rounded-xl transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              } else {
+                return (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    className="block px-4 py-3 text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-black rounded-xl transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.label}
+                  </a>
+                );
+              }
+            })}
             <div className="pt-3 border-t border-slate-100 mt-3 space-y-2">
               <a href="#contact" className="block px-4 py-3 text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-black rounded-xl transition-colors" onClick={() => setIsMenuOpen(false)}>
                 고객센터
