@@ -43,8 +43,8 @@ const WhyUs: React.FC = () => {
   ];
 
   return (
-    <section id="why" className="py-16 md:py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-5 md:px-8">
+    <section id="why" className="py-16 md:py-24 bg-white px-5 md:px-6">
+      <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-center">
 
           {/* Left Content */}

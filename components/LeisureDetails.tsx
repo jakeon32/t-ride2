@@ -11,6 +11,10 @@ import ramadaImg from '../assets/ramada.jpg';
 import high1Img from '../assets/high1.jpg';
 import phoenixImg from '../assets/phoenixpark.jpg';
 import wellihilliImg from '../assets/wellihillipark.jpg';
+// New Images
+import leisureHeroImg from '../assets/Leisure Hero Image.jpg';
+import leisureShuttleImg from '../assets/Shuttle Service_Leisure.jpg';
+import leisurePrivateImg from '../assets/Private Service_Leisure.jpg';
 
 interface Destination {
     id: number;
@@ -28,10 +32,49 @@ const LeisureDetails: React.FC = () => {
     const [currentSlide, setCurrentSlide] = useState(1);
     const [totalSlides, setTotalSlides] = useState(1);
 
+    // Hero Slider State
+    const [currentHeroSlide, setCurrentHeroSlide] = useState(0);
+
     // Scroll to top on mount
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+
+    // Auto-play for Hero Slider
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentHeroSlide((prev) => (prev + 1) % 3);
+        }, 5000); // Change slide every 5 seconds
+
+        return () => clearInterval(interval);
+    }, []);
+
+    const heroSlides = [
+        {
+            id: 0,
+            image: leisureHeroImg,
+            title: <>즐거움을 향한<br />가장 편안한 이동</>,
+            desc: <>골프, 스키, 관광까지.<br />목적과 일정에 맞는 최적의 이동 서비스를 선택하세요.</>,
+            buttonText: "지금 예약하기",
+            buttonLink: "#"
+        },
+        {
+            id: 1,
+            image: leisureShuttleImg,
+            title: <>셔틀 서비스</>,
+            desc: <>주요 골프장, 스키 리조트, 테마파크를 연결하는 정기 셔틀 서비스입니다.<br />합리적인 요금으로 편안하게 이동하세요.</>,
+            buttonText: "셔틀 예약하기",
+            buttonLink: "#"
+        },
+        {
+            id: 2,
+            image: leisurePrivateImg,
+            title: <>프라이빗 이동 서비스</>,
+            desc: <>전용 차량과 전문 기사가 동행하는 완전 맞춤형 레저 이동 서비스입니다.<br />원하는 시간에 원하는 장소로, 자유로운 일정 구성이 가능합니다.</>,
+            buttonText: "프라이빗 예약하기",
+            buttonLink: "#"
+        }
+    ];
 
     const destinations: Destination[] = [
         {
@@ -123,129 +166,83 @@ const LeisureDetails: React.FC = () => {
             <Navbar />
 
             <main className="flex-grow">
-                {/* Header & Intro Section */}
-                <section className="bg-white py-12 md:py-16 border-b border-slate-100 mb-12">
-                    <div className="max-w-7xl mx-auto px-5 md:px-8">
-                        {/* Intro Text */}
-                        <div className="mb-12">
-                            <span className="inline-block py-1 px-3 rounded-full bg-slate-100 text-slate-800 text-[11px] font-bold tracking-wide mb-4">
-                                골프 / 스키 / 관광
-                            </span>
-                            <h1 className="display-font text-3xl md:text-4xl font-extrabold text-[#1e293b] mb-4 leading-tight">
-                                레저 이동 서비스
-                            </h1>
-                            <p className="text-slate-600 text-base md:text-lg mb-4 leading-relaxed break-keep">
-                                골프, 스키, 관광까지 즐거운 여행을 위한 이동.<br className="hidden md:block" />
-                                목적과 일정에 맞춰 선택하세요.
-                            </p>
-                        </div>
+                {/* 1. Hero Slider Section */}
+                <section className="relative w-full bg-slate-50 pt-6 px-5 md:px-6">
+                    <div className="max-w-7xl mx-auto relative">
+                        {/* Shadow Effect */}
+                        <div className="absolute inset-0 rounded-[1.5rem] md:rounded-[2.5rem] bg-black/5 blur-2xl transform translate-y-4 md:translate-y-8 z-0"></div>
 
-                        {/* Service Cards (2 Columns) */}
-                        <div className="grid md:grid-cols-2 gap-8 items-stretch">
-                            {/* Shuttle Service Card */}
-                            <div className="bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-200 flex flex-col group hover:shadow-md transition-all duration-300">
-                                <div className="h-64 relative overflow-hidden">
-                                    <img src={shuttleImg} alt="Leisure Shuttle" className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-blue-900/60 to-transparent"></div>
-                                    <div className="absolute bottom-6 left-6 text-white">
-                                        <h3 className="text-2xl font-bold">셔틀 서비스</h3>
-                                        <p className="text-blue-100 text-sm font-medium mt-1">Leisure Shuttle</p>
-                                    </div>
-                                </div>
-                                <div className="p-8 flex-grow flex flex-col">
-                                    <h4 className="text-blue-600 font-bold text-sm mb-2">"인기 레저 명소로 떠나는 합리적인 정기 노선"</h4>
-                                    <p className="text-slate-600 leading-relaxed mb-6 break-keep">
-                                        주요 골프장, 스키 리조트, 테마파크를 연결하는 정기 셔틀 서비스입니다. 같은 목적지로 향하는 여행객들과 함께 경제적으로 이동할 수 있습니다.
-                                    </p>
-
-                                    <div className="mb-6 bg-blue-50/50 p-5 rounded-2xl border border-blue-100">
-                                        <h4 className="font-bold text-slate-800 mb-3 text-sm">핵심 서비스</h4>
-                                        <ul className="space-y-2 text-sm text-slate-600">
-                                            <li className="flex items-start gap-2.5">
-                                                <span className="text-blue-500 font-bold mt-0.5">•</span>
-                                                <span className="break-keep"><span className="font-semibold text-slate-800">직행 노선:</span> 주요 골프장, 스키장, 아울렛 등 정기 운행</span>
-                                            </li>
-                                            <li className="flex items-start gap-2.5">
-                                                <span className="text-blue-500 font-bold mt-0.5">•</span>
-                                                <span className="break-keep"><span className="font-semibold text-slate-800">장비 적재:</span> 골프백, 스키 장비 등 안전한 적재 보관</span>
-                                            </li>
-                                            <li className="flex items-start gap-2.5">
-                                                <span className="text-blue-500 font-bold mt-0.5">•</span>
-                                                <span className="break-keep"><span className="font-semibold text-slate-800">정시 출발:</span> 티오프, 리프트 운영에 맞춘 시간표</span>
-                                            </li>
-                                            <li className="flex items-start gap-2.5">
-                                                <span className="text-blue-500 font-bold mt-0.5">•</span>
-                                                <span className="break-keep"><span className="font-semibold text-slate-800">합리적 요금:</span> 1-2인 레저 여행객을 위한 경제적 가격</span>
-                                            </li>
-                                        </ul>
+                        {/* Slider Container */}
+                        <div className="relative h-[600px] md:h-[500px] w-full rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden bg-slate-900">
+                            {heroSlides.map((slide, index) => (
+                                <div
+                                    key={slide.id}
+                                    className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentHeroSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                                        }`}
+                                >
+                                    {/* Full Background Image */}
+                                    <div className="absolute inset-0">
+                                        <img
+                                            src={slide.image}
+                                            alt="Hero Slide"
+                                            className="w-full h-full object-cover transition-transform duration-[5000ms] ease-linear transform scale-100 hover:scale-105"
+                                        />
+                                        {/* Gradient Overlay for Text Visibility & Blending */}
+                                        <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-l from-[#1e293b] via-[#1e293b]/80 to-transparent"></div>
                                     </div>
 
-                                    <p className="text-slate-500 text-sm leading-relaxed mb-6 break-keep">
-                                        혼자 또는 소규모로 인기 레저 명소를 방문하는 분, 실속있는 레저 여행을 원하는 분께 추천합니다.
-                                    </p>
+                                    {/* Content Container */}
+                                    <div className="relative z-10 w-full h-full flex flex-col md:flex-row">
+                                        {/* Spacer for Left Side (Image Area) */}
+                                        <div className="hidden md:block md:w-[50%] lg:w-[55%]"></div>
 
-                                    <button className="mt-auto w-full py-4 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-xl font-bold text-lg transition-colors flex items-center justify-center gap-2">
-                                        셔틀 예약하기
-                                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                                    </button>
-                                </div>
-                            </div>
-
-                            {/* Private Service Card */}
-                            <div className="bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-200 flex flex-col group hover:shadow-md transition-all duration-300 h-full">
-                                <div className="h-64 relative overflow-hidden shrink-0">
-                                    <img src={chauffeurImg} alt="Leisure Private" className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                                    <div className="absolute bottom-6 left-6 text-white">
-                                        <h3 className="text-2xl font-bold text-amber-100">프라이빗 이동 서비스</h3>
-                                        <p className="text-amber-200/70 text-sm font-medium mt-1">Leisure Private</p>
+                                        {/* Right: Content (Text Area) */}
+                                        <div className="w-full md:w-[50%] lg:w-[45%] flex flex-col justify-center px-8 py-12 md:px-12 text-white">
+                                            <h1
+                                                key={`title-${index}`}
+                                                className={`display-font text-3xl md:text-3xl lg:text-4xl font-extrabold mb-4 leading-tight ${index === currentHeroSlide ? 'animate-slide-in-right' : ''}`}
+                                            >
+                                                {slide.title}
+                                            </h1>
+                                            <p
+                                                key={`desc-${index}`}
+                                                className={`text-slate-300 text-sm md:text-base leading-relaxed mb-8 break-keep ${index === currentHeroSlide ? 'animate-slide-in-right' : ''}`}
+                                                style={{ animationDelay: '0.1s' }}
+                                            >
+                                                {slide.desc}
+                                            </p>
+                                            <button
+                                                key={`btn-${index}`}
+                                                className={`w-fit px-8 py-3 rounded-full border border-white text-white font-bold hover:bg-white hover:text-[#1e293b] transition-all duration-300 ${index === currentHeroSlide ? 'animate-slide-in-right' : ''}`}
+                                                style={{ animationDelay: '0.2s' }}
+                                            >
+                                                {slide.buttonText}
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
-                                <div className="p-8 flex-grow flex flex-col">
-                                    <p className="text-slate-600 leading-relaxed mb-6 break-keep">
-                                        전용 차량과 전문 기사가 동행하는 완전 맞춤형 레저 이동 서비스입니다. 원하는 시간에 원하는 장소로, 자유로운 일정 구성이 가능합니다.
-                                    </p>
+                            ))}
 
-                                    <div className="mb-6 bg-slate-50 p-5 rounded-2xl border border-slate-100">
-                                        <h4 className="font-bold text-slate-800 mb-3 text-sm">핵심 서비스</h4>
-                                        <ul className="space-y-2 text-sm text-slate-600">
-                                            <li className="flex items-start gap-2.5">
-                                                <span className="text-amber-500 font-bold mt-0.5">•</span>
-                                                <span className="break-keep"><span className="font-semibold text-slate-800">Door-to-Door:</span> 숙소에서 레저 목적지까지 직행 서비스</span>
-                                            </li>
-                                            <li className="flex items-start gap-2.5">
-                                                <span className="text-amber-500 font-bold mt-0.5">•</span>
-                                                <span className="break-keep"><span className="font-semibold text-slate-800">다중 목적지:</span> 골프장, 관광지를 하루에 돌아보는 투어</span>
-                                            </li>
-                                            <li className="flex items-start gap-2.5">
-                                                <span className="text-amber-500 font-bold mt-0.5">•</span>
-                                                <span className="break-keep"><span className="font-semibold text-slate-800">대형 장비 운송:</span> SUV/밴으로 골프백, 스키 등 여유 적재</span>
-                                            </li>
-                                            <li className="flex items-start gap-2.5">
-                                                <span className="text-amber-500 font-bold mt-0.5">•</span>
-                                                <span className="break-keep"><span className="font-semibold text-slate-800">대기 서비스:</span> 라운딩이나 액티비티 중 차량 대기 선택</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                    <p className="text-slate-500 text-sm leading-relaxed mb-6 break-keep">
-                                        가족 레저 여행, 프리미엄 골프 투어, 복합 레저 일정을 계획하는 분들께 특히 추천합니다.
-                                    </p>
-
-                                    <button className="mt-auto w-full py-4 bg-slate-50 hover:bg-slate-100 text-slate-700 rounded-xl font-bold text-lg transition-colors flex items-center justify-center gap-2">
-                                        프라이빗 예약하기
-                                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                                    </button>
-                                </div>
+                            {/* Slider Navigation Dots */}
+                            <div className="absolute bottom-8 right-8 z-20 flex gap-2">
+                                {heroSlides.map((_, index) => (
+                                    <button
+                                        key={index}
+                                        onClick={() => setCurrentHeroSlide(index)}
+                                        className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentHeroSlide ? 'bg-white w-6' : 'bg-white/40 hover:bg-white/60'
+                                            }`}
+                                        aria-label={`Go to slide ${index + 1}`}
+                                    />
+                                ))}
                             </div>
                         </div>
                     </div>
                 </section>
 
-                {/* Popular Destinations Section */}
-                <section className="pb-32">
-                    <div className="max-w-7xl mx-auto px-5 md:px-8 relative group">
-                        <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 gap-4">
+                {/* 2. Popular Destinations Section */}
+                <section className="py-16 md:py-20 bg-slate-50 px-5 md:px-6">
+                    <div className="max-w-7xl mx-auto relative group">
+                        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
                             <div>
                                 <h2 className="text-2xl md:text-3xl font-extrabold text-[#1e293b] mb-4">
                                     인기 리조트 컬렉션
@@ -273,7 +270,7 @@ const LeisureDetails: React.FC = () => {
                                 </div>
                             </div>
 
-                            {/* Desktop Navigation Arrows (Hidden on mobile) */}
+                            {/* Desktop Navigation Arrows */}
                             <div className="hidden md:flex items-center gap-2">
                                 <button
                                     onClick={scrollLeft}
@@ -294,7 +291,7 @@ const LeisureDetails: React.FC = () => {
                         <div
                             ref={scrollRef}
                             onScroll={handleScroll}
-                            className="flex overflow-x-auto pb-8 -mx-5 px-5 md:mx-0 md:px-0 space-x-5 snap-x hide-scrollbar scroll-smooth"
+                            className="flex overflow-x-auto pb-8 md:mx-0 md:px-0 space-x-5 snap-x hide-scrollbar scroll-smooth"
                         >
                             {filteredDestinations.map((item) => (
                                 <div

@@ -65,8 +65,8 @@ const MatchingLogic: React.FC = () => {
   ];
 
   return (
-    <section id="matching" className="py-16 md:py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-5 md:px-8">
+    <section id="matching" className="py-16 md:py-24 bg-white px-5 md:px-6">
+      <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12 md:mb-16 space-y-3 md:space-y-4">
           <div className="flex items-center justify-center mb-2">
             <span className="bg-[#f1f5f9] text-[#475569] text-[11px] md:text-[12px] font-bold px-3 py-1 rounded">

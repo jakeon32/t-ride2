@@ -24,10 +24,49 @@ const AirportDetails: React.FC = () => {
     const [currentSlide, setCurrentSlide] = useState(1);
     const [totalSlides, setTotalSlides] = useState(1);
 
+    // Hero Slider State
+    const [currentHeroSlide, setCurrentHeroSlide] = useState(0);
+
     // Scroll to top on mount
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+
+    // Auto-play for Hero Slider
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentHeroSlide((prev) => (prev + 1) % 3);
+        }, 5000); // Change slide every 5 seconds
+
+        return () => clearInterval(interval);
+    }, []);
+
+    const heroSlides = [
+        {
+            id: 0,
+            image: heroImg,
+            title: <>공항으로 가는<br />가장 편안한 방법</>,
+            desc: <>주차 걱정 없이, 환승 없이 터미널 바로 앞까지.<br />셔틀버스와 프라이빗 밴으로 여행의 시작과 끝을 완벽하게 준비하세요.</>,
+            buttonText: "지금 예약하기",
+            buttonLink: "#"
+        },
+        {
+            id: 1,
+            image: shuttleImg,
+            title: <>공항 셔틀버스</>,
+            desc: <>정해진 시간표와 노선으로 운행되는 경제적인 공항 이동 서비스입니다.<br />주요 거점을 경유하며 1-2인 여행객에게 가장 효율적인 선택입니다.</>,
+            buttonText: "셔틀 예약하기",
+            buttonLink: "#"
+        },
+        {
+            id: 2,
+            image: chauffeurImg,
+            title: <>프라이빗 이동 서비스</>,
+            desc: <>전용 차량과 전문 기사가 함께하는 맞춤형 Door-to-Door 서비스입니다.<br />공항 입국장에서 목적지까지 완벽한 프라이빗 이동을 제공합니다.</>,
+            buttonText: "프라이빗 예약하기",
+            buttonLink: "#"
+        }
+    ];
 
     const destinations: Destination[] = [
         {
@@ -117,32 +156,82 @@ const AirportDetails: React.FC = () => {
             <Navbar />
 
             <main className="flex-grow">
-                {/* 1. Hero Section (Split Layout) */}
-                <section className="w-full flex flex-col md:flex-row h-auto md:h-[450px]">
-                    {/* Left: Image (60%) */}
-                    <div className="w-full md:w-[60%] h-[300px] md:h-full relative overflow-hidden">
-                        <img src={heroImg} alt="Airport Travel" className="w-full h-full object-cover" />
-                        <div className="absolute inset-0 bg-black/10"></div>
-                    </div>
+                {/* 1. Hero Slider Section */}
+                <section className="relative w-full bg-slate-50 pt-6 px-5 md:px-6">
+                    <div className="max-w-7xl mx-auto relative">
+                        {/* Shadow Effect */}
+                        <div className="absolute inset-0 rounded-[1.5rem] md:rounded-[2.5rem] bg-black/5 blur-2xl transform translate-y-4 md:translate-y-8 z-0"></div>
 
-                    {/* Right: Content (40%) - Dark Blue Panel */}
-                    <div className="w-full md:w-[40%] bg-[#1e293b] flex flex-col justify-center px-8 py-12 md:px-12 text-white">
-                        <h1 className="display-font text-3xl md:text-3xl lg:text-4xl font-extrabold mb-4 leading-tight">
-                            공항으로 가는<br />가장 편안한 방법
-                        </h1>
-                        <p className="text-slate-300 text-sm md:text-base leading-relaxed mb-8 break-keep">
-                            주차 걱정 없이, 환승 없이 터미널 바로 앞까지.<br />
-                            셔틀버스와 프라이빗 밴으로 여행의 시작과 끝을 완벽하게 준비하세요.
-                        </p>
-                        <button className="w-fit px-8 py-3 rounded-full border border-white text-white font-bold hover:bg-white hover:text-[#1e293b] transition-all duration-300">
-                            지금 예약하기
-                        </button>
+                        {/* Slider Container */}
+                        <div className="relative h-[600px] md:h-[500px] w-full rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden bg-slate-900">
+                            {heroSlides.map((slide, index) => (
+                                <div
+                                    key={slide.id}
+                                    className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentHeroSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                                        }`}
+                                >
+                                    {/* Full Background Image */}
+                                    <div className="absolute inset-0">
+                                        <img
+                                            src={slide.image}
+                                            alt="Hero Slide"
+                                            className="w-full h-full object-cover transition-transform duration-[5000ms] ease-linear transform scale-100 hover:scale-105"
+                                        />
+                                        {/* Gradient Overlay for Text Visibility & Blending */}
+                                        <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-l from-[#1e293b] via-[#1e293b]/80 to-transparent"></div>
+                                    </div>
+
+                                    {/* Content Container */}
+                                    <div className="relative z-10 w-full h-full flex flex-col md:flex-row">
+                                        {/* Spacer for Left Side (Image Area) */}
+                                        <div className="hidden md:block md:w-[50%] lg:w-[55%]"></div>
+
+                                        {/* Right: Content (Text Area) */}
+                                        <div className="w-full md:w-[50%] lg:w-[45%] flex flex-col justify-center px-8 py-12 md:px-12 text-white">
+                                            <h1
+                                                key={`title-${index}`}
+                                                className={`display-font text-3xl md:text-3xl lg:text-4xl font-extrabold mb-4 leading-tight ${index === currentHeroSlide ? 'animate-slide-in-right' : ''}`}
+                                            >
+                                                {slide.title}
+                                            </h1>
+                                            <p
+                                                key={`desc-${index}`}
+                                                className={`text-slate-300 text-sm md:text-base leading-relaxed mb-8 break-keep ${index === currentHeroSlide ? 'animate-slide-in-right' : ''}`}
+                                                style={{ animationDelay: '0.1s' }}
+                                            >
+                                                {slide.desc}
+                                            </p>
+                                            <button
+                                                key={`btn-${index}`}
+                                                className={`w-fit px-8 py-3 rounded-full border border-white text-white font-bold hover:bg-white hover:text-[#1e293b] transition-all duration-300 ${index === currentHeroSlide ? 'animate-slide-in-right' : ''}`}
+                                                style={{ animationDelay: '0.2s' }}
+                                            >
+                                                {slide.buttonText}
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+
+                            {/* Slider Navigation Dots */}
+                            <div className="absolute bottom-8 right-8 z-20 flex gap-2">
+                                {heroSlides.map((_, index) => (
+                                    <button
+                                        key={index}
+                                        onClick={() => setCurrentHeroSlide(index)}
+                                        className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentHeroSlide ? 'bg-white w-6' : 'bg-white/40 hover:bg-white/60'
+                                            }`}
+                                        aria-label={`Go to slide ${index + 1}`}
+                                    />
+                                ))}
+                            </div>
+                        </div>
                     </div>
                 </section>
 
                 {/* 2. Popular Destinations Section */}
-                <section className="py-16 md:py-20 bg-slate-50">
-                    <div className="max-w-7xl mx-auto px-5 md:px-8 relative group">
+                <section className="py-16 md:py-20 bg-slate-50 px-5 md:px-6">
+                    <div className="max-w-7xl mx-auto relative group">
                         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
                             <div>
                                 <h2 className="text-2xl md:text-3xl font-extrabold text-[#1e293b] mb-4">
@@ -192,7 +281,7 @@ const AirportDetails: React.FC = () => {
                         <div
                             ref={scrollRef}
                             onScroll={handleScroll}
-                            className="flex overflow-x-auto pb-8 -mx-5 px-5 md:mx-0 md:px-0 space-x-5 snap-x hide-scrollbar scroll-smooth"
+                            className="flex overflow-x-auto pb-8 md:mx-0 md:px-0 space-x-5 snap-x hide-scrollbar scroll-smooth"
                         >
                             {filteredDestinations.map((item) => (
                                 <div
@@ -256,97 +345,6 @@ const AirportDetails: React.FC = () => {
                             >
                                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
                             </button>
-                        </div>
-                    </div>
-                </section>
-
-                {/* 3. Service Introduction Section */}
-                <section className="bg-white py-16 md:py-24 border-t border-slate-100">
-                    <div className="max-w-7xl mx-auto px-5 md:px-8">
-                        <div className="text-center mb-16">
-                            <span className="text-blue-600 font-bold text-sm tracking-wide uppercase mb-2 block">Our Services</span>
-                            <h2 className="text-3xl md:text-4xl font-extrabold text-[#1e293b]">공항 이동 서비스</h2>
-                        </div>
-
-                        <div className="grid md:grid-cols-2 gap-8 items-stretch">
-                            {/* Shuttle Service Card */}
-                            <div className="bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-200 flex flex-col group hover:shadow-md transition-all duration-300">
-                                <div className="h-64 relative overflow-hidden">
-                                    <img src={shuttleImg} alt="Airport Shuttle" className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-blue-900/60 to-transparent"></div>
-                                    <div className="absolute bottom-6 left-6 text-white">
-                                        <h3 className="text-2xl font-bold">공항 셔틀버스</h3>
-                                        <p className="text-blue-100 text-sm font-medium mt-1">Airport Shuttle Bus</p>
-                                    </div>
-                                </div>
-                                <div className="p-8 flex-grow flex flex-col">
-                                    <h4 className="text-blue-600 font-bold text-sm mb-2">"합리적이고 스마트한 노선 기반 이동"</h4>
-                                    <p className="text-slate-600 leading-relaxed mb-6 break-keep">
-                                        정해진 시간표와 노선으로 운행되는 경제적인 공항 이동 서비스입니다. 주요 거점을 경유하며 1-2인 여행객에게 가장 효율적인 선택입니다.
-                                    </p>
-
-                                    <div className="mb-6 bg-blue-50/50 p-5 rounded-2xl border border-blue-100">
-                                        <ul className="space-y-2 text-sm text-slate-600">
-                                            <li className="flex items-start gap-2.5">
-                                                <span className="text-blue-500 font-bold mt-0.5">•</span>
-                                                <span className="break-keep"><span className="font-semibold text-slate-800">정시 운행 보장:</span> 사전 공지된 시간표로 예측 가능한 이동</span>
-                                            </li>
-                                            <li className="flex items-start gap-2.5">
-                                                <span className="text-blue-500 font-bold mt-0.5">•</span>
-                                                <span className="break-keep"><span className="font-semibold text-slate-800">주요 거점 연결:</span> 도심 터미널, 주요 호텔가, 관광지 정차</span>
-                                            </li>
-                                            <li className="flex items-start gap-2.5">
-                                                <span className="text-blue-500 font-bold mt-0.5">•</span>
-                                                <span className="break-keep"><span className="font-semibold text-slate-800">쾌적한 탑승:</span> 넓은 좌석과 넉넉한 수하물 전용 공간</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                    <button className="mt-auto w-full py-4 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-xl font-bold text-lg transition-colors flex items-center justify-center gap-2">
-                                        셔틀 예약하기
-                                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                                    </button>
-                                </div>
-                            </div>
-
-                            {/* Private Service Card */}
-                            <div className="bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-200 flex flex-col group hover:shadow-md transition-all duration-300 h-full">
-                                <div className="h-64 relative overflow-hidden shrink-0">
-                                    <img src={chauffeurImg} alt="Private Chauffeur" className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                                    <div className="absolute bottom-6 left-6 text-white">
-                                        <h3 className="text-2xl font-bold text-amber-100">프라이빗 이동 서비스</h3>
-                                        <p className="text-amber-200/70 text-sm font-medium mt-1">Private Chauffeur Service</p>
-                                    </div>
-                                </div>
-                                <div className="p-8 flex-grow flex flex-col">
-                                    <p className="text-slate-600 leading-relaxed mb-6 break-keep">
-                                        전용 차량과 전문 기사가 함께하는 맞춤형 Door-to-Door 서비스입니다. 공항 입국장에서 목적지까지 완벽한 프라이빗 이동을 제공합니다.
-                                    </p>
-
-                                    <div className="mb-6 bg-slate-50 p-5 rounded-2xl border border-slate-100">
-                                        <ul className="space-y-2 text-sm text-slate-600">
-                                            <li className="flex items-start gap-2.5">
-                                                <span className="text-amber-500 font-bold mt-0.5">•</span>
-                                                <span className="break-keep"><span className="font-semibold text-slate-800">Meet & Greet:</span> 입국장에서 네임보드를 들고 직접 마중</span>
-                                            </li>
-                                            <li className="flex items-start gap-2.5">
-                                                <span className="text-amber-500 font-bold mt-0.5">•</span>
-                                                <span className="break-keep"><span className="font-semibold text-slate-800">항공편 모니터링:</span> 지연 시에도 일정에 맞춘 픽업 대기</span>
-                                            </li>
-                                            <li className="flex items-start gap-2.5">
-                                                <span className="text-amber-500 font-bold mt-0.5">•</span>
-                                                <span className="break-keep"><span className="font-semibold text-slate-800">전용 차량:</span> 세단부터 대형 밴까지 인원/짐에 맞게 선택</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                    <button className="mt-auto w-full py-4 bg-slate-50 hover:bg-slate-100 text-slate-700 rounded-xl font-bold text-lg transition-colors flex items-center justify-center gap-2">
-                                        프라이빗 예약하기
-                                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                                    </button>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </section>

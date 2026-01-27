@@ -54,8 +54,8 @@ const destinations = [
 
 const Process: React.FC = () => {
   return (
-    <section id="process" className="py-16 md:py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-5 md:px-8">
+    <section id="process" className="py-16 md:py-20 bg-white px-5 md:px-6">
+      <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="mb-10 md:mb-12">
           <span className="inline-block bg-[#f1f5f9] text-[#475569] text-[11px] md:text-[12px] font-bold px-3 py-1 rounded mb-3 md:mb-4">
@@ -68,15 +68,15 @@ const Process: React.FC = () => {
         {/* Destination Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
           {destinations.map((dest, index) => (
-            <div 
-              key={index} 
+            <div
+              key={index}
               className="border border-[#e2e8f0] rounded-2xl overflow-hidden hover:shadow-lg transition-shadow duration-300 flex flex-col group cursor-pointer"
             >
               {/* Image Area */}
               <div className="relative h-48 md:h-56 overflow-hidden bg-[#f8fafc] border-b border-[#f1f5f9]">
-                <img 
-                  src={dest.img} 
-                  alt={dest.title} 
+                <img
+                  src={dest.img}
+                  alt={dest.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
@@ -89,13 +89,13 @@ const Process: React.FC = () => {
                     {dest.category}
                   </span>
                 </div>
-                
+
                 <p className="text-[#64748b] text-xs md:text-sm mb-5 md:mb-6 font-medium leading-relaxed">{dest.desc}</p>
-                
+
                 <div className="flex flex-wrap gap-1.5 mb-6 md:mb-8">
                   {dest.tags.map((tag, i) => (
-                    <span 
-                      key={i} 
+                    <span
+                      key={i}
                       className="bg-[#f1f5f9] text-[#64748b] text-[10px] font-bold px-2 py-0.5 rounded"
                     >
                       {tag}

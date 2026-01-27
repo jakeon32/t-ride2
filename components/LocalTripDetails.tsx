@@ -1,0 +1,373 @@
+import React, { useEffect, useState, useRef } from 'react';
+import Navbar from './Navbar';
+import Footer from './Footer';
+
+// Local Asset Images
+import heroImg from '../assets/tour_jeju 1.jpg';
+import gyeongjuImg from '../assets/tour_gyeongju 1.jpg';
+import cityNightImg from '../assets/hero_bg02 1.jpg';
+
+// Map specific images to variable names (Reusing local assets for stability)
+const namiImg = heroImg; // Nami Island (Nature Theme - reusing Jeju)
+const folkImg = gyeongjuImg; // Folk Village (Traditional Theme - reusing Gyeongju)
+const suwonImg = cityNightImg; // Suwon Hwaseong (Night Theme)
+
+// Define missing variables
+const tourImg = gyeongjuImg;
+const traditionalImg = folkImg;
+
+interface Destination {
+    id: number;
+    type: 'tour' | 'activity' | 'culture';
+    partner: string;
+    title: string;
+    description: string;
+    features: string[];
+    image: string;
+}
+
+const LocalTripDetails: React.FC = () => {
+    const [activeFilter, setActiveFilter] = useState<'all' | 'tour' | 'activity' | 'culture'>('all');
+    const scrollRef = useRef<HTMLDivElement>(null);
+    const [currentSlide, setCurrentSlide] = useState(1);
+    const [totalSlides, setTotalSlides] = useState(1);
+
+    // Hero Slider State
+    const [currentHeroSlide, setCurrentHeroSlide] = useState(0);
+
+    // Scroll to top on mount
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
+    // Auto-play for Hero Slider
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentHeroSlide((prev) => (prev + 1) % 3);
+        }, 5000);
+
+        return () => clearInterval(interval);
+    }, []);
+
+    const heroSlides = [
+        {
+            id: 0,
+            image: heroImg,
+            title: <>서울을 벗어나 만나는<br />특별한 하루</>,
+            desc: <>남이섬, DMZ, 한국민속촌까지.<br />복잡한 교통편 걱정 없이 편안하게 떠나는 근교 여행.</>,
+            buttonText: "근교 여행 예약",
+            buttonLink: "#"
+        },
+        {
+            id: 1,
+            image: tourImg,
+            title: <>외국인 관광객 전용 투어</>,
+            desc: <>언어 장벽 없는 전문 가이드와 함께하는 알찬 투어 패키지입니다.</>,
+            buttonText: "투어 상품 보기",
+            buttonLink: "#"
+        },
+        {
+            id: 2,
+            image: traditionalImg,
+            title: <>한국 전통 문화 체험</>,
+            desc: <>가장 한국적인 아름다움을 찾아 떠나는 프라이빗 문화 탐방 코스.</>,
+            buttonText: "문화 체험 예약",
+            buttonLink: "#"
+        }
+    ];
+
+    const destinations: Destination[] = [
+        {
+            id: 1,
+            type: 'tour',
+            partner: 'Korea Tour',
+            title: '남이섬 & 쁘띠프랑스 투어',
+            description: '동화 속 풍경으로 떠나는 감성 여행',
+            features: ['왕복 셔틀', '입장권 포함'],
+            image: namiImg
+        },
+        {
+            id: 2,
+            type: 'tour',
+            partner: 'DMZ Tour',
+            title: 'DMZ 제3땅굴 투어',
+            description: '분단의 역사를 체험하는 안보 관광',
+            features: ['전문 가이드', '신분증 필수'],
+            image: heroImg // Using Jeju image as placeholder or find another
+        },
+        {
+            id: 3,
+            type: 'culture',
+            partner: 'K-Village',
+            title: '한국민속촌 전통 체험',
+            description: '조선시대로 떠나는 시간 여행',
+            features: ['한복 체험', '공연 관람'],
+            image: folkImg
+        },
+        {
+            id: 4,
+            type: 'activity',
+            partner: 'Gangchon Rail',
+            title: '강촌 레일바이크',
+            description: '북한강의 절경을 감상하며 즐기는 액티비티',
+            features: ['개별 탑승', '사진 촬영'],
+            image: namiImg
+        },
+        {
+            id: 5,
+            type: 'culture',
+            partner: 'Suwon Hwaseong',
+            title: '수원 화성행궁 야행',
+            description: '세계문화유산 수원화성의 아름다운 밤',
+            features: ['야간 개장', '해설 투어'],
+            image: suwonImg
+        },
+    ];
+
+    const filteredDestinations = activeFilter === 'all'
+        ? destinations
+        : destinations.filter(d => d.type === activeFilter);
+
+    useEffect(() => {
+        setTotalSlides(filteredDestinations.length);
+    }, [filteredDestinations]);
+
+    const handleScroll = () => {
+        if (scrollRef.current) {
+            const { scrollLeft } = scrollRef.current;
+            const itemWidth = scrollRef.current.children[0]?.clientWidth || 0;
+            if (itemWidth > 0) {
+                const index = Math.round(scrollLeft / itemWidth) + 1;
+                setCurrentSlide(Math.min(Math.max(index, 1), filteredDestinations.length));
+            }
+        }
+    };
+
+    const scrollLeft = () => {
+        if (scrollRef.current) {
+            const itemWidth = scrollRef.current.children[0]?.clientWidth || 300;
+            scrollRef.current.scrollBy({ left: -itemWidth, behavior: 'smooth' });
+        }
+    };
+
+    const scrollRight = () => {
+        if (scrollRef.current) {
+            const itemWidth = scrollRef.current.children[0]?.clientWidth || 300;
+            scrollRef.current.scrollBy({ left: itemWidth, behavior: 'smooth' });
+        }
+    };
+
+    const progressPercentage = (currentSlide / filteredDestinations.length) * 100;
+
+    return (
+        <div className="min-h-screen flex flex-col bg-slate-50">
+            <Navbar />
+
+            <main className="flex-grow">
+                {/* 1. Hero Slider Section */}
+                <section className="relative w-full bg-slate-50 pt-6 px-5 md:px-6">
+                    <div className="max-w-7xl mx-auto relative">
+                        {/* Shadow Effect */}
+                        <div className="absolute inset-0 rounded-[1.5rem] md:rounded-[2.5rem] bg-black/5 blur-2xl transform translate-y-4 md:translate-y-8 z-0"></div>
+
+                        {/* Slider Container */}
+                        <div className="relative h-[600px] md:h-[500px] w-full rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden bg-slate-900">
+                            {heroSlides.map((slide, index) => (
+                                <div
+                                    key={slide.id}
+                                    className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentHeroSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                                        }`}
+                                >
+                                    {/* Full Background Image */}
+                                    <div className="absolute inset-0">
+                                        <img
+                                            src={slide.image}
+                                            alt="Hero Slide"
+                                            className="w-full h-full object-cover transition-transform duration-[5000ms] ease-linear transform scale-100 hover:scale-105"
+                                        />
+                                        {/* Gradient Overlay for Text Visibility & Blending */}
+                                        <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-l from-[#1e293b] via-[#1e293b]/80 to-transparent"></div>
+                                    </div>
+
+                                    {/* Content Container */}
+                                    <div className="relative z-10 w-full h-full flex flex-col md:flex-row">
+                                        {/* Spacer for Left Side (Image Area) */}
+                                        <div className="hidden md:block md:w-[50%] lg:w-[55%]"></div>
+
+                                        {/* Right: Content (Text Area) */}
+                                        <div className="w-full md:w-[50%] lg:w-[45%] flex flex-col justify-center px-8 py-12 md:px-12 text-white">
+                                            <h1
+                                                key={`title-${index}`}
+                                                className={`display-font text-3xl md:text-3xl lg:text-4xl font-extrabold mb-4 leading-tight ${index === currentHeroSlide ? 'animate-slide-in-right' : ''}`}
+                                            >
+                                                {slide.title}
+                                            </h1>
+                                            <p
+                                                key={`desc-${index}`}
+                                                className={`text-slate-300 text-sm md:text-base leading-relaxed mb-8 break-keep ${index === currentHeroSlide ? 'animate-slide-in-right' : ''}`}
+                                                style={{ animationDelay: '0.1s' }}
+                                            >
+                                                {slide.desc}
+                                            </p>
+                                            <button
+                                                key={`btn-${index}`}
+                                                className={`w-fit px-8 py-3 rounded-full border border-white text-white font-bold hover:bg-white hover:text-[#1e293b] transition-all duration-300 ${index === currentHeroSlide ? 'animate-slide-in-right' : ''}`}
+                                                style={{ animationDelay: '0.2s' }}
+                                            >
+                                                {slide.buttonText}
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+
+                            {/* Slider Navigation Dots */}
+                            <div className="absolute bottom-8 right-8 z-20 flex gap-2">
+                                {heroSlides.map((_, index) => (
+                                    <button
+                                        key={index}
+                                        onClick={() => setCurrentHeroSlide(index)}
+                                        className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentHeroSlide ? 'bg-white w-6' : 'bg-white/40 hover:bg-white/60'
+                                            }`}
+                                        aria-label={`Go to slide ${index + 1}`}
+                                    />
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* 2. Popular Destinations Section */}
+                <section className="py-16 md:py-20 bg-slate-50 px-5 md:px-6">
+                    <div className="max-w-7xl mx-auto relative group">
+                        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+                            <div>
+                                <h2 className="text-2xl md:text-3xl font-extrabold text-[#1e293b] mb-4">
+                                    인기 근교여행지
+                                </h2>
+
+                                <div className="flex items-center space-x-2">
+                                    <button
+                                        onClick={() => setActiveFilter('all')}
+                                        className={`px-4 py-2 rounded-lg text-sm font-bold transition-colors ${activeFilter === 'all' ? 'bg-[#1e293b] text-white' : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'}`}
+                                    >
+                                        전체
+                                    </button>
+                                    <button
+                                        onClick={() => setActiveFilter('tour')}
+                                        className={`px-4 py-2 rounded-lg text-sm font-bold transition-colors ${activeFilter === 'tour' ? 'bg-[#1e293b] text-white' : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'}`}
+                                    >
+                                        투어
+                                    </button>
+                                    <button
+                                        onClick={() => setActiveFilter('activity')}
+                                        className={`px-4 py-2 rounded-lg text-sm font-bold transition-colors ${activeFilter === 'activity' ? 'bg-[#1e293b] text-white' : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'}`}
+                                    >
+                                        액티비티
+                                    </button>
+                                    <button
+                                        onClick={() => setActiveFilter('culture')}
+                                        className={`px-4 py-2 rounded-lg text-sm font-bold transition-colors ${activeFilter === 'culture' ? 'bg-[#1e293b] text-white' : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'}`}
+                                    >
+                                        문화체험
+                                    </button>
+                                </div>
+                            </div>
+
+                            {/* Desktop Navigation Arrows */}
+                            <div className="hidden md:flex items-center gap-2">
+                                <button
+                                    onClick={scrollLeft}
+                                    className="w-10 h-10 rounded-full border border-slate-200 bg-white flex items-center justify-center text-slate-600 hover:bg-slate-50 hover:border-slate-300 transition-colors"
+                                >
+                                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+                                </button>
+                                <button
+                                    onClick={scrollRight}
+                                    className="w-10 h-10 rounded-full border border-slate-200 bg-white flex items-center justify-center text-slate-600 hover:bg-slate-50 hover:border-slate-300 transition-colors"
+                                >
+                                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        {/* Carousel Container */}
+                        <div
+                            ref={scrollRef}
+                            onScroll={handleScroll}
+                            className="flex overflow-x-auto pb-8 md:mx-0 md:px-0 space-x-5 snap-x hide-scrollbar scroll-smooth"
+                        >
+                            {filteredDestinations.map((item) => (
+                                <div
+                                    key={item.id}
+                                    className="flex-shrink-0 snap-start 
+                               w-[calc((100%-20px)/1.5)] 
+                               md:w-[calc((100%-40px)/3)] 
+                               bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-lg transition-shadow"
+                                >
+                                    <div className="aspect-[4/3] bg-slate-100 relative overflow-hidden">
+                                        <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
+                                        <button className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/40 transition-colors">
+                                            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
+                                        </button>
+                                    </div>
+                                    <div className="p-5">
+                                        <div className="flex justify-between items-start mb-2">
+                                            <span className={`text-[10px] font-bold px-2 py-0.5 rounded bg-slate-100 text-slate-600`}>
+                                                {item.type.toUpperCase()}
+                                            </span>
+                                            <span className="text-xs text-slate-400 font-medium">{item.partner}</span>
+                                        </div>
+                                        <h3 className="text-lg font-bold text-[#1e293b] mb-1 line-clamp-1">{item.title}</h3>
+                                        <p className="text-sm text-slate-500 mb-4 line-clamp-1">{item.description}</p>
+
+                                        <div className="flex flex-wrap gap-2 mb-0">
+                                            {item.features.slice(0, 2).map((feature, idx) => (
+                                                <span key={idx} className="inline-flex items-center px-2 py-1 rounded bg-slate-50 text-xs text-slate-500">
+                                                    {feature}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                        {/* Pagination Indicator */}
+                        <div className="absolute bottom-[-20px] left-5 md:left-8 flex items-center gap-3">
+                            <div className="bg-[#1e293b] text-white text-xs font-bold px-3 py-1 rounded-full">
+                                {currentSlide} / {filteredDestinations.length}
+                            </div>
+                            <div className="w-32 h-1 bg-slate-200 rounded-full overflow-hidden">
+                                <div
+                                    className="h-full bg-[#1e293b] transition-all duration-300"
+                                    style={{ width: `${progressPercentage}%` }}
+                                ></div>
+                            </div>
+                        </div>
+
+                        {/* Mobile Navigation Arrows */}
+                        <div className="md:hidden absolute bottom-[-20px] right-5 flex items-center gap-2">
+                            <button
+                                onClick={scrollLeft}
+                                className="w-9 h-9 rounded-full border border-slate-200 bg-white flex items-center justify-center text-slate-600 hover:bg-slate-50 active:bg-slate-100 transition-colors"
+                            >
+                                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+                            </button>
+                            <button
+                                onClick={scrollRight}
+                                className="w-9 h-9 rounded-full border border-slate-200 bg-white flex items-center justify-center text-slate-600 hover:bg-slate-50 active:bg-slate-100 transition-colors"
+                            >
+                                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <Footer />
+        </div>
+    );
+};
+
+export default LocalTripDetails;

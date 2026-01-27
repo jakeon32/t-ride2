@@ -35,9 +35,7 @@ const Hero: React.FC = () => {
             </div>
           </div>
 
-          <div className="absolute bottom-8 right-8 z-10 hidden md:block">
-            <span className="text-[10px] font-bold text-white/60 tracking-[0.2em] uppercase origin-bottom-right -rotate-90 block">Integrated Mobility</span>
-          </div>
+
         </div>
       </div>
     </section>

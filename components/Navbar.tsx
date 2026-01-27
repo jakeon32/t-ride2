@@ -12,10 +12,10 @@ const Navbar: React.FC = () => {
   const menuItems = [
     { label: '공항', href: '/airport' },
     { label: '레저', href: '/leisure' },
-    { label: '쇼핑', href: '/#shopping' },
-    { label: '테마파크', href: '/#themepark' },
-    { label: '공연/이벤트', href: '/#event' },
-    { label: '근교·여행', href: '/#travel' },
+    { label: '쇼핑', href: '/shopping' },
+    { label: '테마파크', href: '/theme-park' },
+    { label: '공연/이벤트', href: '/event' },
+    { label: '근교·여행', href: '/local-trip' },
   ];
 
   const languages = [
