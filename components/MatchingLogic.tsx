@@ -65,46 +65,48 @@ const MatchingLogic: React.FC = () => {
   ];
 
   return (
-    <section id="matching" className="py-16 md:py-24 bg-white px-5 md:px-6">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12 md:mb-16 space-y-3 md:space-y-4">
+    <section id="matching" className="relative z-20 -mt-10 md:-mt-20 pt-20 md:pt-24 pb-20 md:pb-24 bg-white shadow-sm border-t border-slate-200 rounded-t-[2.5rem] md:rounded-t-[4rem]">
+      <div className="max-w-7xl mx-auto px-5 md:px-8">
+        <div className="text-center mb-16 md:mb-20 space-y-4 md:space-y-6">
           <div className="flex items-center justify-center mb-2">
-            <span className="bg-[#f1f5f9] text-[#475569] text-[11px] md:text-[12px] font-bold px-3 py-1 rounded">
-              서비스 타입
+            <span className="bg-[var(--color-secondary)]/20 text-[var(--color-primary)] text-xs font-bold px-4 py-1.5 rounded-full">
+              SERVICE TYPE
             </span>
           </div>
-          <h2 className="display-font text-4xl md:text-6xl font-extrabold tracking-tight text-[#1e293b] leading-tight">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-[#111] tracking-tight leading-tight font-['Montserrat']">
             셔틀 <span className={`inline-block translate-y-[-0.1em] transition-colors duration-700 ${pastelColors[colorIndex]}`}>vs</span> 프라이빗
           </h2>
-          <p className="text-[#64748b] text-base md:text-lg font-medium px-4">목적에 따라 최적의 이동 방식을 선택하세요</p>
-          <div className="w-12 md:w-16 h-1 bg-blue-600 mx-auto mt-4 md:mt-8 rounded-full" />
+          <p className="text-slate-500 text-base md:text-lg font-medium px-4">목적에 따라 최적의 이동 방식을 선택하세요</p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 md:gap-8">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12">
           {comparisonData.map((item, idx) => (
             <div
               key={idx}
-              className="bg-white p-6 md:p-12 rounded-2xl md:rounded-[2.5rem] border border-slate-100 card-shadow hover:border-blue-100 transition-all duration-300 group"
+              className="bg-white p-8 md:p-12 rounded-2xl md:rounded-[2rem] border border-slate-100 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group"
             >
-              <div className="flex items-start gap-4 md:gap-5 mb-6 md:mb-8">
-                <div className="w-14 h-14 md:w-16 md:h-16 bg-slate-50 rounded-xl md:rounded-2xl flex items-center justify-center shrink-0 border border-slate-100 group-hover:bg-blue-50 transition-colors">
-                  {item.icon}
+              <div className="flex items-start gap-5 md:gap-6 mb-8 md:mb-10">
+                <div className="w-16 h-16 md:w-20 md:h-20 bg-[var(--color-bg)] rounded-2xl flex items-center justify-center shrink-0 border border-slate-100 group-hover:bg-[var(--color-secondary)]/20 transition-colors duration-300">
+                  <div className="text-[var(--color-primary)] transform group-hover:scale-110 transition-transform duration-300">
+                    {/* Re-applying color class to icon if needed, but assuming icon has currentColor */}
+                    {React.cloneElement(item.icon as React.ReactElement, { className: "w-8 h-8 md:w-10 md:h-10 text-[var(--color-primary)]" })}
+                  </div>
                 </div>
                 <div>
-                  <h3 className="text-lg md:text-xl font-bold text-[#1e293b] mb-1">{item.type}</h3>
-                  <p className="text-sm text-[#64748b] leading-relaxed">{item.description}</p>
+                  <h3 className="text-xl md:text-2xl font-bold text-[var(--color-primary)] mb-2">{item.type}</h3>
+                  <p className="text-sm md:text-base text-slate-500 leading-relaxed font-medium">{item.description}</p>
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-y-3 gap-x-4">
+              <div className="grid grid-cols-2 gap-y-4 gap-x-6">
                 {item.features.map((feature, fIdx) => (
-                  <div key={fIdx} className="flex items-center gap-2">
-                    <div className="w-4 h-4 rounded-full bg-slate-50 flex items-center justify-center border border-slate-200">
-                      <svg className="w-2.5 h-2.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <div key={fIdx} className="flex items-center gap-3">
+                    <div className="w-5 h-5 rounded-full bg-[var(--color-bg)] flex items-center justify-center border border-slate-200">
+                      <svg className="w-3 h-3 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
-                    <span className="text-[13px] font-medium text-slate-600">{feature}</span>
+                    <span className="text-sm font-semibold text-slate-600 group-hover:text-[var(--color-primary)] transition-colors">{feature}</span>
                   </div>
                 ))}
               </div>

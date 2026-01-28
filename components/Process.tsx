@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const destinations = [
@@ -54,49 +53,46 @@ const destinations = [
 
 const Process: React.FC = () => {
   return (
-    <section id="process" className="py-16 md:py-20 bg-white px-5 md:px-6">
+    <section id="process" className="py-20 md:py-32 bg-slate-50 px-5 md:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="mb-10 md:mb-12">
-          <span className="inline-block bg-[#f1f5f9] text-[#475569] text-[11px] md:text-[12px] font-bold px-3 py-1 rounded mb-3 md:mb-4">
-            인기 목적지
+        <div className="mb-12 md:mb-16 text-center">
+          <span className="inline-block bg-[var(--color-secondary)]/30 text-[var(--color-primary)] text-xs font-bold px-4 py-2 rounded-full mb-4">
+            POPULAR SPOTS
           </span>
-          <h2 className="text-2xl md:text-3xl font-extrabold text-[#1e293b] mb-2">많이 찾는 목적지</h2>
-          <p className="text-[#64748b] text-sm md:text-base font-medium">자주 이용되는 목적지를 확인해보세요</p>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-[#111] mb-3">많이 찾는 목적지</h2>
+          <p className="text-slate-500 text-base md:text-lg font-medium">T-Ride 고객들이 가장 선호하는 핫플레이스를 확인하세요.</p>
         </div>
 
         {/* Destination Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {destinations.map((dest, index) => (
             <div
               key={index}
-              className="border border-[#e2e8f0] rounded-2xl overflow-hidden hover:shadow-lg transition-shadow duration-300 flex flex-col group cursor-pointer"
+              className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group cursor-pointer border border-slate-100 hover:border-[var(--color-secondary)]"
             >
               {/* Image Area */}
-              <div className="relative h-48 md:h-56 overflow-hidden bg-[#f8fafc] border-b border-[#f1f5f9]">
+              <div className="relative h-56 overflow-hidden">
                 <img
                   src={dest.img}
                   alt={dest.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
+                <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-lg text-xs font-bold text-[var(--color-primary)] shadow-sm">
+                  {dest.category}
+                </div>
               </div>
 
               {/* Content Area */}
-              <div className="p-5 md:p-8 flex flex-col flex-grow">
-                <div className="flex justify-between items-center mb-2">
-                  <h3 className="text-lg md:text-xl font-bold text-[#1e293b] tracking-tight">{dest.title}</h3>
-                  <span className="bg-[#f8fafc] border border-[#e2e8f0] text-[#64748b] text-[10px] font-bold px-2 py-0.5 rounded">
-                    {dest.category}
-                  </span>
-                </div>
+              <div className="p-6 md:p-8 flex flex-col flex-grow">
+                <h3 className="text-xl font-bold text-[var(--color-primary)] mb-2 tracking-tight">{dest.title}</h3>
+                <p className="text-slate-500 text-sm mb-6 font-medium leading-relaxed">{dest.desc}</p>
 
-                <p className="text-[#64748b] text-xs md:text-sm mb-5 md:mb-6 font-medium leading-relaxed">{dest.desc}</p>
-
-                <div className="flex flex-wrap gap-1.5 mb-6 md:mb-8">
+                <div className="flex flex-wrap gap-2 mb-6 md:mb-auto">
                   {dest.tags.map((tag, i) => (
                     <span
                       key={i}
-                      className="bg-[#f1f5f9] text-[#64748b] text-[10px] font-bold px-2 py-0.5 rounded"
+                      className="bg-slate-50 text-slate-500 text-[11px] font-bold px-3 py-1.5 rounded-lg border border-slate-100"
                     >
                       {tag}
                     </span>
@@ -104,9 +100,13 @@ const Process: React.FC = () => {
                 </div>
 
                 {/* Bottom Link Style */}
-                <div className="mt-auto pt-4 md:pt-5 border-t border-[#f1f5f9] flex items-center text-[#64748b] text-xs md:text-sm font-semibold group-hover:text-[#1e293b] transition-colors">
-                  <span className="mr-1">→</span>
-                  <span>{dest.link}</span>
+                <div className="mt-6 pt-5 border-t border-slate-50 flex items-center justify-between text-slate-600 group-hover:text-[var(--color-accent)] transition-colors">
+                  <span className="text-sm font-bold">{dest.link}</span>
+                  <div className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-[var(--color-accent)] group-hover:text-white transition-all">
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </div>
                 </div>
               </div>
             </div>

@@ -26,6 +26,18 @@ const AirportDetails: React.FC = () => {
 
     // Hero Slider State
     const [currentHeroSlide, setCurrentHeroSlide] = useState(0);
+    const [scrollY, setScrollY] = useState(0);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrollY(window.scrollY);
+        };
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    const overlayOpacity = Math.min(scrollY / 800, 0.8);
+    const parallaxOffset = -scrollY * 0.3;
 
     // Scroll to top on mount
     useEffect(() => {
@@ -157,37 +169,38 @@ const AirportDetails: React.FC = () => {
 
             <main className="flex-grow">
                 {/* 1. Hero Slider Section */}
-                <section className="relative w-full bg-slate-50 pt-6 px-5 md:px-6">
-                    <div className="max-w-7xl mx-auto relative">
-                        {/* Shadow Effect */}
-                        <div className="absolute inset-0 rounded-[1.5rem] md:rounded-[2.5rem] bg-black/5 blur-2xl transform translate-y-4 md:translate-y-8 z-0"></div>
+                <section className="sticky top-0 h-[50vh] w-full overflow-hidden z-0">
+                    {/* Parallax Container */}
+                    <div
+                        className="absolute inset-0 w-full h-full will-change-transform"
+                        style={{ transform: `translateY(${parallaxOffset}px)` }}
+                    >
+                        {heroSlides.map((slide, index) => (
+                            <div
+                                key={slide.id}
+                                className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentHeroSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+                            >
+                                {/* Full Background Image */}
+                                <div className="absolute inset-0">
+                                    <img
+                                        src={slide.image}
+                                        alt="Hero Slide"
+                                        className="w-full h-full object-cover transition-transform duration-[5000ms] ease-linear transform scale-100 hover:scale-105"
+                                    />
+                                    {/* Gradient Overlay for Text Visibility & Blending */}
+                                    <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#1e293b] via-[#1e293b]/50 to-transparent"></div>
+                                    {/* Dynamic Darkening Overlay */}
+                                    <div
+                                        className="absolute inset-0 bg-black pointer-events-none transition-opacity duration-100 ease-linear"
+                                        style={{ opacity: overlayOpacity }}
+                                    />
+                                </div>
 
-                        {/* Slider Container */}
-                        <div className="relative h-[600px] md:h-[500px] w-full rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden bg-slate-900">
-                            {heroSlides.map((slide, index) => (
-                                <div
-                                    key={slide.id}
-                                    className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentHeroSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
-                                        }`}
-                                >
-                                    {/* Full Background Image */}
-                                    <div className="absolute inset-0">
-                                        <img
-                                            src={slide.image}
-                                            alt="Hero Slide"
-                                            className="w-full h-full object-cover transition-transform duration-[5000ms] ease-linear transform scale-100 hover:scale-105"
-                                        />
-                                        {/* Gradient Overlay for Text Visibility & Blending */}
-                                        <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-l from-[#1e293b] via-[#1e293b]/80 to-transparent"></div>
-                                    </div>
-
-                                    {/* Content Container */}
-                                    <div className="relative z-10 w-full h-full flex flex-col md:flex-row">
-                                        {/* Spacer for Left Side (Image Area) */}
-                                        <div className="hidden md:block md:w-[50%] lg:w-[55%]"></div>
-
-                                        {/* Right: Content (Text Area) */}
-                                        <div className="w-full md:w-[50%] lg:w-[45%] flex flex-col justify-center px-8 py-12 md:px-12 text-white">
+                                {/* Content Container - Centered to match bottom content */}
+                                <div className="relative z-10 w-full h-full">
+                                    <div className="max-w-7xl mx-auto h-full px-5 md:px-6 flex flex-col md:flex-row">
+                                        {/* Left: Content (Text Area) */}
+                                        <div className="w-full md:w-[50%] lg:w-[45%] flex flex-col justify-center text-white">
                                             <h1
                                                 key={`title-${index}`}
                                                 className={`display-font text-3xl md:text-3xl lg:text-4xl font-extrabold mb-4 leading-tight ${index === currentHeroSlide ? 'animate-slide-in-right' : ''}`}
@@ -209,28 +222,30 @@ const AirportDetails: React.FC = () => {
                                                 {slide.buttonText}
                                             </button>
                                         </div>
+
+                                        {/* Spacer for Right Side (Image Area) */}
+                                        <div className="hidden md:block md:w-[50%] lg:w-[55%]"></div>
                                     </div>
                                 </div>
-                            ))}
-
-                            {/* Slider Navigation Dots */}
-                            <div className="absolute bottom-8 right-8 z-20 flex gap-2">
-                                {heroSlides.map((_, index) => (
-                                    <button
-                                        key={index}
-                                        onClick={() => setCurrentHeroSlide(index)}
-                                        className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentHeroSlide ? 'bg-white w-6' : 'bg-white/40 hover:bg-white/60'
-                                            }`}
-                                        aria-label={`Go to slide ${index + 1}`}
-                                    />
-                                ))}
                             </div>
-                        </div>
+                        ))}
+                    </div>
+
+                    {/* Slider Navigation Dots */}
+                    <div className="absolute bottom-32 left-1/2 transform -translate-x-1/2 z-20 flex gap-2">
+                        {heroSlides.map((_, index) => (
+                            <button
+                                key={index}
+                                onClick={() => setCurrentHeroSlide(index)}
+                                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${index === currentHeroSlide ? 'bg-white w-6' : 'bg-white/40 hover:bg-white/60'}`}
+                                aria-label={`Go to slide ${index + 1}`}
+                            />
+                        ))}
                     </div>
                 </section>
 
                 {/* 2. Popular Destinations Section */}
-                <section className="py-16 md:py-20 bg-slate-50 px-5 md:px-6">
+                <section className="relative z-30 bg-slate-50 py-16 md:py-20 px-5 md:px-6 rounded-t-[2.5rem] -mt-20 shadow-[0_-20px_40px_rgba(0,0,0,0.1)]">
                     <div className="max-w-7xl mx-auto relative group">
                         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
                             <div>
