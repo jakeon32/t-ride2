@@ -2,18 +2,290 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
-  .shadow-2xl-up {
-    box-shadow: 0 -25px 50px -12px rgba(0, 0, 0, 0.25);
+/* ========================================
+   Typography System - Pretendard
+   Based on 폰트사이즈 정리.md
+   Using plain CSS (not @apply) for CDN compatibility
+   ======================================== */
+
+/* ========================================
+   L1: Hero Heading (48-56px)
+   Usage: 메인 히어로 타이틀
+   ======================================== */
+.text-hero {
+  font-size: 2rem; /* 32px mobile */
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+@media (min-width: 768px) {
+  .text-hero {
+    font-size: 2.5rem; /* 40px tablet */
   }
 }
 
+@media (min-width: 1024px) {
+  .text-hero {
+    font-size: 3rem; /* 48px desktop */
+  }
+}
+
+/* ========================================
+   L2: Section H1 (32-36px)
+   Usage: 주요 섹션 제목
+   ======================================== */
+.text-section-title {
+  font-size: 1.75rem; /* 28px mobile */
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+@media (min-width: 768px) {
+  .text-section-title {
+    font-size: 2rem; /* 32px tablet */
+  }
+}
+
+@media (min-width: 1024px) {
+  .text-section-title {
+    font-size: 2.25rem; /* 36px desktop */
+  }
+}
+
+/* ========================================
+   L3-A: Section H2 (24-28px)
+   Usage: 섹션 서브 타이틀
+   ======================================== */
+.text-section-subtitle {
+  font-size: 1.25rem; /* 20px mobile */
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+@media (min-width: 768px) {
+  .text-section-subtitle {
+    font-size: 1.5rem; /* 24px */
+  }
+}
+
+/* ========================================
+   L3-B: Card Title Large (20-24px)
+   Usage: 카테고리 카드 제목
+   ======================================== */
+.text-card-title-lg {
+  font-size: 1.25rem; /* 20px mobile */
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+@media (min-width: 768px) {
+  .text-card-title-lg {
+    font-size: 1.5rem; /* 24px */
+  }
+}
+
+/* ========================================
+   L3-C: Card Title Medium (18-22px)
+   Usage: 목적지 카드 제목
+   ======================================== */
+.text-card-title {
+  font-size: 1.125rem; /* 18px mobile */
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+@media (min-width: 768px) {
+  .text-card-title {
+    font-size: 1.25rem; /* 20px */
+  }
+}
+
+/* ========================================
+   L4-A: Body Large (16-18px)
+   Usage: 주요 설명 문구
+   ======================================== */
+.text-body-lg {
+  font-size: 1rem; /* 16px mobile */
+  line-height: 1.7;
+}
+
+@media (min-width: 768px) {
+  .text-body-lg {
+    font-size: 1.125rem; /* 18px */
+  }
+}
+
+/* ========================================
+   L4-B: Body Regular (14-16px)
+   Usage: 일반 본문, 설명
+   ======================================== */
+.text-body {
+  font-size: 0.875rem; /* 14px mobile */
+  line-height: 1.7;
+}
+
+@media (min-width: 768px) {
+  .text-body {
+    font-size: 1rem; /* 16px */
+  }
+}
+
+/* ========================================
+   L4-C: List Items (14-16px)
+   Usage: 리스트 항목
+   ======================================== */
+.text-list-item {
+  font-size: 0.875rem; /* 14px mobile */
+  line-height: 1.6;
+}
+
+@media (min-width: 768px) {
+  .text-list-item {
+    font-size: 1rem; /* 16px */
+  }
+}
+
+/* ========================================
+   L5-A: Small Label (12-14px)
+   Usage: 카테고리 라벨
+   ======================================== */
+.text-label {
+  font-size: 0.75rem; /* 12px mobile */
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+@media (min-width: 768px) {
+  .text-label {
+    font-size: 0.875rem; /* 14px */
+  }
+}
+
+/* ========================================
+   L5-B: Badge/Tag (12-14px)
+   Usage: 뱃지, 태그
+   ======================================== */
+.text-badge {
+  font-size: 0.75rem; /* 12px */
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* ========================================
+   L5-C: Navigation (14-16px)
+   Usage: 헤더 네비게이션
+   ======================================== */
+.text-nav {
+  font-size: 0.875rem; /* 14px mobile */
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+@media (min-width: 768px) {
+  .text-nav {
+    font-size: 1rem; /* 16px */
+  }
+}
+
+/* ========================================
+   L5-D: Button Text (14-16px)
+   Usage: 버튼 텍스트
+   ======================================== */
+.text-btn {
+  font-size: 0.875rem; /* 14px mobile */
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+@media (min-width: 768px) {
+  .text-btn {
+    font-size: 1rem; /* 16px */
+  }
+}
+
+/* ========================================
+   L5-E: Link Text (13-14px)
+   Usage: 링크 텍스트
+   ======================================== */
+.text-link {
+  font-size: 0.875rem; /* 14px */
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* ========================================
+   L6-A: Micro Text (11-12px)
+   Usage: 브랜딩 서브텍스트
+   ======================================== */
+.text-micro {
+  font-size: 0.6875rem; /* 11px mobile */
+  line-height: 1.4;
+}
+
+@media (min-width: 768px) {
+  .text-micro {
+    font-size: 0.75rem; /* 12px */
+  }
+}
+
+/* ========================================
+   L6-B: Caption/Utility (12-14px)
+   Usage: 유틸리티 텍스트
+   ======================================== */
+.text-caption {
+  font-size: 0.75rem; /* 12px mobile */
+  line-height: 1.4;
+}
+
+@media (min-width: 768px) {
+  .text-caption {
+    font-size: 0.875rem; /* 14px */
+  }
+}
+
+/* ========================================
+   L6-C: Footer Copyright (11-12px)
+   Usage: 저작권 표기
+   ======================================== */
+.text-copyright {
+  font-size: 0.6875rem; /* 11px mobile */
+  line-height: 1.4;
+  color: #64748b;
+}
+
+@media (min-width: 768px) {
+  .text-copyright {
+    font-size: 0.75rem; /* 12px */
+  }
+}
+
+/* ========================================
+   Utility Classes
+   ======================================== */
+.shadow-2xl-up {
+  box-shadow: 0 -25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Font family utilities */
+.font-pretendard {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+}
+
+.font-display {
+  font-family: 'Montserrat', 'Pretendard', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* ========================================
+   Animations
+   ======================================== */
 @keyframes slideInRight {
   0% {
     opacity: 0;
     transform: translateX(80px);
   }
-
   100% {
     opacity: 1;
     transform: translateX(0);
@@ -22,7 +294,6 @@
 
 .animate-slide-in-right {
   opacity: 0;
-  /* Ensure initial state is hidden */
   animation: slideInRight 0.8s ease-out forwards;
 }
 
@@ -31,7 +302,6 @@
     opacity: 0;
     transform: translateX(-80px);
   }
-
   100% {
     opacity: 1;
     transform: translateX(0);
@@ -40,6 +310,21 @@
 
 .animate-slide-in-left {
   opacity: 0;
-  /* Ensure initial state is hidden */
   animation: slideInLeft 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out forwards;
 }

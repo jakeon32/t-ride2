@@ -33,7 +33,7 @@ const Footer: React.FC = () => {
               <div className="space-y-2">
                 <h3 className="text-xl font-bold text-white">파트너 등록</h3>
                 <p className="text-white/60 text-sm leading-relaxed">
-                  T-RiseUp과 함께 더 넓은 세상으로 나아가세요.<br />
+                  T-Ride와 함께 더 넓은 세상으로 나아가세요.<br />
                   검증된 파트너를 기다립니다.
                 </p>
               </div>
