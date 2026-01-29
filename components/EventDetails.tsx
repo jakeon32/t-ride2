@@ -197,7 +197,7 @@ const EventDetails: React.FC = () => {
 
                                 {/* Content Container - Centered to match bottom content */}
                                 <div className="relative z-10 w-full h-full">
-                                    <div className="max-w-7xl mx-auto h-full px-5 md:px-6 flex flex-col md:flex-row">
+                                    <div className="max-w-[1216px] mx-auto h-full px-5 md:px-6 flex flex-col md:flex-row">
                                         {/* Left: Content (Text Area) */}
                                         <div className="w-full md:w-[50%] lg:w-[45%] flex flex-col justify-center text-white">
                                             <h1
@@ -245,7 +245,7 @@ const EventDetails: React.FC = () => {
 
                 {/* 2. Popular Destinations Section */}
                 <section className="relative z-30 bg-slate-50 py-16 md:py-20 px-5 md:px-6 rounded-t-[2.5rem] -mt-20 shadow-[0_-20px_40px_rgba(0,0,0,0.1)]">
-                    <div className="max-w-7xl mx-auto relative group">
+                    <div className="max-w-[1216px] mx-auto relative group">
                         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
                             <div>
                                 <h2 className="text-2xl md:text-3xl font-extrabold text-[#1e293b] mb-4">

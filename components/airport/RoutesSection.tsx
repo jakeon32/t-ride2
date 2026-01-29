@@ -46,7 +46,7 @@ const RoutesSection: React.FC = () => {
 
     return (
         <section className="relative z-30 bg-slate-50 py-16 md:py-20">
-            <div className="max-w-7xl mx-auto px-5 md:px-8 relative group">
+            <div className="max-w-[1216px] mx-auto px-5 md:px-8 relative group">
                 <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
                     <div>
                         {/* L2: Section Title */}

@@ -4,7 +4,7 @@ import { whyChooseItems } from '../../data/airportData';
 const WhyChooseSection: React.FC = () => {
     return (
         <section className="relative z-30 bg-white py-16 md:py-24">
-            <div className="max-w-7xl mx-auto px-5 md:px-8">
+            <div className="max-w-[1216px] mx-auto px-5 md:px-8">
                 <div className="text-center mb-12">
                     {/* L2: Section Title */}
                     <h2 className="text-section-title text-[#1e293b] mb-4">

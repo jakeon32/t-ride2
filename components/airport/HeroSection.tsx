@@ -55,7 +55,7 @@ const HeroSection: React.FC = () => {
 
                         {/* Content Container - Centered to match bottom content */}
                         <div className="relative z-10 w-full h-full">
-                            <div className="max-w-7xl mx-auto h-full px-5 md:px-8 flex flex-col md:flex-row">
+                            <div className="max-w-[1216px] mx-auto h-full px-5 md:px-8 flex flex-col md:flex-row">
                                 {/* Left: Content (Text Area) */}
                                 <div className="w-full md:w-[50%] lg:w-[45%] flex flex-col justify-center text-white pt-32 md:pt-0">
                                     {/* L1: Hero Heading */}

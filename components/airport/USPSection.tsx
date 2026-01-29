@@ -4,7 +4,7 @@ import { uspItems } from '../../data/airportData';
 const USPSection: React.FC = () => {
     return (
         <section className="relative z-30 bg-slate-50 py-16 md:py-20">
-            <div className="max-w-7xl mx-auto px-5 md:px-8">
+            <div className="max-w-[1216px] mx-auto px-5 md:px-8">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {uspItems.map((item, idx) => (
                         <div key={idx} className="bg-white rounded-2xl p-8 text-center border border-slate-100 shadow-sm hover:shadow-md transition-shadow">

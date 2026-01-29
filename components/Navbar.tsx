@@ -35,7 +35,7 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className="fixed top-4 left-0 right-0 z-50 px-4 md:px-8">
-      <div className="max-w-7xl mx-auto glass-panel rounded-2xl flex items-center justify-between px-6 py-4 shadow-sm transition-all duration-300">
+      <div className="max-w-[1216px] mx-auto glass-panel rounded-2xl flex items-center justify-between px-6 py-4 shadow-sm transition-all duration-300">
         {/* Logo */}
         <Link to="/" state={{ from: 'detail' }} className="flex items-center space-x-2 cursor-pointer group">
           <span className="font-extrabold tracking-tighter text-xl md:text-2xl text-[var(--color-primary)] font-['Montserrat']">

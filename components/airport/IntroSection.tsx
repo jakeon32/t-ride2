@@ -3,7 +3,7 @@ import React from 'react';
 const IntroSection: React.FC = () => {
     return (
         <section className="relative z-30 bg-white py-16 md:py-20 rounded-t-[2.5rem] -mt-20 shadow-[0_-20px_40px_rgba(0,0,0,0.1)]">
-            <div className="max-w-7xl mx-auto px-5 md:px-8">
+            <div className="max-w-[1216px] mx-auto px-5 md:px-8">
                 <div className="max-w-4xl mx-auto text-center">
                     <div className="mb-6">
                         <span className="text-5xl">🚐</span>

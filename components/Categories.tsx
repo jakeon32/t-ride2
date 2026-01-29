@@ -49,7 +49,7 @@ const categories = [
 const Categories: React.FC = () => {
   return (
     <section id="inventory" className="relative z-30 bg-slate-50 w-full py-20 md:py-32">
-      <div className="max-w-7xl mx-auto px-5 md:px-8">
+      <div className="max-w-[1216px] mx-auto px-5 md:px-8">
 
         <div className="mb-12 md:mb-16">
           <h2 className="text-3xl md:text-4xl font-extrabold text-[#111] mb-3 tracking-tight">

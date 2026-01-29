@@ -46,7 +46,7 @@ const WhyUs: React.FC = () => {
       {/* Background Decor */}
       <div className="absolute top-0 left-0 w-full h-full bg-[linear-gradient(to_right,#f8fafc_1px,transparent_1px),linear-gradient(to_bottom,#f8fafc_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none"></div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-[1216px] mx-auto relative z-10">
         <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-center">
 
           {/* Left Content */}
