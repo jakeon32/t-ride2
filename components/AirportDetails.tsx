@@ -8,7 +8,6 @@ import RoutesSection from './airport/RoutesSection';
 import WhyChooseSection from './airport/WhyChooseSection';
 import SkiBanner from './airport/SkiBanner';
 import QuickLinksSection from './airport/QuickLinksSection';
-import BottomCTA from './airport/BottomCTA';
 
 const AirportDetails: React.FC = () => {
     // Scroll to top on mount
@@ -27,7 +26,6 @@ const AirportDetails: React.FC = () => {
                 <WhyChooseSection />
                 <SkiBanner />
                 <QuickLinksSection />
-                <BottomCTA />
             </main>
             <Footer />
         </div>
