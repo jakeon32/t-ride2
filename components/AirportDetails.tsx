@@ -7,7 +7,6 @@ import USPSection from './airport/USPSection';
 import RoutesSection from './airport/RoutesSection';
 import WhyChooseSection from './airport/WhyChooseSection';
 import SkiBanner from './airport/SkiBanner';
-import QuickLinksSection from './airport/QuickLinksSection';
 
 const AirportDetails: React.FC = () => {
     // Scroll to top on mount
@@ -21,11 +20,10 @@ const AirportDetails: React.FC = () => {
             <main className="flex-grow">
                 <HeroSection />
                 <IntroSection />
-                <USPSection />
                 <RoutesSection />
                 <WhyChooseSection />
                 <SkiBanner />
-                <QuickLinksSection />
+                <USPSection />
             </main>
             <Footer />
         </div>
