@@ -42,11 +42,11 @@ const WhyUs: React.FC = () => {
   ];
 
   return (
-    <section id="why" className="py-20 md:py-32 bg-white px-5 md:px-8 relative overflow-hidden">
+    <section id="why" className="py-20 md:py-32 bg-white relative overflow-hidden">
       {/* Background Decor */}
       <div className="absolute top-0 left-0 w-full h-full bg-[linear-gradient(to_right,#f8fafc_1px,transparent_1px),linear-gradient(to_bottom,#f8fafc_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none"></div>
 
-      <div className="max-w-[1216px] mx-auto relative z-10">
+      <div className="max-w-[1216px] mx-auto px-5 md:px-8 relative z-10">
         <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-center">
 
           {/* Left Content */}
