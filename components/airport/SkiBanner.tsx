@@ -1,59 +1,59 @@
 import React from 'react';
 import skiBg from '../../assets/ski_banner_img.jpg';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const SkiBanner: React.FC = () => {
+    const { lang } = useLanguage();
+
     return (
-        <section className="relative z-30 py-12 bg-white">
-            <div className="max-w-[1216px] mx-auto px-5 md:px-8">
-                <div className="relative overflow-hidden rounded-3xl shadow-lg group cursor-pointer">
-                    {/* Background Image */}
-                    <img
-                        src={skiBg}
-                        alt="Ski Resort"
-                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
+        <section className="relative z-30 py-0 bg-transparent overflow-hidden">
+            <div className="relative w-full h-[600px] overflow-hidden group cursor-pointer">
+                {/* Background Image */}
+                <img
+                    src={skiBg}
+                    alt="Ski Resort"
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 grayscale-[40%] group-hover:grayscale-0"
+                />
 
-                    {/* Gradient Overlay: 0% (Blue 90%) -> 75% (Transparent) -> 100% (Transparent) */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-blue-900/100 via-transparent via-80% to-transparent"></div>
+                {/* Cinematic Overlay - Darker Right-to-Left for text readability */}
+                <div className="absolute inset-0 bg-gradient-to-l from-black via-black/75 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-80"></div>
 
-                    <div className="relative z-10 p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 text-white">
-                        <div className="flex-1 text-center md:text-left">
-                            <div className="flex items-center justify-center md:justify-start gap-3 mb-4">
-                                <span className="text-3xl">⛷️</span>
-                                <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
-                                    스키 리조트 이동 서비스
-                                </h2>
+                {/* Ambient Light Glow */}
+                <div className="absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/4 w-[500px] h-[500px] bg-[var(--color-accent)]/20 blur-[120px] rounded-full pointer-events-none mix-blend-screen"></div>
+
+                {/* Grid Overlay Effect */}
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:2rem_2rem] pointer-events-none"></div>
+
+                {/* Content Container - Constrained Width */}
+                <div className="relative z-10 max-w-[1216px] mx-auto h-full px-6 md:px-8">
+                    <div className="w-full h-full flex flex-col justify-center items-end text-right">
+                        <div className="max-w-xl">
+                            <div className="flex items-center gap-4 text-[var(--color-accent)] font-bold tracking-widest text-xs uppercase mb-6 md:justify-end">
+                                <span>{lang === 'KR' ? '시즌 스페셜' : 'Seasonal Special'}</span>
+                                <div className="w-12 h-[1px] bg-[var(--color-accent)]"></div>
                             </div>
 
-                            <p className="text-lg md:text-xl font-medium text-blue-100 mb-2">
-                                공항에서 바로 설원으로, 장비 걱정 없는 직행 이동
+                            <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6 leading-tight">
+                                {lang === 'KR' ? <>눈부신<br />설원으로</> : <>SNOW<br />ESCAPADE</>}
+                            </h2>
+
+                            <p className="text-xl md:text-2xl text-slate-300 font-light mb-8 leading-relaxed">
+                                {lang === 'KR'
+                                    ? "용평, 알펜시아, 하이원 리조트 직행 셔틀 서비스."
+                                    : "Direct connection to Yongpyong, Alpensia, and High1 Resorts."}
                             </p>
 
-                            <p className="text-sm md:text-base text-white mb-6 max-w-2xl font-normal">
-                                용평, 알펜시아, 비발디파크, 하이원 등 국내 주요 스키 리조트 전 노선 운행 중!<br className="hidden md:block" />
-                                무거운 스키/보드 장비도 안전하게 운송하는 전용 차량으로 편안하게 이동하세요.
-                            </p>
-
-                            <div className="flex flex-col md:flex-row gap-4 text-sm font-medium text-blue-50/90">
-                                <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-lg backdrop-blur-sm">
-                                    <span>🚌</span>
-                                    <span>스키 셔틀 - 정기 노선 운행</span>
-                                </div>
-                                <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-lg backdrop-blur-sm">
-                                    <span>🚐</span>
-                                    <span>프라이빗 - Door-to-Door 맞춤 이동</span>
-                                </div>
+                            <div className="flex flex-col md:flex-row gap-4 md:justify-end">
+                                <a
+                                    href="https://k-ski.rideus.net/k-ski/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="px-10 py-4 bg-[var(--color-accent)] text-white text-sm font-bold tracking-widest uppercase hover:bg-white hover:text-black transition-all"
+                                >
+                                    {lang === 'KR' ? '스키 셔틀 예약하기' : 'Book Ski Shuttle'}
+                                </a>
                             </div>
                         </div>
-
-                        <a
-                            href="https://k-ski.rideus.net/k-ski/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex-shrink-0 bg-white text-blue-900 px-8 py-4 rounded-full font-bold text-lg hover:bg-blue-50 transition-all transform hover:scale-105 shadow-lg"
-                        >
-                            스키장 이동 예약하기
-                        </a>
                     </div>
                 </div>
             </div>
