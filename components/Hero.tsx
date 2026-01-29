@@ -60,10 +60,10 @@ const Hero: React.FC = () => {
           </p>
 
           <div className="flex flex-col md:flex-row items-stretch md:items-center justify-center gap-4">
-            <a href="#inventory" className="bg-white text-black px-10 py-4 rounded-full text-lg font-bold hover:bg-slate-200 transition-all shadow-[0_20px_50px_rgba(0,0,0,0.5)] hover:shadow-[0_30px_60px_rgba(0,0,0,0.6)] hover:scale-105 active:scale-95">
+            <a href="#inventory" className="flex items-center justify-center bg-white text-black px-10 py-4 rounded-full text-lg font-bold hover:bg-slate-200 transition-all shadow-[0_20px_50px_rgba(0,0,0,0.5)] hover:shadow-[0_30px_60px_rgba(0,0,0,0.6)] hover:scale-105 active:scale-95">
               카테고리 둘러보기
             </a>
-            <button className="bg-white/10 backdrop-blur-md border border-white/30 text-white px-10 py-4 rounded-full text-lg font-bold hover:bg-white/20 transition-all shadow-[0_20px_50px_rgba(0,0,0,0.5)] hover:shadow-[0_30px_60px_rgba(0,0,0,0.6)] hover:scale-105 active:scale-95">
+            <button className="flex items-center justify-center bg-white/10 backdrop-blur-md border border-white/30 text-white px-10 py-4 rounded-full text-lg font-bold hover:bg-white/20 transition-all shadow-[0_20px_50px_rgba(0,0,0,0.5)] hover:shadow-[0_30px_60px_rgba(0,0,0,0.6)] hover:scale-105 active:scale-95">
               고객센터
             </button>
           </div>
