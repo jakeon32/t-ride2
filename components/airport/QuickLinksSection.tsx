@@ -1,23 +1,27 @@
 import React from 'react';
-import { quickLinks } from '../../data/airportData';
+import { getQuickLinks } from '../../data/airportData';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const QuickLinksSection: React.FC = () => {
+    const { lang } = useLanguage();
+    const links = getQuickLinks(lang);
+
     return (
-        <section className="relative z-30 bg-slate-50 py-16 md:py-20 px-5 md:px-8">
-            <div className="max-w-7xl mx-auto">
-                {/* L3-A: Section Subtitle */}
-                <h2 className="text-section-subtitle text-[#1e293b] text-center mb-10">
-                    공항 이동, 더 쉽게 준비하세요
+        <section className="relative z-30 bg-transparent py-16 md:py-20 border-t border-white/5">
+            <div className="max-w-[1216px] mx-auto px-6 md:px-8">
+                {/* Section Title */}
+                <h2 className="text-3xl font-display font-bold text-white text-center mb-12">
+                    {lang === 'KR' ? '공항 이동, 더 쉽게 준비하세요' : 'Prepare Your Journey Easily'}
                 </h2>
 
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    {quickLinks.map((link, idx) => (
-                        <button key={idx} className="flex flex-col items-center p-6 bg-white rounded-2xl border border-slate-200 hover:shadow-md hover:border-blue-200 transition-all group">
-                            <span className="text-3xl mb-3 group-hover:scale-110 transition-transform">{link.icon}</span>
-                            {/* L5-D: Button Text */}
-                            <span className="text-btn text-[#1e293b] mb-1">{link.title}</span>
-                            {/* L6-B: Caption */}
-                            <span className="text-caption text-slate-500">{link.desc}</span>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    {links.map((link, idx) => (
+                        <button key={idx} className="flex flex-col items-center p-8 bg-[#111] border border-white/10 hover:border-[var(--color-accent)] hover:bg-[#161616] transition-all duration-300 group rounded-none">
+                            <span className="text-3xl mb-4 group-hover:scale-110 transition-transform group-hover:text-[var(--color-accent)]">{link.icon}</span>
+                            {/* Button Text */}
+                            <span className="text-sm font-bold text-white mb-2 font-display uppercase tracking-wide">{link.title}</span>
+                            {/* Caption */}
+                            <span className="text-xs text-slate-500 font-light text-center leading-relaxed h-8 flex items-center">{link.desc}</span>
                         </button>
                     ))}
                 </div>

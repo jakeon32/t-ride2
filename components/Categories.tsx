@@ -1,88 +1,138 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '../contexts/LanguageContext';
 
-const categories = [
+// Import Category Images
+import imgAirport from '../assets/airport_cate.jpg';
+import imgLeisure from '../assets/leisure_cate.jpg';
+import imgShopping from '../assets/shopping_cate.jpg';
+import imgThemePark from '../assets/Theme park_cate.jpg';
+import imgEvent from '../assets/concerts_cate.jpg';
+import imgLocal from '../assets/Suburban trips_cate.jpg';
+
+const getCategories = (lang: 'KR' | 'EN') => [
   {
-    title: "공항",
-    desc: "전국 주요 공항 ↔ 도심/호텔 연결",
-    tags: ["셔틀", "프라이빗", "24시간 운영"],
-    icon: "✈️",
+    title: lang === 'KR' ? "공항 이동" : "AIRPORT",
+    sub: lang === 'KR' ? "글로벌 커넥션" : "Global Connection",
+    desc: lang === 'KR' ? "공항과 도심을 잇는 가장 편안한 연결." : "Seamless transfer between major airports and city centers.",
+    tags: lang === 'KR' ? ["셔틀", "프라이빗", "24시간"] : ["Shuttle", "Private", "24/7"],
+    image: imgAirport,
     href: "/airport",
   },
   {
-    title: "레저",
-    desc: "스키장, 골프장 등 레저시설 이동",
-    tags: ["시즌 운영", "장비 적재", "합리적 가격"],
-    icon: "⛷️",
+    title: lang === 'KR' ? "레저/골프" : "LEISURE",
+    sub: lang === 'KR' ? "시즌 탈출" : "Seasonal Escape",
+    desc: lang === 'KR' ? "스키장, 골프장 이동도 장비 걱정 없이." : "Ski resorts & golf courses with spacious equipment storage.",
+    tags: lang === 'KR' ? ["성수기 운행", "장비 적재", "리무진"] : ["Seasonal", "Equipment", "Comfort"],
+    image: imgLeisure,
     href: "/leisure",
   },
   {
-    title: "쇼핑",
-    desc: "아울렛 및 쇼핑몰 이동 서비스",
-    tags: ["프라이빗", "짐 보관", "전국 가능"],
-    icon: "🛍️",
+    title: lang === 'KR' ? "쇼핑 투어" : "SHOPPING",
+    sub: lang === 'KR' ? "도심 속 힐링" : "Retail Therapy",
+    desc: lang === 'KR' ? "아울렛, 백화점 쇼핑을 위한 여유로운 공간." : "Private transport to outlets and malls with cargo space.",
+    tags: lang === 'KR' ? ["프라이빗", "대량 구매", "전국 운행"] : ["Private", "Cargo", "Nationwide"],
+    image: imgShopping,
     href: "/shopping",
   },
   {
-    title: "테마파크",
-    desc: "가족/연인 단위 맞춤형 픽업 서비스",
-    tags: ["가족 여행", "도어 투 도어", "주말 운영"],
-    icon: "🎢",
+    title: lang === 'KR' ? "테마파크" : "THEME PARK",
+    sub: lang === 'KR' ? "환상의 여정" : "Fantasy Ride",
+    desc: lang === 'KR' ? "가족, 연인과 함께하는 문 앞 픽업 서비스." : "Door-to-door pickup for families and couples.",
+    tags: lang === 'KR' ? ["가족 여행", "집앞 픽업", "주말 운행"] : ["Family", "Door-to-Door", "Weekend"],
+    image: imgThemePark,
     href: "/theme-park",
   },
   {
-    title: "공연/이벤트",
-    desc: "콘서트, 페스티벌 특화 이동 서비스",
-    tags: ["이벤트 셔틀", "단체 가능", "심야 운행"],
-    icon: "🎤",
+    title: lang === 'KR' ? "공연/이벤트" : "EVENT",
+    sub: lang === 'KR' ? "나이트 라이브" : "Night Live",
+    desc: lang === 'KR' ? "콘서트, 페스티벌 이동을 위한 심야 전용 밴." : "Specialized transport for concerts and festivals.",
+    tags: lang === 'KR' ? ["심야 운행", "단체 이동", "축제"] : ["Late Night", "Group", "Festival"],
+    image: imgEvent,
     href: "/event",
   },
   {
-    title: "근교 여행",
-    desc: "주요 관광지 및 명소 연결",
-    tags: ["관광 셔틀", "다국어 지원", "일일 투어"],
-    icon: "🏨",
+    title: lang === 'KR' ? "로컬 여행" : "LOCAL TRIP",
+    sub: lang === 'KR' ? "큐레이션 투어" : "Curated Journey",
+    desc: lang === 'KR' ? "숨겨진 명소로 떠나는 일일 투어." : "Daily tours to major landmarks and hidden gems.",
+    tags: lang === 'KR' ? ["당일 투어", "다국어 지원", "매일 출발"] : ["Tour", "Multi-lang", "Daily"],
+    image: imgLocal,
     href: "/local-trip",
   },
 ];
 
 const Categories: React.FC = () => {
-  return (
-    <section id="inventory" className="relative z-30 bg-slate-50 w-full py-20 md:py-32">
-      <div className="max-w-[1216px] mx-auto px-5 md:px-8">
+  const { lang } = useLanguage();
+  const categories = getCategories(lang);
 
-        <div className="mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-[#111] mb-3 tracking-tight">
-            어디로 가시나요?
-          </h2>
-          <p className="text-slate-500 text-base md:text-lg font-medium">
-            T-ride가 연결하는 대표적인 목적지 카테고리입니다.
+  return (
+    <section id="inventory" className="relative z-30 bg-transparent w-full py-24 md:py-32 border-t border-white/10">
+      <div className="max-w-[1216px] mx-auto px-6 md:px-8">
+
+        {/* Section Header - Industrial Style */}
+        <div className="mb-20 flex flex-col md:flex-row items-end justify-between border-b border-white/10 pb-8">
+          <div>
+            <span className="block text-[var(--color-accent)] font-bold tracking-widest text-xs mb-4 uppercase">
+              {lang === 'KR' ? '맞춤형 이동 서비스' : 'Curated Mobility'}
+            </span>
+            <h2 className="text-4xl md:text-6xl font-display font-bold text-white leading-tight">
+              {lang === 'KR'
+                ? <>JOURNEY<br />COLLECTION</>
+                : <>JOURNEY<br />COLLECTION</>}
+            </h2>
+          </div>
+          <p className="text-slate-500 max-w-sm text-sm md:text-base mt-6 md:mt-0 font-light leading-relaxed">
+            {lang === 'KR'
+              ? "목적지에 맞는 이동 방식을 선택하세요. T-RIDE는 모든 여정의 목적에 최적화된 차량과 서비스를 제공합니다."
+              : "Select your destination type. T-RIDE provides specialized fleets and services for every journey purpose."}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Grid Layout - Masonry Feel */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
           {categories.map((cat, i) => (
             <Link
               key={i}
               to={cat.href}
-              className="group bg-white border border-slate-200 rounded-3xl p-8 hover:shadow-xl transition-all duration-300 flex flex-col items-start h-full"
+              className="group relative bg-[#111] border border-white/5 overflow-hidden hover:z-10 hover:border-[var(--color-accent)] transition-all duration-500 flex flex-col min-h-[400px]"
             >
-              <div className="text-4xl mb-6">{cat.icon}</div>
-
-              <h3 className="text-2xl font-bold text-[#111] mb-2">{cat.title}</h3>
-              <p className="text-slate-500 text-sm mb-6 font-medium">{cat.desc}</p>
-
-              <div className="flex flex-wrap gap-2 mb-8">
-                {cat.tags.map((tag, idx) => (
-                  <span key={idx} className="bg-slate-100 text-slate-600 px-3 py-1 rounded-md text-xs font-bold">
-                    {tag}
-                  </span>
-                ))}
+              {/* Background Image with Cinematic Reveal */}
+              <div className="absolute inset-0 z-0">
+                <img
+                  src={cat.image}
+                  alt={cat.title}
+                  className="w-full h-full object-cover opacity-40 group-hover:opacity-60 group-hover:scale-105 transition-all duration-700 grayscale-[50%] group-hover:grayscale-0"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent group-hover:via-black/60 transition-all duration-500" />
               </div>
 
-              <div className="mt-auto w-full">
-                <div className="w-full py-3 rounded-xl border border-blue-500 text-blue-500 font-bold text-center group-hover:bg-blue-500 group-hover:text-white transition-all duration-300">
-                  서비스 보기
+              {/* Top Meta */}
+              <div className="relative z-10 p-10 flex justify-between items-start mb-12">
+                <span className="text-xs font-bold text-white/30 tracking-[0.2em] group-hover:text-[var(--color-accent)] transition-colors">
+                  {(i + 1).toString().padStart(2, '0')}
+                </span>
+                <span className="bg-black/50 backdrop-blur-sm text-white/70 px-3 py-1 text-[10px] uppercase tracking-wider border border-white/10 group-hover:border-[var(--color-accent)] group-hover:text-white transition-all">
+                  {cat.tags[0]}
+                </span>
+              </div>
+
+              {/* Bottom Content */}
+              <div className="relative z-10 mt-auto p-10">
+                <h3 className="text-3xl font-display font-bold text-white mb-2 group-hover:translate-x-2 transition-transform duration-300">
+                  {cat.title}
+                </h3>
+                <span className="block text-xs font-bold text-[var(--color-accent)] uppercase tracking-widest mb-4">
+                  {cat.sub}
+                </span>
+                <p className="text-slate-400 text-sm leading-relaxed border-l-2 border-white/10 pl-4 mb-8 group-hover:text-slate-200 transition-colors">
+                  {cat.desc}
+                </p>
+
+                <div className="flex items-center gap-2 text-white/50 text-xs font-bold tracking-widest uppercase group-hover:text-white transition-colors">
+                  <span>{lang === 'KR' ? '자세히 보기' : 'View Service'}</span>
+                  <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
                 </div>
               </div>
             </Link>

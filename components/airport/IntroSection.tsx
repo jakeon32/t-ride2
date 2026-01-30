@@ -1,31 +1,39 @@
 import React from 'react';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const IntroSection: React.FC = () => {
+    const { lang } = useLanguage();
+
     return (
-        <section className="relative z-30 bg-white py-16 md:py-20 rounded-t-[2.5rem] -mt-20 shadow-[0_-20px_40px_rgba(0,0,0,0.1)]">
-            <div className="max-w-[1216px] mx-auto px-5 md:px-8">
+        <section className="relative z-30 bg-transparent py-20 border-t border-white/10">
+            <div className="max-w-[1216px] mx-auto px-6 md:px-8">
                 <div className="max-w-4xl mx-auto text-center">
-                    <div className="mb-6">
-                        <span className="text-5xl">🚐</span>
+                    <div className="mb-8 flex justify-center">
+                        <div className="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center text-[var(--color-accent)] bg-white/5">
+                            <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                            </svg>
+                        </div>
                     </div>
                     {/* L2: Section Title */}
-                    <h2 className="text-section-title text-[#1e293b] mb-6">
-                        내 위치에서 공항까지, 가장 편안한 방법
+                    <h2 className="text-3xl md:text-5xl font-display font-bold text-white mb-8 leading-tight">
+                        {lang === 'KR'
+                            ? <>공항으로 가는<br /><span className="text-slate-500 text-2xl md:text-4xl">가장 매끄러운 연결</span></>
+                            : <>SEAMLESS CONNECTION<br /><span className="text-slate-500 text-2xl md:text-4xl">TO YOUR FLIGHT</span></>}
                     </h2>
+
                     {/* L4-A: Body Large */}
-                    <div className="text-body-lg text-slate-600 space-y-4">
+                    <div className="text-slate-400 space-y-6 leading-relaxed font-light text-lg">
                         <p>
-                            T-Ride 공항 교통편 서비스는<br className="md:hidden" />
-                            <span className="font-semibold text-[#1e293b]">100개 이상의 노선</span>으로 <span className="font-semibold text-[#1e293b]">24시간</span> 운영됩니다
+                            {lang === 'KR'
+                                ? <>T-Ride 공항 서비스는 <span className="text-white font-medium">100개 이상의 노선</span>으로 <span className="text-white font-medium">24시간</span> 운영됩니다.<br className="hidden md:block" />어디서든 공항 터미널 바로 앞까지 편안하게 연결합니다.</>
+                                : <>T-Ride Airport Service operates <span className="text-white font-medium">24/7</span> with over <span className="text-white font-medium">100+ routes</span>.<br className="hidden md:block" />Connect from hundreds of pickup points nationwide directly to your terminal.</>}
                         </p>
-                        <p>
-                            대한민국 전역의 주요 도시 수백 개 픽업 지점에서<br className="md:hidden" />
-                            탑승하여 공항 터미널로 바로 이동하세요
-                        </p>
-                        {/* L4-B: Body Regular */}
-                        <p className="text-body text-slate-500">
-                            주요 거점에서 15분 간격 출발로 대기 시간 최소화<br />
-                            인천공항·김포공항에서 서울·경기까지 쾌적한 여정
+                        <div className="w-20 h-[1px] bg-white/10 mx-auto"></div>
+                        <p className="text-sm md:text-base">
+                            {lang === 'KR'
+                                ? <>주요 거점에서 15분 간격 운행으로 대기 시간을 최소화합니다.<br />인천/김포공항으로 가는 가장 빠른 길을 경험하세요.</>
+                                : <>Minimizing wait times with 15-minute intervals at major hubs.<br />Experience the most comfortable journey from Incheon/Gimpo to the city.</>}
                         </p>
                     </div>
                 </div>

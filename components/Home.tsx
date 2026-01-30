@@ -6,6 +6,7 @@ import Categories from './Categories';
 import WhyUs from './WhyUs';
 import Process from './Process';
 import Footer from './Footer';
+import AmbientBackground from './AmbientBackground';
 
 const Home: React.FC = () => {
     // Scroll to top on mount
@@ -16,7 +17,8 @@ const Home: React.FC = () => {
     return (
         <div className="min-h-screen flex flex-col">
             <Navbar />
-            <main className="flex-grow">
+            <AmbientBackground />
+            <main className="flex-grow z-10 relative">
                 <Hero />
                 <MatchingLogic />
                 <Categories />

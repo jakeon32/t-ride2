@@ -1,110 +1,119 @@
 import React from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 
-const destinations = [
+const getDestinations = (lang: 'KR' | 'EN') => [
   {
-    title: "인천국제공항",
-    desc: "공항 이동의 시작점",
-    category: "공항",
-    tags: ["셔틀", "프라이빗"],
-    link: "상품 보기",
+    title: lang === 'KR' ? "인천국제공항" : "INCHEON INT'L AIRPORT",
+    desc: lang === 'KR' ? "글로벌 여정의 시작점." : "The starting point of your global journey.",
+    category: lang === 'KR' ? "공항" : "AIRPORT",
+    tags: lang === 'KR' ? ["셔틀", "프라이빗"] : ["Shuttle", "Private"],
+    link: lang === 'KR' ? "서비스 보기" : "View Service",
     img: "https://images.unsplash.com/photo-1569154941061-e231b4725ef1?q=80&w=800&auto=format&fit=crop"
   },
   {
-    title: "리조트·골프",
-    desc: "주말 레저 이동",
-    category: "레저",
-    tags: ["프라이빗"],
-    link: "상품 보기",
+    title: lang === 'KR' ? "럭셔리 리조트 & 골프" : "LUXURY RESORT & GOLF",
+    desc: lang === 'KR' ? "프리미엄 힐링을 위한 주말 레저." : "Weekend leisure with premium comfort.",
+    category: lang === 'KR' ? "레저" : "LEISURE",
+    tags: lang === 'KR' ? ["프라이빗"] : ["Private"],
+    link: lang === 'KR' ? "서비스 보기" : "View Service",
     img: "https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?q=80&w=800&auto=format&fit=crop"
   },
   {
-    title: "프리미엄 아울렛",
-    desc: "쇼핑 왕복 이동",
-    category: "쇼핑",
-    tags: ["셔틀", "프라이빗"],
-    link: "상품 보기",
+    title: lang === 'KR' ? "프리미엄 아울렛" : "PREMIUM OUTLETS",
+    desc: lang === 'KR' ? "여유로운 공간으로 즐기는 쇼핑 투어." : "Exclusive shopping trips with ample cargo.",
+    category: lang === 'KR' ? "쇼핑" : "SHOPPING",
+    tags: lang === 'KR' ? ["셔틀", "프라이빗"] : ["Shuttle", "Private"],
+    link: lang === 'KR' ? "서비스 보기" : "View Service",
     img: "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?q=80&w=800&auto=format&fit=crop"
   },
   {
-    title: "테마파크",
-    desc: "가족/단체 인기",
-    category: "테마파크",
-    tags: ["셔틀"],
-    link: "상품 보기",
+    title: lang === 'KR' ? "테마파크" : "THEME PARKS",
+    desc: lang === 'KR' ? "가족과 함께하는 마법 같은 순간." : "Magical moments for families and groups.",
+    category: lang === 'KR' ? "테마파크" : "THEME PARK",
+    tags: lang === 'KR' ? ["셔틀"] : ["Shuttle"],
+    link: lang === 'KR' ? "서비스 보기" : "View Service",
     img: "https://images.unsplash.com/photo-1513885535751-8b9238bd345a?q=80&w=800&auto=format&fit=crop"
   },
   {
-    title: "공연·이벤트",
-    desc: "행사 당일 이동",
-    category: "공연/이벤트",
-    tags: ["셔틀"],
-    link: "상품 보기",
+    title: lang === 'KR' ? "공연 & 이벤트" : "CONCERT & EVENT",
+    desc: lang === 'KR' ? "공연장, 페스티벌 현장으로 직행." : "Direct transport to the heart of the action.",
+    category: lang === 'KR' ? "이벤트" : "EVENT",
+    tags: lang === 'KR' ? ["셔틀"] : ["Shuttle"],
+    link: lang === 'KR' ? "서비스 보기" : "View Service",
     img: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=800&auto=format&fit=crop"
   },
   {
-    title: "도심·근교",
-    desc: "당일치기 추천",
-    category: "레저",
-    tags: ["프라이빗"],
-    link: "상품 보기",
+    title: lang === 'KR' ? "도심 투어 & 랜드마크" : "CITY & LANDMARKS",
+    desc: lang === 'KR' ? "엄선된 명소로 떠나는 일일 투어." : "Curated day trips to iconic spots.",
+    category: lang === 'KR' ? "로컬투어" : "LOCAL TRIP",
+    tags: lang === 'KR' ? ["프라이빗"] : ["Private"],
+    link: lang === 'KR' ? "서비스 보기" : "View Service",
     img: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=800&auto=format&fit=crop"
   }
 ];
 
 const Process: React.FC = () => {
+  const { lang } = useLanguage();
+  const destinations = getDestinations(lang);
+
   return (
-    <section id="process" className="py-20 md:py-32 bg-slate-50">
-      <div className="max-w-[1216px] mx-auto px-5 md:px-8">
+    <section id="process" className="py-24 md:py-32 bg-transparent border-t border-white/10">
+      <div className="max-w-[1216px] mx-auto px-6 md:px-8">
+
         {/* Section Header */}
-        <div className="mb-12 md:mb-16 text-center">
-          <span className="inline-block bg-[var(--color-secondary)]/30 text-[var(--color-primary)] text-xs font-bold px-4 py-2 rounded-full mb-4">
-            POPULAR SPOTS
+        <div className="mb-20 flex flex-col items-start">
+          <span className="text-[var(--color-accent)] font-bold tracking-widest text-xs mb-4 uppercase">
+            {lang === 'KR' ? '엄선된 여행지' : 'Curated Destinations'}
           </span>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-[#111] mb-3">많이 찾는 목적지</h2>
-          <p className="text-slate-500 text-base md:text-lg font-medium">T-Ride 고객들이 가장 선호하는 핫플레이스를 확인하세요.</p>
+          <h2 className="text-4xl md:text-6xl font-display font-bold text-white mb-6">
+            {lang === 'KR' ? <>인기<br />명소</> : <>POPULAR<br />SPOTS</>}
+          </h2>
+          <div className="w-24 h-1 bg-white/10" />
         </div>
 
-        {/* Destination Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        {/* Destination Grid - Cinematic Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {destinations.map((dest, index) => (
             <div
               key={index}
-              className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group cursor-pointer border border-slate-100 hover:border-[var(--color-secondary)]"
+              className="group relative h-[400px] overflow-hidden bg-[#111] border border-white/5 hover:border-[var(--color-accent)] transition-all duration-500 cursor-pointer"
             >
-              {/* Image Area */}
-              <div className="relative h-56 overflow-hidden">
+              {/* Background Image */}
+              <div className="absolute inset-0 z-0">
                 <img
                   src={dest.img}
                   alt={dest.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale-[50%] group-hover:grayscale-0"
                 />
-                <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-lg text-xs font-bold text-[var(--color-primary)] shadow-sm">
-                  {dest.category}
-                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-90 transition-opacity duration-300 group-hover:opacity-80" />
               </div>
 
-              {/* Content Area */}
-              <div className="p-6 md:p-8 flex flex-col flex-grow">
-                <h3 className="text-xl font-bold text-[var(--color-primary)] mb-2 tracking-tight">{dest.title}</h3>
-                <p className="text-slate-500 text-sm mb-6 font-medium leading-relaxed">{dest.desc}</p>
-
-                <div className="flex flex-wrap gap-2 mb-6 md:mb-auto">
-                  {dest.tags.map((tag, i) => (
-                    <span
-                      key={i}
-                      className="bg-slate-50 text-slate-500 text-[11px] font-bold px-3 py-1.5 rounded-lg border border-slate-100"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+              {/* Content Overlay */}
+              <div className="relative z-10 h-full p-8 flex flex-col justify-end items-start top-0 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                <div className="mb-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300 -translate-y-4 group-hover:translate-y-0">
+                  <span className="bg-[var(--color-accent)] text-white text-[10px] font-bold px-2 py-1 uppercase tracking-wider">
+                    {dest.category}
+                  </span>
                 </div>
 
-                {/* Bottom Link Style */}
-                <div className="mt-6 pt-5 border-t border-slate-50 flex items-center justify-between text-slate-600 group-hover:text-[var(--color-accent)] transition-colors">
-                  <span className="text-sm font-bold">{dest.link}</span>
-                  <div className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-[var(--color-accent)] group-hover:text-white transition-all">
+                <h3 className="text-2xl font-display font-bold text-white mb-2 leading-tight">
+                  {dest.title}
+                </h3>
+                <p className="text-slate-300 text-sm mb-6 font-light opacity-80 group-hover:opacity-100 transition-opacity">
+                  {dest.desc}
+                </p>
+
+                <div className="w-full border-t border-white/20 pt-4 flex items-center justify-between">
+                  <div className="flex gap-2">
+                    {dest.tags.map((tag, i) => (
+                      <span key={i} className="text-[10px] font-bold text-white/60 uppercase tracking-wider border border-white/20 px-2 py-0.5 rounded-full">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all">
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                     </svg>
                   </div>
                 </div>

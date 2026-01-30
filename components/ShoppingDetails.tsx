@@ -247,7 +247,7 @@ const ShoppingDetails: React.FC = () => {
                 </section>
 
                 {/* 2. Popular Destinations Section */}
-                <section className="relative z-30 bg-slate-50 py-16 md:py-20 px-5 md:px-6 rounded-t-[2.5rem] -mt-20 shadow-[0_-20px_40px_rgba(0,0,0,0.1)]">
+                <section className="relative z-30 bg-slate-50 py-16 md:py-20 px-5 md:px-6 -mt-20 shadow-[0_-20px_40px_rgba(0,0,0,0.1)]">
                     <div className="max-w-[1216px] mx-auto relative group">
                         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
                             <div>
