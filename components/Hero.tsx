@@ -38,7 +38,7 @@ const Hero: React.FC = () => {
       {/* Content Layer */}
       <div className="relative z-30 h-full max-w-[1920px] mx-auto px-6 md:px-12 flex flex-col justify-center">
         <div
-          className="max-w-[1216px] mx-auto w-full border-l border-white/10 pl-8 md:pl-16 will-change-transform"
+          className="max-w-[1216px] mx-auto w-full border-l border-white/10 pl-6 md:pl-16 will-change-transform pt-32 md:pt-0"
           style={{ transform: `translateY(${textParallax}px)` }}
         >
           {/* Metadata / Decor */}
@@ -75,23 +75,23 @@ const Hero: React.FC = () => {
               : "We treat transportation as an art form. Experience the silent masterpiece of movement with our premium fleet and curated journeys."}
           </p>
 
-          <div className="flex flex-col md:flex-row items-start gap-6 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
+          <div className="flex flex-col md:flex-row items-start gap-6 animate-fade-in-up mb-24 md:mb-0" style={{ animationDelay: '0.6s' }}>
             <a href="#inventory" className="group relative overflow-hidden flex items-center justify-center px-12 py-5 border border-white/30 text-white font-bold tracking-widest uppercase hover:bg-white hover:text-black transition-all duration-500">
-              <span className="relative z-10">{lang === 'KR' ? '서비스 보기' : 'Explore Fleet'}</span>
+              <span className="relative z-10">{lang === 'KR' ? '카테고리 둘러보기' : 'Browse Categories'}</span>
             </a>
-            <button className="group flex items-center gap-4 px-8 py-5 text-white/70 hover:text-white transition-colors">
-              <span className="text-sm font-bold tracking-widest uppercase">{lang === 'KR' ? '브랜드 필름' : 'Watch Film'}</span>
+            <a href="#contact" className="group flex items-center gap-4 px-8 py-5 text-white/70 hover:text-white transition-colors">
+              <span className="text-sm font-bold tracking-widest uppercase">{lang === 'KR' ? '문의하기' : 'Inquire'}</span>
               <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center group-hover:border-white group-hover:bg-white/10 transition-all">
-                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z" />
+                <svg className="w-4 h-4 fill-current transform -rotate-45 group-hover:rotate-0 transition-transform duration-300" viewBox="0 0 24 24">
+                  <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" fill="none" />
                 </svg>
               </div>
-            </button>
+            </a>
           </div>
         </div>
 
         {/* Scroll Indicator - Aligned to Content Grid */}
-        <div className="absolute bottom-10 left-0 w-full pointer-events-none z-30">
+        <div className="absolute bottom-4 left-0 w-full pointer-events-none z-30 hidden md:block">
           <div className="max-w-[1920px] mx-auto w-full px-6 md:px-12">
             <div className="max-w-[1216px] mx-auto w-full pl-8 md:pl-16">
               <div className="flex flex-col items-center gap-4 text-white/30 w-fit">

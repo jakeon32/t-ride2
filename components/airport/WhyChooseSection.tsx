@@ -12,7 +12,7 @@ const WhyChooseSection: React.FC = () => {
                 <div className="grid md:grid-cols-2 gap-16 items-start">
 
                     {/* Left: Heading */}
-                    <div className="sticky top-24">
+                    <div className="relative md:sticky top-0 md:top-24">
                         <span className="text-white/40 font-bold tracking-widest text-xs mb-6 uppercase block">
                             {lang === 'KR' ? '서비스 기준' : 'Service Standards'}
                         </span>

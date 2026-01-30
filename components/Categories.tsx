@@ -20,7 +20,7 @@ const getCategories = (lang: 'KR' | 'EN') => [
     href: "/airport",
   },
   {
-    title: lang === 'KR' ? "레저/골프" : "LEISURE",
+    title: lang === 'KR' ? "레저" : "LEISURE",
     sub: lang === 'KR' ? "시즌 탈출" : "Seasonal Escape",
     desc: lang === 'KR' ? "스키장, 골프장 이동도 장비 걱정 없이." : "Ski resorts & golf courses with spacious equipment storage.",
     tags: lang === 'KR' ? ["성수기 운행", "장비 적재", "리무진"] : ["Seasonal", "Equipment", "Comfort"],
@@ -52,7 +52,7 @@ const getCategories = (lang: 'KR' | 'EN') => [
     href: "/event",
   },
   {
-    title: lang === 'KR' ? "로컬 여행" : "LOCAL TRIP",
+    title: lang === 'KR' ? "근교·여행" : "SUBURBAN & TRAVEL",
     sub: lang === 'KR' ? "큐레이션 투어" : "Curated Journey",
     desc: lang === 'KR' ? "숨겨진 명소로 떠나는 일일 투어." : "Daily tours to major landmarks and hidden gems.",
     tags: lang === 'KR' ? ["당일 투어", "다국어 지원", "매일 출발"] : ["Tour", "Multi-lang", "Daily"],

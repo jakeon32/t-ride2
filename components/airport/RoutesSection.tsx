@@ -62,7 +62,7 @@ const RoutesSection: React.FC = () => {
     return (
         <section className="relative z-30 bg-transparent py-20 border-t border-white/5">
             <div className="max-w-[1216px] mx-auto px-6 md:px-8 relative group">
-                <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div className="flex flex-col items-start justify-between mb-12 gap-8">
                     <div>
                         <span className="text-[var(--color-accent)] font-bold tracking-widest text-xs mb-4 uppercase block">
                             {lang === 'KR' ? '운행 노선' : 'Network Board'}
@@ -108,7 +108,7 @@ const RoutesSection: React.FC = () => {
                             className="flex-shrink-0 snap-start
                        w-[calc((100%-24px)/1.2)]
                        md:w-[calc((100%-48px)/2.5)]
-                       lg:w-[calc((100%-72px)/3)]
+                       lg:w-[calc((100%-48px)/3)]
                        bg-[#111] rounded-none border border-white/10 overflow-hidden hover:border-[var(--color-accent)] transition-all duration-300 group/card"
                         >
                             <div className="aspect-[16/10] bg-[#1a1a1a] relative overflow-hidden">
@@ -137,11 +137,8 @@ const RoutesSection: React.FC = () => {
 
                                 {/* Action Buttons */}
                                 <div className="flex gap-3">
-                                    <button className="flex-1 py-3 border border-white/20 text-white text-[10px] font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-all">
-                                        {item.type === 'shuttle' ? (lang === 'KR' ? '시간표' : 'Timetable') : (lang === 'KR' ? '문의하기' : 'Inquire')}
-                                    </button>
                                     <button className="flex-1 py-3 bg-white text-black text-[10px] font-bold uppercase tracking-wider hover:bg-[var(--color-accent)] hover:text-white transition-all">
-                                        {lang === 'KR' ? '예약하기' : 'Book Now'}
+                                        {lang === 'KR' ? '자세히 보기' : 'View Details'}
                                     </button>
                                 </div>
                             </div>

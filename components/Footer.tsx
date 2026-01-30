@@ -6,7 +6,7 @@ const Footer: React.FC = () => {
 
   return (
     <footer id="contact" className="bg-[#050505] pt-24 pb-12 border-t border-white/10 text-white relative z-50">
-      <div className="max-w-[1216px] mx-auto px-6 md:px-8">
+      <div className="max-w-[1216px] mx-auto px-6 md:px-12">
         <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-20">
 
           {/* Brand */}
@@ -27,7 +27,7 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Links Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-12 md:gap-20">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-12 md:gap-8 lg:gap-20">
             <div>
               <h4 className="text-xs font-bold text-white uppercase tracking-widest mb-6">
                 {lang === 'KR' ? '회사소개' : 'Company'}

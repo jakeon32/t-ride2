@@ -31,7 +31,7 @@ const HeroSection: React.FC = () => {
     }, []);
 
     return (
-        <section className="relative h-[60vh] md:h-[70vh] w-full overflow-hidden z-0">
+        <section className="sticky top-0 h-[50vh] w-full overflow-hidden z-0">
             {/* Background Layer with Parallax */}
             <div
                 className="absolute inset-0 w-full h-full will-change-transform scale-105"
@@ -66,13 +66,13 @@ const HeroSection: React.FC = () => {
                 className="relative z-10 w-full h-full pointer-events-none will-change-transform"
                 style={{ transform: `translateY(${textParallax}px)` }}
             >
-                <div className="max-w-[1216px] mx-auto h-full px-6 md:px-8 relative">
+                <div className="max-w-[1216px] mx-auto h-full px-6 md:px-12 relative">
                     {heroSlides.map((slide, index) => (
                         <div
                             key={`content-${index}`}
                             className={`absolute inset-0 flex items-center transition-opacity duration-500 delay-300 ${index === currentHeroSlide ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
                         >
-                            <div className="max-w-4xl text-white pt-20">
+                            <div className="max-w-4xl text-white pt-32 md:pt-20 pl-6 md:pl-12">
                                 <span className={`block text-[var(--color-accent)] font-bold tracking-widest text-xs mb-4 uppercase ${index === currentHeroSlide ? 'animate-slide-in-right' : ''}`}>
                                     {lang === 'KR' ? '프리미엄 모빌리티' : 'Premium Mobility'}
                                 </span>
@@ -91,7 +91,7 @@ const HeroSection: React.FC = () => {
                                 </p>
                                 {/* L5-D: Button Text */}
                                 <button
-                                    className={`group flex items-center gap-2 px-8 py-4 border border-white/30 text-white font-bold tracking-widest uppercase hover:bg-white hover:text-black transition-all duration-300 ${index === currentHeroSlide ? 'animate-slide-in-right' : ''}`}
+                                    className={`group flex items-center gap-2 px-8 py-4 border border-white/30 text-white font-bold tracking-widest uppercase hover:bg-white hover:text-black transition-all duration-300 mb-20 ${index === currentHeroSlide ? 'animate-slide-in-right' : ''}`}
                                     style={{ animationDelay: '0.2s' }}
                                 >
                                     {slide.buttonText}
@@ -106,8 +106,8 @@ const HeroSection: React.FC = () => {
             </div>
 
             {/* Slider Navigation Dots */}
-            <div className="absolute bottom-20 left-0 w-full z-20 pointer-events-none">
-                <div className="max-w-[1216px] mx-auto px-6 md:px-8">
+            <div className="absolute bottom-10 left-0 w-full z-20 pointer-events-none">
+                <div className="max-w-[1216px] mx-auto px-6 md:px-12">
                     <div className="flex gap-4 pointer-events-auto">
                         {heroSlides.map((_, index) => (
                             <button
