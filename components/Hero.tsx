@@ -71,7 +71,7 @@ const Hero: React.FC = () => {
 
           <p className="max-w-xl text-lg text-slate-400 mb-16 leading-relaxed font-light animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
             {lang === 'KR'
-              ? "라이더스는 단순한 운송을 넘어 이동을 하나의 예술로 대합니다. 엄선된 밴과 전문 쇼퍼가 선사하는 가장 정적이고 편안한 여정을 경험하세요."
+              ? "라이더스의 목적지 중심 이동을 통해 여행의 합리적인 선택의 즐거움을 만나세요."
               : "We treat transportation as an art form. Experience the silent masterpiece of movement with our premium fleet and curated journeys."}
           </p>
 
