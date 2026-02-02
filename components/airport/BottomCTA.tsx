@@ -13,13 +13,13 @@ const BottomCTA: React.FC = () => {
                 </p>
                 {/* L1: Hero Heading (Display) */}
                 <h2 className="font-display text-5xl md:text-7xl font-bold text-white mb-8 tracking-tighter">
-                    T-RIDE
+                    RIDERS
                 </h2>
                 {/* L4-A: Body Large */}
                 <p className="text-slate-400 text-lg md:text-xl font-light mb-12 max-w-2xl mx-auto leading-relaxed">
                     {lang === 'KR'
-                        ? "공항 이동의 새로운 기준, T-Ride와 함께 여행을 시작하세요."
-                        : "Start your journey with T-Ride, the new standard in airport mobility."}
+                        ? "공항 이동의 새로운 기준, 라이더스와 함께 여행을 시작하세요."
+                        : "Start your journey with Riders, the new standard in airport mobility."}
                 </p>
                 {/* L5-D: Button Text */}
                 <button className="px-10 py-5 bg-white text-black font-bold tracking-widest uppercase hover:bg-[var(--color-accent)] hover:text-white transition-all duration-300">

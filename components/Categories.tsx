@@ -83,8 +83,8 @@ const Categories: React.FC = () => {
           </div>
           <p className="text-slate-500 max-w-sm text-sm md:text-base mt-6 md:mt-0 font-light leading-relaxed">
             {lang === 'KR'
-              ? "목적지에 맞는 이동 방식을 선택하세요. T-RIDE는 모든 여정의 목적에 최적화된 차량과 서비스를 제공합니다."
-              : "Select your destination type. T-RIDE provides specialized fleets and services for every journey purpose."}
+              ? "목적지에 맞는 이동 방식을 선택하세요. 라이더스는 모든 여정의 목적에 최적화된 차량과 서비스를 제공합니다."
+              : "Select your destination type. Riders provides specialized fleets and services for every journey purpose."}
           </p>
         </div>
 

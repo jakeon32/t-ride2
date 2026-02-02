@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
+import logo from '../assets/rideusLogo.png';
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -35,7 +36,7 @@ const Navbar: React.FC = () => {
     { label: lang === 'KR' ? '레저' : 'LEISURE', href: '/leisure' },
     { label: lang === 'KR' ? '쇼핑' : 'SHOPPING', href: '/shopping' },
     { label: lang === 'KR' ? '테마파크' : 'THEME PARK', href: '/theme-park' },
-    { label: lang === 'KR' ? '투어/이벤트' : 'EVENT', href: '/event' },
+    { label: lang === 'KR' ? '공연/이벤트' : 'EVENT', href: '/event' },
     { label: lang === 'KR' ? '근교·여행' : 'SUBURBAN & TRAVEL', href: '/local-trip' },
   ];
 
@@ -58,11 +59,13 @@ const Navbar: React.FC = () => {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 pt-6 pb-0 ${isScrolled ? 'bg-black/50 backdrop-blur-md' : 'bg-transparent'}`}>
       <div className={`relative z-[999] max-w-[1216px] mx-auto flex items-center justify-between px-6 md:px-12 border-b transition-all duration-300 pb-6 ${isScrolled ? 'border-transparent' : 'border-white/20'}`}>
-        {/* Logo - Industrial Typography */}
-        <Link to="/" state={{ from: 'detail' }} className="flex items-center space-x-2 cursor-pointer group">
-          <span className="font-display font-black tracking-tighter text-2xl md:text-3xl text-white">
-            T-RIDE<span className="text-[var(--color-accent)]">.</span>
-          </span>
+        {/* Logo - Image Replaced */}
+        <Link to="/" state={{ from: 'detail' }} className="flex items-center cursor-pointer group">
+          <img
+            src={logo}
+            alt="Riders"
+            className="h-8 md:h-10 w-auto object-contain brightness-0 invert"
+          />
         </Link>
 
         {/* Desktop Navigation - Minimalist Line Based */}
@@ -76,7 +79,7 @@ const Navbar: React.FC = () => {
               <Element
                 key={item.href}
                 {...props}
-                className="text-[13px] font-bold tracking-widest text-white/70 hover:text-white transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-[var(--color-accent)] after:transition-all after:duration-300 hover:after:w-full font-display uppercase"
+                className="text-[18px] font-medium tracking-widest text-white/90 hover:text-white transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-[var(--color-accent)] after:transition-all after:duration-300 hover:after:w-full font-display uppercase"
               >
                 {item.label}
               </Element>
@@ -97,17 +100,44 @@ const Navbar: React.FC = () => {
               onClick={() => setIsLangOpen(!isLangOpen)}
               className="flex items-center gap-1 text-[12px] font-bold tracking-wide text-white/70 hover:text-white transition-colors uppercase"
             >
-              {isMenuOpen ? (
-                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              ) : (
-                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              )}
+              {lang}
+              <svg className={`w-3 h-3 transition-transform duration-300 ${isLangOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
             </button>
+
+            {/* Dropdown Menu */}
+            <div className={`absolute top-full right-0 mt-4 w-24 bg-white rounded-lg shadow-xl overflow-hidden transition-all duration-300 ${isLangOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 pointer-events-none'}`}>
+              <button
+                onClick={() => { setLang('KR'); setIsLangOpen(false); }}
+                className={`nav-link w-full text-left px-4 py-3 text-xs font-bold transition-colors ${lang === 'KR' ? 'text-black bg-slate-50' : 'text-slate-400 hover:text-black hover:bg-slate-50'}`}
+              >
+                KR
+              </button>
+              <button
+                onClick={() => { setLang('EN'); setIsLangOpen(false); }}
+                className={`nav-link w-full text-left px-4 py-3 text-xs font-bold transition-colors ${lang === 'EN' ? 'text-black bg-slate-50' : 'text-slate-400 hover:text-black hover:bg-slate-50'}`}
+              >
+                EN
+              </button>
+            </div>
           </div>
+
+          {/* Mobile Menu Button - Hidden on Desktop */}
+          <button
+            className="lg:hidden text-white ml-2"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? (
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            )}
+          </button>
         </div>
       </div>
 

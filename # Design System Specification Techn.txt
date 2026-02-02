@@ -1,0 +1,33 @@
+# Design System Specification: Technical Blue Architect
+
+## 01. Summary
+A rigorous architectural interface featuring a stark division between a volumetric dark header and a structured light content area. The aesthetic relies on visible grid lines, Swiss-style typography, and precise 'Electric Blue' accents to guide the eye without overwhelming the monochromatic foundation.
+
+## 02. Style & Typography
+- **Concept**: Technical Minimalist Architecture
+- **Header**: Oswald, sans-serif, weight 500, uppercase, letter-spacing 0.15em (tracking: -0.05em, leading: 0.85)
+- **Body**: Inter, sans-serif, weight 300, line-height 1.6 (Normal)
+- **Technical/Label**: JetBrains Mono, monospace, size 11px (tracking: 0.15em)
+- **Base Color**: #FFFFFF
+- **Borders**: 1px Hairlines (#3A3A38 at rgba(0, 0, 0, 0.08) opacity)
+
+## 03. Chromatic DNA
+- Hero Background / Dark Surface: #0F1115
+- Primary Accent / Interaction Points: #2E5CFF
+- Body Background / Canvas: #FFFFFF
+- Grid Lines / Dividers: #E5E5E5
+- Primary Text: #333333
+
+## 04. Layout & Structure
+- **Background**: Asymmetric 3/9 column split for hero, rigid 12-column grid for body defined by visible vertical hairline dividers.
+- **Logic**: Modular content blocks separated by straight lines; layered layout technique where text containers overlap image boundaries by -50px on the z-axis.
+- **Partitioning**: Strong contrast between Dark Hero and Light Body sections.
+
+## 05. Special Components
+Ghost buttons with 1px #2E5CFF border, translucent frosted glass overlays (backdrop-filter: blur(10px)), technical coordinate markers, interactive map dots, parallax image scrolling.
+
+## 06. Master AI Prompt
+Architectural web design interface, 'Technical Minimalist' style. High contrast layout: deep charcoal dark hero section vs. clean white body section. Point color is a vivid Electric Blue (#2E5CFF) used strictly for CTA buttons and small typographic highlights. Layout features straight line surface divisions creating a visible grid. Layered composition: sans-serif typography (Oswald & Inter) overlaps the edges of architectural photography. Sharp edges, 1px hairlines, technical data visualizations, map with blue location pins, professional and sleek atmosphere.
+
+## Implementation Target
+React + Tailwind CSS. Focus on 1px grid-gaps and zero-radius geometry. Primary accent used strictly for status indicators and primary CTAs. Dark Hero section is non-negotiable.

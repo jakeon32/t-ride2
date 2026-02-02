@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* ========================================
    Typography System - Pretendard
    Based on 폰트사이즈 정리.md
@@ -310,6 +314,22 @@
 .font-display {
   font-family: 'Syne', 'Pretendard', sans-serif;
   letter-spacing: -0.02em;
+}
+
+/* Technical Minimalist Font Utilities */
+.font-technical-header {
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 0.15em;
+  /* tracking-widest */
+}
+
+.font-technical-body {
+  font-family: 'Inter', sans-serif;
+}
+
+.font-technical-label {
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.15em;
 }
 
 /* ========================================

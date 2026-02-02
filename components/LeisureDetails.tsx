@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import { useLanguage } from '../contexts/LanguageContext';
 // Using existing images as placeholders for now
 import shuttleImg from '../assets/shuttle_airport.jpg';
 import chauffeurImg from '../assets/chauffeur_airport.jpg';
@@ -18,7 +19,7 @@ import leisurePrivateImg from '../assets/Private Service_Leisure.jpg';
 
 interface Destination {
     id: number;
-    type: 'resort' | 'hotel';
+    type: 'shuttle' | 'private';
     partner: string;
     title: string;
     description: string;
@@ -27,7 +28,8 @@ interface Destination {
 }
 
 const LeisureDetails: React.FC = () => {
-    const [activeFilter, setActiveFilter] = useState<'all' | 'resort' | 'hotel'>('all');
+    const { lang } = useLanguage();
+    const [activeFilter, setActiveFilter] = useState<'all' | 'shuttle' | 'private'>('all');
     const scrollRef = useRef<HTMLDivElement>(null);
     const [currentSlide, setCurrentSlide] = useState(1);
     const [totalSlides, setTotalSlides] = useState(1);
@@ -45,7 +47,8 @@ const LeisureDetails: React.FC = () => {
     }, []);
 
     const overlayOpacity = Math.min(scrollY / 800, 0.8);
-    const parallaxOffset = -scrollY * 0.3;
+    const bgParallax = -scrollY * 0.3;
+    const textParallax = -scrollY;
 
     // Scroll to top on mount
     useEffect(() => {
@@ -68,7 +71,7 @@ const LeisureDetails: React.FC = () => {
             title: <>즐거움을 향한<br />가장 편안한 이동</>,
             desc: <>골프, 스키, 관광까지.<br />목적과 일정에 맞는 최적의 이동 서비스를 선택하세요.</>,
             buttonText: "지금 예약하기",
-            buttonLink: "#"
+            buttonLink: "#collection-section"
         },
         {
             id: 1,
@@ -76,7 +79,7 @@ const LeisureDetails: React.FC = () => {
             title: <>셔틀 서비스</>,
             desc: <>주요 골프장, 스키 리조트, 테마파크를 연결하는 정기 셔틀 서비스입니다.<br />합리적인 요금으로 편안하게 이동하세요.</>,
             buttonText: "셔틀 예약하기",
-            buttonLink: "#"
+            buttonLink: "#collection-section"
         },
         {
             id: 2,
@@ -84,56 +87,56 @@ const LeisureDetails: React.FC = () => {
             title: <>프라이빗 이동 서비스</>,
             desc: <>전용 차량과 전문 기사가 동행하는 완전 맞춤형 레저 이동 서비스입니다.<br />원하는 시간에 원하는 장소로, 자유로운 일정 구성이 가능합니다.</>,
             buttonText: "프라이빗 예약하기",
-            buttonLink: "#"
+            buttonLink: "#collection-section"
         }
     ];
 
     const destinations: Destination[] = [
         {
             id: 1,
-            type: 'resort',
+            type: 'shuttle',
             partner: 'Pyeongchang',
             title: '용평리조트',
             description: '대한민국 스키의 발상지, 사계절 종합 휴양지',
-            features: ['스키장', '워터파크', '발왕산 케이블카'],
+            features: ['셔틀버스 운행', '법인 멤버십'],
             image: yongpyongImg
         },
         {
             id: 2,
-            type: 'hotel',
+            type: 'private',
             partner: 'Pyeongchang',
-            title: '라마다 호텔 앤 스위트 평창',
-            description: '대관령의 전경이 한눈에 들어오는 프리미엄 힐링 공간',
-            features: ['복층 구조', '사우나', '순수양떼목장 인근'],
+            title: '라마다 호텔 & 스위트',
+            description: '대관령의 아름다운 풍광을 품은 프리미엄 호텔',
+            features: ['프라이빗 픽업', 'VIP 라운지'],
             image: ramadaImg
         },
         {
             id: 3,
-            type: 'resort',
-            partner: 'Hoengseong',
-            title: '웰리힐리파크',
-            description: '청정 자연 속에서 즐기는 다이나믹한 즐거움',
-            features: ['워터플래닛', '루지', '곤돌라'],
-            image: wellihilliImg
-        },
-        {
-            id: 4,
-            type: 'resort',
+            type: 'shuttle',
             partner: 'Jeongseon',
             title: '하이원 리조트',
-            description: '백두대간 1급 청정 자연과 함께하는 힐링 리조트',
-            features: ['강원랜드', '워터월드', '하늘길 트레킹'],
+            description: '하늘과 가장 가까운 힐링 리조트',
+            features: ['카지노 셔틀', '스키열차 연계'],
             image: high1Img
         },
         {
-            id: 5,
-            type: 'resort',
+            id: 4,
+            type: 'shuttle',
             partner: 'Pyeongchang',
             title: '휘닉스 평창',
-            description: '태기산의 정기를 품은 자연 친화적 리조트',
-            features: ['블루캐니언', '루지랜드', '포레스트파크'],
+            description: '태기산의 정기를 품은 사계절 복합 리조트',
+            features: ['셔틀버스 운행', '올인클루시브'],
             image: phoenixImg
         },
+        {
+            id: 5,
+            type: 'shuttle',
+            partner: 'Hoengseong',
+            title: '웰리힐리파크',
+            description: '청정 자연 속에서 즐기는 다이내믹 레저',
+            features: ['셔틀버스 운행', '워터파크 연계'],
+            image: wellihilliImg
+        }
     ];
 
     const filteredDestinations = activeFilter === 'all'
@@ -160,14 +163,14 @@ const LeisureDetails: React.FC = () => {
     const scrollLeft = () => {
         if (scrollRef.current) {
             const itemWidth = scrollRef.current.children[0]?.clientWidth || 300;
-            scrollRef.current.scrollBy({ left: -itemWidth, behavior: 'smooth' });
+            scrollRef.current.scrollBy({ left: -(itemWidth + 24), behavior: 'smooth' });
         }
     };
 
     const scrollRight = () => {
         if (scrollRef.current) {
             const itemWidth = scrollRef.current.children[0]?.clientWidth || 300;
-            scrollRef.current.scrollBy({ left: itemWidth, behavior: 'smooth' });
+            scrollRef.current.scrollBy({ left: itemWidth + 24, behavior: 'smooth' });
         }
     };
 
@@ -178,12 +181,12 @@ const LeisureDetails: React.FC = () => {
             <Navbar />
 
             <main className="flex-grow">
-                {/* 1. Hero Slider Section */}
+                {/* 1. Hero Slider Section (Airport Style Synced) */}
                 <section className="sticky top-0 h-[50vh] w-full overflow-hidden z-0">
-                    {/* Parallax Container */}
+                    {/* Background Layer with Parallax */}
                     <div
-                        className="absolute inset-0 w-full h-full will-change-transform"
-                        style={{ transform: `translateY(${parallaxOffset}px)` }}
+                        className="absolute inset-0 w-full h-full will-change-transform scale-105"
+                        style={{ transform: `translateY(${bgParallax}px)` }}
                     >
                         {heroSlides.map((slide, index) => (
                             <div
@@ -195,109 +198,145 @@ const LeisureDetails: React.FC = () => {
                                     <img
                                         src={slide.image}
                                         alt="Hero Slide"
-                                        className="w-full h-full object-cover transition-transform duration-[5000ms] ease-linear transform scale-100 hover:scale-105"
+                                        className="w-full h-full object-cover transition-transform duration-[5000ms] ease-linear transform scale-105 hover:scale-110 grayscale-[30%]"
                                     />
-                                    {/* Gradient Overlay for Text Visibility & Blending */}
-                                    <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#1e293b] via-[#1e293b]/50 to-transparent"></div>
+                                    {/* Cinematic Gradient Overlay */}
+                                    <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/60 to-transparent"></div>
                                     {/* Dynamic Darkening Overlay */}
                                     <div
                                         className="absolute inset-0 bg-black pointer-events-none transition-opacity duration-100 ease-linear"
                                         style={{ opacity: overlayOpacity }}
                                     />
                                 </div>
-
-                                {/* Content Container - Centered to match bottom content */}
-                                <div className="relative z-10 w-full h-full">
-                                    <div className="max-w-[1216px] mx-auto h-full px-5 md:px-6 flex flex-col md:flex-row">
-                                        {/* Left: Content (Text Area) */}
-                                        <div className="w-full md:w-[50%] lg:w-[45%] flex flex-col justify-center text-white">
-                                            <h1
-                                                key={`title-${index}`}
-                                                className={`display-font text-3xl md:text-3xl lg:text-4xl font-extrabold mb-4 leading-tight ${index === currentHeroSlide ? 'animate-slide-in-right' : ''}`}
-                                            >
-                                                {slide.title}
-                                            </h1>
-                                            <p
-                                                key={`desc-${index}`}
-                                                className={`text-slate-300 text-sm md:text-base leading-relaxed mb-8 break-keep ${index === currentHeroSlide ? 'animate-slide-in-right' : ''}`}
-                                                style={{ animationDelay: '0.1s' }}
-                                            >
-                                                {slide.desc}
-                                            </p>
-                                            <button
-                                                key={`btn-${index}`}
-                                                className={`w-fit px-8 py-3 rounded-full border border-white text-white font-bold hover:bg-white hover:text-[#1e293b] transition-all duration-300 ${index === currentHeroSlide ? 'animate-slide-in-right' : ''}`}
-                                                style={{ animationDelay: '0.2s' }}
-                                            >
-                                                {slide.buttonText}
-                                            </button>
-                                        </div>
-
-                                        {/* Spacer for Right Side (Image Area) */}
-                                        <div className="hidden md:block md:w-[50%] lg:w-[55%]"></div>
-                                    </div>
-                                </div>
                             </div>
                         ))}
                     </div>
 
-                    {/* Slider Navigation Dots */}
-                    <div className="absolute bottom-32 left-1/2 transform -translate-x-1/2 z-20 flex gap-2">
-                        {heroSlides.map((_, index) => (
-                            <button
-                                key={index}
-                                onClick={() => setCurrentHeroSlide(index)}
-                                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${index === currentHeroSlide ? 'bg-white w-6' : 'bg-white/40 hover:bg-white/60'}`}
-                                aria-label={`Go to slide ${index + 1}`}
-                            />
-                        ))}
+                    {/* Content Container with Slower Parallax */}
+                    <div
+                        className="relative z-10 w-full h-full pointer-events-none will-change-transform"
+                        style={{ transform: `translateY(${textParallax}px)` }}
+                    >
+                        <div className="max-w-[1216px] mx-auto h-full px-6 md:px-12 relative">
+                            {heroSlides.map((slide, index) => (
+                                <div
+                                    key={`content-${index}`}
+                                    className={`absolute inset-0 flex items-center transition-opacity duration-500 delay-300 ${index === currentHeroSlide ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+                                >
+                                    <div className="max-w-4xl text-white pt-32 md:pt-20 pl-6 md:pl-12">
+                                        <span className={`block text-[#2E5CFF] font-bold tracking-widest text-xs mb-4 uppercase ${index === currentHeroSlide ? 'animate-slide-in-right' : ''}`}>
+                                            RIDERS LEISURE MODULE 0{index + 1}
+                                        </span>
+                                        {/* Hero Heading */}
+                                        <h1
+                                            className={`text-5xl md:text-[3.5rem]/[1.2] font-display font-bold mb-6 leading-[1.2] md:leading-[1.2] tracking-tighter ${index === currentHeroSlide ? 'animate-slide-in-right' : ''}`}
+                                        >
+                                            {slide.title}
+                                        </h1>
+                                        {/* Body Large */}
+                                        <p
+                                            className={`text-lg text-slate-300 mb-10 leading-relaxed font-light ${index === currentHeroSlide ? 'animate-slide-in-right' : ''}`}
+                                            style={{ animationDelay: '0.1s' }}
+                                        >
+                                            {slide.desc}
+                                        </p>
+                                        {/* Button Text */}
+                                        <a
+                                            href={slide.buttonLink}
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                const section = document.querySelector(slide.buttonLink);
+                                                if (section) {
+                                                    const headerOffset = 100;
+                                                    const elementPosition = section.getBoundingClientRect().top;
+                                                    const offsetPosition = elementPosition + window.scrollY - headerOffset;
+                                                    window.scrollTo({
+                                                        top: offsetPosition,
+                                                        behavior: "smooth"
+                                                    });
+                                                }
+                                            }}
+                                            className={`group inline-flex items-center gap-2 px-8 py-4 border border-white/30 text-white font-bold tracking-widest uppercase hover:bg-white hover:text-black transition-all duration-300 mb-20 ${index === currentHeroSlide ? 'animate-slide-in-right' : ''}`}
+                                            style={{ animationDelay: '0.2s' }}
+                                        >
+                                            {slide.buttonText}
+                                            <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                        {/* Slider Navigation Dots - Moved INSIDE Parallax Container */}
+                        <div className="absolute bottom-10 left-0 w-full z-20 pointer-events-none">
+                            <div className="max-w-[1216px] mx-auto px-6 md:px-12">
+                                <div className="flex gap-4 pointer-events-auto">
+                                    {heroSlides.map((_, index) => (
+                                        <button
+                                            key={index}
+                                            onClick={() => setCurrentHeroSlide(index)}
+                                            className={`transition-all duration-300 ${index === currentHeroSlide ? 'w-8 h-1 bg-[#2E5CFF]' : 'w-2 h-1 bg-white/30 hover:bg-white/50'}`}
+                                            aria-label={`Go to slide ${index + 1}`}
+                                        />
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </section>
 
                 {/* 2. Popular Destinations Section */}
-                <section className="relative z-30 bg-slate-50 py-16 md:py-20 px-5 md:px-6 -mt-20 shadow-[0_-20px_40px_rgba(0,0,0,0.1)]">
-                    <div className="max-w-[1216px] mx-auto relative group">
-                        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+                {/* 2. Popular Destinations Section (Technical Minimalist) */}
+                <section id="collection-section" className="relative z-30 bg-white border-b border-[#E5E5E5]">
+                    {/* Top Divider Line */}
+                    <div className="w-full h-[1px] bg-[#E5E5E5] mb-12 md:mb-16"></div>
+
+                    <div className="max-w-[1216px] mx-auto relative group pb-24 md:pb-32 px-6 md:px-12">
+                        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
                             <div>
-                                <h2 className="text-2xl md:text-3xl font-extrabold text-[#1e293b] mb-4">
-                                    인기 리조트 컬렉션
+                                <h2 className="font-technical-header font-medium text-3xl md:text-4xl text-[#0F1115] mb-6 uppercase tracking-wider">
+                                    {lang === 'KR' ? '인기 여행지 컬렉션' : 'Popular Collection'}
                                 </h2>
 
-                                <div className="flex items-center space-x-2">
+                                <div className="flex items-center space-x-0 border border-[#E5E5E5] w-fit">
+                                    {/* All Tab */}
                                     <button
                                         onClick={() => setActiveFilter('all')}
-                                        className={`px-4 py-2 rounded-lg text-sm font-bold transition-colors ${activeFilter === 'all' ? 'bg-[#1e293b] text-white' : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'}`}
+                                        className={`px-6 py-3 text-xs font-technical-label transition-colors border-r border-[#E5E5E5] last:border-r-0 ${activeFilter === 'all' ? 'bg-[#0F1115] text-white' : 'bg-white text-[#0F1115] hover:bg-slate-50'}`}
                                     >
-                                        전체
+                                        ALL
                                     </button>
+                                    {/* Shuttle Tab */}
                                     <button
-                                        onClick={() => setActiveFilter('resort')}
-                                        className={`px-4 py-2 rounded-lg text-sm font-bold transition-colors ${activeFilter === 'resort' ? 'bg-[#1e293b] text-white' : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'}`}
+                                        onClick={() => setActiveFilter('shuttle')}
+                                        className={`px-6 py-3 text-xs font-technical-label transition-colors border-r border-[#E5E5E5] last:border-r-0 ${activeFilter === 'shuttle' ? 'bg-[#0F1115] text-white' : 'bg-white text-[#0F1115] hover:bg-slate-50'}`}
                                     >
-                                        리조트
+                                        SHUTTLE
                                     </button>
+                                    {/* Private Tab */}
                                     <button
-                                        onClick={() => setActiveFilter('hotel')}
-                                        className={`px-4 py-2 rounded-lg text-sm font-bold transition-colors ${activeFilter === 'hotel' ? 'bg-[#1e293b] text-white' : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'}`}
+                                        onClick={() => setActiveFilter('private')}
+                                        className={`px-6 py-3 text-xs font-technical-label transition-colors border-r border-[#E5E5E5] last:border-r-0 ${activeFilter === 'private' ? 'bg-[#0F1115] text-white' : 'bg-white text-[#0F1115] hover:bg-slate-50'}`}
                                     >
-                                        호텔
+                                        PRIVATE
                                     </button>
                                 </div>
                             </div>
 
-                            {/* Desktop Navigation Arrows */}
-                            <div className="hidden md:flex items-center gap-2">
+                            {/* Desktop Navigation Arrows (Square Technical Style) */}
+                            <div className="hidden md:flex items-center gap-0 border border-[#E5E5E5]">
                                 <button
                                     onClick={scrollLeft}
-                                    className="w-10 h-10 rounded-full border border-slate-200 bg-white flex items-center justify-center text-slate-600 hover:bg-slate-50 hover:border-slate-300 transition-colors"
+                                    className="w-12 h-12 bg-white flex items-center justify-center text-[#0F1115] hover:bg-[#0F1115] hover:text-white transition-colors border-r border-[#E5E5E5]"
                                 >
-                                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+                                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 19l-7-7 7-7" /></svg>
                                 </button>
                                 <button
                                     onClick={scrollRight}
-                                    className="w-10 h-10 rounded-full border border-slate-200 bg-white flex items-center justify-center text-slate-600 hover:bg-slate-50 hover:border-slate-300 transition-colors"
+                                    className="w-12 h-12 bg-white flex items-center justify-center text-[#0F1115] hover:bg-[#0F1115] hover:text-white transition-colors"
                                 >
-                                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+                                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" /></svg>
                                 </button>
                             </div>
                         </div>
@@ -306,35 +345,37 @@ const LeisureDetails: React.FC = () => {
                         <div
                             ref={scrollRef}
                             onScroll={handleScroll}
-                            className="flex overflow-x-auto pb-8 md:mx-0 md:px-0 space-x-5 snap-x hide-scrollbar scroll-smooth"
+                            className="flex overflow-x-auto pb-4 space-x-6 snap-x hide-scrollbar scroll-smooth"
                         >
                             {filteredDestinations.map((item) => (
                                 <div
                                     key={item.id}
                                     className="flex-shrink-0 snap-start 
-                               w-[calc((100%-20px)/1.5)] 
-                               md:w-[calc((100%-40px)/3)] 
-                               bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-lg transition-shadow"
+                               w-[calc((100%-24px)/1.2)] 
+                               md:w-[calc((100%-48px)/3)] 
+                               bg-white border border-[#E5E5E5] group/card hover:border-[#2E5CFF] transition-colors"
                                 >
                                     <div className="aspect-[4/3] bg-slate-100 relative overflow-hidden">
-                                        <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
-                                        <button className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/40 transition-colors">
-                                            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
-                                        </button>
-                                    </div>
-                                    <div className="p-5">
-                                        <div className="flex justify-between items-start mb-2">
-                                            <span className={`text-[10px] font-bold px-2 py-0.5 rounded ${item.type === 'resort' ? 'bg-sky-50 text-sky-600' : 'bg-emerald-50 text-emerald-600'}`}>
-                                                {item.type === 'resort' ? '리조트' : '호텔'}
+                                        <img src={item.image} alt={item.title} className="w-full h-full object-cover filter grayscale transition-all duration-500 group-hover/card:grayscale-0" />
+                                        {/* Plus button removed */}
+                                        <div className="absolute top-0 left-0 p-0">
+                                            <span className={`inline-block px-3 py-1 font-technical-label text-xs uppercase tracking-wider ${item.type === 'resort' ? 'bg-[#0F1115] text-white' : 'bg-[#E5E5E5] text-[#0F1115]'}`}>
+                                                {item.type === 'resort' ? 'Resort' : 'Hotel'}
                                             </span>
-                                            <span className="text-xs text-slate-400 font-medium">{item.partner}</span>
                                         </div>
-                                        <h3 className="text-lg font-bold text-[#1e293b] mb-1 line-clamp-1">{item.title}</h3>
-                                        <p className="text-sm text-slate-500 mb-4 line-clamp-1">{item.description}</p>
+                                    </div>
+                                    <div className="p-6 border-t border-[#E5E5E5]">
+                                        <div className="mb-4">
+                                            <span className="block font-technical-label text-xs text-[#2E5CFF] mb-2 uppercase tracking-widest">
+                                                {item.partner}
+                                            </span>
+                                            <h3 className="font-technical-body text-lg font-semibold text-[#0F1115] mb-1 line-clamp-1">{item.title}</h3>
+                                            <p className="font-technical-body text-sm text-slate-500 line-clamp-1">{item.description}</p>
+                                        </div>
 
-                                        <div className="flex flex-wrap gap-2 mb-0">
+                                        <div className="flex flex-wrap gap-2">
                                             {item.features.slice(0, 2).map((feature, idx) => (
-                                                <span key={idx} className="inline-flex items-center px-2 py-1 rounded bg-slate-50 text-xs text-slate-500">
+                                                <span key={idx} className="inline-flex items-center px-2 py-1 border border-[#E5E5E5] text-[12px] font-technical-label text-slate-500 uppercase">
                                                     {feature}
                                                 </span>
                                             ))}
@@ -344,33 +385,36 @@ const LeisureDetails: React.FC = () => {
                             ))}
                         </div>
 
-                        {/* Pagination Indicator (Bottom Left) */}
-                        <div className="absolute bottom-[-20px] left-5 md:left-8 flex items-center gap-3">
-                            <div className="bg-[#1e293b] text-white text-xs font-bold px-3 py-1 rounded-full">
-                                {currentSlide} / {filteredDestinations.length}
+                        {/* Pagination & Controls Wrapper - Technical Style */}
+                        <div className="flex justify-between items-center mt-8">
+                            {/* Pagination Indicator */}
+                            <div className="flex items-center gap-4">
+                                <div className="font-technical-label text-xs text-[#0F1115]">
+                                    <span className="text-[#2E5CFF]">0{currentSlide}</span> / 0{filteredDestinations.length}
+                                </div>
+                                <div className="w-24 h-[1px] bg-[#E5E5E5] relative">
+                                    <div
+                                        className="absolute top-0 left-0 h-full bg-[#2E5CFF] transition-all duration-300"
+                                        style={{ width: `${progressPercentage}%` }}
+                                    ></div>
+                                </div>
                             </div>
-                            <div className="w-32 h-1 bg-slate-200 rounded-full overflow-hidden">
-                                <div
-                                    className="h-full bg-[#1e293b] transition-all duration-300"
-                                    style={{ width: `${progressPercentage}%` }}
-                                ></div>
-                            </div>
-                        </div>
 
-                        {/* Pagination Control (Bottom Right - Mobile Only) */}
-                        <div className="md:hidden absolute bottom-[-20px] right-5 flex items-center gap-2">
-                            <button
-                                onClick={scrollLeft}
-                                className="w-9 h-9 rounded-full border border-slate-200 bg-white flex items-center justify-center text-slate-600 hover:bg-slate-50 active:bg-slate-100 transition-colors"
-                            >
-                                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
-                            </button>
-                            <button
-                                onClick={scrollRight}
-                                className="w-9 h-9 rounded-full border border-slate-200 bg-white flex items-center justify-center text-slate-600 hover:bg-slate-50 active:bg-slate-100 transition-colors"
-                            >
-                                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
-                            </button>
+                            {/* Mobile Navigation Controls */}
+                            <div className="md:hidden flex items-center border border-[#E5E5E5]">
+                                <button
+                                    onClick={scrollLeft}
+                                    className="w-10 h-10 bg-white flex items-center justify-center text-[#0F1115] active:bg-slate-50 border-r border-[#E5E5E5]"
+                                >
+                                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 19l-7-7 7-7" /></svg>
+                                </button>
+                                <button
+                                    onClick={scrollRight}
+                                    className="w-10 h-10 bg-white flex items-center justify-center text-[#0F1115] active:bg-slate-50"
+                                >
+                                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" /></svg>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </section>

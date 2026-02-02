@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
+import logo from '../assets/rideusLogo.png';
 
 const Footer: React.FC = () => {
   const { lang } = useLanguage();
@@ -11,9 +12,11 @@ const Footer: React.FC = () => {
 
           {/* Brand */}
           <div className="max-w-xs">
-            <span className="font-display font-black tracking-tighter text-3xl block mb-6">
-              T-RIDE<span className="text-[var(--color-accent)]">.</span>
-            </span>
+            <img
+              src={logo}
+              alt="Riders"
+              className="h-10 md:h-12 w-auto object-contain mb-6 brightness-0 invert opacity-80"
+            />
             <p className="text-slate-500 text-sm font-light leading-relaxed mb-8">
               {lang === 'KR'
                 ? "프리미엄 모빌리티의 기준을 정의합니다. 공항 의전부터 프라이빗 투어까지, 완벽한 여정을 설계합니다."
@@ -63,7 +66,7 @@ const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-slate-600 text-xs font-mono uppercase tracking-wider">
-            &copy; 2026 T-RIDE Mobility. {lang === 'KR' ? 'All rights reserved.' : 'All rights reserved.'}
+            &copy; 2026 Riders Mobility. {lang === 'KR' ? 'All rights reserved.' : 'All rights reserved.'}
           </p>
           <p className="text-slate-700 text-xs font-mono uppercase tracking-wider">
             Seoul, Republic of Korea

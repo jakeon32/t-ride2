@@ -51,15 +51,15 @@ const Hero: React.FC = () => {
           </div>
 
           {/* Massive Typography */}
-          <h1 className="text-hero text-white mb-2 ml-[-0.05em] animate-slide-in-right font-display leading-[0.8]">
-            T-RIDE
+          <h1 className="text-[80px] md:text-[120px] font-extrabold tracking-normal text-white mb-2 ml-[-0.05em] animate-slide-in-right font-display leading-[0.8]">
+            라이더스
           </h1>
 
           <h2 className="text-4xl md:text-6xl font-light text-white/90 mb-12 tracking-tight animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
             {lang === 'KR' ? (
               <>
-                예술이 된<br />
-                <span className="font-bold text-[var(--color-accent)]">이동의 경험.</span>
+                목적지에 맞게,<br />
+                <span className="font-bold text-[var(--color-accent)]">이동을 선택하다.</span>
               </>
             ) : (
               <>
@@ -71,21 +71,18 @@ const Hero: React.FC = () => {
 
           <p className="max-w-xl text-lg text-slate-400 mb-16 leading-relaxed font-light animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
             {lang === 'KR'
-              ? "T-RIDE는 단순한 운송을 넘어 이동을 하나의 예술로 대합니다. 엄선된 밴과 전문 쇼퍼가 선사하는 가장 정적이고 편안한 여정을 경험하세요."
+              ? "라이더스는 단순한 운송을 넘어 이동을 하나의 예술로 대합니다. 엄선된 밴과 전문 쇼퍼가 선사하는 가장 정적이고 편안한 여정을 경험하세요."
               : "We treat transportation as an art form. Experience the silent masterpiece of movement with our premium fleet and curated journeys."}
           </p>
 
-          <div className="flex flex-col md:flex-row items-start gap-6 animate-fade-in-up mb-24 md:mb-0" style={{ animationDelay: '0.6s' }}>
-            <a href="#inventory" className="group relative overflow-hidden flex items-center justify-center px-12 py-5 border border-white/30 text-white font-bold tracking-widest uppercase hover:bg-white hover:text-black transition-all duration-500">
+          <div className="flex flex-col md:flex-row items-center gap-6 animate-fade-in-up mb-24 md:mb-0" style={{ animationDelay: '0.6s' }}>
+            {/* White Button */}
+            <a href="#inventory" className="w-full md:w-auto text-center px-12 py-5 bg-white text-black font-bold tracking-widest uppercase hover:bg-slate-200 transition-all duration-300">
               <span className="relative z-10">{lang === 'KR' ? '카테고리 둘러보기' : 'Browse Categories'}</span>
             </a>
-            <a href="#contact" className="group flex items-center gap-4 px-8 py-5 text-white/70 hover:text-white transition-colors">
-              <span className="text-sm font-bold tracking-widest uppercase">{lang === 'KR' ? '문의하기' : 'Inquire'}</span>
-              <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center group-hover:border-white group-hover:bg-white/10 transition-all">
-                <svg className="w-4 h-4 fill-current transform -rotate-45 group-hover:rotate-0 transition-transform duration-300" viewBox="0 0 24 24">
-                  <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" fill="none" />
-                </svg>
-              </div>
+            {/* Outline Button */}
+            <a href="#contact" className="w-full md:w-auto text-center px-12 py-5 border border-white/30 text-white font-bold tracking-widest uppercase hover:bg-white/10 transition-all duration-300">
+              <span className="relative z-10">{lang === 'KR' ? '문의하기' : 'Inquire'}</span>
             </a>
           </div>
         </div>

@@ -64,8 +64,8 @@ const WhyUs: React.FC = () => {
             </div>
             <p className="text-slate-400 text-lg font-light leading-relaxed border-l border-[var(--color-accent)] pl-6">
               {lang === 'KR'
-                ? "복잡함은 줄이고 편안함만 남깁니다. T-Ride는 도착의 설렘만이 남도록, 여정 그 자체를 완벽하게 설계합니다."
-                : "We simplify complexity. T-Ride focuses on the anticipation of arrival, ensuring the journey itself is as flawless as the destination."}
+                ? "복잡함은 줄이고 편안함만 남깁니다. 라이더스는 도착의 설렘만이 남도록, 여정 그 자체를 완벽하게 설계합니다."
+                : "We simplify complexity. Riders focuses on the anticipation of arrival, ensuring the journey itself is as flawless as the destination."}
             </p>
 
             <div className="grid grid-cols-3 gap-8 pt-8 border-t border-white/10">

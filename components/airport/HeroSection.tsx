@@ -16,9 +16,9 @@ const HeroSection: React.FC = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Parallax calculations matching Landing Page
-    const bgParallax = scrollY * 0.5;
-    const textParallax = scrollY * 0.2;
+    // Parallax calculations - Fixed for Sticky positioning (Move UP/Negative)
+    const bgParallax = -scrollY * 0.3;
+    const textParallax = -scrollY;
     const overlayOpacity = Math.min(scrollY / 800, 0.8);
 
     // Auto-play for Hero Slider
@@ -78,7 +78,7 @@ const HeroSection: React.FC = () => {
                                 </span>
                                 {/* L1: Hero Heading */}
                                 <h1
-                                    className={`text-5xl md:text-7xl font-display font-bold mb-6 leading-[0.9] tracking-tighter ${index === currentHeroSlide ? 'animate-slide-in-right' : ''}`}
+                                    className={`text-5xl md:text-[3.5rem]/[1.2] font-display font-bold mb-6 leading-[0.9] md:leading-[1.2] tracking-tighter ${index === currentHeroSlide ? 'animate-slide-in-right' : ''}`}
                                 >
                                     {slide.title}
                                 </h1>
@@ -90,37 +90,52 @@ const HeroSection: React.FC = () => {
                                     {slide.desc}
                                 </p>
                                 {/* L5-D: Button Text */}
-                                <button
-                                    className={`group flex items-center gap-2 px-8 py-4 border border-white/30 text-white font-bold tracking-widest uppercase hover:bg-white hover:text-black transition-all duration-300 mb-20 ${index === currentHeroSlide ? 'animate-slide-in-right' : ''}`}
+                                <a
+                                    href={slide.buttonLink}
+                                    className={`group inline-flex items-center gap-2 px-8 py-4 border border-white/30 text-white font-bold tracking-widest uppercase hover:bg-white hover:text-black transition-all duration-300 mb-20 ${index === currentHeroSlide ? 'animate-slide-in-right' : ''}`}
                                     style={{ animationDelay: '0.2s' }}
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        const section = document.querySelector(slide.buttonLink);
+                                        if (section) {
+                                            const headerOffset = 100;
+                                            const elementPosition = section.getBoundingClientRect().top;
+                                            const offsetPosition = elementPosition + window.scrollY - headerOffset;
+                                            window.scrollTo({
+                                                top: offsetPosition,
+                                                behavior: "smooth"
+                                            });
+                                        }
+                                    }}
                                 >
                                     {slide.buttonText}
                                     <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                     </svg>
-                                </button>
+                                </a>
                             </div>
                         </div>
                     ))}
                 </div>
-            </div>
-
-            {/* Slider Navigation Dots */}
-            <div className="absolute bottom-10 left-0 w-full z-20 pointer-events-none">
-                <div className="max-w-[1216px] mx-auto px-6 md:px-12">
-                    <div className="flex gap-4 pointer-events-auto">
-                        {heroSlides.map((_, index) => (
-                            <button
-                                key={index}
-                                onClick={() => setCurrentHeroSlide(index)}
-                                className={`transition-all duration-300 ${index === currentHeroSlide ? 'w-8 h-1 bg-[var(--color-accent)]' : 'w-2 h-1 bg-white/30 hover:bg-white/50'}`}
-                                aria-label={`Go to slide ${index + 1}`}
-                            />
-                        ))}
+                {/* Slider Navigation Dots - Moved INSIDE Parallax Container */}
+                <div className="absolute bottom-10 left-0 w-full z-20 pointer-events-none">
+                    <div className="max-w-[1216px] mx-auto px-6 md:px-12">
+                        <div className="flex gap-4 pointer-events-auto">
+                            {heroSlides.map((_, index) => (
+                                <button
+                                    key={index}
+                                    onClick={() => setCurrentHeroSlide(index)}
+                                    className={`transition-all duration-300 ${index === currentHeroSlide ? 'w-8 h-1 bg-[var(--color-accent)]' : 'w-2 h-1 bg-white/30 hover:bg-white/50'}`}
+                                    aria-label={`Go to slide ${index + 1}`}
+                                />
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
+
+
+        </section >
     );
 };
 

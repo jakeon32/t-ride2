@@ -16,12 +16,12 @@ const WhyChooseSection: React.FC = () => {
                         <span className="text-white/40 font-bold tracking-widest text-xs mb-6 uppercase block">
                             {lang === 'KR' ? '서비스 기준' : 'Service Standards'}
                         </span>
-                        <h2 className="text-4xl md:text-5xl font-display font-bold text-white leading-tight mb-8">
-                            {lang === 'KR' ? 'WHY CHOOSE' : <>WHY<br />CHOOSE</>}
+                        <h2 className="text-4xl md:text-5xl font-display font-bold text-white leading-[1.2] md:leading-[1.2] mb-8">
+                            {lang === 'KR' ? <>라이더스를<br />선택하는 이유</> : <>WHY<br />CHOOSE</>}
                         </h2>
                         <p className="text-slate-400 text-lg font-light leading-relaxed mb-12 border-l border-[var(--color-accent)] pl-6">
                             {lang === 'KR'
-                                ? "우리는 공항 이동의 불편함을 없앱니다. 정확성, 편안함, 신뢰는 T-RIDE 서비스의 기본입니다."
+                                ? "우리는 공항 이동의 불편함을 없앱니다. 정확성, 편안함, 신뢰는 라이더스 서비스의 기본입니다."
                                 : "We redefine airport mobility by removing the friction. Precision, comfort, and reliability are not just features, they are our baseline."}
                         </p>
 

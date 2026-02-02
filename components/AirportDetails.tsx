@@ -21,11 +21,13 @@ const AirportDetails: React.FC = () => {
             <Navbar />
             <main className="flex-grow z-10 relative">
                 <HeroSection />
-                <IntroSection />
-                <RoutesSection />
-                <WhyChooseSection />
-                <SkiBanner />
-                <USPSection />
+                <div className="relative z-30 bg-[var(--color-bg)]">
+                    <IntroSection />
+                    <RoutesSection />
+                    <WhyChooseSection />
+                    <SkiBanner />
+                    <USPSection />
+                </div>
             </main>
             <Footer />
         </div>

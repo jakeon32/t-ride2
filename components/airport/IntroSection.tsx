@@ -5,7 +5,7 @@ const IntroSection: React.FC = () => {
     const { lang } = useLanguage();
 
     return (
-        <section className="relative z-30 bg-transparent py-20 border-t border-white/10">
+        <section className="relative z-30 bg-[var(--color-bg)] py-20 border-t border-white/10">
             <div className="max-w-[1216px] mx-auto px-6 md:px-8">
                 <div className="max-w-4xl mx-auto text-center">
                     <div className="mb-8 flex justify-center">
@@ -26,8 +26,8 @@ const IntroSection: React.FC = () => {
                     <div className="text-slate-400 space-y-6 leading-relaxed font-light text-lg">
                         <p>
                             {lang === 'KR'
-                                ? <>T-Ride 공항 서비스는 <span className="text-white font-medium">100개 이상의 노선</span>으로 <span className="text-white font-medium">24시간</span> 운영됩니다.<br className="hidden md:block" />어디서든 공항 터미널 바로 앞까지 편안하게 연결합니다.</>
-                                : <>T-Ride Airport Service operates <span className="text-white font-medium">24/7</span> with over <span className="text-white font-medium">100+ routes</span>.<br className="hidden md:block" />Connect from hundreds of pickup points nationwide directly to your terminal.</>}
+                                ? <>라이더스 공항 서비스는 <span className="text-white font-medium">100개 이상의 노선</span>으로 <span className="text-white font-medium">24시간</span> 운영됩니다.<br className="hidden md:block" />어디서든 공항 터미널 바로 앞까지 편안하게 연결합니다.</>
+                                : <>Riders Airport Service operates <span className="text-white font-medium">24/7</span> with over <span className="text-white font-medium">100+ routes</span>.<br className="hidden md:block" />Connect from hundreds of pickup points nationwide directly to your terminal.</>}
                         </p>
                         <div className="w-20 h-[1px] bg-white/10 mx-auto"></div>
                         <p className="text-sm md:text-base">
