@@ -363,7 +363,7 @@ const ThemeParkDetails: React.FC = () => {
                                bg-white border border-[#E5E5E5] group/card hover:border-[#2E5CFF] transition-colors"
                                 >
                                     <div className="aspect-[4/3] bg-slate-100 relative overflow-hidden">
-                                        <img src={item.image} alt={item.title} className="w-full h-full object-cover filter grayscale transition-all duration-500 group-hover/card:grayscale-0" />
+                                        <img src={item.image} alt={item.title} className="w-full h-full object-cover transition-transform duration-500 group-hover/card:scale-110" />
                                         {/* Plus button removed */}
                                         <div className="absolute top-0 left-0 p-0">
                                             <span className={`inline-block px-3 py-1 font-technical-label text-xs uppercase tracking-wider ${item.type === 'private' ? 'bg-[#0F1115] text-white' : 'bg-[#E5E5E5] text-[#0F1115]'}`}>
