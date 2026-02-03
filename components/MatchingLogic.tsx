@@ -10,7 +10,7 @@ const MatchingLogic: React.FC = () => {
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-200/40 rounded-full mix-blend-multiply filter blur-[80px] opacity-100 animate-blob"></div>
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-200/40 rounded-full mix-blend-multiply filter blur-[80px] opacity-100 animate-blob animation-delay-2000"></div>
 
-      <div className="max-w-[1216px] mx-auto px-6 md:px-8 relative z-10">
+      <div className="max-w-[1216px] mx-auto px-4 md:px-8 relative z-10">
 
         {/* Header */}
         <div className="text-center mb-20">
