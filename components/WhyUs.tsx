@@ -45,7 +45,7 @@ const WhyUs: React.FC = () => {
   ];
 
   return (
-    <section id="why" className="py-24 md:py-32 bg-[#0F1115]/80 backdrop-blur-md relative overflow-hidden">
+    <section id="why" className="py-24 md:py-32 bg-[#0F1115] relative overflow-hidden">
       {/* Background Decor - Industrial Grid */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none"></div>
 

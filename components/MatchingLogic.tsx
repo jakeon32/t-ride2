@@ -5,7 +5,7 @@ const MatchingLogic: React.FC = () => {
   const { lang } = useLanguage();
 
   return (
-    <section id="matching" className="relative z-20 py-24 md:py-32 overflow-hidden bg-[#0F1115]/80 backdrop-blur-md border-t border-white/10">
+    <section id="matching" className="relative z-20 py-24 md:py-32 overflow-hidden bg-[#0F1115] border-t border-slate-900">
       {/* Ambient Light Effects - Strengthened */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-200/40 rounded-full mix-blend-multiply filter blur-[80px] opacity-100 animate-blob"></div>
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-200/40 rounded-full mix-blend-multiply filter blur-[80px] opacity-100 animate-blob animation-delay-2000"></div>

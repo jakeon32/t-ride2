@@ -20,7 +20,7 @@ const Hero: React.FC = () => {
   const bgParallax = -scrollY * 0.05; // BG scrolls up slowest
 
   return (
-    <section className="sticky top-0 h-[75vh] w-full overflow-hidden bg-[var(--color-bg)] z-0">
+    <section className="relative h-[75vh] w-full overflow-hidden bg-[var(--color-bg)]">
       {/* Background Layer */}
       <div
         className="absolute inset-0 z-0 will-change-transform scale-110"
