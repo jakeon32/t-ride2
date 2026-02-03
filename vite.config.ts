@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react';
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, '.', '');
   return {
-    base: '/t-ride2/',
+    base: process.env.NETLIFY ? '/' : '/t-ride2/',
     server: {
       port: 3000,
       host: '0.0.0.0',
