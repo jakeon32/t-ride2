@@ -20,7 +20,7 @@ const Hero: React.FC = () => {
   const bgParallax = -scrollY * 0.05; // BG scrolls up slowest
 
   return (
-    <section className="relative md:sticky md:top-0 h-[75vh] w-full overflow-hidden bg-[var(--color-bg)] md:z-0">
+    <section className="relative md:sticky md:top-0 min-h-screen md:h-[75vh] w-full overflow-hidden bg-[var(--color-bg)] md:z-0">
       {/* Background Layer */}
       <div
         className="absolute inset-0 z-0 will-change-transform scale-110"
@@ -38,7 +38,7 @@ const Hero: React.FC = () => {
       {/* Content Layer */}
       <div className="relative z-30 h-full max-w-[1920px] mx-auto px-6 md:px-12 flex flex-col justify-center">
         <div
-          className="max-w-[1216px] mx-auto w-full border-l border-white/10 pl-6 md:pl-16 will-change-transform pt-40 md:pt-0"
+          className="max-w-[1216px] mx-auto w-full border-l border-white/10 pl-6 md:pl-16 will-change-transform pt-24 pb-16 md:pt-0 md:pb-0"
           style={{ transform: `translateY(${textParallax}px)` }}
         >
           {/* Metadata / Decor */}
