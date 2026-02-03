@@ -7,7 +7,6 @@ import USPSection from './airport/USPSection';
 import RoutesSection from './airport/RoutesSection';
 import WhyChooseSection from './airport/WhyChooseSection';
 import SkiBanner from './airport/SkiBanner';
-import AmbientBackground from './AmbientBackground';
 
 const AirportDetails: React.FC = () => {
     // Scroll to top on mount
@@ -17,11 +16,10 @@ const AirportDetails: React.FC = () => {
 
     return (
         <div className="min-h-screen flex flex-col bg-[var(--color-bg)]">
-            <AmbientBackground />
             <Navbar />
-            <main className="flex-grow z-10 relative">
-                <HeroSection />
-                <div className="relative z-30 bg-[var(--color-bg)]">
+            <HeroSection />
+            <main className="flex-grow z-10 relative mt-screen">
+                <div className="relative z-10 bg-[var(--color-bg)]">
                     <IntroSection />
                     <RoutesSection />
                     <WhyChooseSection />

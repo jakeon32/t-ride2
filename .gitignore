@@ -24,3 +24,9 @@ dist-ssr
 *.sw?
 
 nul
+
+# Planning / Spec documents (not part of the site)
+*.md
+!README.md
+# Design System Specification Techn.txt
+metadata.json

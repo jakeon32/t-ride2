@@ -70,7 +70,7 @@ const WhyUs: React.FC = () => {
 
             <div className="grid grid-cols-3 gap-8 pt-8 border-t border-white/10">
               {[
-                { val: "12k+", label: lang === 'KR' ? "이용 고객" : "Users" },
+                { val: "19K", label: lang === 'KR' ? "이용 고객" : "Users" },
                 { val: "10yrs", label: lang === 'KR' ? "운영 경력" : "Experience" },
                 { val: "50+", label: lang === 'KR' ? "파트너사" : "Partners" }
               ].map((stat, i) => (
@@ -83,9 +83,9 @@ const WhyUs: React.FC = () => {
           </div>
 
           {/* Right Cards - Minimal List */}
-          <div className="space-y-1">
+          <div className="space-y-3">
             {points.map((point, i) => (
-              <div key={i} className="group flex items-start p-8 border border-white/5 hover:border-white/20 hover:bg-white/5 transition-all duration-300">
+              <div key={i} className="group flex items-start p-6 border border-white/5 bg-white/10 hover:border-white/20 hover:bg-white/20 transition-all duration-300 cursor-pointer">
                 <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center shrink-0 mr-6 text-slate-400 group-hover:text-white group-hover:border-[var(--color-accent)] transition-all">
                   {point.icon}
                 </div>

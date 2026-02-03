@@ -57,14 +57,16 @@ const Navbar: React.FC = () => {
   }, []);
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 pt-6 pb-0 ${isScrolled ? 'bg-black/50 backdrop-blur-md' : 'bg-transparent'}`}>
-      <div className={`relative z-[999] max-w-[1216px] mx-auto flex items-center justify-between px-6 md:px-12 border-b transition-all duration-300 pb-6 ${isScrolled ? 'border-transparent' : 'border-white/20'}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 py-3 md:py-4 ${isScrolled ? 'bg-black/50 backdrop-blur-md' : 'bg-transparent'}`}>
+      <div className={`relative z-[999] max-w-[1216px] mx-auto flex items-center justify-between px-4 md:px-8 lg:px-12 border-b transition-all duration-300 py-3 md:py-4 ${isScrolled ? 'border-transparent' : 'border-white/20'}`}>
         {/* Logo - Image Replaced */}
         <Link to="/" state={{ from: 'detail' }} className="flex items-center cursor-pointer group">
           <img
             src={logo}
             alt="Riders"
             className="h-8 md:h-10 w-auto object-contain brightness-0 invert"
+            loading="eager"
+            decoding="sync"
           />
         </Link>
 
@@ -143,6 +145,16 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Menu Dropdown */}
       <div className={`lg:hidden fixed inset-0 top-0 bg-black min-h-screen z-[1001] transition-all duration-300 pt-[85px] ${isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full pointer-events-none'}`}>
+        {/* Close Button */}
+        <button
+          onClick={() => setIsMenuOpen(false)}
+          className="fixed top-6 right-6 z-[1002] text-white hover:text-[var(--color-accent)] transition-colors"
+        >
+          <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+        
         <div className="px-6 py-8 space-y-6 h-full overflow-y-auto">
           {menuItems.map((item) => {
             const isRoute = !item.href.includes('#');

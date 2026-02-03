@@ -1,5 +1,5 @@
 import React from 'react';
-import skiBg from '../../assets/ski_banner_img.jpg';
+import skiBg from '../../assets/ski_banner_img.webp';
 import { useLanguage } from '../../contexts/LanguageContext';
 
 const SkiBanner: React.FC = () => {
@@ -26,15 +26,15 @@ const SkiBanner: React.FC = () => {
 
                 {/* Content Container - Constrained Width */}
                 <div className="relative z-10 max-w-[1216px] mx-auto h-full px-6 md:px-8">
-                    <div className="w-full h-full flex flex-col justify-center items-end text-right">
+                    <div className="w-full h-full flex flex-col justify-center items-center md:items-end text-center md:text-right">
                         <div className="max-w-xl">
-                            <div className="flex items-center gap-4 text-[var(--color-accent)] font-bold tracking-widest text-xs uppercase mb-6 md:justify-end">
+                            <div className="flex items-center gap-4 text-[var(--color-accent)] font-bold tracking-widest text-xs uppercase mb-6 justify-center md:justify-end">
                                 <span>{lang === 'KR' ? '시즌 스페셜' : 'Seasonal Special'}</span>
                                 <div className="w-12 h-[1px] bg-[var(--color-accent)]"></div>
                             </div>
 
                             <h2 className="text-4xl md:text-[3.5rem]/[1.2] font-display font-bold text-white leading-none md:leading-[1.2] tracking-tighter mb-6 relative z-10 drop-shadow-lg">
-                                {lang === 'KR' ? <>눈부신<br />설원으로</> : <>SNOW<br />ESCAPADE</>}
+                                {lang === 'KR' ? '눈부신 설원으로' : <>SNOW<br />ESCAPADE</>}
                             </h2>
 
                             <p className="text-xl md:text-2xl text-slate-300 font-light mb-8 leading-relaxed">
@@ -43,12 +43,12 @@ const SkiBanner: React.FC = () => {
                                     : "Direct connection to Yongpyong, Alpensia, and High1 Resorts."}
                             </p>
 
-                            <div className="flex flex-col md:flex-row gap-4 md:justify-end">
+                            <div className="flex flex-col md:flex-row gap-4 justify-center md:justify-end">
                                 <a
                                     href="https://k-ski.rideus.net/k-ski/"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="px-10 py-4 bg-[var(--color-accent)] text-white text-sm font-bold tracking-widest uppercase hover:bg-white hover:text-black transition-all"
+                                    className="px-10 py-4 bg-[var(--color-accent)] text-white text-sm font-bold tracking-widest uppercase hover:bg-white hover:text-black transition-all text-center"
                                 >
                                     {lang === 'KR' ? '스키 셔틀 예약하기' : 'Book Ski Shuttle'}
                                 </a>

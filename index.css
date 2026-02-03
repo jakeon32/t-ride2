@@ -7,13 +7,36 @@ html {
 }
 
 /* ========================================
+   CSS Custom Properties (Design Tokens)
+   ======================================== */
+:root {
+  /* Spacing System */
+  --spacing-xs: 0.5rem;      /* 8px */
+  --spacing-sm: 1rem;        /* 16px */
+  --spacing-md: 1.5rem;      /* 24px */
+  --spacing-lg: 2rem;        /* 32px */
+  --spacing-xl: 3rem;        /* 48px */
+  --spacing-2xl: 4rem;       /* 64px */
+  --spacing-3xl: 6rem;       /* 96px */
+  
+  /* Section Padding */
+  --section-padding-mobile: 1.5rem;  /* 24px */
+  --section-padding-tablet: 2rem;    /* 32px */
+  --section-padding-desktop: 3rem;   /* 48px */
+  
+  --section-py-mobile: 3rem;   /* 48px */
+  --section-py-tablet: 5rem;   /* 80px */
+  --section-py-desktop: 6rem;  /* 96px */
+}
+
+/* ========================================
    Typography System - Pretendard
    Based on 폰트사이즈 정리.md
    Using plain CSS (not @apply) for CDN compatibility
    ======================================== */
 
 /* ========================================
-   L1: Hero Heading (48-56px)
+   L1: Hero Heading (32-96px)
    Usage: 메인 히어로 타이틀
    ======================================== */
 .text-hero {
@@ -24,17 +47,24 @@ html {
   letter-spacing: -0.02em;
 }
 
+@media (min-width: 640px) {
+  .text-hero {
+    font-size: 3rem;
+    /* 48px */
+  }
+}
+
 @media (min-width: 768px) {
   .text-hero {
-    font-size: 2.5rem;
-    /* 40px tablet */
+    font-size: 4rem;
+    /* 64px tablet */
   }
 }
 
 @media (min-width: 1024px) {
   .text-hero {
-    font-size: 8rem;
-    /* AETHER Massive Typography */
+    font-size: 6rem;
+    /* 96px desktop - 8rem은 과도함 */
     line-height: 0.9;
     letter-spacing: -0.04em;
   }
@@ -384,4 +414,46 @@ html {
 .animate-fade-in-up {
   opacity: 0;
   animation: fadeInUp 0.6s ease-out forwards;
+}
+
+@keyframes pulseSlow {
+  0%, 100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulseSlow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Custom Utilities for Hero Fixed Layout */
+@layer utilities {
+  .mt-screen {
+    margin-top: 100vh;
+  }
+  
+  .pt-screen {
+    padding-top: 100vh;
+  }
+}
+
+/* Performance-optimized animations */
+@media (prefers-reduced-motion: reduce) {
+  .animate-slide-in-right,
+  .animate-slide-in-left,
+  .animate-fade-in-up,
+  .animate-pulse-slow {
+    animation: none;
+    opacity: 1;
+  }
+
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

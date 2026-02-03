@@ -1,29 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import heroBg from '../assets/hero_img05.jpg';
+import heroBg from '../assets/hero_img05.webp';
 import { useLanguage } from '../contexts/LanguageContext';
+import { useScrollOptimized } from '../hooks';
 
 const Hero: React.FC = () => {
-  const [scrollY, setScrollY] = useState(0);
+  const scrollY = useScrollOptimized();
   const { lang } = useLanguage();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   // Parallax calculations - negative = scrolls up with page, smaller factor = slower
   const textParallax = -scrollY * 0.15; // Text scrolls up slower than page
   const bgParallax = -scrollY * 0.05; // BG scrolls up slowest
 
   return (
-    <section className="relative md:sticky md:top-0 min-h-screen md:h-[75vh] w-full overflow-hidden bg-[var(--color-bg)] md:z-0">
+    <section className="fixed top-0 left-0 w-full h-screen z-0 overflow-hidden bg-[var(--color-bg)]">
       {/* Background Layer */}
       <div
-        className="absolute inset-0 z-0 will-change-transform scale-110"
+        className="absolute inset-0 z-0 scale-110"
         style={{ transform: `translateY(${bgParallax}px)` }}
       >
         <div className="absolute inset-0 bg-black/40 z-10" /> {/* Dimmer */}
@@ -32,13 +24,15 @@ const Hero: React.FC = () => {
           src={heroBg}
           alt="AETHER Scenery"
           className="w-full h-full object-cover grayscale-[30%] contrast-[1.1]"
+          loading="eager"
+          decoding="async"
         />
       </div>
 
       {/* Content Layer */}
-      <div className="relative z-30 h-full max-w-[1920px] mx-auto px-6 md:px-12 flex flex-col justify-center">
+      <div className="relative z-30 h-full w-full max-w-[1920px] mx-auto px-6 md:px-12 flex flex-col justify-center">
         <div
-          className="max-w-[1216px] mx-auto w-full border-l border-white/10 pl-6 md:pl-16 will-change-transform pt-24 pb-16 md:pt-0 md:pb-0"
+          className="max-w-[1216px] mx-auto w-full border-l border-white/10 pl-6 md:pl-16 pt-32 md:pt-52 lg:pt-40 pb-16 md:pb-0"
           style={{ transform: `translateY(${textParallax}px)` }}
         >
           {/* Metadata / Decor */}
@@ -52,7 +46,7 @@ const Hero: React.FC = () => {
 
           {/* Massive Typography */}
           <h1 className="text-5xl md:text-[120px] font-extrabold tracking-normal text-white mb-2 ml-[-0.05em] animate-slide-in-right font-display leading-[0.9]">
-            라이더스
+            {lang === 'KR' ? '라이더스' : 'RIDEUS'}
           </h1>
 
           <h2 className="text-2xl md:text-6xl font-light text-white/90 mb-8 md:mb-12 tracking-tight animate-fade-in-up" style={{ animationDelay: '0.2s' }}>

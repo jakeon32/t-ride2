@@ -1,8 +1,8 @@
-import shuttleImg from '../assets/shuttle_airport.jpg';
-import chauffeurImg from '../assets/chauffeur_airport.jpg';
-import icnImg from '../assets/ICN_airport.jpg';
-import kimpoImg from '../assets/kimpo_airport.jpg';
-import heroImg from '../assets/airport_hero.jpg';
+import shuttleImg from '../assets/shuttle_airport.webp';
+import chauffeurImg from '../assets/chauffeur_airport.webp';
+import icnImg from '../assets/ICN_airport.webp';
+import kimpoImg from '../assets/kimpo_airport.webp';
+import heroImg from '../assets/airport_hero.webp';
 import React from 'react';
 
 export type Language = 'KR' | 'EN';

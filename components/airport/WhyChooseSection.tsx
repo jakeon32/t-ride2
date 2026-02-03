@@ -7,7 +7,7 @@ const WhyChooseSection: React.FC = () => {
     const whyChooseItems = getWhyChooseItems(lang);
 
     return (
-        <section className="relative z-30 bg-transparent py-20 md:py-24 border-t border-white/5">
+        <section className="relative z-10 bg-[var(--color-bg)] py-20 md:py-24 border-t border-white/5">
             <div className="max-w-[1216px] mx-auto px-6 md:px-8">
                 <div className="grid md:grid-cols-2 gap-16 items-start">
 

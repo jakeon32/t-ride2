@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 
 // Import Category Images
-import imgAirport from '../assets/airport_cate.jpg';
-import imgLeisure from '../assets/leisure_cate.jpg';
-import imgShopping from '../assets/shopping_cate.jpg';
-import imgThemePark from '../assets/Theme park_cate.jpg';
-import imgEvent from '../assets/concerts_cate.jpg';
-import imgLocal from '../assets/Suburban trips_cate.jpg';
+import imgAirport from '../assets/airport_cate.webp';
+import imgLeisure from '../assets/leisure_cate.webp';
+import imgShopping from '../assets/shopping_cate.webp';
+import imgThemePark from '../assets/Theme park_cate.webp';
+import imgEvent from '../assets/concerts_cate.webp';
+import imgLocal from '../assets/Suburban trips_cate.webp';
 
 const getCategories = (lang: 'KR' | 'EN') => [
   {
@@ -66,7 +66,7 @@ const Categories: React.FC = () => {
   const categories = getCategories(lang);
 
   return (
-    <section id="inventory" className="relative z-30 bg-white w-full py-24 md:py-32 overflow-hidden">
+    <section id="inventory" className="relative z-10 bg-white w-full py-12 md:py-20 lg:py-24 overflow-hidden">
       {/* Ambient Light Effects */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
@@ -74,7 +74,7 @@ const Categories: React.FC = () => {
       <div className="max-w-[1216px] mx-auto px-4 md:px-8 relative z-10">
 
         {/* Section Header - Industrial Style (Light) */}
-        <div className="mb-12 flex flex-col md:flex-row items-center md:items-end justify-between text-center md:text-left">
+        <div className="mb-8 md:mb-12 flex flex-col md:flex-row items-center md:items-end justify-between text-center md:text-left gap-6 md:gap-0">
           <div>
             <span className="block text-[#32a0f7] font-bold tracking-widest text-xs mb-4 uppercase">
               {lang === 'KR' ? '맞춤형 이동 서비스' : 'Curated Mobility'}
@@ -93,7 +93,7 @@ const Categories: React.FC = () => {
         </div>
 
         {/* Grid Layout - Masonry Feel (Light) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-1">
           {categories.map((cat, i) => (
             <Link
               key={i}
@@ -106,6 +106,8 @@ const Categories: React.FC = () => {
                   src={cat.image}
                   alt={cat.title}
                   className="w-full h-full object-cover opacity-100 group-hover:scale-105 transition-all duration-700"
+                  loading="lazy"
+                  decoding="async"
                 />
                 {/* Gradient Overlay for Text Visibility on Light/Dark Images - Maximum Strength */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent transition-all duration-500" />

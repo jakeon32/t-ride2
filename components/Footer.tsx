@@ -6,9 +6,9 @@ const Footer: React.FC = () => {
   const { lang } = useLanguage();
 
   return (
-    <footer id="contact" className="bg-[#050505] pt-24 pb-12 border-t border-white/10 text-white relative z-50">
-      <div className="max-w-[1216px] mx-auto px-6 md:px-12">
-        <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-20">
+    <footer id="contact" className="bg-[#050505] pt-12 md:pt-24 pb-8 md:pb-12 border-t border-white/10 text-white relative z-0">
+      <div className="max-w-[1216px] mx-auto px-4 md:px-8 lg:px-12">
+        <div className="flex flex-col md:flex-row justify-between items-start gap-8 md:gap-12 mb-6 md:mb-10">
 
           {/* Brand */}
           <div className="max-w-xs">
@@ -16,13 +16,15 @@ const Footer: React.FC = () => {
               src={logo}
               alt="Riders"
               className="h-10 md:h-12 w-auto object-contain mb-6 brightness-0 invert opacity-80"
+              loading="eager"
+              decoding="sync"
             />
             <p className="text-slate-500 text-sm font-light leading-relaxed mb-8">
               {lang === 'KR'
                 ? "프리미엄 모빌리티의 기준을 정의합니다. 공항 의전부터 프라이빗 투어까지, 완벽한 여정을 설계합니다."
                 : <>Defining the standard of premium mobility.<br />From airport transfers to private tours, we engineer the perfect journey.</>}
             </p>
-            <div className="flex gap-4">
+            <div className="hidden md:flex gap-4">
               {[1, 2, 3].map((i) => (
                 <div key={i} className="w-8 h-8 border border-white/10 hover:bg-white hover:border-white transition-all cursor-pointer" />
               ))}
@@ -30,7 +32,7 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Links Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-12 md:gap-8 lg:gap-20">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-12 lg:gap-16">
             <div>
               <h4 className="text-xs font-bold text-white uppercase tracking-widest mb-6">
                 {lang === 'KR' ? '회사소개' : 'Company'}
@@ -63,8 +65,16 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
+        {/* Mobile Partner Section - Full Width */}
+        <div className="md:hidden pt-8 border-t border-white/5">
+          <div className="w-full px-8 py-6 border border-white/10 hover:border-[var(--color-accent)] transition-colors group cursor-pointer flex justify-between items-center">
+            <span className="text-sm font-bold text-white">{lang === 'KR' ? '파트너 등록' : 'Become a Partner'}</span>
+            <span className="text-xs text-slate-500 group-hover:text-[var(--color-accent)]">{lang === 'KR' ? '신청하기' : 'Apply Now'} &rarr;</span>
+          </div>
+        </div>
+
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="pt-6 md:pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-3 md:gap-4">
           <p className="text-slate-600 text-xs font-mono uppercase tracking-wider">
             &copy; 2026 Riders Mobility. {lang === 'KR' ? 'All rights reserved.' : 'All rights reserved.'}
           </p>

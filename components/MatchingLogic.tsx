@@ -5,34 +5,32 @@ const MatchingLogic: React.FC = () => {
   const { lang } = useLanguage();
 
   return (
-    <section id="matching" className="relative z-20 py-24 md:py-32 overflow-hidden bg-[#0F1115] md:bg-[#0F1115]/80 md:backdrop-blur-md border-t border-slate-900">
-      {/* Ambient Light Effects - Strengthened */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-200/40 rounded-full mix-blend-multiply filter blur-[80px] opacity-100 animate-blob"></div>
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-200/40 rounded-full mix-blend-multiply filter blur-[80px] opacity-100 animate-blob animation-delay-2000"></div>
-
+    <section id="matching" className="relative z-20 mt-screen py-12 md:py-24 lg:py-32 overflow-hidden bg-[#0F1115] md:bg-[#0F1115]/80 md:backdrop-blur-md border-t border-slate-900">
       <div className="max-w-[1216px] mx-auto px-4 md:px-8 relative z-10">
 
         {/* Header */}
-        <div className="text-center mb-20">
-          <span className="inline-block border border-[#2E5CFF] text-[#2E5CFF] px-4 py-1 text-xs font-bold tracking-[0.2em] mb-6 uppercase">
+        <div className="text-center mb-16 md:mb-20">
+          <span className="inline-block border border-[#2E5CFF] text-[#2E5CFF] px-3 py-1 text-xs font-bold tracking-[0.2em] mb-4 md:mb-6 uppercase">
             {lang === 'KR' ? '서비스 비교' : 'Service Intelligence'}
           </span>
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">
-            SHUTTLE <span className="text-slate-600 font-light mx-2">VS</span> PRIVATE
+          <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-4 md:mb-6 leading-tight">
+            <span className="block">SHUTTLE</span>
+            <span className="text-slate-600 font-light block text-lg md:text-2xl my-1">VS</span>
+            <span className="block">PRIVATE</span>
           </h2>
-          <p className="text-slate-400 max-w-lg mx-auto font-light leading-relaxed">
+          <p className="text-slate-400 max-w-2xl mx-auto font-light leading-relaxed text-sm md:text-base">
             {lang === 'KR'
-              ? "여정의 목적과 예산에 맞는 최적의 이동 방식을 선택하세요."
-              : "Compare our service tiers to find the perfect match for your journey requirements."}
+              ? <>여정의 목적과 예산에 맞는<br />최적의 이동 방식을 선택하세요.</>
+              : <>Find the perfect service tier<br />for your journey needs.</>}
           </p>
         </div>
 
         {/* Comparison Layout */}
-        <div className="grid md:grid-cols-2 gap-0 border border-slate-800 shadow-2xl rounded-lg overflow-hidden">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-0 border-0 md:border md:border-slate-800 md:shadow-2xl md:rounded-lg overflow-hidden">
 
           {/* Shuttle Side - Blue Theme */}
           {/* Shuttle Side - Dark Theme with Blue Accents */}
-          <div className="group relative p-6 md:p-12 bg-[#282c35] border-r border-white/5 transition-transform duration-500 overflow-hidden">
+          <div className="group relative p-4 md:p-12 bg-[#282c35] border border-slate-800 rounded-lg md:border-0 md:rounded-none md:border-r md:border-white/5 transition-transform duration-500 overflow-hidden">
             {/* Background Decoration - Bus Icon */}
             <div className="absolute -right-12 -bottom-12 opacity-[0.05] transform transition-transform duration-700 group-hover:scale-110 group-hover:rotate-6">
               <svg className="w-80 h-80 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -76,7 +74,7 @@ const MatchingLogic: React.FC = () => {
 
           {/* Private Side - White Theme */}
           {/* Private Side - Dark Theme */}
-          <div className="group relative p-6 md:p-12 bg-[#282c35] transition-colors duration-500 overflow-hidden">
+          <div className="group relative p-4 md:p-12 bg-[#282c35] border border-slate-800 rounded-lg md:border-0 md:rounded-none transition-colors duration-500 overflow-hidden">
             {/* Background Decoration - Sedan Icon */}
             <div className="absolute -right-12 -bottom-12 opacity-[0.05] transform transition-transform duration-700 group-hover:scale-110 group-hover:rotate-6">
               <svg className="w-80 h-80 text-white" fill="currentColor" viewBox="0 0 24 24">

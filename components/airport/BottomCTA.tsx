@@ -5,7 +5,7 @@ const BottomCTA: React.FC = () => {
     const { lang } = useLanguage();
 
     return (
-        <section className="relative z-30 bg-transparent py-24 px-6 md:px-8 border-t border-white/10">
+        <section className="relative z-10 bg-transparent py-24 px-6 md:px-8 border-t border-white/10">
             <div className="max-w-4xl mx-auto text-center">
                 {/* L6-A: Micro Text */}
                 <p className="text-[var(--color-accent)] font-bold tracking-widest text-xs uppercase mb-4">
