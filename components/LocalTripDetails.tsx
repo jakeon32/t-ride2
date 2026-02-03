@@ -6,7 +6,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 // Local Asset Images
 import heroImg from '../assets/tour_jeju 1.jpg';
 import gyeongjuImg from '../assets/tour_gyeongju 1.jpg';
-import cityNightImg from '../assets/hero_bg02 1.jpg';
+import cityNightImg from '../assets/hero_img02.jpg';
 import bangkokImg from '../assets/tour_bangkok 1.jpg';
 import airportImg from '../assets/shuttle_airport.jpg'; // For Airport Pickup
 import golfImg from '../assets/private_leisure.png'; // For Golf Tour (alternative)

@@ -5,7 +5,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 
 // Local Asset Images
 import heroImg from '../assets/shuttle_everland 1.jpg';
-import cityNightImg from '../assets/hero_bg02 1.jpg';
+import cityNightImg from '../assets/hero_img02.jpg';
 import familyVanImg from '../assets/private_van_family 1.jpg';
 import natureImg from '../assets/tour_jeju 1.jpg';
 
