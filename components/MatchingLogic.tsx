@@ -32,7 +32,7 @@ const MatchingLogic: React.FC = () => {
 
           {/* Shuttle Side - Blue Theme */}
           {/* Shuttle Side - Dark Theme with Blue Accents */}
-          <div className="group relative p-12 md:p-16 bg-[#282c35] border-r border-white/5 transition-transform duration-500 overflow-hidden">
+          <div className="group relative p-6 md:p-12 bg-[#282c35] border-r border-white/5 transition-transform duration-500 overflow-hidden">
             {/* Background Decoration - Bus Icon */}
             <div className="absolute -right-12 -bottom-12 opacity-[0.05] transform transition-transform duration-700 group-hover:scale-110 group-hover:rotate-6">
               <svg className="w-80 h-80 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -76,7 +76,7 @@ const MatchingLogic: React.FC = () => {
 
           {/* Private Side - White Theme */}
           {/* Private Side - Dark Theme */}
-          <div className="group relative p-12 md:p-16 bg-[#282c35] transition-colors duration-500 overflow-hidden">
+          <div className="group relative p-6 md:p-12 bg-[#282c35] transition-colors duration-500 overflow-hidden">
             {/* Background Decoration - Sedan Icon */}
             <div className="absolute -right-12 -bottom-12 opacity-[0.05] transform transition-transform duration-700 group-hover:scale-110 group-hover:rotate-6">
               <svg className="w-80 h-80 text-white" fill="currentColor" viewBox="0 0 24 24">
