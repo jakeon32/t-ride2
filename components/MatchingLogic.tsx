@@ -47,14 +47,14 @@ const MatchingLogic: React.FC = () => {
                     <path d="M4 16c0 .88.39 1.67 1 2.22V20c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h8v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1.78c.61-.55 1-1.34 1-2.22V6c0-3.5-3.58-4-8-4s-8 .5-8 4v10zm3.5 1c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm9 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm1.5-6H6V6h12v5z" />
                   </svg>
                 </div>
-                <h3 className="text-4xl font-display font-bold text-white">{lang === 'KR' ? '셔틀' : 'SHUTTLE'}</h3>
+                <h3 className="text-2xl md:text-4xl font-display font-bold text-white">{lang === 'KR' ? '셔틀' : 'SHUTTLE'}</h3>
               </div>
 
               <span className="inline-block bg-white/5 backdrop-blur-md text-[#2E5CFF] text-xs font-bold px-4 py-2 rounded-full tracking-widest uppercase mb-8 border border-white/10">
                 {lang === 'KR' ? '효율성 & 스탠다드' : 'Efficiency & Standard'}
               </span>
 
-              <p className="text-slate-400 mb-10 leading-relaxed min-h-[3rem] text-lg font-light">
+              <p className="text-slate-400 mb-6 md:mb-10 leading-relaxed min-h-[3rem] text-sm md:text-lg font-light">
                 {lang === 'KR'
                   ? "정해진 노선과 시간표에 따라 운행. 예측 가능한 스케줄과 합리적인 비용의 이동 수단입니다."
                   : "Fixed schedule and route efficiency. Ideal for predictable, cost-effective group mobility."}
@@ -65,7 +65,7 @@ const MatchingLogic: React.FC = () => {
                   ? ["정해진 시간 출발", "지정된 정류장", "합리적인 비용", "단체 이동 적합"]
                   : ["Scheduled Departures", "Designated Stops", "Cost Efficient", "Group Friendly"]
                 ).map((item, i) => (
-                  <li key={i} className="flex items-center gap-4 text-sm text-slate-300 font-medium font-mono">
+                  <li key={i} className="flex items-center gap-2 md:gap-4 text-xs md:text-sm text-slate-300 font-medium">
                     <div className="w-2 h-2 bg-[#2E5CFF] rounded-full shadow-[0_0_10px_rgba(46,92,255,0.8)]" />
                     {item}
                   </li>
@@ -91,14 +91,14 @@ const MatchingLogic: React.FC = () => {
                     <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z" />
                   </svg>
                 </div>
-                <h3 className="text-4xl font-display font-bold text-white">{lang === 'KR' ? '프라이빗' : 'PRIVATE'}</h3>
+                <h3 className="text-2xl md:text-4xl font-display font-bold text-white">{lang === 'KR' ? '프라이빗' : 'PRIVATE'}</h3>
               </div>
 
               <span className="inline-block bg-white/5 text-[#2E5CFF] text-xs font-bold px-4 py-2 rounded-full tracking-widest uppercase mb-8 border border-white/10">
                 {lang === 'KR' ? '프리미엄 & 커스텀' : 'Premium & Custom'}
               </span>
 
-              <p className="text-slate-400 mb-10 leading-relaxed min-h-[3rem] text-lg font-light">
+              <p className="text-slate-400 mb-6 md:mb-10 leading-relaxed min-h-[3rem] text-sm md:text-lg font-light">
                 {lang === 'KR'
                   ? "원하는 시간, 원하는 장소로. 오직 당신만을 위한 단독 차량과 Door-to-Door VIP 서비스."
                   : "Total freedom of time and route. Door-to-door VIP service for exclusive travel experiences."}
@@ -109,7 +109,7 @@ const MatchingLogic: React.FC = () => {
                   ? ["자유로운 스케줄", "도어 투 도어", "VIP 의전 서비스", "최적 경로 이동"]
                   : ["Flexible Schedule", "Door-to-Door", "VIP Service", "Custom Route"]
                 ).map((item, i) => (
-                  <li key={i} className="flex items-center gap-4 text-sm text-slate-300 font-medium font-mono">
+                  <li key={i} className="flex items-center gap-2 md:gap-4 text-xs md:text-sm text-slate-300 font-medium">
                     <div className="w-2 h-2 bg-[#2E5CFF] rounded-full shadow-[0_0_10px_#2E5CFF]" />
                     {item}
                   </li>
