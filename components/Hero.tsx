@@ -38,7 +38,7 @@ const Hero: React.FC = () => {
       {/* Content Layer */}
       <div className="relative z-30 h-full max-w-[1920px] mx-auto px-6 md:px-12 flex flex-col justify-center">
         <div
-          className="max-w-[1216px] mx-auto w-full border-l border-white/10 pl-6 md:pl-16 will-change-transform pt-32 md:pt-0"
+          className="max-w-[1216px] mx-auto w-full border-l border-white/10 pl-6 md:pl-16 will-change-transform pt-40 md:pt-0"
           style={{ transform: `translateY(${textParallax}px)` }}
         >
           {/* Metadata / Decor */}
