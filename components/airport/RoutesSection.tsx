@@ -121,14 +121,16 @@ const RoutesSection: React.FC = () => {
                                 {/* Plus button removed */}
                                 <div className="absolute top-0 left-0 p-0">
                                     <span className={`inline-block px-3 py-1 font-technical-label text-xs uppercase tracking-wider ${item.type === 'shuttle' ? 'bg-[#0F1115] text-white' : 'bg-[#E5E5E5] text-[#0F1115]'}`}>
-                                        {item.airport} | {item.type.toUpperCase()}
+                                        {item.type.toUpperCase()}
                                     </span>
                                 </div>
                             </div>
                             <div className="p-6 border-t border-[#E5E5E5]">
                                 <div className="mb-4">
                                     <span className="block font-technical-label text-xs text-[#2E5CFF] mb-2 uppercase tracking-widest">
-                                        RIDERS AIRPORT
+                                        {item.airport === 'ICN'
+                                            ? (lang === 'KR' ? '인천공항' : 'INCHEON AIRPORT')
+                                            : (lang === 'KR' ? '김포공항' : 'GIMPO AIRPORT')}
                                     </span>
                                     <h3 className="font-technical-body text-lg font-semibold text-[#0F1115] mb-1 line-clamp-1">{item.title}</h3>
                                     <p className="font-technical-body text-sm text-slate-500 line-clamp-1">{item.description}</p>

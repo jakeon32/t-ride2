@@ -57,18 +57,20 @@ const Process: React.FC = () => {
   const destinations = getDestinations(lang);
 
   return (
-    <section id="process" className="py-24 md:py-32 bg-transparent border-t border-white/10">
+    <section id="process" className="relative z-20 py-24 md:py-32 bg-[#F8F9FA] border-t border-transparent">
       <div className="max-w-[1216px] mx-auto px-6 md:px-8">
 
         {/* Section Header */}
-        <div className="mb-20 flex flex-col items-start">
+        <div className="mb-12 flex flex-col items-start">
           <span className="text-[var(--color-accent)] font-bold tracking-widest text-xs mb-4 uppercase">
             {lang === 'KR' ? '엄선된 여행지' : 'Curated Destinations'}
           </span>
-          <h2 className="text-4xl md:text-6xl font-display font-bold text-white mb-6">
-            {lang === 'KR' ? <>인기<br />명소</> : <>POPULAR<br />SPOTS</>}
+          <h2 className="text-4xl md:text-5xl font-display font-bold text-slate-900 mb-4 leading-[1.1]">
+            {lang === 'KR' ? '인기 목적지' : <>POPULAR<br />DESTINATIONS</>}
           </h2>
-          <div className="w-24 h-1 bg-white/10" />
+          <p className="text-slate-600 text-lg font-light">
+            {lang === 'KR' ? '자주 이용되는 목적지를 확인해보세요' : 'Check out our frequently used destinations'}
+          </p>
         </div>
 
         {/* Destination Grid - Cinematic Cards */}
@@ -76,7 +78,7 @@ const Process: React.FC = () => {
           {destinations.map((dest, index) => (
             <div
               key={index}
-              className="group relative h-[400px] overflow-hidden bg-[#111] border border-white/5 hover:border-[var(--color-accent)] transition-all duration-500 cursor-pointer"
+              className="group relative h-[400px] overflow-hidden bg-[#111] border border-slate-200 hover:border-[#32a0f7] transition-all duration-500 cursor-pointer"
             >
               {/* Background Image */}
               <div className="absolute inset-0 z-0">

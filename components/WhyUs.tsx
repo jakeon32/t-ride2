@@ -45,7 +45,7 @@ const WhyUs: React.FC = () => {
   ];
 
   return (
-    <section id="why" className="py-24 md:py-32 bg-transparent relative overflow-hidden">
+    <section id="why" className="py-24 md:py-32 bg-[#0F1115]/80 backdrop-blur-md relative overflow-hidden">
       {/* Background Decor - Industrial Grid */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none"></div>
 
@@ -58,13 +58,13 @@ const WhyUs: React.FC = () => {
               <span className="text-[var(--color-accent)] font-bold tracking-widest text-xs mb-4 uppercase block">
                 {lang === 'KR' ? '우리의 철학' : 'The Ethos'}
               </span>
-              <h2 className="text-4xl md:text-5xl font-display font-bold text-white leading-tight">
-                {lang === 'KR' ? <>TRUST IN<br />MOTION</> : <>TRUST IN<br />MOTION</>}
+              <h2 className="text-4xl md:text-5xl font-display font-bold text-white leading-[1.1]">
+                {lang === 'KR' ? <>라이더스가 선택받는 이유</> : <>TRUST IN<br />MOTION</>}
               </h2>
             </div>
             <p className="text-slate-400 text-lg font-light leading-relaxed border-l border-[var(--color-accent)] pl-6">
               {lang === 'KR'
-                ? "복잡함은 줄이고 편안함만 남깁니다. 라이더스는 도착의 설렘만이 남도록, 여정 그 자체를 완벽하게 설계합니다."
+                ? "가장 합리적이고 편리한 목적지 도달, 라이더스가 제공하는 차별화된 이동 경험을 만나보세요."
                 : "We simplify complexity. Riders focuses on the anticipation of arrival, ensuring the journey itself is as flawless as the destination."}
             </p>
 

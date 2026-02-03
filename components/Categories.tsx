@@ -66,18 +66,22 @@ const Categories: React.FC = () => {
   const categories = getCategories(lang);
 
   return (
-    <section id="inventory" className="relative z-30 bg-transparent w-full py-24 md:py-32 border-t border-white/10">
-      <div className="max-w-[1216px] mx-auto px-6 md:px-8">
+    <section id="inventory" className="relative z-30 bg-white w-full py-24 md:py-32 overflow-hidden">
+      {/* Ambient Light Effects */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
 
-        {/* Section Header - Industrial Style */}
-        <div className="mb-20 flex flex-col md:flex-row items-end justify-between border-b border-white/10 pb-8">
+      <div className="max-w-[1216px] mx-auto px-6 md:px-8 relative z-10">
+
+        {/* Section Header - Industrial Style (Light) */}
+        <div className="mb-12 flex flex-col md:flex-row items-center md:items-end justify-between text-center md:text-left">
           <div>
-            <span className="block text-[var(--color-accent)] font-bold tracking-widest text-xs mb-4 uppercase">
+            <span className="block text-[#32a0f7] font-bold tracking-widest text-xs mb-4 uppercase">
               {lang === 'KR' ? '맞춤형 이동 서비스' : 'Curated Mobility'}
             </span>
-            <h2 className="text-4xl md:text-6xl font-display font-bold text-white leading-tight">
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-[#0F1115] leading-[1.1]">
               {lang === 'KR'
-                ? <>JOURNEY<br />COLLECTION</>
+                ? '지금 어디로 이동하시나요?'
                 : <>JOURNEY<br />COLLECTION</>}
             </h2>
           </div>
@@ -88,31 +92,29 @@ const Categories: React.FC = () => {
           </p>
         </div>
 
-        {/* Grid Layout - Masonry Feel */}
+        {/* Grid Layout - Masonry Feel (Light) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
           {categories.map((cat, i) => (
             <Link
               key={i}
               to={cat.href}
-              className="group relative bg-[#111] border border-white/5 overflow-hidden hover:z-10 hover:border-[var(--color-accent)] transition-all duration-500 flex flex-col min-h-[400px]"
+              className="group relative bg-white border border-slate-200 overflow-hidden hover:z-10 hover:border-[#32a0f7] transition-all duration-500 flex flex-col min-h-[400px]"
             >
               {/* Background Image with Cinematic Reveal */}
               <div className="absolute inset-0 z-0">
                 <img
                   src={cat.image}
                   alt={cat.title}
-                  className="w-full h-full object-cover opacity-40 group-hover:opacity-60 group-hover:scale-105 transition-all duration-700 grayscale-[50%] group-hover:grayscale-0"
+                  className="w-full h-full object-cover opacity-100 group-hover:scale-105 transition-all duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent group-hover:via-black/60 transition-all duration-500" />
+                {/* Gradient Overlay for Text Visibility on Light/Dark Images - Maximum Strength */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent transition-all duration-500" />
               </div>
 
               {/* Top Meta */}
-              <div className="relative z-10 p-10 flex justify-between items-start mb-12">
-                <span className="text-xs font-bold text-white/30 tracking-[0.2em] group-hover:text-[var(--color-accent)] transition-colors">
+              <div className="relative z-10 p-10 flex justify-end items-start mb-12">
+                <span className="text-xl font-bold text-white/50 tracking-[0.2em] group-hover:text-white transition-colors">
                   {(i + 1).toString().padStart(2, '0')}
-                </span>
-                <span className="bg-black/50 backdrop-blur-sm text-white/70 px-3 py-1 text-[10px] uppercase tracking-wider border border-white/10 group-hover:border-[var(--color-accent)] group-hover:text-white transition-all">
-                  {cat.tags[0]}
                 </span>
               </div>
 
@@ -121,14 +123,14 @@ const Categories: React.FC = () => {
                 <h3 className="text-3xl font-display font-bold text-white mb-2 group-hover:translate-x-2 transition-transform duration-300">
                   {cat.title}
                 </h3>
-                <span className="block text-xs font-bold text-[var(--color-accent)] uppercase tracking-widest mb-4">
+                <span className="block text-xs font-bold text-[#32a0f7] uppercase tracking-widest mb-4">
                   {cat.sub}
                 </span>
-                <p className="text-slate-400 text-sm leading-relaxed border-l-2 border-white/10 pl-4 mb-8 group-hover:text-slate-200 transition-colors">
+                <p className="text-slate-300 text-sm leading-relaxed border-l-2 border-[#32a0f7] pl-4 mb-8 group-hover:text-white transition-colors">
                   {cat.desc}
                 </p>
 
-                <div className="flex items-center gap-2 text-white/50 text-xs font-bold tracking-widest uppercase group-hover:text-white transition-colors">
+                <div className="flex items-center gap-2 text-white/70 text-xs font-bold tracking-widest uppercase group-hover:text-white transition-colors">
                   <span>{lang === 'KR' ? '자세히 보기' : 'View Service'}</span>
                   <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />

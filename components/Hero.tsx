@@ -15,12 +15,12 @@ const Hero: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Parallax calculations
-  const textParallax = scrollY * 0.2; // Text moves slower
-  const bgParallax = scrollY * 0.5; // BG moves faster
+  // Parallax calculations - negative = scrolls up with page, smaller factor = slower
+  const textParallax = -scrollY * 0.15; // Text scrolls up slower than page
+  const bgParallax = -scrollY * 0.05; // BG scrolls up slowest
 
   return (
-    <section className="relative h-[75vh] w-full overflow-hidden bg-[var(--color-bg)]">
+    <section className="sticky top-0 h-[75vh] w-full overflow-hidden bg-[var(--color-bg)] z-0">
       {/* Background Layer */}
       <div
         className="absolute inset-0 z-0 will-change-transform scale-110"
