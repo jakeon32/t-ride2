@@ -51,11 +51,11 @@ const Hero: React.FC = () => {
           </div>
 
           {/* Massive Typography */}
-          <h1 className="text-[80px] md:text-[120px] font-extrabold tracking-normal text-white mb-2 ml-[-0.05em] animate-slide-in-right font-display leading-[0.8]">
+          <h1 className="text-5xl md:text-[120px] font-extrabold tracking-normal text-white mb-2 ml-[-0.05em] animate-slide-in-right font-display leading-[0.9]">
             라이더스
           </h1>
 
-          <h2 className="text-4xl md:text-6xl font-light text-white/90 mb-12 tracking-tight animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+          <h2 className="text-2xl md:text-6xl font-light text-white/90 mb-8 md:mb-12 tracking-tight animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
             {lang === 'KR' ? (
               <>
                 목적지에 맞게,<br />
@@ -69,7 +69,7 @@ const Hero: React.FC = () => {
             )}
           </h2>
 
-          <p className="max-w-xl text-lg text-slate-400 mb-16 leading-relaxed font-light animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+          <p className="max-w-xl text-base md:text-lg text-slate-400 mb-8 md:mb-16 leading-relaxed font-light animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
             {lang === 'KR'
               ? "라이더스의 목적지 중심 이동을 통해 여행의 합리적인 선택의 즐거움을 만나세요."
               : "We treat transportation as an art form. Experience the silent masterpiece of movement with our premium fleet and curated journeys."}
@@ -77,11 +77,11 @@ const Hero: React.FC = () => {
 
           <div className="flex flex-col md:flex-row items-center gap-6 animate-fade-in-up mb-24 md:mb-0" style={{ animationDelay: '0.6s' }}>
             {/* White Button */}
-            <a href="#inventory" className="w-full md:w-auto text-center px-12 py-5 bg-white text-black font-bold tracking-widest uppercase hover:bg-slate-200 transition-all duration-300">
+            <a href="#inventory" className="w-full md:w-auto text-center px-8 md:px-12 py-4 md:py-5 bg-white text-black text-sm md:text-base font-bold tracking-widest uppercase hover:bg-slate-200 transition-all duration-300">
               <span className="relative z-10">{lang === 'KR' ? '카테고리 둘러보기' : 'Browse Categories'}</span>
             </a>
             {/* Outline Button */}
-            <a href="#contact" className="w-full md:w-auto text-center px-12 py-5 border border-white/30 text-white font-bold tracking-widest uppercase hover:bg-white/10 transition-all duration-300">
+            <a href="#contact" className="w-full md:w-auto text-center px-8 md:px-12 py-4 md:py-5 border border-white/30 text-white text-sm md:text-base font-bold tracking-widest uppercase hover:bg-white/10 transition-all duration-300">
               <span className="relative z-10">{lang === 'KR' ? '문의하기' : 'Inquire'}</span>
             </a>
           </div>
