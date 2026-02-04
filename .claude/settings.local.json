@@ -7,7 +7,9 @@
       "Bash(npm run build:*)",
       "Bash(npm run deploy:*)",
       "Bash(gh api:*)",
-      "Bash(where:*)"
+      "Bash(where:*)",
+      "Bash(git rebase:*)",
+      "Bash(GIT_EDITOR=true git rebase:*)"
     ]
   }
 }

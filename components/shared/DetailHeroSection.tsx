@@ -71,17 +71,17 @@ const DetailHeroSection: React.FC<DetailHeroSectionProps> = ({ slides, badgePref
                             key={`content-${index}`}
                             className={`absolute inset-0 flex items-center transition-opacity duration-500 delay-300 ${index === currentHeroSlide ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
                         >
-                            <div className="max-w-4xl text-white pt-32 md:pt-20 pl-6 md:pl-12">
-                                <span className={`block text-[var(--color-accent)] font-bold tracking-widest text-xs mb-4 uppercase ${index === currentHeroSlide ? 'animate-slide-in-right' : ''}`}>
+                            <div className="max-w-4xl text-white pt-32 md:pt-20 px-4 md:px-0 md:pl-12">
+                                <span className={`block text-[var(--color-accent)] font-bold tracking-widest text-[10px] md:text-xs mb-3 md:mb-4 uppercase ${index === currentHeroSlide ? 'animate-slide-in-right' : ''}`}>
                                     {badgePrefix} 0{index + 1}
                                 </span>
                                 <h1
-                                    className={`text-5xl md:text-[3.5rem]/[1.2] font-display font-bold mb-6 leading-[1.2] md:leading-[1.2] tracking-tighter ${index === currentHeroSlide ? 'animate-slide-in-right' : ''}`}
+                                    className={`text-4xl leading-[1.3] md:text-[3.5rem]/[1.2] font-display font-bold mb-4 md:mb-6 md:leading-[1.2] tracking-tighter ${index === currentHeroSlide ? 'animate-slide-in-right' : ''}`}
                                 >
                                     {slide.title}
                                 </h1>
                                 <p
-                                    className={`text-lg text-slate-300 mb-10 leading-relaxed font-light ${index === currentHeroSlide ? 'animate-slide-in-right' : ''}`}
+                                    className={`text-base md:text-lg text-slate-300 mb-8 md:mb-10 leading-relaxed font-light ${index === currentHeroSlide ? 'animate-slide-in-right' : ''}`}
                                     style={{ animationDelay: '0.1s' }}
                                 >
                                     {slide.desc}
