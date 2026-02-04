@@ -103,6 +103,7 @@ const ShoppingDetails: React.FC = () => {
                     items={destinations}
                     filters={filters}
                     highlightType="outlet"
+                    breadcrumb={{ KR: '쇼핑', EN: 'Shopping' }}
                 />
             </main>
 

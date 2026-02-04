@@ -3,13 +3,11 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import DetailHeroSection from './shared/DetailHeroSection';
 import CollectionSection, { CollectionItem, FilterOption } from './shared/CollectionSection';
-// Using existing images as placeholders for now
 import yongpyongImg from '../assets/yongpyung.webp';
-import ramadaImg from '../assets/ramada.webp';
 import high1Img from '../assets/high1.webp';
 import phoenixImg from '../assets/phoenixpark.webp';
 import wellihilliImg from '../assets/wellihillipark.webp';
-// New Images
+import skiBannerImg from '../assets/ski_banner_img.webp';
 import leisureHeroImg from '../assets/Leisure Hero Image.webp';
 import leisureShuttleImg from '../assets/Shuttle Service_Leisure.webp';
 import leisurePrivateImg from '../assets/Private Service_Leisure.webp';
@@ -51,47 +49,134 @@ const destinations: CollectionItem[] = [
     {
         id: 1,
         type: 'shuttle',
-        partner: 'Pyeongchang',
-        title: '용평리조트',
-        description: '대한민국 스키의 발상지, 사계절 종합 휴양지',
-        features: ['셔틀버스 운행', '법인 멤버십'],
-        image: yongpyongImg
+        partner: 'Yongpyong',
+        title: '모나 용평 스키장',
+        description: '노선·정류장 기반 · 시간표 운행',
+        period: '2025.11.22 ~ 2026.02.28',
+        features: ['평창'],
+        image: yongpyongImg,
+        url: 'https://yongpyong.rideus.net/en/yongpyong'
     },
     {
         id: 2,
         type: 'private',
-        partner: 'Pyeongchang',
-        title: '라마다 호텔 & 스위트',
-        description: '대관령의 아름다운 풍광을 품은 프리미엄 호텔',
-        features: ['프라이빗 픽업', 'VIP 라운지'],
-        image: ramadaImg
+        partner: 'Yongpyong',
+        title: '모나 용평 스키장',
+        description: '원하는 시간·동선 · 단독 이동',
+        period: '2025.11.22 ~ 2026.02.28',
+        features: ['평창'],
+        image: yongpyongImg,
+        url: 'https://booking.triseup.com/k-ski?resort=yongpyong'
     },
     {
         id: 3,
         type: 'shuttle',
-        partner: 'Jeongseon',
-        title: '하이원 리조트',
-        description: '하늘과 가장 가까운 힐링 리조트',
-        features: ['카지노 셔틀', '스키열차 연계'],
-        image: high1Img
+        partner: 'High1',
+        title: '하이원 스키장',
+        description: '노선·정류장 기반 · 시간표 운행',
+        period: '2025.12.08 ~ 2026.02.28',
+        features: ['정선'],
+        image: high1Img,
+        url: 'https://high1.rideus.net/en/high1/'
     },
     {
         id: 4,
-        type: 'shuttle',
-        partner: 'Pyeongchang',
-        title: '휘닉스 평창',
-        description: '태기산의 정기를 품은 사계절 복합 리조트',
-        features: ['셔틀버스 운행', '올인클루시브'],
-        image: phoenixImg
+        type: 'private',
+        partner: 'High1',
+        title: '하이원 스키장',
+        description: '원하는 시간·동선 · 단독 이동',
+        period: '2025.12.08 ~ 2026.02.28',
+        features: ['정선'],
+        image: high1Img,
+        url: 'https://booking.triseup.com/k-ski?resort=high1'
     },
     {
         id: 5,
         type: 'shuttle',
-        partner: 'Hoengseong',
+        partner: 'Alpensia',
+        title: '평창 알펜시아',
+        description: '노선·정류장 기반 · 시간표 운행',
+        period: '2025.11.22 ~ 2026.02.28',
+        features: ['평창'],
+        image: skiBannerImg,
+        url: 'https://alpensia.rideus.net/en/alpensia'
+    },
+    {
+        id: 6,
+        type: 'private',
+        partner: 'Alpensia',
+        title: '평창 알펜시아',
+        description: '원하는 시간·동선 · 단독 이동',
+        period: '2025.11.22 ~ 2026.02.28',
+        features: ['평창'],
+        image: skiBannerImg,
+        url: 'https://booking.triseup.com/k-ski?resort=alpensia'
+    },
+    {
+        id: 7,
+        type: 'shuttle',
+        partner: 'Phoenix',
+        title: '휘닉스 스노우 파크',
+        description: '노선·정류장 기반 · 시간표 운행',
+        period: '2025.11.22 ~ 2026.02.28',
+        features: ['평창'],
+        image: phoenixImg,
+        url: 'https://phoenix.rideus.net/en/phoenix'
+    },
+    {
+        id: 8,
+        type: 'private',
+        partner: 'Phoenix',
+        title: '휘닉스 스노우 파크',
+        description: '원하는 시간·동선 · 단독 이동',
+        period: '2025.11.22 ~ 2026.02.28',
+        features: ['평창'],
+        image: phoenixImg,
+        url: 'https://booking.triseup.com/k-ski?resort=phoenix'
+    },
+    {
+        id: 9,
+        type: 'shuttle',
+        partner: 'Welli Hilli',
         title: '웰리힐리파크',
-        description: '청정 자연 속에서 즐기는 다이내믹 레저',
-        features: ['셔틀버스 운행', '워터파크 연계'],
-        image: wellihilliImg
+        description: '노선·정류장 기반 · 시간표 운행',
+        period: '2025.12.08 ~ 2026.02.28',
+        features: ['횡성'],
+        image: wellihilliImg,
+        url: 'https://wellihilli.rideus.net/en/wellihilli'
+    },
+    {
+        id: 10,
+        type: 'private',
+        partner: 'Welli Hilli',
+        title: '웰리힐리파크',
+        description: '원하는 시간·동선 · 단독 이동',
+        period: '2025.12.08 ~ 2026.02.28',
+        features: ['횡성'],
+        image: wellihilliImg,
+        url: 'https://booking.triseup.com/k-ski?resort=welli'
+    },
+    {
+        id: 11,
+        type: 'shuttle',
+        partner: 'Vivaldi',
+        title: '비발디파크',
+        description: '노선·정류장 기반 · 시간표 운행',
+        period: '2025.12.05 ~ 2026.03.02',
+        features: ['홍천'],
+        image: leisureHeroImg,
+        url: 'https://vivabus.rideus.net/en/vivabus/'
+    },
+    {
+        id: 12,
+        type: 'private',
+        partner: 'Vivaldi',
+        title: '비발디파크',
+        description: '원하는 시간·동선 · 단독 이동',
+        period: '2025.12.05 ~ 2026.03.02',
+        features: ['홍천'],
+        image: leisureHeroImg,
+        url: 'https://booking.triseup.com/k-ski?resort=vivaldi'
     }
 ];
 
@@ -111,6 +196,7 @@ const LeisureDetails: React.FC = () => {
                     items={destinations}
                     filters={defaultFilters}
                     highlightType="shuttle"
+                    breadcrumb={{ KR: '레저', EN: 'Leisure' }}
                 />
             </main>
             <Footer />

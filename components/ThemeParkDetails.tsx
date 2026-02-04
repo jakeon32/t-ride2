@@ -119,6 +119,7 @@ const ThemeParkDetails: React.FC = () => {
                     items={destinations}
                     filters={filters}
                     highlightType="shuttle"
+                    breadcrumb={{ KR: '테마파크', EN: 'Theme Park' }}
                 />
             </main>
 

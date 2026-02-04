@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import Breadcrumb from './shared/Breadcrumb';
 import { useScrollOptimized } from '../hooks';
 import { useLanguage } from '../contexts/LanguageContext';
 
@@ -85,33 +85,26 @@ const Support: React.FC = () => {
                     className="relative z-10 w-full h-full pointer-events-none will-change-transform"
                     style={{ transform: `translateY(${textParallax}px)` }}
                 >
-                    <div className="max-w-[1216px] mx-auto h-full px-6 md:px-12 flex items-center">
-                        <div className="max-w-4xl text-white pt-20 md:pt-16 px-4 md:px-0 md:pl-12 pointer-events-auto">
-                            {/* Breadcrumb */}
-                            <nav className="flex items-center gap-2 text-sm text-slate-400 mb-4 animate-fade-in-up">
-                                <Link to="/" className="hover:text-[var(--color-accent)] transition-colors">
-                                    {lang === 'KR' ? '홈' : 'Home'}
-                                </Link>
-                                <span>{'>'}</span>
-                                <span className="text-white">{lang === 'KR' ? '고객센터' : 'Support'}</span>
-                            </nav>
-
+                    <div className="max-w-[1216px] mx-auto h-full px-6 md:px-12 relative">
+                        <div className="absolute inset-0 flex items-center">
+                        <div className="max-w-4xl text-white pt-32 md:pt-20 px-4 md:px-0 md:pl-12 pointer-events-auto">
                             {/* Badge */}
-                            <span className="block text-[var(--color-accent)] font-bold tracking-widest text-[10px] md:text-xs mb-3 uppercase animate-slide-in-right">
+                            <span className="block text-[var(--color-accent)] font-bold tracking-widest text-[10px] md:text-xs mb-3 md:mb-4 uppercase animate-slide-in-right">
                                 RIDEUS SUPPORT
                             </span>
 
                             {/* Title */}
-                            <h1 className="text-4xl md:text-[3.5rem] font-display font-bold mb-4 md:mb-6 tracking-tighter animate-slide-in-right">
+                            <h1 className="text-4xl leading-[1.3] md:text-[3.5rem]/[1.2] font-display font-bold mb-4 md:mb-6 md:leading-[1.2] tracking-tighter animate-slide-in-right">
                                 {lang === 'KR' ? '고객센터' : 'Customer Support'}
                             </h1>
 
                             {/* Description */}
-                            <p className="text-base md:text-lg text-slate-300 leading-relaxed font-light animate-slide-in-right" style={{ animationDelay: '0.1s' }}>
+                            <p className="text-base md:text-lg text-slate-300 mb-8 md:mb-10 leading-relaxed font-light animate-slide-in-right" style={{ animationDelay: '0.1s' }}>
                                 {lang === 'KR'
                                     ? "자주 묻는 질문을 먼저 확인해 보시고, 필요한 경우 아래 '문의하기' 버튼을 통해 문의를 보내주세요."
                                     : "Check our FAQ first, and if you need further assistance, please use the 'Contact Us' button below."}
                             </p>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -123,6 +116,7 @@ const Support: React.FC = () => {
             {/* Main Content */}
             <main className="flex-grow relative z-10 bg-slate-50">
                 <div className="max-w-[1216px] mx-auto px-4 md:px-8 lg:px-12 py-12 md:py-16">
+                    <Breadcrumb current={{ KR: '고객센터', EN: 'Support' }} />
 
                     {/* FAQ Section */}
                     <section className="mb-12 md:mb-16">

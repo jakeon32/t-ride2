@@ -129,6 +129,7 @@ const LocalTripDetails: React.FC = () => {
                         filters={filters}
                         highlightType="shuttle"
                         compactBottom
+                        breadcrumb={{ KR: '근교·여행', EN: 'Local Trip' }}
                     />
                 </div>
 

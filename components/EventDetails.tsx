@@ -43,7 +43,8 @@ const destinations = [
         partner: 'Inspire Arena',
         title: '인스파이어 아레나 셔틀/픽업',
         description: '영종도의 핫플레이스, 편안한 관람을 위한 이동',
-        features: ['공항철도 연계', '심야 운행'],
+        period: '2025.03.01 ~ 상시운행',
+        features: ['영종도'],
         image: concertImg
     },
     {
@@ -52,7 +53,8 @@ const destinations = [
         partner: 'Gocheok Dome',
         title: '고척 스카이돔 프라이빗 밴',
         description: '야구 경기부터 콘서트까지, 복잡한 주차 걱정 해결',
-        features: ['VVIP 전용', '대기 서비스'],
+        period: '2025.03.01 ~ 상시운행',
+        features: ['구로'],
         image: concertImg
     },
     {
@@ -61,7 +63,8 @@ const destinations = [
         partner: 'KSPO Dome',
         title: 'KSPO DOME (체조경기장)',
         description: '올림픽공원의 열기를 그대로, 편안한 귀가',
-        features: ['단체 픽업', '강남권 셔틀'],
+        period: '2025.03.01 ~ 상시운행',
+        features: ['송파'],
         image: concertImg
     },
     {
@@ -70,7 +73,8 @@ const destinations = [
         partner: 'Waterbomb',
         title: '워터밤 페스티벌 셔틀',
         description: '흠뻑 젖어도 괜찮아요, 쾌적한 셔틀 이동',
-        features: ['환복 편의', '방수 시트 커버'],
+        period: '2026.06.01 ~ 2026.08.31',
+        features: ['서울'],
         image: festivalImg
     },
     {
@@ -79,7 +83,8 @@ const destinations = [
         partner: 'Seoul Arts Center',
         title: '예술의전당 픽업 서비스',
         description: '고품격 공연에 어울리는 프리미엄 의전',
-        features: ['정장 기사', '도어 서비스'],
+        period: '2025.03.01 ~ 상시운행',
+        features: ['서초'],
         image: heroImg
     },
 ];
@@ -111,6 +116,7 @@ const EventDetails: React.FC = () => {
                     items={destinations}
                     filters={filters}
                     highlightType="shuttle"
+                    breadcrumb={{ KR: '공연/이벤트', EN: 'Events' }}
                 />
             </main>
 
