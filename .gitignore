@@ -30,3 +30,7 @@ nul
 !README.md
 # Design System Specification Techn.txt
 metadata.json
+
+# Screenshots
+*.png
+!assets/*.png
