@@ -9,6 +9,7 @@ const ShoppingDetails = React.lazy(() => import('./components/ShoppingDetails'))
 const ThemeParkDetails = React.lazy(() => import('./components/ThemeParkDetails'));
 const EventDetails = React.lazy(() => import('./components/EventDetails'));
 const LocalTripDetails = React.lazy(() => import('./components/LocalTripDetails'));
+const Support = React.lazy(() => import('./components/Support'));
 
 const App: React.FC = () => {
   return (
@@ -23,6 +24,7 @@ const App: React.FC = () => {
             <Route path="/theme-park" element={<ThemeParkDetails />} />
             <Route path="/event" element={<EventDetails />} />
             <Route path="/local-trip" element={<LocalTripDetails />} />
+            <Route path="/support" element={<Support />} />
           </Routes>
         </Suspense>
       </Router>

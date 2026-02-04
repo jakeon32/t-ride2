@@ -104,7 +104,7 @@ const LeisureDetails: React.FC = () => {
     return (
         <div className="min-h-screen flex flex-col bg-slate-50">
             <Navbar />
-            <DetailHeroSection slides={heroSlides} badgePrefix="RIDERS LEISURE MODULE" />
+            <DetailHeroSection slides={heroSlides} badgePrefix="RIDEUS LEISURE" />
             <main className="flex-grow">
                 <CollectionSection
                     title={{ KR: '인기 여행지 컬렉션', EN: 'Popular Collection' }}

@@ -69,7 +69,7 @@ const HeroSection: React.FC = () => {
                         >
                             <div className="max-w-4xl text-white pt-32 md:pt-20 px-4 md:px-0 md:pl-12">
                                 <span className={`block text-[var(--color-accent)] font-bold tracking-widest text-[10px] md:text-xs mb-3 md:mb-4 uppercase ${index === currentHeroSlide ? 'animate-slide-in-right' : ''}`}>
-                                    {lang === 'KR' ? '프리미엄 모빌리티' : 'Premium Mobility'}
+                                    RIDEUS AIRPORT
                                 </span>
                                 {/* L1: Hero Heading */}
                                 <h1

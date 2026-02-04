@@ -112,7 +112,7 @@ const ThemeParkDetails: React.FC = () => {
             <Navbar />
 
             <main className="flex-grow">
-                <DetailHeroSection slides={heroSlides} badgePrefix="RIDERS THEMEPARK MODULE" />
+                <DetailHeroSection slides={heroSlides} badgePrefix="RIDEUS THEMEPARK" />
 
                 <CollectionSection
                     title={{ KR: '테마파크 컬렉션', EN: 'Theme Park Collection' }}

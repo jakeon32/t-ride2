@@ -21,6 +21,9 @@ interface CollectionSectionProps {
     items: CollectionItem[];
     filters: FilterOption[];
     highlightType?: string;
+    firstSection?: boolean;
+    bgColor?: string;
+    compactBottom?: boolean;
 }
 
 const CollectionSection: React.FC<CollectionSectionProps> = ({
@@ -28,6 +31,9 @@ const CollectionSection: React.FC<CollectionSectionProps> = ({
     items,
     filters,
     highlightType = 'shuttle',
+    firstSection = true,
+    bgColor,
+    compactBottom = false,
 }) => {
     const { lang } = useLanguage();
     const [activeFilter, setActiveFilter] = useState('all');
@@ -71,10 +77,10 @@ const CollectionSection: React.FC<CollectionSectionProps> = ({
     const progressPercentage = (currentSlide / Math.max(filteredItems.length, 1)) * 100;
 
     return (
-        <section id="collection-section" className="relative z-10 bg-white border-b border-[#E5E5E5] mt-screen">
-            <div className="w-full h-[1px] bg-[#E5E5E5] mb-12 md:mb-16"></div>
+        <section id="collection-section" className={`relative z-10 ${bgColor || 'bg-white'} ${firstSection ? 'mt-screen border-b border-[#E5E5E5]' : 'pt-12 md:pt-16'}`}>
+            {firstSection && <div className="w-full h-[1px] bg-[#E5E5E5] mb-12 md:mb-16"></div>}
 
-            <div className="max-w-[1216px] mx-auto relative group pb-24 md:pb-32 px-6 md:px-12">
+            <div className={`max-w-[1216px] mx-auto relative group ${compactBottom ? 'pb-12 md:pb-16' : 'pb-24 md:pb-32'} px-6 md:px-12`}>
                 <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
                     <div>
                         <h2 className="font-technical-header font-medium text-3xl md:text-4xl text-[#0F1115] mb-6 uppercase tracking-wider">

@@ -119,7 +119,7 @@ const LocalTripDetails: React.FC = () => {
 
             <main className="flex-grow">
                 {/* 1. Hero Slider Section */}
-                <DetailHeroSection slides={heroSlides} badgePrefix="RIDERS LOCAL TRIP MODULE" />
+                <DetailHeroSection slides={heroSlides} badgePrefix="RIDEUS LOCAL TRIP" />
 
                 {/* 2. Domestic Product Section */}
                 <div id="domestic-section">
@@ -128,6 +128,7 @@ const LocalTripDetails: React.FC = () => {
                         items={domesticItems}
                         filters={filters}
                         highlightType="shuttle"
+                        compactBottom
                     />
                 </div>
 
@@ -137,6 +138,8 @@ const LocalTripDetails: React.FC = () => {
                     items={overseasItems}
                     filters={filters}
                     highlightType="shuttle"
+                    firstSection={false}
+                    bgColor="bg-[#f8f9fa]"
                 />
             </main>
 

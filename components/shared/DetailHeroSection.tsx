@@ -73,7 +73,7 @@ const DetailHeroSection: React.FC<DetailHeroSectionProps> = ({ slides, badgePref
                         >
                             <div className="max-w-4xl text-white pt-32 md:pt-20 px-4 md:px-0 md:pl-12">
                                 <span className={`block text-[var(--color-accent)] font-bold tracking-widest text-[10px] md:text-xs mb-3 md:mb-4 uppercase ${index === currentHeroSlide ? 'animate-slide-in-right' : ''}`}>
-                                    {badgePrefix} 0{index + 1}
+                                    {badgePrefix}
                                 </span>
                                 <h1
                                     className={`text-4xl leading-[1.3] md:text-[3.5rem]/[1.2] font-display font-bold mb-4 md:mb-6 md:leading-[1.2] tracking-tighter ${index === currentHeroSlide ? 'animate-slide-in-right' : ''}`}

@@ -27,7 +27,7 @@ const IntroSection: React.FC = () => {
                         <p>
                             {lang === 'KR'
                                 ? <>라이더스 공항 서비스는 <span className="text-white font-medium">100개 이상의 노선</span>으로 <span className="text-white font-medium">24시간</span> 운영됩니다.<br className="hidden md:block" />어디서든 공항 터미널 바로 앞까지 편안하게 연결합니다.</>
-                                : <>Riders Airport Service operates <span className="text-white font-medium">24/7</span> with over <span className="text-white font-medium">100+ routes</span>.<br className="hidden md:block" />Connect from hundreds of pickup points nationwide directly to your terminal.</>}
+                                : <>Rideus Airport Service operates <span className="text-white font-medium">24/7</span> with over <span className="text-white font-medium">100+ routes</span>.<br className="hidden md:block" />Connect from hundreds of pickup points nationwide directly to your terminal.</>}
                         </p>
                         <div className="w-20 h-[1px] bg-white/10 mx-auto"></div>
                         <p className="text-sm md:text-base">

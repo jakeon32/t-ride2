@@ -103,7 +103,7 @@ const EventDetails: React.FC = () => {
             <main className="flex-grow">
                 <DetailHeroSection
                     slides={heroSlides}
-                    badgePrefix="RIDERS EVENT MODULE"
+                    badgePrefix="RIDEUS EVENT"
                 />
 
                 <CollectionSection

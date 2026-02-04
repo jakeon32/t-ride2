@@ -182,7 +182,7 @@ export const getWhyChooseItems = (lang: Language) => [
     },
     {
         title: lang === 'KR' ? '실시간 차량 추적' : 'Real-time Tracking',
-        desc: lang === 'KR' ? '라이더스 앱으로 차량 위치 실시간 확인. 도착 알림으로 안심하고 준비하세요.' : 'Check vehicle location in real-time with Riders app. Prepare with peace of mind via arrival alerts.'
+        desc: lang === 'KR' ? '라이더스 앱으로 차량 위치 실시간 확인. 도착 알림으로 안심하고 준비하세요.' : 'Check vehicle location in real-time with Rideus app. Prepare with peace of mind via arrival alerts.'
     }
 ];
 

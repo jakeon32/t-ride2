@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import logo from '../assets/rideusLogo.png';
 
@@ -14,7 +15,7 @@ const Footer: React.FC = () => {
           <div className="max-w-xs">
             <img
               src={logo}
-              alt="Riders"
+              alt="Rideus"
               className="h-10 md:h-12 w-auto object-contain mb-6 brightness-0 invert opacity-80"
               loading="eager"
               decoding="sync"
@@ -48,7 +49,7 @@ const Footer: React.FC = () => {
                 {lang === 'KR' ? '고객지원' : 'Support'}
               </h4>
               <ul className="space-y-4 text-sm text-slate-500 font-medium">
-                <li><a href="#" className="hover:text-[var(--color-accent)] transition-colors">{lang === 'KR' ? '고객센터' : 'Help Center'}</a></li>
+                <li><Link to="/support" className="hover:text-[var(--color-accent)] transition-colors">{lang === 'KR' ? '고객센터' : 'Help Center'}</Link></li>
                 <li><a href="#" className="hover:text-[var(--color-accent)] transition-colors">{lang === 'KR' ? '이용약관' : 'Terms'}</a></li>
                 <li><a href="#" className="hover:text-[var(--color-accent)] transition-colors">{lang === 'KR' ? '개인정보처리방침' : 'Privacy'}</a></li>
               </ul>
@@ -76,7 +77,7 @@ const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="pt-6 md:pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-3 md:gap-4">
           <p className="text-slate-600 text-xs font-mono uppercase tracking-wider">
-            &copy; 2026 Riders Mobility. {lang === 'KR' ? 'All rights reserved.' : 'All rights reserved.'}
+            &copy; 2026 Rideus Mobility. {lang === 'KR' ? 'All rights reserved.' : 'All rights reserved.'}
           </p>
           <p className="text-slate-700 text-xs font-mono uppercase tracking-wider">
             Seoul, Republic of Korea

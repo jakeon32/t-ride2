@@ -63,7 +63,7 @@ const Navbar: React.FC = () => {
         <Link to="/" state={{ from: 'detail' }} className="flex items-center cursor-pointer group">
           <img
             src={logo}
-            alt="Riders"
+            alt="Rideus"
             className="h-8 md:h-10 w-auto object-contain brightness-0 invert"
             loading="eager"
             decoding="sync"
@@ -92,9 +92,10 @@ const Navbar: React.FC = () => {
         {/* Right Side Actions */}
         <div className="flex items-center space-x-6">
           {/* Customer Service */}
-          <a href="#contact" className="hidden md:block text-[12px] font-medium tracking-wide text-white/70 hover:text-white transition-colors uppercase">
-            {lang === 'KR' ? '고객지원' : 'Support'}
-          </a>
+          {/* Customer Service */}
+          <Link to="/support" className="hidden md:block text-[12px] font-medium tracking-wide text-white/70 hover:text-white transition-colors uppercase">
+            {lang === 'KR' ? '고객센터' : 'Support'}
+          </Link>
 
           {/* Language Dropdown */}
           <div className="relative" ref={langRef}>
@@ -154,7 +155,7 @@ const Navbar: React.FC = () => {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
-        
+
         <div className="px-6 py-8 space-y-6 h-full overflow-y-auto">
           <Link
             to="/"
@@ -180,9 +181,9 @@ const Navbar: React.FC = () => {
             );
           })}
           <div className="pt-8 border-t border-white/10 mt-8 space-y-4">
-            <a href="#contact" className="block text-lg font-medium text-slate-400 uppercase" onClick={() => setIsMenuOpen(false)}>
-              {lang === 'KR' ? '고객지원' : 'Support'}
-            </a>
+            <Link to="/support" className="block text-lg font-medium text-slate-400 uppercase" onClick={() => setIsMenuOpen(false)}>
+              {lang === 'KR' ? '고객센터' : 'Support'}
+            </Link>
             <button className="w-full text-sm font-bold tracking-widest text-black bg-white px-6 py-4 uppercase hover:bg-[var(--color-accent)] hover:text-white transition-all">
               {lang === 'KR' ? '로그인' : 'Login'}
             </button>

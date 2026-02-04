@@ -96,7 +96,7 @@ const ShoppingDetails: React.FC = () => {
             <Navbar />
 
             <main className="flex-grow">
-                <DetailHeroSection slides={heroSlides} badgePrefix="RIDERS SHOPPING MODULE" />
+                <DetailHeroSection slides={heroSlides} badgePrefix="RIDEUS SHOPPING" />
 
                 <CollectionSection
                     title={{ KR: '쇼핑 컬렉션', EN: 'Shopping Collection' }}
