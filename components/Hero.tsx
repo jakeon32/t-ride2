@@ -32,7 +32,7 @@ const Hero: React.FC = () => {
       {/* Content Layer */}
       <div className="relative z-30 h-full w-full max-w-[1920px] mx-auto px-6 md:px-12 flex flex-col justify-center">
         <div
-          className="max-w-[1216px] mx-auto w-full md:border-l border-white/10 pl-0 md:pl-16 pt-32 md:pt-52 lg:pt-40 pb-16 md:pb-0"
+          className="max-w-[1216px] mx-auto w-full md:border-l border-white/10 pl-0 md:pl-16 pt-20 md:pt-52 lg:pt-40 pb-16 md:pb-0"
           style={{ transform: `translateY(${textParallax}px)` }}
         >
           {/* Metadata / Decor */}
@@ -63,19 +63,41 @@ const Hero: React.FC = () => {
             )}
           </h2>
 
-          <p className="max-w-xl text-base md:text-lg text-slate-400 mb-8 md:mb-16 leading-relaxed font-light animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+          <p className="max-w-xl text-base md:text-lg text-[#cbd5e1] mb-8 md:mb-16 leading-relaxed font-light animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
             {lang === 'KR'
-              ? "라이더스의 목적지 중심 이동을 통해 여행의 합리적인 선택의 즐거움을 만나세요."
+              ? "목적지를 정했다면, 나에게 딱 맞는 이동 서비스를 선택해보세요"
               : "We treat transportation as an art form. Experience the silent masterpiece of movement with our premium fleet and curated journeys."}
           </p>
 
           <div className="flex flex-col md:flex-row items-center gap-6 animate-fade-in-up mb-24 md:mb-0" style={{ animationDelay: '0.6s' }}>
             {/* White Button */}
-            <a href="#inventory" className="w-full md:w-auto text-center px-8 md:px-12 py-4 md:py-5 bg-white text-black text-sm md:text-base font-bold tracking-widest uppercase hover:bg-slate-200 transition-all duration-300">
+            <a
+              href="#inventory"
+              className="w-full md:w-auto text-center px-8 md:px-12 py-4 md:py-5 bg-white text-black text-sm md:text-base font-bold tracking-widest uppercase hover:bg-slate-200 transition-all duration-300"
+              onClick={(e) => {
+                e.preventDefault();
+                const section = document.querySelector('#inventory');
+                if (section) {
+                  const offsetPosition = section.getBoundingClientRect().top + window.scrollY - 80;
+                  window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                }
+              }}
+            >
               <span className="relative z-10">{lang === 'KR' ? '카테고리 둘러보기' : 'Browse Categories'}</span>
             </a>
             {/* Outline Button */}
-            <a href="#contact" className="w-full md:w-auto text-center px-8 md:px-12 py-4 md:py-5 border border-white/30 text-white text-sm md:text-base font-bold tracking-widest uppercase hover:bg-white/10 transition-all duration-300">
+            <a
+              href="#contact"
+              className="w-full md:w-auto text-center px-8 md:px-12 py-4 md:py-5 border border-white/30 text-white text-sm md:text-base font-bold tracking-widest uppercase hover:bg-white/10 transition-all duration-300"
+              onClick={(e) => {
+                e.preventDefault();
+                const section = document.querySelector('#contact');
+                if (section) {
+                  const offsetPosition = section.getBoundingClientRect().top + window.scrollY - 80;
+                  window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                }
+              }}
+            >
               <span className="relative z-10">{lang === 'KR' ? '문의하기' : 'Inquire'}</span>
             </a>
           </div>

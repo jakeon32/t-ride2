@@ -57,7 +57,7 @@ const Navbar: React.FC = () => {
   }, []);
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 py-3 md:py-4 ${isScrolled ? 'bg-black/50 backdrop-blur-md' : 'bg-transparent'}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'bg-black/50 backdrop-blur-md' : 'bg-transparent'}`}>
       <div className={`relative z-[999] max-w-[1216px] mx-auto flex items-center justify-between px-4 md:px-8 lg:px-12 border-b transition-all duration-300 py-3 md:py-4 ${isScrolled ? 'border-transparent' : 'border-white/20'}`}>
         {/* Logo - Image Replaced */}
         <Link to="/" state={{ from: 'detail' }} className="flex items-center cursor-pointer group">

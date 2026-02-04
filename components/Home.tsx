@@ -17,7 +17,7 @@ const Home: React.FC = () => {
         <div className="min-h-screen flex flex-col">
             <Navbar />
             <Hero />
-            <main className="flex-grow z-10 relative">
+            <main className="flex-grow z-10 relative pointer-events-none [&>*]:pointer-events-auto">
                 <MatchingLogic />
                 <Categories />
                 <WhyUs />
