@@ -35,15 +35,6 @@ const Hero: React.FC = () => {
           className="max-w-[1216px] mx-auto w-full md:border-l border-white/10 pl-0 md:pl-16 pt-20 md:pt-52 lg:pt-40 pb-16 md:pb-0"
           style={{ transform: `translateY(${textParallax}px)` }}
         >
-          {/* Metadata / Decor */}
-          <div className="flex items-center gap-4 mb-8 text-white/50 animate-fade-in-up">
-            <span className="text-xs font-bold tracking-[0.2em] uppercase">Est. 2024</span>
-            <div className="h-[1px] w-12 bg-white/20"></div>
-            <span className="text-xs font-bold tracking-[0.2em] uppercase">
-              {lang === 'KR' ? '이동의 새로운 기준' : 'Mobility Redefined'}
-            </span>
-          </div>
-
           {/* Massive Typography */}
           <h1 className="text-5xl md:text-[120px] font-extrabold tracking-normal text-white mb-2 ml-[-0.05em] animate-slide-in-right font-display leading-[0.9]">
             {lang === 'KR' ? '라이더스' : 'RIDEUS'}

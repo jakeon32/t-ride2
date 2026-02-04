@@ -48,7 +48,7 @@ const MatchingLogic: React.FC = () => {
                 <h3 className="text-2xl md:text-4xl font-display font-bold text-white">{lang === 'KR' ? '셔틀' : 'SHUTTLE'}</h3>
               </div>
 
-              <span className="inline-block bg-white/5 backdrop-blur-md text-[#2E5CFF] text-xs font-bold px-4 py-2 rounded-full tracking-widest uppercase mb-8 border border-white/10">
+              <span className="inline-block bg-white/5 backdrop-blur-md text-[#9abdff] text-xs font-bold px-4 py-2 rounded-full tracking-widest uppercase mb-8 border border-white/10">
                 {lang === 'KR' ? '효율성 & 스탠다드' : 'Efficiency & Standard'}
               </span>
 
@@ -92,7 +92,7 @@ const MatchingLogic: React.FC = () => {
                 <h3 className="text-2xl md:text-4xl font-display font-bold text-white">{lang === 'KR' ? '프라이빗' : 'PRIVATE'}</h3>
               </div>
 
-              <span className="inline-block bg-white/5 text-[#2E5CFF] text-xs font-bold px-4 py-2 rounded-full tracking-widest uppercase mb-8 border border-white/10">
+              <span className="inline-block bg-white/5 text-[#9abdff] text-xs font-bold px-4 py-2 rounded-full tracking-widest uppercase mb-8 border border-white/10">
                 {lang === 'KR' ? '프리미엄 & 커스텀' : 'Premium & Custom'}
               </span>
 
