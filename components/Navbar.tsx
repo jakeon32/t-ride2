@@ -156,6 +156,13 @@ const Navbar: React.FC = () => {
         </button>
         
         <div className="px-6 py-8 space-y-6 h-full overflow-y-auto">
+          <Link
+            to="/"
+            className="block text-3xl font-display font-bold text-white/50 hover:text-white hover:pl-4 transition-all duration-300"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            {lang === 'KR' ? '홈' : 'HOME'}
+          </Link>
           {menuItems.map((item) => {
             const isRoute = !item.href.includes('#');
             const Element = isRoute ? Link : 'a';
