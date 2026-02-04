@@ -8,8 +8,15 @@
       "Bash(npm run deploy:*)",
       "Bash(gh api:*)",
       "Bash(where:*)",
-      "Bash(git rebase:*)",
-      "Bash(GIT_EDITOR=true git rebase:*)"
+      "Bash(xargs:*)",
+      "Read(//d/Works/2026/brandshow/t-ride02/**)",
+      "Bash(dir:*)",
+      "Bash(npx:*)",
+      "Bash(git checkout:*)",
+      "Bash(git rm:*)",
+      "Bash(git pull:*)",
+      "Bash(git stash:*)",
+      "Bash(git stash pop:*)"
     ]
   }
 }
