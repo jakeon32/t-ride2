@@ -11,6 +11,12 @@ const EventDetails = React.lazy(() => import('./components/EventDetails'));
 const LocalTripDetails = React.lazy(() => import('./components/LocalTripDetails'));
 const Support = React.lazy(() => import('./components/Support'));
 const MonaYongpyong = React.lazy(() => import('./components/leisure/MonaYongpyong'));
+const High1 = React.lazy(() => import('./components/leisure/High1'));
+const Alpensia = React.lazy(() => import('./components/leisure/Alpensia'));
+const PhoenixPyeongchang = React.lazy(() => import('./components/leisure/PhoenixPyeongchang'));
+const WellihilliPark = React.lazy(() => import('./components/leisure/WellihilliPark'));
+const VivaldiPark = React.lazy(() => import('./components/leisure/VivaldiPark'));
+const RamadaPyeongchang = React.lazy(() => import('./components/leisure/RamadaPyeongchang'));
 
 const App: React.FC = () => {
   return (
@@ -22,6 +28,12 @@ const App: React.FC = () => {
             <Route path="/airport" element={<AirportDetails />} />
             <Route path="/leisure" element={<LeisureDetails />} />
             <Route path="/leisure/mona-yongpyong" element={<MonaYongpyong />} />
+            <Route path="/leisure/high1" element={<High1 />} />
+            <Route path="/leisure/alpensia" element={<Alpensia />} />
+            <Route path="/leisure/phoenix-pyeongchang" element={<PhoenixPyeongchang />} />
+            <Route path="/leisure/wellihilli-park" element={<WellihilliPark />} />
+            <Route path="/leisure/vivaldi-park" element={<VivaldiPark />} />
+            <Route path="/leisure/ramada-pyeongchang" element={<RamadaPyeongchang />} />
             <Route path="/shopping" element={<ShoppingDetails />} />
             <Route path="/theme-park" element={<ThemeParkDetails />} />
             <Route path="/event" element={<EventDetails />} />
