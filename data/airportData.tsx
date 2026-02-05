@@ -32,7 +32,7 @@ export const getHeroSlides = (lang: Language) => [
         desc: lang === 'KR'
             ? <>인천공항·김포공항 24시간 운행<br />100개 이상의 노선으로 주요 거점 연결<br />터미널 바로 앞까지 편안하게 모셔다 드립니다</>
             : <>24/7 Service to Incheon & Gimpo Airports<br />Connecting major hubs with over 100 routes<br />We take you comfortably right to the terminal door</>,
-        buttonText: lang === 'KR' ? "지금 예약하기" : "Book Now",
+        buttonText: lang === 'KR' ? "목적지 찾아보기" : "Browse Destinations",
         buttonLink: "#collection-section"
     },
     {
@@ -42,7 +42,7 @@ export const getHeroSlides = (lang: Language) => [
         desc: lang === 'KR'
             ? <>정해진 시간표와 노선으로 운행되는 경제적인 선택<br />주요 거점 경유, 1-2인 여행객에게 최적<br />15,000원부터 시작하는 합리적인 가격</>
             : <>Economical choice with fixed schedules and routes<br />Ideal for 1-2 travelers, via major hubs<br />Reasonable prices starting from 15,000 KRW</>,
-        buttonText: lang === 'KR' ? "셔틀 예약하기" : "Book Shuttle",
+        buttonText: lang === 'KR' ? "목적지 찾아보기" : "Browse Destinations",
         buttonLink: "#collection-section"
     },
     {
@@ -52,7 +52,7 @@ export const getHeroSlides = (lang: Language) => [
         desc: lang === 'KR'
             ? <>전용 차량과 전문 기사가 함께하는 Door-to-Door<br />공항 입국장 미팅부터 목적지 직행까지<br />단독 이동으로 짐과 유아 동반 고객도 편리하게</>
             : <>Door-to-Door service with private vehicle and chauffeur<br />From airport arrival meeting to direct destination<br />Convenient for heavy luggage and traveling with infants</>,
-        buttonText: lang === 'KR' ? "프라이빗 예약하기" : "Book Private",
+        buttonText: lang === 'KR' ? "목적지 찾아보기" : "Browse Destinations",
         buttonLink: "#collection-section"
     }
 ];

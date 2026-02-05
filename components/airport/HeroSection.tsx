@@ -73,7 +73,7 @@ const HeroSection: React.FC = () => {
                                 </span>
                                 {/* L1: Hero Heading */}
                                 <h1
-                                    className={`text-4xl leading-[1.3] md:text-[3.5rem]/[1.2] font-display font-bold mb-4 md:mb-6 md:leading-[1.2] tracking-tighter ${index === currentHeroSlide ? 'animate-slide-in-right' : ''}`}
+                                    className={`text-4xl leading-[1.3] md:text-[3.5rem]/[1.2] font-display mb-4 md:mb-6 md:leading-[1.2] tracking-tighter ${index === currentHeroSlide ? 'animate-slide-in-right' : ''}`}
                                 >
                                     {slide.title}
                                 </h1>

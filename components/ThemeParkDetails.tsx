@@ -37,7 +37,7 @@ const heroSlides = [
         image: heroImg,
         title: <>환상의 나라로 떠나는<br />설레는 여정</>,
         desc: <>에버랜드까지 편안하게.<br />오픈런부터 폐장까지 체력 걱정 없이 즐기세요.</>,
-        buttonText: "이동편 예약",
+        buttonText: "목적지 찾아보기",
         buttonLink: "#collection-section"
     },
     {
@@ -45,7 +45,7 @@ const heroSlides = [
         image: heroImg,
         title: <>편리한 셔틀버스</>,
         desc: <>서울 주요 역에서 에버랜드까지 직행 셔틀.<br />개장 시간에 맞춰 도착하세요.</>,
-        buttonText: "셔틀 예약하기",
+        buttonText: "목적지 찾아보기",
         buttonLink: "#collection-section"
     },
     {
@@ -53,7 +53,7 @@ const heroSlides = [
         image: familyVanImg,
         title: <>가족형 프라이빗 밴</>,
         desc: <>아이들과 함께하는 이동도 편안하게.<br />카시트 제공 및 유모차 적재 가능한 대형 밴.</>,
-        buttonText: "프라이빗 예약하기",
+        buttonText: "목적지 찾아보기",
         buttonLink: "#collection-section"
     }
 ];

@@ -15,7 +15,7 @@ const heroSlides = [
         image: heroImg,
         title: <>감동의 순간으로 향하는<br />쾌적한 이동</>,
         desc: <>콘서트, 페스티벌, 전시회까지.<br />주차 전쟁 없이 공연의 여운만 가득한 귀갓길.</>,
-        buttonText: "이동편 예약",
+        buttonText: "목적지 찾아보기",
         buttonLink: "#collection-section"
     },
     {
@@ -23,7 +23,7 @@ const heroSlides = [
         image: concertImg,
         title: <>공연장 직행 셔틀</>,
         desc: <>인스파이어 아레나, 고척돔 등 주요 공연장으로 향하는 팬 맞춤형 셔틀.</>,
-        buttonText: "셔틀 예약하기",
+        buttonText: "목적지 찾아보기",
         buttonLink: "#collection-section"
     },
     {
@@ -31,7 +31,7 @@ const heroSlides = [
         image: heroImg,
         title: <>VVIP 의전 서비스</>,
         desc: <>중요한 행사나 VIP 초대에는 품격 있는 의전 차량 서비스를 이용하세요.</>,
-        buttonText: "의전 예약하기",
+        buttonText: "목적지 찾아보기",
         buttonLink: "#collection-section"
     }
 ];

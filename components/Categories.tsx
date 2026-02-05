@@ -114,14 +114,14 @@ const Categories: React.FC = () => {
               </div>
 
               {/* Top Meta */}
-              <div className="relative z-10 p-10 flex justify-end items-start mb-12">
+              <div className="relative z-10 p-5 md:p-10 flex justify-end items-start mb-12">
                 <span className="text-xl font-bold text-white/50 tracking-[0.2em] group-hover:text-white transition-colors">
                   {(i + 1).toString().padStart(2, '0')}
                 </span>
               </div>
 
               {/* Bottom Content */}
-              <div className="relative z-10 mt-auto p-10">
+              <div className="relative z-10 mt-auto p-5 md:p-10">
                 <h3 className="text-3xl font-display font-bold text-white mb-2 group-hover:translate-x-2 transition-transform duration-300">
                   {cat.title}
                 </h3>

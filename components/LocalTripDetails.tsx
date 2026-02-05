@@ -41,7 +41,7 @@ const LocalTripDetails: React.FC = () => {
             image: heroImg,
             title: <>서울을 벗어나 만나는<br />특별한 하루</>,
             desc: <>남이섬, DMZ, 한국민속촌까지.<br />복잡한 교통편 걱정 없이 편안하게 떠나는 근교 여행.</>,
-            buttonText: "근교 여행 예약",
+            buttonText: "목적지 찾아보기",
             buttonLink: "#domestic-section"
         },
         {
@@ -49,7 +49,7 @@ const LocalTripDetails: React.FC = () => {
             image: tourImg,
             title: <>외국인 관광객 전용 투어</>,
             desc: <>언어 장벽 없는 전문 가이드와 함께하는 알찬 투어 패키지입니다.</>,
-            buttonText: "투어 상품 보기",
+            buttonText: "목적지 찾아보기",
             buttonLink: "#domestic-section"
         },
         {
@@ -57,7 +57,7 @@ const LocalTripDetails: React.FC = () => {
             image: traditionalImg,
             title: <>한국 전통 문화 체험</>,
             desc: <>가장 한국적인 아름다움을 찾아 떠나는 프라이빗 문화 탐방 코스.</>,
-            buttonText: "문화 체험 예약",
+            buttonText: "목적지 찾아보기",
             buttonLink: "#domestic-section"
         }
     ];

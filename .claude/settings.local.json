@@ -16,7 +16,20 @@
       "Bash(git rm:*)",
       "Bash(git pull:*)",
       "Bash(git stash:*)",
-      "Bash(git stash pop:*)"
+      "Bash(git stash pop:*)",
+      "mcp__claude_ai_Notion__fetch",
+      "Bash(git status:*)",
+      "Bash(npm install:*)",
+      "Bash(findstr:*)",
+      "Bash(timeout:*)",
+      "WebFetch(domain:www.notion.so)",
+      "WebFetch(domain:notion.so)",
+      "Bash(curl:*)",
+      "WebFetch(domain:typical-suit-e35.notion.site)",
+      "Bash(python3:*)",
+      "Bash(py:*)",
+      "Bash(python -c:*)",
+      "Bash(python -X utf8 -c:*)"
     ]
   }
 }

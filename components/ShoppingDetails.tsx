@@ -18,7 +18,7 @@ const heroSlides: HeroSlide[] = [
         image: heroImg,
         title: <>쇼핑을 위한<br />완벽한 여정</>,
         desc: <>여주, 시흥 프리미엄 아울렛부터 면세점까지.<br />쇼핑의 즐거움을 더해주는 편안한 이동 서비스.</>,
-        buttonText: "이동편 예약",
+        buttonText: "목적지 찾아보기",
         buttonLink: "#collection-section"
     },
     {
@@ -26,7 +26,7 @@ const heroSlides: HeroSlide[] = [
         image: outletImg,
         title: <>편리한 셔틀버스</>,
         desc: <>주요 쇼핑몰을 연결하는 직행 셔틀. 무거운 짐 걱정 없이 쇼핑에만 집중하세요.</>,
-        buttonText: "셔틀 예약하기",
+        buttonText: "목적지 찾아보기",
         buttonLink: "#collection-section"
     },
     {
@@ -34,7 +34,7 @@ const heroSlides: HeroSlide[] = [
         image: dutyfreeImg,
         title: <>프라이빗 쇼핑 투어</>,
         desc: <>나만을 위한 전용 차량으로 여유롭게. 호텔 픽업부터 공항 샌딩까지.</>,
-        buttonText: "프라이빗 예약하기",
+        buttonText: "목적지 찾아보기",
         buttonLink: "#collection-section"
     }
 ];
