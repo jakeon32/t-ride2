@@ -4,46 +4,30 @@ import Footer from '../Footer';
 import StaticDetailHero from '../shared/StaticDetailHero';
 import ResortCollection from './ResortCollection';
 import { popularResorts } from '../../data/leisureResorts';
-import mona01Hero from '../../assets/mona01_hero.webp';
-import mona02Hero from '../../assets/mona02_hero.webp';
-import mona03Hero from '../../assets/mona03_hero.webp';
+import wellihilliImg from '../../assets/wellihillipark.webp';
 import { Link } from 'react-router-dom';
 
 const heroSlides = [
     {
         id: 0,
-        image: mona01Hero,
-        title: "발왕산의 사계절 파노라마",
-        desc: <>한국 스키의 발상지이자 28개 슬로프와 14개 리프트를 갖춘<br />국내 최대 규모의 사계절 프리미엄 레저 단지입니다.</>
-    },
-    {
-        id: 1,
-        image: mona02Hero,
-        title: "올인원 리조트 라이프",
-        desc: <>호텔, 콘도, 워터파크, 다이닝까지.<br />슬로프 밖에서도 계속되는 풍성한 휴식을 즐겨보세요.</>
-    },
-    {
-        id: 2,
-        image: mona03Hero,
-        title: "압도적 자연 경관",
-        desc: <>해발 1,458m 발왕산 정상에서 마주하는<br />압도적인 자연 경관과 스카이워크를 경험하세요.</>
+        image: wellihilliImg,
+        title: "웰리힐리파크 스키장",
+        desc: <>서울·수도권에서 비교적 가까운 강원권 스키장으로,<br />다양한 파크 코스와 콘도형 숙박 시설을 갖춘 리조트입니다.</>
     }
 ];
 
-const MonaYongpyong: React.FC = () => {
-    // Scroll to top on mount
+const WellihilliPark: React.FC = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
-    // Filter out Yongpyong from recommendations
-    const otherResorts = popularResorts.filter(resort => !resort.name.includes("모나 용평"));
+    const otherResorts = popularResorts.filter(resort => !resort.name.includes("웰리힐리"));
 
     return (
         <div className="min-h-screen flex flex-col bg-slate-50">
             <Navbar />
 
-            {/* Breadcrumbs Overlay - Hidden on mobile */}
+            {/* Breadcrumbs Overlay */}
             <div className="hidden md:block absolute top-24 left-0 w-full z-20 pointer-events-none">
                 <div className="max-w-[1216px] mx-auto px-4">
                     <nav className="flex items-center text-sm text-white/80 font-medium pointer-events-auto drop-shadow-md">
@@ -53,7 +37,7 @@ const MonaYongpyong: React.FC = () => {
                         <span className="mx-2 opacity-60">&gt;</span>
                         <Link to="/leisure" className="hover:text-white transition-colors">스키 리조트</Link>
                         <span className="mx-2 opacity-60">&gt;</span>
-                        <span className="text-white">모나 용평</span>
+                        <span className="text-white">웰리힐리파크</span>
                     </nav>
                 </div>
             </div>
@@ -61,21 +45,21 @@ const MonaYongpyong: React.FC = () => {
             <StaticDetailHero
                 slides={heroSlides}
                 className="h-[30vh] md:h-[30vh]"
-                mainTitle="모나 용평 스키 리조트"
-                description={<>28개 슬로프와 14개 리프트를 갖춘 국내 최대 규모 스키 리조트,<br className="hidden md:block" /> 평창 동계올림픽 경기가 열린 스노 리조트입니다.</>}
+                mainTitle="웰리힐리파크 스키장"
+                description={<>서울·수도권에서 비교적 가까운 강원권 스키장으로,<br className="hidden md:block" /> 다양한 파크 코스와 콘도형 숙박 시설을 갖춘 리조트입니다.</>}
             />
 
             <main className="flex-grow">
-                {/* Transport Options Section - Removed margin-top since hero is relative now */}
+                {/* Transport Options Section */}
                 <section id="transport-options" className="relative z-20 bg-white py-24 border-b border-gray-100">
                     <div className="max-w-[1216px] mx-auto px-4">
                         <div className="mb-20 text-center md:text-left">
                             <span className="text-overline text-blue-600 block mb-3">Transport Options</span>
                             <h2 className="text-h2 text-gray-900 mb-6 tracking-tight">
-                                모나 용평 이동 서비스
+                                웰리힐리파크 이동 서비스
                             </h2>
                             <p className="text-slate-500 text-lg md:text-xl max-w-2xl leading-relaxed">
-                                서울·인천에서 모나 용평까지. <br className="hidden md:block" />
+                                서울·인천에서 웰리힐리파크까지. <br className="hidden md:block" />
                                 가장 쾌적하고 편안한 이동 방법을 선택하세요.
                             </p>
                         </div>
@@ -115,7 +99,7 @@ const MonaYongpyong: React.FC = () => {
                                 </ul>
                                 <div className="relative z-10">
                                     <a
-                                        href="https://yongpyong.rideus.net/en/yongpyong"
+                                        href="https://wellihilli.rideus.net"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="block w-full text-center bg-gray-900 text-white font-bold py-4 rounded-xl hover:bg-blue-600 transition-all duration-300 shadow-lg hover:shadow-blue-500/30 transform hover:-translate-y-1"
@@ -159,7 +143,7 @@ const MonaYongpyong: React.FC = () => {
                                 </ul>
                                 <div className="relative z-10">
                                     <a
-                                        href="https://booking.triseup.com/k-ski?resort=yongpyong"
+                                        href="https://booking.triseup.com/k-ski?resort=wellihilli"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="block w-full text-center border-2 border-gray-900 text-gray-900 font-bold py-4 rounded-xl hover:bg-blue-600 hover:border-blue-600 hover:text-white transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/30 transform hover:-translate-y-1"
@@ -186,11 +170,11 @@ const MonaYongpyong: React.FC = () => {
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                             <div>
                                 <h4 className="font-bold text-gray-900 mb-3 text-lg">LOCATION</h4>
-                                <p className="text-slate-600 font-light">강원도 평창군 대관령면 올림픽로 715<br />모나 용평 리조트</p>
+                                <p className="text-slate-600 font-light">강원도 횡성군 둔내면 고원로 451<br />웰리힐리파크</p>
                             </div>
                             <div>
                                 <h4 className="font-bold text-gray-900 mb-3 text-lg">SEASON</h4>
-                                <p className="text-slate-600 font-light">11월 중순 ~ 4월 초<br />(기상 상황에 따라 변동 가능)</p>
+                                <p className="text-slate-600 font-light">11월 하순 ~ 4월 초<br />(기상 상황에 따라 변동 가능)</p>
                             </div>
                             <div>
                                 <h4 className="font-bold text-gray-900 mb-3 text-lg">NOTICE</h4>
@@ -201,8 +185,8 @@ const MonaYongpyong: React.FC = () => {
                 </section>
             </main>
             <Footer />
-        </div >
+        </div>
     );
 };
 
-export default MonaYongpyong;
+export default WellihilliPark;

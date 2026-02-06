@@ -56,7 +56,7 @@ const StaticDetailHero: React.FC<StaticDetailHeroProps> = ({
                 {mainTitle ? (
                     // When mainTitle exists, it overrides slide titles
                     <div className="max-w-4xl text-white">
-                        <h1 className="text-4xl md:text-5xl font-bold font-display tracking-tight mb-4 shadow-black/50 drop-shadow-lg">
+                        <h1 className="text-3xl md:text-5xl font-bold font-display tracking-tight mb-4 shadow-black/50 drop-shadow-lg whitespace-nowrap">
                             {mainTitle}
                         </h1>
                         {description && (

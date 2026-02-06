@@ -11,23 +11,15 @@ interface ResortCollectionProps {
 }
 
 const ResortCollection: React.FC<ResortCollectionProps> = ({ title, items, firstSection = true, mode = 'grid', id }) => {
-    const scrollRef = React.useRef<HTMLDivElement>(null);
-    const [isDragging, setIsDragging] = React.useState(false);
-    const [startX, setStartX] = React.useState(0);
-    const [scrollLeft, setScrollLeft] = React.useState(0);
-    const animationRef = React.useRef<number>(0);
+    const [isPaused, setIsPaused] = React.useState(false);
 
     // Card rendering logic helper
     const renderCard = (resort: ResortData, index: number, isMarquee: boolean = false) => (
         <Link
             to={resort.detailUrl}
-            key={`${index}-${isMarquee ? 'marquee' : 'grid'}`}
-            className={`group block bg-white border border-[#E5E5E5] hover:border-[#2E5CFF] transition-colors ${isMarquee ? 'w-[300px] md:w-[350px] flex-shrink-0 mx-3 select-none' : ''}`}
+            key={`${resort.name}-${index}-${isMarquee ? 'marquee' : 'grid'}`}
+            className={`group block bg-white border border-[#E5E5E5] hover:border-[#2E5CFF] transition-colors ${isMarquee ? 'w-[240px] md:w-[280px] flex-shrink-0 mx-2 select-none' : ''}`}
             draggable={false}
-            onClick={(e) => {
-                // Prevent navigation if user was dragging
-                if (isDragging) e.preventDefault();
-            }}
         >
             <div className="aspect-[4/3] bg-gray-100 relative overflow-hidden">
                 <img
@@ -43,7 +35,7 @@ const ResortCollection: React.FC<ResortCollectionProps> = ({ title, items, first
                     </span>
                 </div>
             </div>
-            <div className="p-5">
+            <div className="p-4">
                 <div className="mb-4">
                     <h3 className="text-h3 text-[#0F1115] group-hover:text-[#2E5CFF] transition-colors line-clamp-1">
                         {resort.name}
@@ -64,71 +56,8 @@ const ResortCollection: React.FC<ResortCollectionProps> = ({ title, items, first
         </Link>
     );
 
-    // Infinite Scroll & Drag Logic
-    React.useEffect(() => {
-        if (mode !== 'marquee' || !scrollRef.current) return;
-
-        const scrollContainer = scrollRef.current;
-        const speed = 0.5; // Auto scroll speed
-
-        const animate = () => {
-            if (!isDragging && scrollContainer) {
-                scrollContainer.scrollLeft += speed;
-            }
-
-            // Infinite loop logic
-            if (scrollContainer) {
-                const maxScroll = scrollContainer.scrollWidth / 3;
-                if (scrollContainer.scrollLeft >= maxScroll * 2) {
-                    scrollContainer.scrollLeft -= maxScroll;
-                } else if (scrollContainer.scrollLeft <= 0) {
-                    scrollContainer.scrollLeft += maxScroll;
-                }
-            }
-
-            animationRef.current = requestAnimationFrame(animate);
-        };
-
-        animationRef.current = requestAnimationFrame(animate);
-
-        return () => {
-            if (animationRef.current) cancelAnimationFrame(animationRef.current);
-        };
-    }, [mode, isDragging]);
-
-    // Initialize scroll position
-    React.useEffect(() => {
-        if (mode === 'marquee' && scrollRef.current) {
-            const maxScroll = scrollRef.current.scrollWidth / 3;
-            scrollRef.current.scrollLeft = maxScroll;
-        }
-    }, [mode, items]);
-
-    const handleMouseDown = (e: React.MouseEvent) => {
-        if (mode !== 'marquee' || !scrollRef.current) return;
-        setIsDragging(true);
-        setStartX(e.pageX - scrollRef.current.offsetLeft);
-        setScrollLeft(scrollRef.current.scrollLeft);
-    };
-
-    const handleMouseLeave = () => {
-        setIsDragging(false);
-    };
-
-    const handleMouseUp = () => {
-        setIsDragging(false);
-    };
-
-    const handleMouseMove = (e: React.MouseEvent) => {
-        if (!isDragging || mode !== 'marquee' || !scrollRef.current) return;
-        e.preventDefault();
-        const x = e.pageX - scrollRef.current.offsetLeft;
-        const walk = (x - startX) * 2;
-        scrollRef.current.scrollLeft = scrollLeft - walk;
-    };
-
-    // Use 3 sets of items for smooth infinite scrolling
-    const marqueeItems = [...items, ...items, ...items];
+    // Duplicate items for seamless loop
+    const marqueeItems = [...items, ...items];
 
     return (
         <section id={id} className={`relative z-10 ${firstSection ? 'mt-screen' : ''} bg-slate-50 py-16 md:py-24 overflow-hidden`}>
@@ -143,15 +72,20 @@ const ResortCollection: React.FC<ResortCollectionProps> = ({ title, items, first
                     </div>
                 ) : (
                     <div
-                        className="flex w-full overflow-x-hidden cursor-grab active:cursor-grabbing"
-                        ref={scrollRef}
-                        onMouseDown={handleMouseDown}
-                        onMouseLeave={handleMouseLeave}
-                        onMouseUp={handleMouseUp}
-                        onMouseMove={handleMouseMove}
-                        style={{ userSelect: 'none' }}
+                        className="overflow-hidden"
+                        onMouseEnter={() => setIsPaused(true)}
+                        onMouseLeave={() => setIsPaused(false)}
+                        onTouchStart={() => setIsPaused(true)}
+                        onTouchEnd={() => setIsPaused(false)}
                     >
-                        <div className="flex pb-4">
+                        <div
+                            className="flex pb-4"
+                            style={{
+                                animation: `marquee 30s linear infinite`,
+                                animationPlayState: isPaused ? 'paused' : 'running',
+                                width: 'max-content',
+                            }}
+                        >
                             {marqueeItems.map((item, index) => renderCard(item, index, true))}
                         </div>
                     </div>
