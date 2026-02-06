@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useLanguage } from '../../contexts/LanguageContext';
 import Breadcrumb from './Breadcrumb';
+import Container from './Container';
 
 export interface CollectionItem {
     id: number;
@@ -85,11 +86,11 @@ const CollectionSection: React.FC<CollectionSectionProps> = ({
         <section id="collection-section" className={`relative z-10 ${bgColor || 'bg-white'} ${firstSection ? 'mt-screen border-b border-[#E5E5E5]' : 'pt-12 md:pt-16'}`}>
             {firstSection && <div className="w-full h-[1px] bg-[#E5E5E5] mb-12 md:mb-16"></div>}
 
-            <div className={`max-w-[1216px] mx-auto relative group ${compactBottom ? 'pb-12 md:pb-16' : 'pb-24 md:pb-32'} px-6 md:px-12`}>
+            <Container className={`relative group ${compactBottom ? 'pb-12 md:pb-16' : 'pb-24 md:pb-32'}`}>
                 {breadcrumb && <Breadcrumb current={breadcrumb} />}
                 <div className="flex flex-col md:flex-row md:items-end justify-between mb-3 gap-6">
                     <div>
-                        <h2 className="font-technical-header font-medium text-3xl md:text-4xl text-[#0F1115] mb-6 uppercase tracking-wider">
+                        <h2 className="font-technical-header font-medium text-2xl md:text-3xl text-[#0F1115] mb-6 uppercase tracking-wider">
                             {lang === 'KR' ? title.KR : title.EN}
                         </h2>
                     </div>
@@ -143,7 +144,7 @@ const CollectionSection: React.FC<CollectionSectionProps> = ({
                         </div>
                     )}
                 </div>
-            </div>
+            </Container>
         </section>
     );
 };

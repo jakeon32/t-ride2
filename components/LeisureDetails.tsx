@@ -52,8 +52,9 @@ const LeisureDetails: React.FC = () => {
             <main className="flex-grow">
                 <ResortCollection
                     id="collection-section"
-                    title="인기 여행지 컬렉션"
+                    title={{ KR: '인기 여행지 컬렉션', EN: 'Popular Destinations Collection' }}
                     items={popularResorts}
+                    breadcrumb={{ KR: '레저', EN: 'Leisure' }}
                 />
             </main>
             <Footer />

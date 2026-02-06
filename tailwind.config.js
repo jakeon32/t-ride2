@@ -7,7 +7,15 @@ export default {
     "./contexts/**/*.{ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      maxWidth: {
+        'container': '1216px',
+      },
+      spacing: {
+        'page': '1.5rem',      // 24px - mobile (px-6)
+        'page-md': '3rem',     // 48px - tablet/desktop (px-12)
+      },
+    },
   },
   plugins: [],
 };

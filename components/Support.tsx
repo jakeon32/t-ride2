@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import Breadcrumb from './shared/Breadcrumb';
+import Container from './shared/Container';
 import { useScrollOptimized } from '../hooks';
 import { useLanguage } from '../contexts/LanguageContext';
 
@@ -85,7 +86,7 @@ const Support: React.FC = () => {
                     className="relative z-10 w-full h-full pointer-events-none will-change-transform"
                     style={{ transform: `translateY(${textParallax}px)` }}
                 >
-                    <div className="max-w-[1216px] mx-auto h-full px-6 md:px-12 relative">
+                    <Container className="h-full relative">
                         <div className="absolute inset-0 flex items-center">
                         <div className="max-w-4xl text-white pt-32 md:pt-20 px-4 md:px-0 md:pl-12 pointer-events-auto">
                             {/* Badge */}
@@ -106,7 +107,7 @@ const Support: React.FC = () => {
                             </p>
                         </div>
                         </div>
-                    </div>
+                    </Container>
                 </div>
             </section>
 
@@ -115,7 +116,7 @@ const Support: React.FC = () => {
 
             {/* Main Content */}
             <main className="flex-grow relative z-10 bg-slate-50">
-                <div className="max-w-[1216px] mx-auto px-4 md:px-8 lg:px-12 py-12 md:py-16">
+                <Container className="py-12 md:py-16">
                     <Breadcrumb current={{ KR: '고객센터', EN: 'Support' }} />
 
                     {/* FAQ Section */}
@@ -210,7 +211,7 @@ const Support: React.FC = () => {
                             {/* Hidden as per design clean up, or keep if needed but design shows clean container */}
                         </p>
                     </section>
-                </div>
+                </Container>
             </main>
 
             <Footer />

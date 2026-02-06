@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
+import Container from './shared/Container';
 
 // Import Category Images
 import imgAirport from '../assets/airport_cate.webp';
@@ -71,7 +72,7 @@ const Categories: React.FC = () => {
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
 
-      <div className="max-w-[1216px] mx-auto px-4 md:px-8 relative z-10">
+      <Container className="relative z-10">
 
         {/* Section Header - Industrial Style (Light) */}
         <div className="mb-8 md:mb-12 flex flex-col md:flex-row items-center md:items-end justify-between text-center md:text-left gap-6 md:gap-0">
@@ -81,7 +82,7 @@ const Categories: React.FC = () => {
             </span>
             <h2 className="text-4xl md:text-5xl font-display font-bold text-[#0F1115] leading-[1.1]">
               {lang === 'KR'
-                ? '지금 어디로 이동하시나요?'
+                ? <>지금 어디로<br className="md:hidden" /> 이동하시나요?</>
                 : <>JOURNEY<br />COLLECTION</>}
             </h2>
           </div>
@@ -143,7 +144,7 @@ const Categories: React.FC = () => {
           ))}
         </div>
 
-      </div>
+      </Container>
     </section>
   );
 };

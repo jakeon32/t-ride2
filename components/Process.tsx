@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
+import Container from './shared/Container';
 
 const getDestinations = (lang: 'KR' | 'EN') => [
   {
@@ -58,7 +59,7 @@ const Process: React.FC = () => {
 
   return (
     <section id="process" className="relative z-20 py-24 md:py-32 bg-[#F8F9FA] border-t border-transparent">
-      <div className="max-w-[1216px] mx-auto px-4 md:px-8">
+      <Container>
 
         {/* Section Header */}
         <div className="mb-12 flex flex-col items-start">
@@ -123,7 +124,7 @@ const Process: React.FC = () => {
             </div>
           ))}
         </div>
-      </div>
+      </Container>
     </section>
   );
 };

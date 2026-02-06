@@ -1,6 +1,7 @@
 import React from 'react';
 import { getUspItems } from '../../data/airportData';
 import { useLanguage } from '../../contexts/LanguageContext';
+import Container from '../shared/Container';
 
 const USPSection: React.FC = () => {
     const { lang } = useLanguage();
@@ -8,7 +9,7 @@ const USPSection: React.FC = () => {
 
     return (
         <section className="relative z-10 bg-transparent py-12 md:py-32 border-t border-white/5">
-            <div className="max-w-[1216px] mx-auto px-6 md:px-8">
+            <Container>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
                     {uspItems.map((item, idx) => (
                         <div key={idx} className="group bg-[#34353d] md:bg-[#111] p-6 md:p-10 border border-white/5 hover:border-[var(--color-accent)] transition-all duration-300 text-center md:text-left">
@@ -37,7 +38,7 @@ const USPSection: React.FC = () => {
                         </div>
                     ))}
                 </div>
-            </div>
+            </Container>
         </section>
     );
 };

@@ -3,6 +3,7 @@ import Navbar from '../Navbar';
 import Footer from '../Footer';
 import StaticDetailHero from '../shared/StaticDetailHero';
 import ResortCollection from './ResortCollection';
+import Container from '../shared/Container';
 import { popularResorts } from '../../data/leisureResorts';
 import wellihilliImg from '../../assets/wellihillipark.webp';
 import { Link } from 'react-router-dom';
@@ -29,7 +30,7 @@ const WellihilliPark: React.FC = () => {
 
             {/* Breadcrumbs Overlay */}
             <div className="hidden md:block absolute top-24 left-0 w-full z-20 pointer-events-none">
-                <div className="max-w-[1216px] mx-auto px-4">
+                <Container>
                     <nav className="flex items-center text-sm text-white/80 font-medium pointer-events-auto drop-shadow-md">
                         <Link to="/" className="hover:text-white transition-colors">홈</Link>
                         <span className="mx-2 opacity-60">&gt;</span>
@@ -39,7 +40,7 @@ const WellihilliPark: React.FC = () => {
                         <span className="mx-2 opacity-60">&gt;</span>
                         <span className="text-white">웰리힐리파크</span>
                     </nav>
-                </div>
+                </Container>
             </div>
 
             <StaticDetailHero
@@ -52,7 +53,7 @@ const WellihilliPark: React.FC = () => {
             <main className="flex-grow">
                 {/* Transport Options Section */}
                 <section id="transport-options" className="relative z-20 bg-white py-24 border-b border-gray-100">
-                    <div className="max-w-[1216px] mx-auto px-4">
+                    <Container>
                         <div className="mb-20 text-center md:text-left">
                             <span className="text-overline text-blue-600 block mb-3">Transport Options</span>
                             <h2 className="text-h2 text-gray-900 mb-6 tracking-tight">
@@ -153,7 +154,7 @@ const WellihilliPark: React.FC = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </Container>
                 </section>
 
                 {/* Recommendations Section */}
@@ -166,7 +167,7 @@ const WellihilliPark: React.FC = () => {
 
                 {/* Footer Info Section */}
                 <section className="bg-slate-50 py-16 border-t border-slate-200">
-                    <div className="max-w-[1216px] mx-auto px-6 md:px-12 text-center md:text-left">
+                    <Container className="text-center md:text-left">
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                             <div>
                                 <h4 className="font-bold text-gray-900 mb-3 text-lg">LOCATION</h4>
@@ -181,7 +182,7 @@ const WellihilliPark: React.FC = () => {
                                 <p className="text-slate-600 font-light">예약 확정 후 발송되는 알림톡을 통해<br />탑승 장소와 시간을 정확히 확인해주세요.</p>
                             </div>
                         </div>
-                    </div>
+                    </Container>
                 </section>
             </main>
             <Footer />

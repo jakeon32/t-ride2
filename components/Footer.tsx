@@ -2,13 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import logo from '../assets/rideusLogo.png';
+import Container from './shared/Container';
 
 const Footer: React.FC = () => {
   const { lang } = useLanguage();
 
   return (
     <footer id="contact" className="bg-[#050505] pt-12 md:pt-24 pb-8 md:pb-12 border-t border-white/10 text-white relative z-0">
-      <div className="max-w-[1216px] mx-auto px-4 md:px-8 lg:px-12">
+      <Container>
         <div className="flex flex-col md:flex-row justify-between items-start gap-8 md:gap-12 mb-6 md:mb-10">
 
           {/* Brand */}
@@ -83,7 +84,7 @@ const Footer: React.FC = () => {
             Seoul, Republic of Korea
           </p>
         </div>
-      </div>
+      </Container>
     </footer>
   );
 };

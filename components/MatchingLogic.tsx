@@ -1,12 +1,13 @@
 import React from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
+import Container from './shared/Container';
 
 const MatchingLogic: React.FC = () => {
   const { lang } = useLanguage();
 
   return (
     <section id="matching" className="relative z-20 mt-screen py-12 md:py-24 lg:py-32 overflow-hidden bg-[#0F1115] md:bg-[#0F1115]/80 md:backdrop-blur-md border-t border-slate-900">
-      <div className="max-w-[1216px] mx-auto px-4 md:px-8 relative z-10">
+      <Container className="relative z-10">
 
         {/* Header */}
         <div className="text-center mb-16 md:mb-20">
@@ -117,7 +118,7 @@ const MatchingLogic: React.FC = () => {
           </div>
 
         </div>
-      </div>
+      </Container>
     </section>
   );
 };

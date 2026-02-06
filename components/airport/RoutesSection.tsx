@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { getDestinations } from '../../data/airportData';
 import { useLanguage } from '../../contexts/LanguageContext';
 import Breadcrumb from '../shared/Breadcrumb';
+import Container from '../shared/Container';
 
 const RoutesSection: React.FC = () => {
     const { lang } = useLanguage();
@@ -55,11 +56,11 @@ const RoutesSection: React.FC = () => {
             {/* Top Divider Line - Matches LeisureDetails */}
             <div className="w-full h-[1px] bg-[#E5E5E5] mb-12 md:mb-16"></div>
 
-            <div className="max-w-[1216px] mx-auto relative group pb-24 md:pb-32 px-6 md:px-12">
+            <Container className="relative group pb-24 md:pb-32">
                 <Breadcrumb current={{ KR: '공항이동', EN: 'Airport' }} />
                 <div className="flex flex-col md:flex-row md:items-end justify-between mb-3 gap-6">
                     <div>
-                        <h2 className="font-technical-header font-medium text-3xl md:text-4xl text-[#0F1115] mb-6 uppercase tracking-wider">
+                        <h2 className="font-technical-header font-medium text-2xl md:text-3xl text-[#0F1115] mb-6 uppercase tracking-wider">
                             {lang === 'KR' ? '공항 이동 컬렉션' : 'Airport Transfer Collection'}
                         </h2>
                     </div>
@@ -97,7 +98,7 @@ const RoutesSection: React.FC = () => {
                         </div>
                     ))}
                 </div>
-            </div>
+            </Container>
         </section>
     );
 };

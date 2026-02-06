@@ -1,6 +1,7 @@
 import React from 'react';
 import skiBg from '../../assets/ski_banner_img.webp';
 import { useLanguage } from '../../contexts/LanguageContext';
+import Container from '../shared/Container';
 
 const SkiBanner: React.FC = () => {
     const { lang } = useLanguage();
@@ -25,7 +26,7 @@ const SkiBanner: React.FC = () => {
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:2rem_2rem] pointer-events-none"></div>
 
                 {/* Content Container - Constrained Width */}
-                <div className="relative z-10 max-w-[1216px] mx-auto h-full px-6 md:px-8">
+                <Container className="relative z-10 h-full">
                     <div className="w-full h-full flex flex-col justify-center items-center md:items-end text-center md:text-right">
                         <div className="max-w-xl">
                             <div className="flex items-center gap-4 text-[var(--color-accent)] font-bold tracking-widest text-xs uppercase mb-6 justify-center md:justify-end">
@@ -55,7 +56,7 @@ const SkiBanner: React.FC = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </Container>
             </div>
         </section>
     );

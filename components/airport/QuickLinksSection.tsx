@@ -1,6 +1,7 @@
 import React from 'react';
 import { getQuickLinks } from '../../data/airportData';
 import { useLanguage } from '../../contexts/LanguageContext';
+import Container from '../shared/Container';
 
 const QuickLinksSection: React.FC = () => {
     const { lang } = useLanguage();
@@ -8,7 +9,7 @@ const QuickLinksSection: React.FC = () => {
 
     return (
         <section className="relative z-10 bg-transparent py-16 md:py-20 border-t border-white/5">
-            <div className="max-w-[1216px] mx-auto px-6 md:px-8">
+            <Container>
                 {/* Section Title */}
                 <h2 className="text-3xl font-display font-bold text-white text-center mb-12">
                     {lang === 'KR' ? '공항 이동, 더 쉽게 준비하세요' : 'Prepare Your Journey Easily'}
@@ -25,7 +26,7 @@ const QuickLinksSection: React.FC = () => {
                         </button>
                     ))}
                 </div>
-            </div>
+            </Container>
         </section>
     );
 };
