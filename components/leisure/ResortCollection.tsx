@@ -65,18 +65,45 @@ const ResortCollection: React.FC<ResortCollectionProps> = ({ title, items, first
     const marqueeItems = [...items, ...items];
 
     return (
-        <section id={id} className={`relative z-10 bg-white ${firstSection ? 'mt-screen border-b border-[#E5E5E5]' : 'pt-12 md:pt-16'}`}>
-            {firstSection && <div className="w-full h-[1px] bg-[#E5E5E5] mb-12 md:mb-16"></div>}
-
-            <Container className="relative group pb-24 md:pb-32">
-                {breadcrumb && <Breadcrumb current={breadcrumb} />}
-                <div className="flex flex-col md:flex-row md:items-end justify-between mb-3 gap-6">
-                    <div>
-                        <h2 className="font-technical-header font-medium text-2xl md:text-3xl text-[#0F1115] mb-6 uppercase tracking-wider">
-                            {lang === 'KR' ? title.KR : title.EN}
-                        </h2>
-                    </div>
-                </div>
+        <section id={id} className={`relative z-10 ${firstSection ? 'mt-screen' : ''} bg-slate-50 py-16 md:py-24 overflow-hidden`}>
+            <div className={`${mode === 'grid' ? "max-w-[1216px] mx-auto px-6 md:px-12" : "w-full"}`}>
+                <h2 className="max-w-[1216px] mx-auto text-h2 text-[#0F1115] mb-8 md:mb-12 uppercase tracking-tight">
+                    {title.EN /* Note: Adjusted to use title object property from upstream props, though stash used raw {title}. Verify prop type. */}
+                    {/* Wait, upstream prop is `title: { KR: string; EN: string }`. Stash treated title as string? 
+                        Let's check the stash content again.
+                        Stash: {title}
+                        Upstream: {lang === 'KR' ? title.KR : title.EN}
+                        
+                        If stash treated title as string, it might mean the interface was changed in stash.
+                        Let's look at the file content I viewed earlier.
+                        
+                        Line 9: title: { KR: string; EN: string }; (Interface on line 9 is from upstream view? No, view_file shows current file state with conflicts markers.)
+                        The interface definition is visible at top of file.
+                        
+                        Line 9:     title: { KR: string; EN: string };
+                        
+                        So if stash uses `{title}`, it would be rendering `[object Object]`. 
+                        This suggests the stash might have also changed the interface, but the conflict marker I saw was only in the return statement.
+                        However, looking at the view_file output for ResortCollection.tsx:
+                        The conflict is lines 68-87.
+                        Lines 1-16 including interface are NOT in conflict.
+                        This means the interface expects an object.
+                        
+                        But stash code uses `{title}`.
+                        This implies the stash code might be buggy or I missed an interface change conflict?
+                        
+                        Ah, wait. Maybe the stash *did* change the interface but git didn't mark it as conflict because it auto-merged that part?
+                        Or maybe the stash is just wrong/incompatible with current HEAD interface.
+                        
+                        Let's check the prop usage in `ResortCollection` stashed part.
+                        `{title}`
+                        
+                        If I keep the upstream interface `title: { KR: string; EN: string }`, then `{title}` is invalid in JSX (object).
+                        
+                        So I should use the upstream logic `{lang === 'KR' ? title.KR : title.EN}` but wrapped in the stashed layout/styling.
+                    */}
+                    {lang === 'KR' ? title.KR : title.EN}
+                </h2>
 
                 {mode === 'grid' ? (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -102,7 +129,7 @@ const ResortCollection: React.FC<ResortCollectionProps> = ({ title, items, first
                         </div>
                     </div>
                 )}
-            </Container>
+            </div>
         </section>
     );
 };

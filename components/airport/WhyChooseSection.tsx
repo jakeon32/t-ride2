@@ -17,8 +17,8 @@ const WhyChooseSection: React.FC = () => {
                         <span className="text-white/40 font-bold tracking-widest text-xs mb-6 uppercase block">
                             {lang === 'KR' ? '서비스 기준' : 'Service Standards'}
                         </span>
-                        <h2 className="text-4xl md:text-5xl font-display font-bold text-white leading-[1.2] md:leading-[1.2] mb-8">
-                            {lang === 'KR' ? <>라이더스를<br />선택하는 이유</> : <>WHY<br />CHOOSE</>}
+                        <h2 className="text-2xl md:text-6xl font-light text-white mb-8 tracking-tight">
+                            {lang === 'KR' ? <>라이더스를<br /><span className="font-bold text-[var(--color-accent)]">선택하는 이유</span></> : <>WHY<br /><span className="font-bold text-[var(--color-accent)]">CHOOSE</span></>}
                         </h2>
                         <p className="text-slate-400 text-lg font-light leading-relaxed mb-12 border-l border-[var(--color-accent)] pl-6">
                             {lang === 'KR'

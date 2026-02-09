@@ -90,7 +90,7 @@ const CollectionSection: React.FC<CollectionSectionProps> = ({
                 {breadcrumb && <Breadcrumb current={breadcrumb} />}
                 <div className="flex flex-col md:flex-row md:items-end justify-between mb-3 gap-6">
                     <div>
-                        <h2 className="font-technical-header font-medium text-2xl md:text-3xl text-[#0F1115] mb-6 uppercase tracking-wider">
+                        <h2 className="text-h2 text-[#0F1115] mb-6 uppercase tracking-tight">
                             {lang === 'KR' ? title.KR : title.EN}
                         </h2>
                     </div>
@@ -119,9 +119,9 @@ const CollectionSection: React.FC<CollectionSectionProps> = ({
                                         </span>
                                     )}
                                 </div>
-                                <h3 className="text-lg font-bold text-[#0F1115] mb-1 line-clamp-1">{item.title}</h3>
+                                <h3 className="text-h3 text-[#0F1115] mb-1 line-clamp-1">{item.title}</h3>
                                 {item.description && (
-                                    <p className="text-sm text-slate-500 mb-1 line-clamp-1">{item.description}</p>
+                                    <p className="text-body text-slate-500 mb-1 line-clamp-1">{item.description}</p>
                                 )}
                                 {item.period && (
                                     <p className="text-sm font-medium text-[#265fb7] mb-4">{item.period}</p>

@@ -34,7 +34,7 @@ const SkiBanner: React.FC = () => {
                                 <div className="w-12 h-[1px] bg-[var(--color-accent)]"></div>
                             </div>
 
-                            <h2 className="text-4xl md:text-[3.5rem]/[1.2] font-display font-bold text-white leading-none md:leading-[1.2] tracking-tighter mb-6 relative z-10 drop-shadow-lg">
+                            <h2 className="text-2xl md:text-6xl font-light text-white/90 mb-6 tracking-tight relative z-10 drop-shadow-lg">
                                 {lang === 'KR' ? '눈부신 설원으로' : <>SNOW<br />ESCAPADE</>}
                             </h2>
 

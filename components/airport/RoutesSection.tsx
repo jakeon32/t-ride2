@@ -60,7 +60,7 @@ const RoutesSection: React.FC = () => {
                 <Breadcrumb current={{ KR: '공항이동', EN: 'Airport' }} />
                 <div className="flex flex-col md:flex-row md:items-end justify-between mb-3 gap-6">
                     <div>
-                        <h2 className="font-technical-header font-medium text-2xl md:text-3xl text-[#0F1115] mb-6 uppercase tracking-wider">
+                        <h2 className="text-h2 text-[#0F1115] mb-6 uppercase tracking-tight">
                             {lang === 'KR' ? '공항 이동 컬렉션' : 'Airport Transfer Collection'}
                         </h2>
                     </div>
@@ -89,8 +89,8 @@ const RoutesSection: React.FC = () => {
                                             : (lang === 'KR' ? '김포공항' : 'GMP')}
                                     </span>
                                 </div>
-                                <h3 className="text-lg font-bold text-[#0F1115] mb-1 line-clamp-1">{item.title}</h3>
-                                <p className="text-sm text-slate-500 mb-5 line-clamp-1">{item.description}</p>
+                                <h3 className="text-h3 text-[#0F1115] mb-1 line-clamp-1">{item.title}</h3>
+                                <p className="text-body text-slate-500 mb-5 line-clamp-1">{item.description}</p>
                                 <button className="w-full py-3 border border-[#E5E5E5] text-sm font-medium text-[#0F1115] hover:border-[#2E5CFF] hover:text-[#2E5CFF] transition-colors">
                                     {lang === 'KR' ? '자세히 보기' : 'VIEW DETAILS'}
                                 </button>

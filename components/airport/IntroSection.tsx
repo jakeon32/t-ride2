@@ -17,7 +17,7 @@ const IntroSection: React.FC = () => {
                         </div>
                     </div>
                     {/* L2: Section Title */}
-                    <h2 className="text-3xl md:text-5xl font-display font-bold text-white mb-8 leading-tight">
+                    <h2 className="text-3xl md:text-5xl font-display font-medium text-white mb-8 leading-tight">
                         {lang === 'KR'
                             ? <>공항으로 가는<br /><span className="text-slate-500 text-2xl md:text-4xl">가장 매끄러운 연결</span></>
                             : <>SEAMLESS CONNECTION<br /><span className="text-slate-500 text-2xl md:text-4xl">TO YOUR FLIGHT</span></>}

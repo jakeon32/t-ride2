@@ -44,12 +44,12 @@ const Hero: React.FC = () => {
             {lang === 'KR' ? (
               <>
                 목적지에 맞게,<br />
-                <span className="font-bold text-[var(--color-accent)]">이동을 선택하다.</span>
+                <span className="font-medium text-[var(--color-accent)]">이동을 선택하다.</span>
               </>
             ) : (
               <>
                 SCULPTURAL<br />
-                <span className="font-bold text-[var(--color-accent)]">MOBILITY.</span>
+                <span className="font-medium text-[var(--color-accent)]">MOBILITY.</span>
               </>
             )}
           </h2>
