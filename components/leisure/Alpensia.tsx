@@ -12,8 +12,20 @@ const heroSlides = [
     {
         id: 0,
         image: skiBannerImg,
-        title: "평창 알펜시아 리조트",
-        desc: <>2018 평창 동계올림픽 경기장을 품은 리조트로,<br />스키·점프 경기장과 호텔·워터파크가 모여 있는 가족 친화형 겨울 여행지입니다.</>
+        title: "평창 동계올림픽의 무대",
+        desc: <>2018 평창 동계올림픽 스키점프 경기장을 품은 리조트.<br />올림픽의 감동을 직접 체험해보세요.</>
+    },
+    {
+        id: 1,
+        image: skiBannerImg,
+        title: "가족 친화형 겨울 여행지",
+        desc: <>호텔, 워터파크, 다양한 편의시설까지.<br />온 가족이 함께 즐기는 완벽한 겨울 휴가.</>
+    },
+    {
+        id: 2,
+        image: skiBannerImg,
+        title: "다양한 슬로프 구성",
+        desc: <>초보자부터 상급자까지 만족시키는<br />체계적인 슬로프와 스키 스쿨 프로그램.</>
     }
 ];
 
@@ -67,7 +79,7 @@ const Alpensia: React.FC = () => {
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
                             {/* Shuttle Bus Card */}
-                            <div className="group border border-gray-200 rounded-2xl p-4 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-900/5 transition-all duration-500 flex flex-col h-full bg-slate-50/50 relative overflow-hidden">
+                            <div className="group border border-gray-200 rounded-2xl p-8 lg:p-10 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-900/5 transition-all duration-500 flex flex-col h-full bg-slate-50/50 relative overflow-hidden">
                                 <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
                                     <svg className="w-32 h-32" fill="currentColor" viewBox="0 0 24 24"><path d="M4 16c0 .88.39 1.67 1 2.22V20c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h8v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1.78c.61-.55 1-1.34 1-2.22V6c0-3.5-3.58-4-8-4s-8 .5-8 4v10zm3.5 1c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm9 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm1.5-6H6V6h12v5z" /></svg>
                                 </div>
@@ -111,7 +123,7 @@ const Alpensia: React.FC = () => {
                             </div>
 
                             {/* Private Car Card */}
-                            <div className="group border border-gray-200 rounded-2xl p-4 hover:border-gray-900/30 hover:shadow-2xl hover:shadow-gray-900/5 transition-all duration-500 flex flex-col h-full bg-white relative overflow-hidden">
+                            <div className="group border border-gray-200 rounded-2xl p-8 lg:p-10 hover:border-gray-900/30 hover:shadow-2xl hover:shadow-gray-900/5 transition-all duration-500 flex flex-col h-full bg-white relative overflow-hidden">
                                 <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
                                     <svg className="w-32 h-32" fill="currentColor" viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z" /></svg>
                                 </div>

@@ -12,8 +12,20 @@ const heroSlides = [
     {
         id: 0,
         image: leisureHeroImg,
-        title: "비발디파크 스키월드",
-        desc: <>수도권에서 가장 가까운 규모급 스키장 중 하나로,<br />야간 운영과 다양한 숙박·워터파크 시설로 유명한 가족·커플 인기 리조트입니다.</>
+        title: "수도권에서 가장 가까운 스키장",
+        desc: <>서울에서 약 1시간 20분 거리.<br />부담 없는 당일치기 스키 여행의 최적지.</>
+    },
+    {
+        id: 1,
+        image: leisureHeroImg,
+        title: "야간 스키의 명소",
+        desc: <>화려한 조명 아래 펼쳐지는 나이트 스키.<br />낮과는 다른 특별한 설원의 밤을 경험하세요.</>
+    },
+    {
+        id: 2,
+        image: leisureHeroImg,
+        title: "가족·커플 인기 리조트",
+        desc: <>스키장, 워터파크, 다양한 숙박 시설까지.<br />모두가 만족하는 올인원 겨울 휴양지.</>
     }
 ];
 
@@ -67,7 +79,7 @@ const VivaldiPark: React.FC = () => {
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
                             {/* Shuttle Bus Card */}
-                            <div className="group border border-gray-200 rounded-2xl p-4 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-900/5 transition-all duration-500 flex flex-col h-full bg-slate-50/50 relative overflow-hidden">
+                            <div className="group border border-gray-200 rounded-2xl p-8 lg:p-10 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-900/5 transition-all duration-500 flex flex-col h-full bg-slate-50/50 relative overflow-hidden">
                                 <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
                                     <svg className="w-32 h-32" fill="currentColor" viewBox="0 0 24 24"><path d="M4 16c0 .88.39 1.67 1 2.22V20c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h8v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1.78c.61-.55 1-1.34 1-2.22V6c0-3.5-3.58-4-8-4s-8 .5-8 4v10zm3.5 1c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm9 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm1.5-6H6V6h12v5z" /></svg>
                                 </div>
@@ -111,7 +123,7 @@ const VivaldiPark: React.FC = () => {
                             </div>
 
                             {/* Private Car Card */}
-                            <div className="group border border-gray-200 rounded-2xl p-4 hover:border-gray-900/30 hover:shadow-2xl hover:shadow-gray-900/5 transition-all duration-500 flex flex-col h-full bg-white relative overflow-hidden">
+                            <div className="group border border-gray-200 rounded-2xl p-8 lg:p-10 hover:border-gray-900/30 hover:shadow-2xl hover:shadow-gray-900/5 transition-all duration-500 flex flex-col h-full bg-white relative overflow-hidden">
                                 <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
                                     <svg className="w-32 h-32" fill="currentColor" viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z" /></svg>
                                 </div>
