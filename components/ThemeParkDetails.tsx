@@ -8,6 +8,7 @@ import CollectionSection, { CollectionItem, FilterOption } from './shared/Collec
 // Local Asset Images
 import heroImg from '../assets/shuttle_everland 1.webp';
 import familyVanImg from '../assets/private_van_family 1.webp';
+import themeParkHeroImg from '../assets/Theme park_cate.webp';
 
 const ThemeParkDetails: React.FC = () => {
     const { lang } = useLanguage();
@@ -29,6 +30,7 @@ const ThemeParkDetails: React.FC = () => {
     const heroSlides = [
         {
             id: 0,
+            image: themeParkHeroImg,
             title: lang === 'KR' ? <>환상의 나라로 떠나는<br />설레는 여정</> : <>Exciting Journey<br />to the Land of Fantasy</>,
             desc: lang === 'KR' ? <>에버랜드까지 편안하게.<br />오픈런부터 폐장까지 체력 걱정 없이 즐기세요.</> : <>Travel comfortably to Everland.<br />Enjoy from opening to closing without fatigue.</>,
             buttonText: lang === 'KR' ? "목적지 찾아보기" : "Find Destinations",
