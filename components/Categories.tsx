@@ -94,7 +94,7 @@ const Categories: React.FC = () => {
         </div>
 
         {/* Grid Layout */}
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-6 lg:gap-1">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {categories.map((cat, i) => (
             <Link
               key={i}

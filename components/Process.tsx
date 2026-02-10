@@ -75,11 +75,11 @@ const Process: React.FC = () => {
         </div>
 
         {/* Destination Grid - Cinematic Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
           {destinations.map((dest, index) => (
             <div
               key={index}
-              className="group relative h-[400px] overflow-hidden bg-[#111] border border-slate-200 hover:border-[#32a0f7] transition-all duration-500 cursor-pointer"
+              className="group relative h-[200px] md:h-[400px] overflow-hidden bg-[#111] border border-slate-200 hover:border-[#32a0f7] transition-all duration-500 cursor-pointer"
             >
               {/* Background Image */}
               <div className="absolute inset-0 z-0">
