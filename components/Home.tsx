@@ -3,6 +3,7 @@ import Navbar from './Navbar';
 import Hero from './Hero';
 import MatchingLogic from './MatchingLogic';
 import Categories from './Categories';
+import BrandVideo from './BrandVideo';
 import WhyUs from './WhyUs';
 import Process from './Process';
 import Footer from './Footer';
@@ -20,6 +21,7 @@ const Home: React.FC = () => {
             <main className="flex-grow z-10 relative pointer-events-none [&>*]:pointer-events-auto">
                 <MatchingLogic />
                 <Categories />
+                <BrandVideo />
                 <WhyUs />
                 <Process />
             </main>
