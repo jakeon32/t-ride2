@@ -93,15 +93,15 @@ const Categories: React.FC = () => {
           </p>
         </div>
 
-        {/* Grid Layout - Masonry Feel (Light) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-1">
+        {/* Grid Layout */}
+        <div className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-6 lg:gap-1">
           {categories.map((cat, i) => (
             <Link
               key={i}
               to={cat.href}
-              className="group relative bg-white border border-slate-200 overflow-hidden hover:z-10 hover:border-[#32a0f7] transition-all duration-500 flex flex-col min-h-[400px]"
+              className="group relative bg-white border border-slate-200 overflow-hidden hover:z-10 hover:border-[#32a0f7] transition-all duration-500 flex flex-col min-h-[140px] md:min-h-[400px]"
             >
-              {/* Background Image with Cinematic Reveal */}
+              {/* Background Image */}
               <div className="absolute inset-0 z-0">
                 <img
                   src={cat.image}
@@ -110,30 +110,29 @@ const Categories: React.FC = () => {
                   loading="lazy"
                   decoding="async"
                 />
-                {/* Gradient Overlay for Text Visibility on Light/Dark Images - Maximum Strength */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent transition-all duration-500" />
               </div>
 
-              {/* Top Meta */}
-              <div className="relative z-10 p-5 md:p-10 flex justify-end items-start mb-12">
+              {/* Top Meta - desktop only */}
+              <div className="relative z-10 hidden md:flex p-10 justify-end items-start mb-12">
                 <span className="text-xl font-bold text-white/50 tracking-[0.2em] group-hover:text-white transition-colors">
                   {(i + 1).toString().padStart(2, '0')}
                 </span>
               </div>
 
               {/* Bottom Content */}
-              <div className="relative z-10 mt-auto p-5 md:p-10">
-                <h3 className="text-3xl font-display font-bold text-white mb-2 group-hover:translate-x-2 transition-transform duration-300">
+              <div className="relative z-10 mt-auto p-3 md:p-10">
+                <h3 className="text-sm md:text-3xl font-display font-bold text-white mb-0.5 md:mb-2 group-hover:translate-x-2 transition-transform duration-300 line-clamp-1">
                   {cat.title}
                 </h3>
-                <span className="block text-xs font-bold text-[#32a0f7] uppercase tracking-widest mb-4">
+                <span className="block text-[10px] md:text-xs font-bold text-[#32a0f7] uppercase tracking-widest md:mb-4">
                   {cat.sub}
                 </span>
-                <p className="text-slate-300 text-sm leading-relaxed border-l-2 border-[#32a0f7] pl-4 mb-8 group-hover:text-white transition-colors">
+                <p className="hidden md:block text-slate-300 text-sm leading-relaxed border-l-2 border-[#32a0f7] pl-4 mb-8 group-hover:text-white transition-colors">
                   {cat.desc}
                 </p>
 
-                <div className="flex items-center gap-2 text-white/70 text-xs font-bold tracking-widest uppercase group-hover:text-white transition-colors">
+                <div className="hidden md:flex items-center gap-2 text-white/70 text-xs font-bold tracking-widest uppercase group-hover:text-white transition-colors">
                   <span>{lang === 'KR' ? '자세히 보기' : 'View Service'}</span>
                   <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
