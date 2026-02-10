@@ -203,7 +203,7 @@ const EventDetails: React.FC = () => {
                 />
 
                 {/* ─── Scrolling Content Wrapper ─── */}
-                <div className="relative z-10 mt-screen">
+                <div className="relative z-10 mt-[75vh]">
 
                     {/* ─── Section 2: Service Introduction ─── */}
                     <section className="bg-white border-b border-[#E5E5E5]">

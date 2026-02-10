@@ -65,7 +65,7 @@ const ResortCollection: React.FC<ResortCollectionProps> = ({ title, items, first
     const marqueeItems = [...items, ...items];
 
     return (
-        <section id={id} className={`relative z-10 ${firstSection ? 'mt-screen' : ''} bg-slate-50 py-16 md:py-24 overflow-hidden`}>
+        <section id={id} className={`relative z-10 ${firstSection ? 'mt-[75vh]' : ''} bg-slate-50 py-16 md:py-24 overflow-hidden`}>
             <div className={`${mode === 'grid' ? "max-w-[1216px] mx-auto px-6 md:px-12" : "w-full"}`}>
                 <h2 className="max-w-[1216px] mx-auto text-h2 text-[#0F1115] mb-8 md:mb-12 uppercase tracking-tight">
                     {title.EN /* Note: Adjusted to use title object property from upstream props, though stash used raw {title}. Verify prop type. */}

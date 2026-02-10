@@ -21,7 +21,7 @@ interface DetailHeroSectionProps {
 const DetailHeroSection: React.FC<DetailHeroSectionProps> = ({
     slides,
     badgePrefix,
-    className = "h-screen",
+    className = "h-[75vh]",
     align = 'left',
     mainTitle
 }) => {

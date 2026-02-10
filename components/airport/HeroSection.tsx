@@ -24,7 +24,7 @@ const HeroSection: React.FC = () => {
     const overlayOpacity = Math.min(scrollY / 800, 0.8);
 
     return (
-        <section className="fixed top-0 left-0 w-full h-screen z-0 overflow-hidden">
+        <section className="fixed top-0 left-0 w-full h-[75vh] z-0 overflow-hidden">
             {/* Background Layer with Parallax */}
             <div
                 className="absolute inset-0 w-full h-full scale-105"

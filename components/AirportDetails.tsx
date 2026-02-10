@@ -18,7 +18,7 @@ const AirportDetails: React.FC = () => {
         <div className="min-h-screen flex flex-col bg-[var(--color-bg)]">
             <Navbar />
             <HeroSection />
-            <main className="flex-grow z-10 relative mt-screen">
+            <main className="flex-grow z-10 relative mt-[75vh]">
                 <div className="relative z-10 bg-[var(--color-bg)]">
                     <IntroSection />
                     <RoutesSection />

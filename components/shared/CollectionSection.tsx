@@ -90,7 +90,7 @@ const CollectionSection: React.FC<CollectionSectionProps> = ({
     const progressPercentage = (currentSlide / Math.max(filteredItems.length, 1)) * 100;
 
     return (
-        <section id="collection-section" className={`relative z-10 ${bgColor || 'bg-white'} ${firstSection ? 'mt-screen border-b border-[#E5E5E5]' : 'pt-12 md:pt-16'}`}>
+        <section id="collection-section" className={`relative z-10 ${bgColor || 'bg-white'} ${firstSection ? 'mt-[75vh] border-b border-[#E5E5E5]' : 'pt-12 md:pt-16'}`}>
             {firstSection && <div className="w-full h-[1px] bg-[#E5E5E5] mb-12 md:mb-16"></div>}
 
             <Container className={`relative group ${compactBottom ? 'pb-12 md:pb-16' : 'pb-24 md:pb-32'}`}>
