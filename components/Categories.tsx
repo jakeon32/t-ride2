@@ -94,12 +94,12 @@ const Categories: React.FC = () => {
         </div>
 
         {/* Grid Layout */}
-        <div className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-6 lg:gap-1">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-6 lg:gap-1">
           {categories.map((cat, i) => (
             <Link
               key={i}
               to={cat.href}
-              className="group relative bg-white border border-slate-200 overflow-hidden hover:z-10 hover:border-[#32a0f7] transition-all duration-500 flex flex-col min-h-[140px] md:min-h-[400px]"
+              className="group relative bg-white border border-slate-200 overflow-hidden hover:z-10 hover:border-[#32a0f7] transition-all duration-500 flex flex-col min-h-[160px] md:min-h-[400px]"
             >
               {/* Background Image */}
               <div className="absolute inset-0 z-0">
