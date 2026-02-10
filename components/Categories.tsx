@@ -99,7 +99,7 @@ const Categories: React.FC = () => {
             <Link
               key={i}
               to={cat.href}
-              className="group relative bg-white border border-slate-200 overflow-hidden hover:z-10 hover:border-[#32a0f7] transition-all duration-500 flex flex-col min-h-[160px] md:min-h-[400px]"
+              className="group relative bg-white border border-slate-200 overflow-hidden hover:z-10 hover:border-[#32a0f7] transition-all duration-500 flex flex-col min-h-[160px] md:min-h-[200px]"
             >
               {/* Background Image */}
               <div className="absolute inset-0 z-0">
