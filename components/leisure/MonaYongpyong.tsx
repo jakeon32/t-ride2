@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import Navbar from '../Navbar';
 import Footer from '../Footer';
 import StaticDetailHero from '../shared/StaticDetailHero';
+import { useLanguage } from '../../contexts/LanguageContext';
 import ResortCollection from './ResortCollection';
 import Container from '../shared/Container';
 import { popularResorts } from '../../data/leisureResorts';
@@ -10,35 +11,45 @@ import mona02Hero from '../../assets/mona02_hero.webp';
 import mona03Hero from '../../assets/mona03_hero.webp';
 import { Link } from 'react-router-dom';
 
-const heroSlides = [
-    {
-        id: 0,
-        image: mona01Hero,
-        title: "발왕산의 사계절 파노라마",
-        desc: <>한국 스키의 발상지이자 28개 슬로프와 14개 리프트를 갖춘<br />국내 최대 규모의 사계절 프리미엄 레저 단지입니다.</>
-    },
-    {
-        id: 1,
-        image: mona02Hero,
-        title: "올인원 리조트 라이프",
-        desc: <>호텔, 콘도, 워터파크, 다이닝까지.<br />슬로프 밖에서도 계속되는 풍성한 휴식을 즐겨보세요.</>
-    },
-    {
-        id: 2,
-        image: mona03Hero,
-        title: "압도적 자연 경관",
-        desc: <>해발 1,458m 발왕산 정상에서 마주하는<br />압도적인 자연 경관과 스카이워크를 경험하세요.</>
-    }
-];
+
 
 const MonaYongpyong: React.FC = () => {
+    const { lang } = useLanguage();
+
     // Scroll to top on mount
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
     // Filter out Yongpyong from recommendations
-    const otherResorts = popularResorts.filter(resort => !resort.name.includes("모나 용평"));
+    const otherResorts = popularResorts.filter(resort => !resort.name.KR.includes("모나 용평"));
+
+    const heroSlides = [
+        {
+            id: 0,
+            image: mona01Hero,
+            title: lang === 'KR' ? "발왕산의 사계절 파노라마" : "Four Seasons Panorama of Mt. Balwang",
+            desc: lang === 'KR'
+                ? <>한국 스키의 발상지이자 28개 슬로프와 14개 리프트를 갖춘<br />국내 최대 규모의 사계절 프리미엄 레저 단지입니다.</>
+                : <>The birthplace of Korean skiing and the largest year-round premium leisure complex in Korea,<br />featuring 28 slopes and 14 lifts.</>
+        },
+        {
+            id: 1,
+            image: mona02Hero,
+            title: lang === 'KR' ? "올인원 리조트 라이프" : "All-in-One Resort Life",
+            desc: lang === 'KR'
+                ? <>호텔, 콘도, 워터파크, 다이닝까지.<br />슬로프 밖에서도 계속되는 풍성한 휴식을 즐겨보세요.</>
+                : <>Hotels, condos, water park, and dining.<br />Enjoy rich relaxation even outside the slopes.</>
+        },
+        {
+            id: 2,
+            image: mona03Hero,
+            title: lang === 'KR' ? "압도적 자연 경관" : "Overwhelming Natural Scenery",
+            desc: lang === 'KR'
+                ? <>해발 1,458m 발왕산 정상에서 마주하는<br />압도적인 자연 경관과 스카이워크를 경험하세요.</>
+                : <>Experience the overwhelming natural scenery and Skywalk<br />at the summit of Mt. Balwang, 1,458m above sea level.</>
+        }
+    ];
 
     return (
         <div className="min-h-screen flex flex-col bg-slate-50">
@@ -48,13 +59,13 @@ const MonaYongpyong: React.FC = () => {
             <div className="hidden md:block absolute top-24 left-0 w-full z-20 pointer-events-none">
                 <Container>
                     <nav className="flex items-center text-sm text-white/80 font-medium pointer-events-auto drop-shadow-md">
-                        <Link to="/" className="hover:text-white transition-colors">홈</Link>
+                        <Link to="/" className="hover:text-white transition-colors">{lang === 'KR' ? '홈' : 'Home'}</Link>
                         <span className="mx-2 opacity-60">&gt;</span>
-                        <Link to="/leisure" className="hover:text-white transition-colors">레저</Link>
+                        <Link to="/leisure" className="hover:text-white transition-colors">{lang === 'KR' ? '레저' : 'Leisure'}</Link>
                         <span className="mx-2 opacity-60">&gt;</span>
-                        <Link to="/leisure" className="hover:text-white transition-colors">스키 리조트</Link>
+                        <Link to="/leisure" className="hover:text-white transition-colors">{lang === 'KR' ? '스키 리조트' : 'Ski Resort'}</Link>
                         <span className="mx-2 opacity-60">&gt;</span>
-                        <span className="text-white">모나 용평</span>
+                        <span className="text-white">{lang === 'KR' ? '모나 용평' : 'Mona Yongpyong'}</span>
                     </nav>
                 </Container>
             </div>
@@ -62,8 +73,10 @@ const MonaYongpyong: React.FC = () => {
             <StaticDetailHero
                 slides={heroSlides}
                 className="h-[30vh] md:h-[30vh]"
-                mainTitle="모나 용평 스키 리조트"
-                description={<>28개 슬로프와 14개 리프트를 갖춘 국내 최대 규모 스키 리조트,<br className="hidden md:block" /> 평창 동계올림픽 경기가 열린 스노 리조트입니다.</>}
+                mainTitle={lang === 'KR' ? "모나 용평 스키 리조트" : "Mona Yongpyong Ski Resort"}
+                description={lang === 'KR'
+                    ? <>28개 슬로프와 14개 리프트를 갖춘 국내 최대 규모 스키 리조트,<br className="hidden md:block" /> 평창 동계올림픽 경기가 열린 스노 리조트입니다.</>
+                    : <>Korea's largest ski resort with 28 slopes and 14 lifts,<br className="hidden md:block" /> a snow resort that hosted the Pyeongchang Winter Olympics.</>}
             />
 
             <main className="flex-grow">
@@ -73,11 +86,12 @@ const MonaYongpyong: React.FC = () => {
                         <div className="mb-20 text-center md:text-left">
                             <span className="text-overline text-blue-600 block mb-3">Transport Options</span>
                             <h2 className="text-h2 text-gray-900 mb-6 tracking-tight">
-                                모나 용평 이동 서비스
+                                {lang === 'KR' ? '모나 용평 이동 서비스' : 'Mona Yongpyong Transfer Services'}
                             </h2>
                             <p className="text-slate-500 text-lg md:text-xl max-w-2xl leading-relaxed">
-                                서울·인천에서 모나 용평까지. <br className="hidden md:block" />
-                                가장 쾌적하고 편안한 이동 방법을 선택하세요.
+                                {lang === 'KR'
+                                    ? <>서울·인천에서 모나 용평까지. <br className="hidden md:block" /> 가장 쾌적하고 편안한 이동 방법을 선택하세요.</>
+                                    : <>From Seoul/Incheon to Mona Yongpyong. <br className="hidden md:block" /> Choose the most comfortable and convenient way to travel.</>}
                             </p>
                         </div>
 
@@ -90,28 +104,30 @@ const MonaYongpyong: React.FC = () => {
                                 <span className="inline-flex items-center bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full w-fit mb-6 tracking-wide">
                                     SHUTTLE BUS
                                 </span>
-                                <h3 className="text-h3 text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">셔틀버스</h3>
+                                <h3 className="text-h3 text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">{lang === 'KR' ? '셔틀버스' : 'Shuttle Bus'}</h3>
                                 <p className="text-slate-600 mb-8 leading-relaxed text-lg">
-                                    정해진 시간에 출발하는 직행 전용 셔틀.<br />가장 합리적인 가격으로 이동하세요.
+                                    {lang === 'KR'
+                                        ? <>정해진 시간에 출발하는 직행 전용 셔틀.<br />가장 합리적인 가격으로 이동하세요.</>
+                                        : <>Direct shuttle departing at scheduled times.<br />Travel at the most reasonable price.</>}
                                 </p>
                                 <ul className="space-y-4 mb-10 flex-grow relative z-10">
                                     <li className="flex items-start">
                                         <div className="bg-blue-100 p-1 rounded-full mr-3 mt-0.5 text-blue-600">
                                             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path d="M5 13l4 4L19 7" /></svg>
                                         </div>
-                                        <span className="text-slate-700 font-medium">서울 주요 지역 · 인천공항 직행</span>
+                                        <span className="text-slate-700 font-medium">{lang === 'KR' ? '서울 주요 지역 · 인천공항 직행' : 'Direct from Major Seoul Areas & Incheon Airport'}</span>
                                     </li>
                                     <li className="flex items-start">
                                         <div className="bg-blue-100 p-1 rounded-full mr-3 mt-0.5 text-blue-600">
                                             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path d="M5 13l4 4L19 7" /></svg>
                                         </div>
-                                        <span className="text-slate-700 font-medium">스키장 앞 하차 (장비 적재 가능)</span>
+                                        <span className="text-slate-700 font-medium">{lang === 'KR' ? '스키장 앞 하차 (장비 적재 가능)' : 'Drop-off at Ski Resort (Equipment Loading Available)'}</span>
                                     </li>
                                     <li className="flex items-start">
                                         <div className="bg-blue-100 p-1 rounded-full mr-3 mt-0.5 text-blue-600">
                                             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path d="M5 13l4 4L19 7" /></svg>
                                         </div>
-                                        <span className="text-slate-700 font-medium">성수기 좌석 보장 (사전 예약 시)</span>
+                                        <span className="text-slate-700 font-medium">{lang === 'KR' ? '성수기 좌석 보장 (사전 예약 시)' : 'Guaranteed Seats in Peak Season (with Reservation)'}</span>
                                     </li>
                                 </ul>
                                 <div className="relative z-10">
@@ -121,7 +137,7 @@ const MonaYongpyong: React.FC = () => {
                                         rel="noopener noreferrer"
                                         className="block w-full text-center bg-gray-900 text-white font-bold py-4 rounded-xl hover:bg-blue-600 transition-all duration-300 shadow-lg hover:shadow-blue-500/30 transform hover:-translate-y-1"
                                     >
-                                        셔틀버스 예약하기
+                                        {lang === 'KR' ? '셔틀버스 예약하기' : 'Book Shuttle Bus'}
                                     </a>
                                 </div>
                             </div>
@@ -129,33 +145,35 @@ const MonaYongpyong: React.FC = () => {
                             {/* Private Car Card */}
                             <div className="group border border-gray-200 rounded-2xl p-4 hover:border-gray-900/30 hover:shadow-2xl hover:shadow-gray-900/5 transition-all duration-500 flex flex-col h-full bg-white relative overflow-hidden">
                                 <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
-                                    <svg className="w-32 h-32" fill="currentColor" viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z" /></svg>
+                                    <svg className="w-32 h-32" fill="currentColor" viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1.78c.61-.55 1-1.34 1-2.22V6c0-3.5-3.58-4-8-4s-8 .5-8 4v10zm3.5 1c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z" /></svg>
                                 </div>
                                 <span className="inline-flex items-center bg-gray-100 text-gray-800 text-xs font-bold px-3 py-1 rounded-full w-fit mb-6 tracking-wide">
                                     PRIVATE VAN/SEDAN
                                 </span>
-                                <h3 className="text-h3 text-gray-900 mb-3 group-hover:text-gray-700 transition-colors">프라이빗 전용 차량</h3>
+                                <h3 className="text-h3 text-gray-900 mb-3 group-hover:text-gray-700 transition-colors">{lang === 'KR' ? '프라이빗 전용 차량' : 'Private Transfer'}</h3>
                                 <p className="text-slate-600 mb-8 leading-relaxed text-lg">
-                                    우리 일행만 탑승하는 단독 차량.<br />집 앞에서 스키장까지 Door-to-Door.
+                                    {lang === 'KR'
+                                        ? <>우리 일행만 탑승하는 단독 차량.<br />집 앞에서 스키장까지 Door-to-Door.</>
+                                        : <>Exclusive vehicle for your group only.<br />Door-to-Door from your home to the ski resort.</>}
                                 </p>
                                 <ul className="space-y-4 mb-10 flex-grow relative z-10">
                                     <li className="flex items-start">
                                         <div className="bg-gray-100 p-1 rounded-full mr-3 mt-0.5 text-gray-800">
                                             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path d="M5 13l4 4L19 7" /></svg>
                                         </div>
-                                        <span className="text-slate-700 font-medium">원하는 시간·장소 픽업 & 샌딩</span>
+                                        <span className="text-slate-700 font-medium">{lang === 'KR' ? '원하는 시간·장소 픽업 & 샌딩' : 'Pickup & Drop-off at Desired Time & Place'}</span>
                                     </li>
                                     <li className="flex items-start">
                                         <div className="bg-gray-100 p-1 rounded-full mr-3 mt-0.5 text-gray-800">
                                             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path d="M5 13l4 4L19 7" /></svg>
                                         </div>
-                                        <span className="text-slate-700 font-medium">인원·짐에 맞는 차종 선택 (밴/세단)</span>
+                                        <span className="text-slate-700 font-medium">{lang === 'KR' ? '인원·짐에 맞는 차종 선택 (밴/세단)' : 'Vehicle Selection based on Passengers & Luggage (Van/Sedan)'}</span>
                                     </li>
                                     <li className="flex items-start">
                                         <div className="bg-gray-100 p-1 rounded-full mr-3 mt-0.5 text-gray-800">
                                             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path d="M5 13l4 4L19 7" /></svg>
                                         </div>
-                                        <span className="text-slate-700 font-medium">유연한 일정 조정 가능</span>
+                                        <span className="text-slate-700 font-medium">{lang === 'KR' ? '유연한 일정 조정 가능' : 'Flexible Schedule Adjustment'}</span>
                                     </li>
                                 </ul>
                                 <div className="relative z-10">
@@ -165,7 +183,7 @@ const MonaYongpyong: React.FC = () => {
                                         rel="noopener noreferrer"
                                         className="block w-full text-center border-2 border-gray-900 text-gray-900 font-bold py-4 rounded-xl hover:bg-blue-600 hover:border-blue-600 hover:text-white transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/30 transform hover:-translate-y-1"
                                     >
-                                        프라이빗 이동 예약하기
+                                        {lang === 'KR' ? '프라이빗 이동 예약하기' : 'Book Private Transfer'}
                                     </a>
                                 </div>
                             </div>
@@ -175,7 +193,7 @@ const MonaYongpyong: React.FC = () => {
 
                 {/* Recommendations Section */}
                 <ResortCollection
-                    title="다른 스키장 이동 서비스도 둘러보세요"
+                    title={{ KR: "다른 스키장 이동 서비스도 둘러보세요", EN: "Explore Other Ski Resort Transfers" }}
                     items={otherResorts}
                     firstSection={false}
                     mode="marquee"
@@ -187,15 +205,27 @@ const MonaYongpyong: React.FC = () => {
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                             <div>
                                 <h4 className="font-bold text-gray-900 mb-3 text-lg">LOCATION</h4>
-                                <p className="text-slate-600 font-light">강원도 평창군 대관령면 올림픽로 715<br />모나 용평 리조트</p>
+                                <p className="text-slate-600 font-light">
+                                    {lang === 'KR'
+                                        ? <>강원도 평창군 대관령면 올림픽로 715<br />모나 용평 리조트</>
+                                        : <>715 Olympic-ro, Daegwallyeong-myeon, Pyeongchang-gun, Gangwon-do<br />Mona Yongpyong Resort</>}
+                                </p>
                             </div>
                             <div>
                                 <h4 className="font-bold text-gray-900 mb-3 text-lg">SEASON</h4>
-                                <p className="text-slate-600 font-light">11월 중순 ~ 4월 초<br />(기상 상황에 따라 변동 가능)</p>
+                                <p className="text-slate-600 font-light">
+                                    {lang === 'KR'
+                                        ? <>11월 중순 ~ 4월 초<br />(기상 상황에 따라 변동 가능)</>
+                                        : <>Mid-November ~ Early April<br />(Subject to weather conditions)</>}
+                                </p>
                             </div>
                             <div>
                                 <h4 className="font-bold text-gray-900 mb-3 text-lg">NOTICE</h4>
-                                <p className="text-slate-600 font-light">예약 확정 후 발송되는 알림톡을 통해<br />탑승 장소와 시간을 정확히 확인해주세요.</p>
+                                <p className="text-slate-600 font-light">
+                                    {lang === 'KR'
+                                        ? <>예약 확정 후 발송되는 알림톡을 통해<br />탑승 장소와 시간을 정확히 확인해주세요.</>
+                                        : <>Please check the exact pickup location and time<br />via the notification sent after booking confirmation.</>}
+                                </p>
                             </div>
                         </div>
                     </Container>

@@ -29,29 +29,29 @@ const ResortCollection: React.FC<ResortCollectionProps> = ({ title, items, first
             <div className="aspect-[4/3] bg-gray-100 relative overflow-hidden">
                 <img
                     src={resort.image}
-                    alt={resort.name}
+                    alt={lang === 'KR' ? resort.name.KR : resort.name.EN}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 select-none pointer-events-none"
                     loading="lazy"
                     draggable={false}
                 />
                 <div className="absolute top-4 left-4">
                     <span className="bg-black/60 backdrop-blur-sm text-white px-3 py-1.5 rounded text-xs font-medium tracking-wide">
-                        {resort.region}
+                        {lang === 'KR' ? resort.region.KR : resort.region.EN}
                     </span>
                 </div>
             </div>
             <div className="p-4">
                 <div className="mb-4">
                     <h3 className="text-h3 text-[#0F1115] group-hover:text-[#2E5CFF] transition-colors line-clamp-1">
-                        {resort.name}
+                        {lang === 'KR' ? resort.name.KR : resort.name.EN}
                     </h3>
                     <p className="text-sm font-medium text-[#2E5CFF] mt-1">
-                        {resort.distanceText}
+                        {lang === 'KR' ? resort.distanceText.KR : resort.distanceText.EN}
                     </p>
                 </div>
 
-                <p className="text-gray-500 text-sm leading-relaxed mb-5 line-clamp-1">
-                    {resort.tagline.replace(/\[web:\d+\]/g, '')}
+                <p className="text-gray-500 text-sm leading-relaxed mb-5 line-clamp-2">
+                    {(lang === 'KR' ? resort.tagline.KR : resort.tagline.EN).replace(/\[web:\d+\]/g, '')}
                 </p>
 
                 <div className="w-full py-3 border border-[#E5E5E5] text-center text-sm font-medium text-[#0F1115] group-hover:border-[#2E5CFF] group-hover:text-[#2E5CFF] transition-colors">

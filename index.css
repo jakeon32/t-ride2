@@ -2,8 +2,70 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ========================================
+   AETHER Design System Colors (moved from index.html inline)
+   ======================================== */
+:root {
+  --color-primary: #FFFFFF;
+  --color-secondary: #252525;
+  --color-bg: #121212;
+  --color-text: #FFFFFF;
+  --color-subtext: #8E8E8E;
+  --color-accent: #3B82F6;
+  --color-border: #333333;
+}
+
 html {
   scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.display-font {
+  font-family: 'Montserrat', 'Pretendard', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.hero-gradient {
+  background: linear-gradient(to bottom, rgba(10, 36, 99, 0.3) 0%, rgba(10, 36, 99, 0.1) 50%, rgba(244, 247, 249, 1) 100%);
+}
+
+.card-shadow {
+  box-shadow: 0 10px 30px -5px rgba(10, 36, 99, 0.08);
+}
+
+.filter-bar-shadow {
+  box-shadow: 0 20px 40px -12px rgba(10, 36, 99, 0.15);
+}
+
+.text-shadow-sm {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.break-keep {
+  word-break: keep-all;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 /* ========================================

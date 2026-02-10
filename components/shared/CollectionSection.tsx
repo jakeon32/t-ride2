@@ -6,11 +6,11 @@ import Container from './Container';
 export interface CollectionItem {
     id: number;
     type: string;
-    partner: string;
-    title: string;
-    description?: string;
-    period?: string;
-    features: string[];
+    partner: string | { KR: string; EN: string };
+    title: string | { KR: string; EN: string };
+    description?: string | { KR: string; EN: string };
+    period?: string | { KR: string; EN: string };
+    features: (string | { KR: string; EN: string })[];
     image: string;
     url?: string;
 }
@@ -54,6 +54,13 @@ const CollectionSection: React.FC<CollectionSectionProps> = ({
         setCurrentSlide(1);
         if (scrollRef.current) scrollRef.current.scrollLeft = 0;
     }, [activeFilter]);
+
+    // Helper to get text based on language
+    const getText = (content: string | { KR: string; EN: string } | undefined): string => {
+        if (!content) return '';
+        if (typeof content === 'string') return content;
+        return lang === 'KR' ? content.KR : content.EN;
+    };
 
     const handleScroll = () => {
         if (scrollRef.current) {
@@ -106,7 +113,7 @@ const CollectionSection: React.FC<CollectionSectionProps> = ({
                             className="bg-white border border-[#E5E5E5] group/card hover:border-[#2E5CFF] transition-colors"
                         >
                             <div className="aspect-[4/3] bg-slate-100 relative overflow-hidden">
-                                <img src={item.image} alt={item.title} className="w-full h-full object-cover transition-transform duration-500 group-hover/card:scale-110" loading="lazy" decoding="async" />
+                                <img src={item.image} alt={getText(item.title)} className="w-full h-full object-cover transition-transform duration-500 group-hover/card:scale-110" loading="lazy" decoding="async" />
                             </div>
                             <div className="p-5">
                                 <div className="flex items-center justify-between mb-4">
@@ -115,16 +122,16 @@ const CollectionSection: React.FC<CollectionSectionProps> = ({
                                     </span>
                                     {item.features[0] && (
                                         <span className="inline-block px-3 py-1 border border-[#E5E5E5] rounded text-xs text-slate-500">
-                                            {item.features[0]}
+                                            {getText(item.features[0])}
                                         </span>
                                     )}
                                 </div>
-                                <h3 className="text-h3 text-[#0F1115] mb-1 line-clamp-1">{item.title}</h3>
+                                <h3 className="text-h3 text-[#0F1115] mb-1 line-clamp-1">{getText(item.title)}</h3>
                                 {item.description && (
-                                    <p className="text-body text-slate-500 mb-1 line-clamp-1">{item.description}</p>
+                                    <p className="text-body text-slate-500 mb-1 line-clamp-2">{getText(item.description)}</p>
                                 )}
                                 {item.period && (
-                                    <p className="text-sm font-medium text-[#265fb7] mb-4">{item.period}</p>
+                                    <p className="text-sm font-medium text-[#265fb7] mb-4">{getText(item.period)}</p>
                                 )}
                                 {!item.period && item.description && <div className="mb-4" />}
                                 {item.url ? (

@@ -97,7 +97,7 @@ const DetailHeroSection: React.FC<DetailHeroSectionProps> = ({
                                     </span>
                                 )}
                                 <h2
-                                    className={`${mainTitle ? 'text-hero-slide' : 'text-4xl md:text-[3.5rem] leading-[1.2] tracking-tighter'} font-display text-white mb-4 md:mb-6 ${index === currentHeroSlide ? 'animate-slide-in-right' : ''}`}
+                                    className={`${mainTitle ? 'text-hero-slide' : 'text-4xl md:text-[3.5rem] leading-[1.3] tracking-tighter'} font-display text-white mb-4 md:mb-6 ${index === currentHeroSlide ? 'animate-slide-in-right' : ''}`}
                                 >
                                     {slide.title}
                                 </h2>

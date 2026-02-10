@@ -1,123 +1,372 @@
 import React, { useEffect } from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import DetailHeroSection from './shared/DetailHeroSection';
-import CollectionSection, { FilterOption } from './shared/CollectionSection';
+import CollectionSection, { FilterOption, CollectionItem } from './shared/CollectionSection';
+import Container from './shared/Container';
+import Breadcrumb from './shared/Breadcrumb';
 
 // Local Asset Images
 import heroImg from '../assets/shuttle_concert 1.webp';
 import concertImg from '../assets/shuttle_concert 1.webp';
-import festivalImg from '../assets/shuttle_concert 1.webp'; // Reusing for consistency
 
-const heroSlides = [
-    {
-        id: 0,
-        image: heroImg,
-        title: <>감동의 순간으로 향하는<br />쾌적한 이동</>,
-        desc: <>콘서트, 페스티벌, 전시회까지.<br />주차 전쟁 없이 공연의 여운만 가득한 귀갓길.</>,
-        buttonText: "목적지 찾아보기",
-        buttonLink: "#collection-section"
-    },
-    {
-        id: 1,
-        image: concertImg,
-        title: <>공연장 직행 셔틀</>,
-        desc: <>인스파이어 아레나, 고척돔 등 주요 공연장으로 향하는 팬 맞춤형 셔틀.</>,
-        buttonText: "목적지 찾아보기",
-        buttonLink: "#collection-section"
-    },
-    {
-        id: 2,
-        image: heroImg,
-        title: <>VVIP 의전 서비스</>,
-        desc: <>중요한 행사나 VIP 초대에는 품격 있는 의전 차량 서비스를 이용하세요.</>,
-        buttonText: "목적지 찾아보기",
-        buttonLink: "#collection-section"
-    }
-];
+// ─── Data Types ───
 
-const destinations = [
-    {
-        id: 1,
-        type: 'shuttle',
-        partner: 'Inspire Arena',
-        title: '인스파이어 아레나 셔틀/픽업',
-        description: '영종도의 핫플레이스, 편안한 관람을 위한 이동',
-        period: '2025.03.01 ~ 상시운행',
-        features: ['영종도'],
-        image: concertImg
-    },
-    {
-        id: 2,
-        type: 'private',
-        partner: 'Gocheok Dome',
-        title: '고척 스카이돔 프라이빗 밴',
-        description: '야구 경기부터 콘서트까지, 복잡한 주차 걱정 해결',
-        period: '2025.03.01 ~ 상시운행',
-        features: ['구로'],
-        image: concertImg
-    },
-    {
-        id: 3,
-        type: 'shuttle',
-        partner: 'KSPO Dome',
-        title: 'KSPO DOME (체조경기장)',
-        description: '올림픽공원의 열기를 그대로, 편안한 귀가',
-        period: '2025.03.01 ~ 상시운행',
-        features: ['송파'],
-        image: concertImg
-    },
-    {
-        id: 4,
-        type: 'shuttle',
-        partner: 'Waterbomb',
-        title: '워터밤 페스티벌 셔틀',
-        description: '흠뻑 젖어도 괜찮아요, 쾌적한 셔틀 이동',
-        period: '2026.06.01 ~ 2026.08.31',
-        features: ['서울'],
-        image: festivalImg
-    },
-    {
-        id: 5,
-        type: 'private',
-        partner: 'Seoul Arts Center',
-        title: '예술의전당 픽업 서비스',
-        description: '고품격 공연에 어울리는 프리미엄 의전',
-        period: '2025.03.01 ~ 상시운행',
-        features: ['서초'],
-        image: heroImg
-    },
-];
+interface EventScheduleItem {
+    id: number;
+    date: string;
+    name: { KR: string; EN: string };
+    venue: { KR: string; EN: string };
+    type: 'concert' | 'festival';
+}
 
-const filters: FilterOption[] = [
-    { value: 'all', label: 'ALL' },
-    { value: 'shuttle', label: 'SHUTTLE' },
-    { value: 'private', label: 'PRIVATE' },
-];
+// ─── Component ───
 
 const EventDetails: React.FC = () => {
-    // Scroll to top on mount
+    const { lang } = useLanguage();
+
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+
+    // ─── Hero Slides (KEEP) ───
+
+    const heroSlides = [
+        {
+            id: 0,
+            image: heroImg,
+            title: lang === 'KR' ? <>감동의 순간으로 향하는<br />쾌적한 이동</> : <>Comfortable Ride<br />Towards Touching Moments</>,
+            desc: lang === 'KR' ? <>콘서트, 페스티벌, 전시회까지.<br />주차 전쟁 없이 공연의 여운만 가득한 귀갓길.</> : <>Concerts, festivals, and exhibitions.<br />Enjoy the afterglow without parking wars.</>,
+            buttonText: lang === 'KR' ? "목적지 찾아보기" : "Find Destinations",
+            buttonLink: "#collection-section"
+        },
+        {
+            id: 1,
+            image: concertImg,
+            title: lang === 'KR' ? <>공연장 직행 셔틀</> : <>Direct Concert Shuttle</>,
+            desc: lang === 'KR' ? <>인스파이어 아레나, 고척돔 등 주요 공연장으로 향하는 팬 맞춤형 셔틀.</> : <>Fan-tailored shuttle to major venues like Inspire Arena and Gocheok Dome.</>,
+            buttonText: lang === 'KR' ? "목적지 찾아보기" : "Find Destinations",
+            buttonLink: "#collection-section"
+        },
+        {
+            id: 2,
+            image: heroImg,
+            title: lang === 'KR' ? <>VVIP 의전 서비스</> : <>VVIP Protocol Service</>,
+            desc: lang === 'KR' ? <>중요한 행사나 VIP 초대에는 품격 있는 의전 차량 서비스를 이용하세요.</> : <>Use premium protocol vehicle services for important events or VIP invitations.</>,
+            buttonText: lang === 'KR' ? "목적지 찾아보기" : "Find Destinations",
+            buttonLink: "#collection-section"
+        }
+    ];
+
+    // ─── 2026 Event Schedule Data ───
+
+    const eventSchedule: EventScheduleItem[] = [
+        { id: 1, date: '03.28-29', name: { KR: '세븐틴 콘서트', EN: 'SEVENTEEN Concert' }, venue: { KR: '고척스카이돔', EN: 'Gocheok Sky Dome' }, type: 'concert' },
+        { id: 2, date: '04.04-06', name: { KR: '아이유 콘서트', EN: 'IU Concert' }, venue: { KR: 'KSPO DOME', EN: 'KSPO DOME' }, type: 'concert' },
+        { id: 3, date: '04.25-27', name: { KR: 'NCT DREAM 콘서트', EN: 'NCT DREAM Concert' }, venue: { KR: '인스파이어 아레나', EN: 'Inspire Arena' }, type: 'concert' },
+        { id: 4, date: '05.10-11', name: { KR: 'DAY6 콘서트', EN: 'DAY6 Concert' }, venue: { KR: 'KSPO DOME', EN: 'KSPO DOME' }, type: 'concert' },
+        { id: 5, date: '05.17-18', name: { KR: '워터밤 서울', EN: 'Waterbomb Seoul' }, venue: { KR: '잠실종합운동장', EN: 'Jamsil Stadium' }, type: 'festival' },
+        { id: 6, date: '05.31-06.01', name: { KR: '뉴진스 콘서트', EN: 'NewJeans Concert' }, venue: { KR: '인스파이어 아레나', EN: 'Inspire Arena' }, type: 'concert' },
+        { id: 7, date: '06.21-22', name: { KR: 'ENHYPEN 콘서트', EN: 'ENHYPEN Concert' }, venue: { KR: '인스파이어 아레나', EN: 'Inspire Arena' }, type: 'concert' },
+        { id: 8, date: '07.05-06', name: { KR: '에스파 콘서트', EN: 'aespa Concert' }, venue: { KR: '인스파이어 아레나', EN: 'Inspire Arena' }, type: 'concert' },
+        { id: 9, date: '08.02-03', name: { KR: '방탄소년단 콘서트', EN: 'BTS Concert' }, venue: { KR: '잠실종합운동장', EN: 'Jamsil Stadium' }, type: 'concert' },
+        { id: 10, date: '09.20-21', name: { KR: '블랙핑크 콘서트', EN: 'BLACKPINK Concert' }, venue: { KR: '고척스카이돔', EN: 'Gocheok Sky Dome' }, type: 'concert' },
+        { id: 11, date: '10.25-26', name: { KR: '스트레이 키즈 콘서트', EN: 'Stray Kids Concert' }, venue: { KR: '인스파이어 아레나', EN: 'Inspire Arena' }, type: 'concert' },
+        { id: 12, date: '11.15-16', name: { KR: '트와이스 콘서트', EN: 'TWICE Concert' }, venue: { KR: 'KSPO DOME', EN: 'KSPO DOME' }, type: 'concert' },
+    ];
+
+    // ─── Inspire Arena Features ───
+
+    const inspireFeatures = [
+        {
+            icon: (
+                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
+                </svg>
+            ),
+            title: { KR: '전용 셔틀 운행', EN: 'Dedicated Shuttle' },
+            desc: { KR: '서울 주요 거점에서 인스파이어 아레나까지 직행 노선 운영', EN: 'Direct routes from major Seoul hubs to Inspire Arena' },
+        },
+        {
+            icon: (
+                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+                </svg>
+            ),
+            title: { KR: '프라이빗 의전 서비스', EN: 'Private Protocol Service' },
+            desc: { KR: 'VIP·단체 맞춤형 차량으로 품격 있는 이동', EN: 'Premium transfer with custom VIP & group vehicles' },
+        },
+        {
+            icon: (
+                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+                </svg>
+            ),
+            title: { KR: '공연 연계 패키지', EN: 'Event-linked Package' },
+            desc: { KR: '공연 시간에 맞춘 최적 출발·귀가 스케줄 제공', EN: 'Optimized departure & return schedules matched to show times' },
+        },
+        {
+            icon: (
+                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+                </svg>
+            ),
+            title: { KR: '안심 귀가 서비스', EN: 'Safe Return Service' },
+            desc: { KR: '공연 종료 후 귀가 보장, 심야 운행 가능', EN: 'Guaranteed return after shows, late-night service available' },
+        },
+    ];
+
+    // ─── Collection Destinations (5 permanent venues) ───
+
+    const filters: FilterOption[] = [
+        { value: 'all', label: 'ALL' },
+        { value: 'shuttle', label: 'SHUTTLE' },
+        { value: 'private', label: 'PRIVATE' },
+    ];
+
+    const destinations: CollectionItem[] = [
+        {
+            id: 1,
+            type: 'shuttle',
+            partner: 'Inspire Arena',
+            title: { KR: '인스파이어 아레나 셔틀/픽업', EN: 'Inspire Arena Shuttle/Pickup' },
+            description: { KR: '영종도의 핫플레이스, 편안한 관람을 위한 이동', EN: 'Hotplace in Yeongjongdo, comfortable ride for viewing' },
+            period: { KR: '상시 운행 중', EN: 'Always Operating' },
+            features: [{ KR: '영종도', EN: 'Yeongjongdo' }],
+            image: concertImg,
+        },
+        {
+            id: 2,
+            type: 'private',
+            partner: 'Gocheok Dome',
+            title: { KR: '고척 스카이돔 프라이빗 밴', EN: 'Gocheok Sky Dome Private Van' },
+            description: { KR: '야구 경기부터 콘서트까지, 복잡한 주차 걱정 해결', EN: 'From baseball games to concerts, solve parking worries' },
+            period: { KR: '상시 운행 중', EN: 'Always Operating' },
+            features: [{ KR: '구로', EN: 'Guro' }],
+            image: concertImg,
+        },
+        {
+            id: 3,
+            type: 'shuttle',
+            partner: 'KSPO Dome',
+            title: { KR: 'KSPO DOME (체조경기장)', EN: 'KSPO DOME (Gymnastics Arena)' },
+            description: { KR: '올림픽공원의 열기를 그대로, 편안한 귀가', EN: 'Keep the heat of Olympic Park, comfortable return home' },
+            period: { KR: '상시 운행 중', EN: 'Always Operating' },
+            features: [{ KR: '송파', EN: 'Songpa' }],
+            image: concertImg,
+        },
+        {
+            id: 4,
+            type: 'shuttle',
+            partner: 'Jamsil Stadium',
+            title: { KR: '잠실종합운동장 셔틀', EN: 'Jamsil Stadium Shuttle' },
+            description: { KR: '대형 콘서트·페스티벌 관람, 주차 걱정 없는 직행 셔틀', EN: 'Direct shuttle for large concerts & festivals, no parking worries' },
+            period: { KR: '상시 운행 중', EN: 'Always Operating' },
+            features: [{ KR: '송파', EN: 'Songpa' }],
+            image: concertImg,
+        },
+        {
+            id: 5,
+            type: 'private',
+            partner: 'Seoul Arts Center',
+            title: { KR: '예술의전당 픽업 서비스', EN: 'Seoul Arts Center Pickup' },
+            description: { KR: '고품격 공연에 어울리는 프리미엄 의전', EN: 'Premium protocol matching high-quality performances' },
+            period: { KR: '상시 운행 중', EN: 'Always Operating' },
+            features: [{ KR: '서초', EN: 'Seocho' }],
+            image: heroImg,
+        },
+    ];
+
+    // ─── Smooth scroll helper ───
+
+    const scrollToSection = (e: React.MouseEvent, target: string) => {
+        e.preventDefault();
+        const section = document.querySelector(target);
+        if (section) {
+            const headerOffset = 80;
+            const elementPosition = section.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.scrollY - headerOffset;
+            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        }
+    };
 
     return (
         <div className="min-h-screen flex flex-col bg-slate-50">
             <Navbar />
 
             <main className="flex-grow">
+                {/* ─── Section 1: Hero (KEEP) ─── */}
                 <DetailHeroSection
                     slides={heroSlides}
                     badgePrefix="RIDEUS EVENT"
                 />
 
-                <CollectionSection
-                    title={{ KR: '공연/이벤트 컬렉션', EN: 'Event Collection' }}
-                    items={destinations}
-                    filters={filters}
-                    highlightType="shuttle"
-                    breadcrumb={{ KR: '공연/이벤트', EN: 'Events' }}
-                />
+                {/* ─── Scrolling Content Wrapper ─── */}
+                <div className="relative z-10 mt-screen">
+
+                    {/* ─── Section 2: Service Introduction ─── */}
+                    <section className="bg-white border-b border-[#E5E5E5]">
+                        <div className="w-full h-[1px] bg-[#E5E5E5]"></div>
+                        <Container className="py-16 md:py-24">
+                            <Breadcrumb current={{ KR: '공연/이벤트', EN: 'Events' }} />
+
+                            <h2 className="text-h2 text-[#0F1115] mb-6 uppercase tracking-tight">
+                                {lang === 'KR' ? '대한민국 대표 공연 이동 서비스' : "Korea's Leading Event Transfer Service"}
+                            </h2>
+                            <p className="text-body text-slate-500 max-w-3xl mb-8 leading-relaxed break-keep">
+                                {lang === 'KR'
+                                    ? '라이더스는 콘서트, 페스티벌, 전시회 등 다양한 공연·이벤트를 위한 셔틀, 프라이빗 밴, VIP 의전 서비스를 제공합니다. 주차 걱정 없이 공연만 즐기세요.'
+                                    : 'Rideus provides shuttle, private van, and VIP protocol services for concerts, festivals, exhibitions, and more. Enjoy the show without worrying about parking.'}
+                            </p>
+
+                            {/* Inspire Arena Partner Badge */}
+                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#1a0a3e]/5 border border-[#2d1b69]/20 rounded-full mb-10">
+                                <span className="w-2 h-2 bg-[#7c3aed] rounded-full"></span>
+                                <span className="text-sm font-medium text-[#2d1b69]">
+                                    {lang === 'KR' ? '인스파이어 아레나 공식 파트너' : 'Official Inspire Arena Partner'}
+                                </span>
+                            </div>
+
+                            {/* Quick Link Cards */}
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <a
+                                    href="#event-schedule"
+                                    onClick={(e) => scrollToSection(e, '#event-schedule')}
+                                    className="group flex items-center justify-between p-5 border border-[#E5E5E5] hover:border-[#2E5CFF] transition-colors"
+                                >
+                                    <div>
+                                        <p className="text-sm text-slate-400 mb-1 uppercase tracking-wider font-medium">Schedule</p>
+                                        <p className="text-base font-bold text-[#0F1115] group-hover:text-[#2E5CFF] transition-colors">
+                                            {lang === 'KR' ? '2026 공연 일정 보기' : 'View 2026 Event Schedule'}
+                                        </p>
+                                    </div>
+                                    <svg className="w-5 h-5 text-slate-300 group-hover:text-[#2E5CFF] transition-all group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                    </svg>
+                                </a>
+                                <a
+                                    href="#inspire-section"
+                                    onClick={(e) => scrollToSection(e, '#inspire-section')}
+                                    className="group flex items-center justify-between p-5 border border-[#E5E5E5] hover:border-[#7c3aed] transition-colors"
+                                >
+                                    <div>
+                                        <p className="text-sm text-slate-400 mb-1 uppercase tracking-wider font-medium">Partner</p>
+                                        <p className="text-base font-bold text-[#0F1115] group-hover:text-[#7c3aed] transition-colors">
+                                            {lang === 'KR' ? '인스파이어 아레나 전용 서비스' : 'Inspire Arena Exclusive Service'}
+                                        </p>
+                                    </div>
+                                    <svg className="w-5 h-5 text-slate-300 group-hover:text-[#7c3aed] transition-all group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </Container>
+                    </section>
+
+                    {/* ─── Section 3: 2026 Event Schedule ─── */}
+                    <section id="event-schedule" className="bg-slate-50 border-b border-[#E5E5E5]">
+                        <Container className="py-16 md:py-24">
+                            <p className="text-sm text-[#2E5CFF] font-bold uppercase tracking-widest mb-3">2026 Schedule</p>
+                            <h2 className="text-h2 text-[#0F1115] mb-4 uppercase tracking-tight">
+                                {lang === 'KR' ? '2026 공연/이벤트 일정' : '2026 Event Schedule'}
+                            </h2>
+                            <p className="text-body text-slate-500 mb-10 break-keep">
+                                {lang === 'KR'
+                                    ? '라이더스가 이동 서비스를 제공하는 2026년 주요 공연 일정입니다.'
+                                    : 'Major 2026 events with Rideus transfer services available.'}
+                            </p>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                {eventSchedule.map((event) => (
+                                    <div
+                                        key={event.id}
+                                        className="bg-white border border-[#E5E5E5] p-5 hover:border-[#2E5CFF] transition-colors group"
+                                    >
+                                        <div className="flex items-center justify-between mb-3">
+                                            <span className="text-sm font-bold text-[#2E5CFF] tracking-wider">{event.date}</span>
+                                            <span className={`inline-block px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider ${event.type === 'festival' ? 'bg-amber-100 text-amber-700' : 'bg-[#2E5CFF]/10 text-[#2E5CFF]'}`}>
+                                                {event.type}
+                                            </span>
+                                        </div>
+                                        <h3 className="text-base font-bold text-[#0F1115] mb-1 group-hover:text-[#2E5CFF] transition-colors">
+                                            {lang === 'KR' ? event.name.KR : event.name.EN}
+                                        </h3>
+                                        <p className="text-sm text-slate-400">
+                                            {lang === 'KR' ? event.venue.KR : event.venue.EN}
+                                        </p>
+                                    </div>
+                                ))}
+                            </div>
+                        </Container>
+                    </section>
+
+                    {/* ─── Section 4: Inspire Arena Special ─── */}
+                    <section id="inspire-section" className="bg-gradient-to-br from-[#1a0a3e] via-[#2d1b69] to-[#0f0a2e]">
+                        <Container className="py-20 md:py-28">
+                            <p className="text-sm text-purple-300 font-bold uppercase tracking-widest mb-3">Official Partner</p>
+                            <h2 className="text-h2 text-white mb-4 uppercase tracking-tight">
+                                {lang === 'KR' ? '인스파이어 아레나 공식 파트너' : 'Official Partner of Inspire Arena'}
+                            </h2>
+                            <p className="text-base text-purple-200/80 max-w-2xl mb-12 leading-relaxed break-keep">
+                                {lang === 'KR'
+                                    ? '라이더스는 인스파이어 아레나의 공식 이동 서비스 파트너로서, 셔틀 운행부터 VIP 의전까지 공연 관람에 최적화된 이동 경험을 제공합니다.'
+                                    : 'As the official transfer service partner of Inspire Arena, Rideus provides optimized travel experiences from shuttle operations to VIP protocol services.'}
+                            </p>
+
+                            {/* Feature Grid */}
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                                {inspireFeatures.map((feature, index) => (
+                                    <div key={index} className="flex gap-4 p-5 bg-white/5 border border-white/10 rounded-lg">
+                                        <div className="flex-shrink-0 w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center text-purple-300">
+                                            {feature.icon}
+                                        </div>
+                                        <div>
+                                            <h4 className="text-sm font-bold text-white mb-1">
+                                                {lang === 'KR' ? feature.title.KR : feature.title.EN}
+                                            </h4>
+                                            <p className="text-sm text-purple-200/60 leading-relaxed">
+                                                {lang === 'KR' ? feature.desc.KR : feature.desc.EN}
+                                            </p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+
+                            {/* Dual CTA */}
+                            <div className="flex flex-col sm:flex-row gap-4">
+                                <a
+                                    href="#collection-section"
+                                    onClick={(e) => scrollToSection(e, '#collection-section')}
+                                    className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-[#1a0a3e] font-bold tracking-wider uppercase hover:bg-purple-50 transition-colors"
+                                >
+                                    {lang === 'KR' ? '셔틀 예약하기' : 'Book Shuttle'}
+                                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                    </svg>
+                                </a>
+                                <a
+                                    href="#collection-section"
+                                    onClick={(e) => scrollToSection(e, '#collection-section')}
+                                    className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-white/30 text-white font-bold tracking-wider uppercase hover:bg-white/10 transition-colors"
+                                >
+                                    {lang === 'KR' ? '프라이빗 문의' : 'Private Inquiry'}
+                                </a>
+                            </div>
+                        </Container>
+                    </section>
+
+                    {/* ─── Section 5: Permanent Venue Collection ─── */}
+                    <CollectionSection
+                        title={{ KR: '주요 공연장 상시 운영 서비스', EN: 'Permanent Venue Services' }}
+                        items={destinations}
+                        filters={filters}
+                        highlightType="shuttle"
+                        firstSection={false}
+                        breadcrumb={{ KR: '공연/이벤트', EN: 'Events' }}
+                    />
+
+                </div>
             </main>
 
             <Footer />
