@@ -28,6 +28,7 @@ nul
 # Planning / Spec documents (not part of the site)
 *.md
 !README.md
+!docs/*.md
 # Design System Specification Techn.txt
 metadata.json
 
