@@ -17,6 +17,59 @@ interface ResortCollectionProps {
 const ResortCollection: React.FC<ResortCollectionProps> = ({ title, items, firstSection = true, mode = 'grid', id, breadcrumb }) => {
     const { lang } = useLanguage();
     const [isPaused, setIsPaused] = React.useState(false);
+    const marqueeRef = React.useRef<HTMLDivElement>(null);
+    const isDragging = React.useRef(false);
+    const hasDragged = React.useRef(false);
+    const dragStartX = React.useRef(0);
+    const dragScrollLeft = React.useRef(0);
+    const pausedRef = React.useRef(false);
+    const animRef = React.useRef<number>();
+
+    React.useEffect(() => { pausedRef.current = isPaused; }, [isPaused]);
+
+    React.useEffect(() => {
+        if (mode !== 'marquee') return;
+        const el = marqueeRef.current;
+        if (!el) return;
+
+        const tick = () => {
+            if (!pausedRef.current && !isDragging.current && el) {
+                el.scrollLeft += 0.8;
+                if (el.scrollLeft >= el.scrollWidth / 2) {
+                    el.scrollLeft = 0;
+                }
+            }
+            animRef.current = requestAnimationFrame(tick);
+        };
+        animRef.current = requestAnimationFrame(tick);
+        return () => { if (animRef.current) cancelAnimationFrame(animRef.current); };
+    }, [mode]);
+
+    const onMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+        const el = marqueeRef.current;
+        if (!el) return;
+        isDragging.current = true;
+        hasDragged.current = false;
+        dragStartX.current = e.pageX - el.offsetLeft;
+        dragScrollLeft.current = el.scrollLeft;
+        el.style.cursor = 'grabbing';
+    };
+
+    const onMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+        if (!isDragging.current) return;
+        e.preventDefault();
+        const el = marqueeRef.current;
+        if (!el) return;
+        const x = e.pageX - el.offsetLeft;
+        const walk = x - dragStartX.current;
+        if (Math.abs(walk) > 5) hasDragged.current = true;
+        el.scrollLeft = dragScrollLeft.current - walk;
+    };
+
+    const onMouseUpOrLeave = () => {
+        isDragging.current = false;
+        if (marqueeRef.current) marqueeRef.current.style.cursor = 'grab';
+    };
 
     // Hardcoded departure info constant - Array for badges
     const DEPARTURE_STATIONS = {
@@ -34,6 +87,7 @@ const ResortCollection: React.FC<ResortCollectionProps> = ({ title, items, first
                 key={`${resort.name}-${index}-${isMarquee ? 'marquee' : 'grid'}`}
                 className={`group block bg-white border border-[#E5E5E5] hover:border-[#2E5CFF] transition-colors ${isMarquee ? 'w-[240px] md:w-[280px] flex-shrink-0 mx-2 select-none' : ''}`}
                 draggable={false}
+                onClick={(e) => { if (isMarquee && hasDragged.current) e.preventDefault(); }}
             >
                 <div className="aspect-[4/3] bg-gray-100 relative overflow-hidden">
                     <img
@@ -127,20 +181,16 @@ const ResortCollection: React.FC<ResortCollectionProps> = ({ title, items, first
                     </div>
                 ) : (
                     <div
-                        className="overflow-hidden -mx-6 md:-mx-12"
+                        ref={marqueeRef}
+                        className="-mx-6 md:-mx-12 overflow-x-auto cursor-grab select-none"
+                        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' } as React.CSSProperties}
                         onMouseEnter={() => setIsPaused(true)}
-                        onMouseLeave={() => setIsPaused(false)}
-                        onTouchStart={() => setIsPaused(true)}
-                        onTouchEnd={() => setIsPaused(false)}
+                        onMouseLeave={() => { setIsPaused(false); onMouseUpOrLeave(); }}
+                        onMouseDown={onMouseDown}
+                        onMouseMove={onMouseMove}
+                        onMouseUp={onMouseUpOrLeave}
                     >
-                        <div
-                            className="flex pb-4"
-                            style={{
-                                animation: `marquee 30s linear infinite`,
-                                animationPlayState: isPaused ? 'paused' : 'running',
-                                width: 'max-content',
-                            }}
-                        >
+                        <div className="flex pb-4 px-6 md:px-12" style={{ width: 'max-content' }}>
                             {marqueeItems.map((item, index) => renderCard(item, index, true))}
                         </div>
                     </div>
