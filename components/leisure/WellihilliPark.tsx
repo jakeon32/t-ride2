@@ -129,7 +129,7 @@ const WellihilliPark: React.FC = () => {
                                         href="https://wellihilli.rideus.net"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="block w-full text-center bg-gray-900 text-white font-bold py-4 rounded-xl hover:bg-blue-600 transition-all duration-300 shadow-lg hover:shadow-blue-500/30 transform hover:-translate-y-1"
+                                        className="block w-full text-center bg-[#2E5CFF] text-white font-bold py-4 rounded-xl hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-blue-500/30 transform hover:-translate-y-1"
                                     >
                                         {lang === 'KR' ? '셔틀버스 예약하기' : 'Book Shuttle Bus'}
                                     </a>

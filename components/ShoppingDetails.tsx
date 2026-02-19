@@ -17,7 +17,7 @@ import dutyfreeImg from '../assets/shopping_yeoju 1.webp'; // Reusing Yeoju for 
 
 const filters: FilterOption[] = [
     { value: 'all', label: 'ALL' },
-    { value: 'shuttle', label: 'SHUTTLE' },
+    { value: 'private', label: 'PRIVATE' },
 ];
 
 const ShoppingDetails: React.FC = () => {
@@ -64,12 +64,11 @@ const ShoppingDetails: React.FC = () => {
     const destinations: CollectionItem[] = [
         {
             id: 1,
-            type: 'shuttle',
+            type: 'private',
             partner: 'Shinsegae',
             title: { KR: '여주 프리미엄 아울렛', EN: 'Yeoju Premium Outlets' },
             description: { KR: '국내 최초, 최대 규모의 명품 브랜드 라인업', EN: "Korea's first and largest luxury brand lineup" },
             features: [
-                { KR: '셔틀버스 운행', EN: 'Shuttle Service' },
                 { KR: 'VIP 쿠폰북 증정', EN: 'VIP Coupon Book' }
             ],
             image: heroImg,
@@ -77,12 +76,11 @@ const ShoppingDetails: React.FC = () => {
         },
         {
             id: 2,
-            type: 'shuttle',
+            type: 'private',
             partner: 'Shinsegae',
             title: { KR: '파주 프리미엄 아울렛', EN: 'Paju Premium Outlets' },
             description: { KR: '이국적인 전원 속에서 즐기는 득템의 즐거움', EN: 'Enjoy great finds in an exotic suburban setting' },
             features: [
-                { KR: '셔틀버스 운행', EN: 'Shuttle Service' },
                 { KR: 'VIP 쿠폰북 증정', EN: 'VIP Coupon Book' }
             ],
             image: heroImg, // Reusing heroImg as placeholder for Paju
@@ -90,12 +88,11 @@ const ShoppingDetails: React.FC = () => {
         },
         {
             id: 3,
-            type: 'shuttle',
+            type: 'private',
             partner: 'Shinsegae',
             title: { KR: '시흥 프리미엄 아울렛', EN: 'Siheung Premium Outlets' },
             description: { KR: '이국적인 경관과 함께 즐기는 여유로운 쇼핑', EN: 'Relaxed shopping with exotic scenery' },
             features: [
-                { KR: '셔틀버스 운행', EN: 'Shuttle Service' },
                 { KR: '지역 연계 투어', EN: 'Regional Tour' }
             ],
             image: outletImg,
@@ -114,7 +111,7 @@ const ShoppingDetails: React.FC = () => {
                     title={{ KR: '쇼핑 컬렉션', EN: 'Shopping Collection' }}
                     items={destinations}
                     filters={filters}
-                    highlightType="shuttle"
+                    highlightType="private"
                     breadcrumb={{ KR: '쇼핑', EN: 'Shopping' }}
                 />
             </main>

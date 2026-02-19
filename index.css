@@ -15,9 +15,7 @@
   --color-border: #333333;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+
 
 body {
   font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', sans-serif;

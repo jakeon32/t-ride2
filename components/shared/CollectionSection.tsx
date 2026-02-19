@@ -117,7 +117,7 @@ const CollectionSection: React.FC<CollectionSectionProps> = ({
                             </div>
                             <div className="p-5">
                                 <div className="flex items-center justify-between mb-4">
-                                    <span className={`inline-block px-3 py-1 rounded text-xs font-bold uppercase tracking-wider ${item.type === highlightType ? 'bg-[#2E5CFF] text-white' : 'bg-[#0F1115] text-white'}`}>
+                                    <span className={`inline-block px-3 py-1 rounded text-xs font-bold uppercase tracking-wider ${item.type === 'shuttle' ? 'bg-[#2E5CFF] text-white' : 'bg-[#0F1115] text-white'}`}>
                                         {item.type.toUpperCase()}
                                     </span>
                                     {item.features[0] && (

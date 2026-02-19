@@ -129,7 +129,7 @@ const High1: React.FC = () => {
                                         href="https://high1.rideus.net"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="block w-full text-center bg-gray-900 text-white font-bold py-4 rounded-xl hover:bg-blue-600 transition-all duration-300 shadow-lg hover:shadow-blue-500/30 transform hover:-translate-y-1"
+                                        className="block w-full text-center bg-[#2E5CFF] text-white font-bold py-4 rounded-xl hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-blue-500/30 transform hover:-translate-y-1"
                                     >
                                         {lang === 'KR' ? '셔틀버스 예약하기' : 'Book Shuttle Bus'}
                                     </a>
@@ -175,7 +175,7 @@ const High1: React.FC = () => {
                                         href="https://booking.triseup.com/k-ski?resort=high1"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="block w-full text-center border-2 border-gray-900 text-gray-900 font-bold py-4 rounded-xl hover:bg-blue-600 hover:border-blue-600 hover:text-white transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/30 transform hover:-translate-y-1"
+                                        className="block w-full text-center bg-[#0F1115] text-white font-bold py-4 rounded-xl hover:bg-gray-800 transition-all duration-300 shadow-lg hover:shadow-gray-500/30 transform hover:-translate-y-1"
                                     >
                                         {lang === 'KR' ? '프라이빗 이동 예약하기' : 'Book Private Transfer'}
                                     </a>

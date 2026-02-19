@@ -21,6 +21,12 @@ const StaticDetailHero: React.FC<StaticDetailHeroProps> = ({
     description
 }) => {
     const [currentHeroSlide, setCurrentHeroSlide] = useState(0);
+    const [mounted, setMounted] = useState(false);
+
+    // Trigger animation on mount
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     // Auto-slide effect (Only for background cross-fade, no text animation)
     useEffect(() => {
@@ -55,14 +61,23 @@ const StaticDetailHero: React.FC<StaticDetailHeroProps> = ({
             <div className="relative z-20 w-full h-full flex flex-col justify-center items-center text-center px-6 pt-20 md:pt-24">
                 {mainTitle ? (
                     // When mainTitle exists, it overrides slide titles
+                    // When mainTitle exists, it overrides slide titles
                     <div className="max-w-4xl text-white">
-                        <h1 className="text-3xl md:text-5xl font-bold font-display tracking-tight mb-4 shadow-black/50 drop-shadow-lg whitespace-nowrap">
+                        <h1
+                            className={`text-3xl md:text-5xl font-bold font-display tracking-tight mb-4 shadow-black/50 drop-shadow-lg whitespace-nowrap transition-all duration-1000 ease-out transform ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+                                }`}
+                        >
                             {mainTitle}
                         </h1>
                         {description && (
-                            <p className="text-[1rem] leading-[1.3rem] text-white/90 font-light max-w-2xl mx-auto shadow-black/50 drop-shadow-md">
-                                {description}
-                            </p>
+                            <div
+                                className={`transition-all duration-1000 delay-300 ease-out transform ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+                                    }`}
+                            >
+                                <p className="text-[1rem] leading-[1.3rem] text-white/90 font-light max-w-2xl mx-auto shadow-black/50 drop-shadow-md">
+                                    {description}
+                                </p>
+                            </div>
                         )}
                     </div>
                 ) : (
