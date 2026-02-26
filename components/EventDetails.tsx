@@ -8,8 +8,11 @@ import Container from './shared/Container';
 import Breadcrumb from './shared/Breadcrumb';
 
 // Local Asset Images
-import heroImg from '../assets/shuttle_concert 1.webp';
-import concertImg from '../assets/shuttle_concert 1.webp';
+import event01 from '../assets/event_01.webp';
+import event02 from '../assets/event_02.webp';
+import event03 from '../assets/event_03.webp';
+import event04 from '../assets/event_04.webp';
+import event05 from '../assets/event_05.webp';
 
 // ─── Data Types ───
 
@@ -35,7 +38,7 @@ const EventDetails: React.FC = () => {
     const heroSlides = [
         {
             id: 0,
-            image: heroImg,
+            image: event01,
             title: lang === 'KR' ? <>감동의 순간으로 향하는<br />쾌적한 이동</> : <>Comfortable Ride<br />Towards Touching Moments</>,
             desc: lang === 'KR' ? <>콘서트, 페스티벌, 전시회까지.<br />주차 전쟁 없이 공연의 여운만 가득한 귀갓길.</> : <>Concerts, festivals, and exhibitions.<br />Enjoy the afterglow without parking wars.</>,
             buttonText: lang === 'KR' ? "목적지 찾아보기" : "Find Destinations",
@@ -43,7 +46,7 @@ const EventDetails: React.FC = () => {
         },
         {
             id: 1,
-            image: concertImg,
+            image: event02,
             title: lang === 'KR' ? <>공연장 직행 셔틀</> : <>Direct Concert Shuttle</>,
             desc: lang === 'KR' ? <>인스파이어 아레나, 고척돔 등 주요 공연장으로 향하는 팬 맞춤형 셔틀.</> : <>Fan-tailored shuttle to major venues like Inspire Arena and Gocheok Dome.</>,
             buttonText: lang === 'KR' ? "목적지 찾아보기" : "Find Destinations",
@@ -51,7 +54,7 @@ const EventDetails: React.FC = () => {
         },
         {
             id: 2,
-            image: heroImg,
+            image: event03,
             title: lang === 'KR' ? <>VVIP 의전 서비스</> : <>VVIP Protocol Service</>,
             desc: lang === 'KR' ? <>중요한 행사나 VIP 초대에는 품격 있는 의전 차량 서비스를 이용하세요.</> : <>Use premium protocol vehicle services for important events or VIP invitations.</>,
             buttonText: lang === 'KR' ? "목적지 찾아보기" : "Find Destinations",
@@ -134,7 +137,7 @@ const EventDetails: React.FC = () => {
             description: { KR: '영종도의 핫플레이스, 편안한 관람을 위한 이동', EN: 'Hotplace in Yeongjongdo, comfortable ride for viewing' },
             period: { KR: '상시 운행 중', EN: 'Always Operating' },
             features: [{ KR: '영종도', EN: 'Yeongjongdo' }],
-            image: concertImg,
+            image: event04,
         },
         {
             id: 2,
@@ -144,7 +147,7 @@ const EventDetails: React.FC = () => {
             description: { KR: '야구 경기부터 콘서트까지, 복잡한 주차 걱정 해결', EN: 'From baseball games to concerts, solve parking worries' },
             period: { KR: '상시 운행 중', EN: 'Always Operating' },
             features: [{ KR: '구로', EN: 'Guro' }],
-            image: concertImg,
+            image: event05,
         },
         {
             id: 3,
@@ -154,7 +157,7 @@ const EventDetails: React.FC = () => {
             description: { KR: '올림픽공원의 열기를 그대로, 편안한 귀가', EN: 'Keep the heat of Olympic Park, comfortable return home' },
             period: { KR: '상시 운행 중', EN: 'Always Operating' },
             features: [{ KR: '송파', EN: 'Songpa' }],
-            image: concertImg,
+            image: event02,
         },
         {
             id: 4,
@@ -164,7 +167,7 @@ const EventDetails: React.FC = () => {
             description: { KR: '대형 콘서트·페스티벌 관람, 주차 걱정 없는 직행 셔틀', EN: 'Direct shuttle for large concerts & festivals, no parking worries' },
             period: { KR: '상시 운행 중', EN: 'Always Operating' },
             features: [{ KR: '송파', EN: 'Songpa' }],
-            image: concertImg,
+            image: event01,
         },
         {
             id: 5,
@@ -174,7 +177,7 @@ const EventDetails: React.FC = () => {
             description: { KR: '고품격 공연에 어울리는 프리미엄 의전', EN: 'Premium protocol matching high-quality performances' },
             period: { KR: '상시 운행 중', EN: 'Always Operating' },
             features: [{ KR: '서초', EN: 'Seocho' }],
-            image: heroImg,
+            image: event03,
         },
     ];
 

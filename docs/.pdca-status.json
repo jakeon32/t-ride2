@@ -1,0 +1,53 @@
+{
+  "version": "2.0",
+  "lastUpdated": "2026-02-19T04:15:22.936Z",
+  "activeFeatures": [
+    "leisure"
+  ],
+  "primaryFeature": "leisure",
+  "features": {
+    "leisure": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-02-19T04:08:01.528Z",
+        "lastUpdated": "2026-02-19T04:15:22.936Z"
+      },
+      "lastFile": "d:\\Works\\2026\\brandshow\\t-ride02\\components\\leisure\\ResortCollection.tsx"
+    }
+  },
+  "pipeline": {
+    "currentPhase": 1,
+    "level": "Dynamic",
+    "phaseHistory": []
+  },
+  "session": {
+    "startedAt": "2026-02-19T00:41:44.682Z",
+    "onboardingCompleted": false,
+    "lastActivity": "2026-02-19T04:15:22.936Z"
+  },
+  "history": [
+    {
+      "timestamp": "2026-02-19T04:08:01.528Z",
+      "feature": "leisure",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-19T04:15:11.574Z",
+      "feature": "leisure",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-19T04:15:22.936Z",
+      "feature": "leisure",
+      "phase": "do",
+      "action": "updated"
+    }
+  ]
+}

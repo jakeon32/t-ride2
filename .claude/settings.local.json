@@ -29,7 +29,11 @@
       "Bash(python3:*)",
       "Bash(py:*)",
       "Bash(python -c:*)",
-      "Bash(python -X utf8 -c:*)"
+      "Bash(python -X utf8 -c:*)",
+      "Bash(git show:*)",
+      "mcp__mcp-obsidian__obsidian_list_files_in_dir",
+      "mcp__mcp-obsidian__obsidian_batch_get_file_contents",
+      "mcp__mcp-obsidian__obsidian_append_content"
     ]
   }
 }
