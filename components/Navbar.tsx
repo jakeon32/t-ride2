@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
-import logo from '../assets/rideusLogo.png';
+import logo from '../assets/rideusLogo.webp';
 
 interface NavbarProps {
   theme?: 'dark' | 'light';

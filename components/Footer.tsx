@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
-import logo from '../assets/rideusLogo.png';
+import logo from '../assets/rideusLogo.webp';
 import Container from './shared/Container';
 
 const Footer: React.FC = () => {

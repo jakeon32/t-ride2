@@ -15,12 +15,12 @@ export interface EventItem {
 }
 
 // Import custom event images
-import cxmImage from '../assets/event_cxm.gif';
-import bcombatImage from '../assets/event_black_combat.gif';
-import hoshinoImage from '../assets/event_hoshino.gif';
-import seikoImage from '../assets/event_seiko.gif';
-import btsImage from '../assets/event_bts.gif';
-import tukiImage from '../assets/event_tuki.gif';
+import cxmImage from '../assets/event_cxm.webp';
+import bcombatImage from '../assets/event_black_combat.webp';
+import hoshinoImage from '../assets/event_hoshino.webp';
+import seikoImage from '../assets/event_seiko.webp';
+import btsImage from '../assets/event_bts.webp';
+import tukiImage from '../assets/event_tuki.webp';
 
 export const eventsData: EventItem[] = [
     {
