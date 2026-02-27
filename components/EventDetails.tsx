@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link, useNavigationType } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import Navbar from './Navbar';
 import Footer from './Footer';
@@ -16,22 +17,20 @@ import event05 from '../assets/event_05.webp';
 
 // ─── Data Types ───
 
-interface EventScheduleItem {
-    id: number;
-    date: string;
-    name: { KR: string; EN: string };
-    venue: { KR: string; EN: string };
-    type: 'concert' | 'festival';
-}
+import { eventsData } from '../data/eventsData';
 
 // ─── Component ───
 
 const EventDetails: React.FC = () => {
     const { lang } = useLanguage();
 
+    const navType = useNavigationType();
+
     useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
+        if (navType !== 'POP') {
+            window.scrollTo(0, 0);
+        }
+    }, [navType]);
 
     // ─── Hero Slides (KEEP) ───
 
@@ -64,20 +63,7 @@ const EventDetails: React.FC = () => {
 
     // ─── 2026 Event Schedule Data ───
 
-    const eventSchedule: EventScheduleItem[] = [
-        { id: 1, date: '03.28-29', name: { KR: '세븐틴 콘서트', EN: 'SEVENTEEN Concert' }, venue: { KR: '고척스카이돔', EN: 'Gocheok Sky Dome' }, type: 'concert' },
-        { id: 2, date: '04.04-06', name: { KR: '아이유 콘서트', EN: 'IU Concert' }, venue: { KR: 'KSPO DOME', EN: 'KSPO DOME' }, type: 'concert' },
-        { id: 3, date: '04.25-27', name: { KR: 'NCT DREAM 콘서트', EN: 'NCT DREAM Concert' }, venue: { KR: '인스파이어 아레나', EN: 'Inspire Arena' }, type: 'concert' },
-        { id: 4, date: '05.10-11', name: { KR: 'DAY6 콘서트', EN: 'DAY6 Concert' }, venue: { KR: 'KSPO DOME', EN: 'KSPO DOME' }, type: 'concert' },
-        { id: 5, date: '05.17-18', name: { KR: '워터밤 서울', EN: 'Waterbomb Seoul' }, venue: { KR: '잠실종합운동장', EN: 'Jamsil Stadium' }, type: 'festival' },
-        { id: 6, date: '05.31-06.01', name: { KR: '뉴진스 콘서트', EN: 'NewJeans Concert' }, venue: { KR: '인스파이어 아레나', EN: 'Inspire Arena' }, type: 'concert' },
-        { id: 7, date: '06.21-22', name: { KR: 'ENHYPEN 콘서트', EN: 'ENHYPEN Concert' }, venue: { KR: '인스파이어 아레나', EN: 'Inspire Arena' }, type: 'concert' },
-        { id: 8, date: '07.05-06', name: { KR: '에스파 콘서트', EN: 'aespa Concert' }, venue: { KR: '인스파이어 아레나', EN: 'Inspire Arena' }, type: 'concert' },
-        { id: 9, date: '08.02-03', name: { KR: '방탄소년단 콘서트', EN: 'BTS Concert' }, venue: { KR: '잠실종합운동장', EN: 'Jamsil Stadium' }, type: 'concert' },
-        { id: 10, date: '09.20-21', name: { KR: '블랙핑크 콘서트', EN: 'BLACKPINK Concert' }, venue: { KR: '고척스카이돔', EN: 'Gocheok Sky Dome' }, type: 'concert' },
-        { id: 11, date: '10.25-26', name: { KR: '스트레이 키즈 콘서트', EN: 'Stray Kids Concert' }, venue: { KR: '인스파이어 아레나', EN: 'Inspire Arena' }, type: 'concert' },
-        { id: 12, date: '11.15-16', name: { KR: '트와이스 콘서트', EN: 'TWICE Concert' }, venue: { KR: 'KSPO DOME', EN: 'KSPO DOME' }, type: 'concert' },
-    ];
+    const eventSchedule = eventsData;
 
     // ─── Inspire Arena Features ───
 
@@ -281,25 +267,40 @@ const EventDetails: React.FC = () => {
                             </p>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                                {eventSchedule.map((event) => (
-                                    <div
-                                        key={event.id}
-                                        className="bg-white border border-[#E5E5E5] p-5 hover:border-[#2E5CFF] transition-colors group"
-                                    >
-                                        <div className="flex items-center justify-between mb-3">
-                                            <span className="text-sm font-bold text-[#2E5CFF] tracking-wider">{event.date}</span>
-                                            <span className={`inline-block px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider ${event.type === 'festival' ? 'bg-amber-100 text-amber-700' : 'bg-[#2E5CFF]/10 text-[#2E5CFF]'}`}>
-                                                {event.type}
-                                            </span>
+                                {eventSchedule.map((event) => {
+                                    const cardContent = (
+                                        <div
+                                            key={event.id}
+                                            className={`bg-white border p-5 transition-colors group h-full ${event.ticketLink
+                                                ? 'border-[#E5E5E5] hover:border-[#2E5CFF] cursor-pointer'
+                                                : 'border-[#E5E5E5] opacity-80'
+                                                }`}
+                                        >
+                                            <div className="flex items-center justify-between mb-3">
+                                                <span className="text-sm font-bold text-[#2E5CFF] tracking-wider">{event.date}</span>
+                                                <span className={`inline-block px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider ${event.type === 'festival' ? 'bg-amber-100 text-amber-700' : 'bg-[#2E5CFF]/10 text-[#2E5CFF]'}`}>
+                                                    {event.type}
+                                                </span>
+                                            </div>
+                                            <h3 className={`text-base font-bold text-[#0F1115] mb-1 transition-colors ${event.ticketLink ? 'group-hover:text-[#2E5CFF]' : ''}`}>
+                                                {lang === 'KR' ? event.name.KR : event.name.EN}
+                                            </h3>
+                                            <p className="text-sm text-slate-400">
+                                                {lang === 'KR' ? event.venue.KR : event.venue.EN}
+                                            </p>
                                         </div>
-                                        <h3 className="text-base font-bold text-[#0F1115] mb-1 group-hover:text-[#2E5CFF] transition-colors">
-                                            {lang === 'KR' ? event.name.KR : event.name.EN}
-                                        </h3>
-                                        <p className="text-sm text-slate-400">
-                                            {lang === 'KR' ? event.venue.KR : event.venue.EN}
-                                        </p>
-                                    </div>
-                                ))}
+                                    );
+
+                                    return event.ticketLink ? (
+                                        <Link to={`/event/${event.id}`} key={event.id}>
+                                            {cardContent}
+                                        </Link>
+                                    ) : (
+                                        <div key={event.id}>
+                                            {cardContent}
+                                        </div>
+                                    );
+                                })}
                             </div>
                         </Container>
                     </section>

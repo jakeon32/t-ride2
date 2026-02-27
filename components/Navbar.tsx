@@ -3,7 +3,12 @@ import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import logo from '../assets/rideusLogo.png';
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  theme?: 'dark' | 'light';
+}
+
+const Navbar: React.FC<NavbarProps> = ({ theme = 'dark' }) => {
+  const isLight = theme === 'light';
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { lang, setLang } = useLanguage();
   const [isLangOpen, setIsLangOpen] = useState(false);
@@ -56,9 +61,13 @@ const Navbar: React.FC = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  const navBgClass = isLight
+    ? (isScrolled ? 'bg-white/95 backdrop-blur-md shadow-sm' : 'bg-transparent')
+    : (isScrolled ? 'bg-black/50 backdrop-blur-md' : 'bg-transparent');
+
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'bg-black/50 backdrop-blur-md' : 'bg-transparent'}`}>
-      <div className={`relative z-[999] max-w-[1216px] mx-auto flex items-center justify-between px-4 md:px-8 lg:px-12 border-b transition-all duration-300 py-3 md:py-4 ${isScrolled ? 'border-transparent' : 'border-white/20'}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${navBgClass}`}>
+      <div className={`relative z-[999] max-w-[1216px] mx-auto flex items-center justify-between px-4 md:px-8 lg:px-12 border-b transition-all duration-300 py-3 md:py-4 ${isLight ? (isScrolled ? 'border-transparent' : 'border-slate-200') : (isScrolled ? 'border-transparent' : 'border-white/20')}`}>
         {/* Logo - Image Replaced */}
         <Link
           to="/"
@@ -74,7 +83,7 @@ const Navbar: React.FC = () => {
           <img
             src={logo}
             alt="Rideus"
-            className="h-8 md:h-10 w-auto object-contain brightness-0 invert"
+            className={`h-8 md:h-10 w-auto object-contain ${isLight ? '' : 'brightness-0 invert'}`}
             loading="eager"
             decoding="sync"
           />
@@ -91,7 +100,7 @@ const Navbar: React.FC = () => {
               <Element
                 key={item.href}
                 {...props}
-                className="text-[18px] font-medium tracking-widest text-white/90 hover:text-white transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-[var(--color-accent)] after:transition-all after:duration-300 hover:after:w-full font-display uppercase"
+                className={`text-[18px] font-medium tracking-widest relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-[var(--color-accent)] after:transition-all after:duration-300 hover:after:w-full font-display uppercase ${isLight ? 'text-slate-800 hover:text-[var(--color-accent)]' : 'text-white/90 hover:text-white'}`}
               >
                 {item.label}
               </Element>
@@ -103,7 +112,7 @@ const Navbar: React.FC = () => {
         <div className="flex items-center space-x-6">
           {/* Customer Service */}
           {/* Customer Service */}
-          <Link to="/support" className="hidden md:block text-[12px] font-medium tracking-wide text-white/70 hover:text-white transition-colors uppercase">
+          <Link to="/support" className={`hidden md:block text-[12px] font-medium tracking-wide uppercase transition-colors ${isLight ? 'text-slate-500 hover:text-slate-900' : 'text-white/70 hover:text-white'}`}>
             {lang === 'KR' ? '고객센터' : 'Support'}
           </Link>
 
@@ -111,7 +120,7 @@ const Navbar: React.FC = () => {
           <div className="relative" ref={langRef}>
             <button
               onClick={() => setIsLangOpen(!isLangOpen)}
-              className="flex items-center gap-1 text-[12px] font-bold tracking-wide text-white/70 hover:text-white transition-colors uppercase"
+              className={`flex items-center gap-1 text-[12px] font-bold tracking-wide uppercase transition-colors ${isLight ? 'text-slate-500 hover:text-slate-900' : 'text-white/70 hover:text-white'}`}
             >
               {lang}
               <svg className={`w-3 h-3 transition-transform duration-300 ${isLangOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -138,7 +147,7 @@ const Navbar: React.FC = () => {
 
           {/* Mobile Menu Button - Hidden on Desktop */}
           <button
-            className="lg:hidden text-white ml-2"
+            className={`lg:hidden ml-2 transition-colors ${isLight ? 'text-slate-800' : 'text-white'}`}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? (

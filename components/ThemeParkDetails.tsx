@@ -9,6 +9,7 @@ import CollectionSection, { CollectionItem, FilterOption } from './shared/Collec
 import heroImg from '../assets/shuttle_everland 1.webp';
 import familyVanImg from '../assets/private_van_family 1.webp';
 import themeParkHeroImg from '../assets/Theme park_cate.webp';
+import gyeongjuImg from '../assets/tour_gyeongju 1.webp';
 
 const ThemeParkDetails: React.FC = () => {
     const { lang } = useLanguage();
@@ -74,6 +75,26 @@ const ThemeParkDetails: React.FC = () => {
             features: [{ KR: '용인', EN: 'Yongin' }],
             image: familyVanImg,
             url: 'https://link.triseup.com/everland?booking=new'
+        },
+        {
+            id: 3,
+            type: 'shuttle',
+            partner: 'Rideus',
+            title: { KR: '경주월드 왕복 셔틀버스', EN: 'Gyeongju World Round-trip Shuttle' },
+            description: { KR: '서울/수도권에서 경주월드까지 가장 편안하게 이동하세요.', EN: 'Comfortable shuttle transfer to Gyeongju World.' },
+            features: [{ KR: '경주', EN: 'Gyeongju' }],
+            image: gyeongjuImg,
+            url: ''
+        },
+        {
+            id: 4,
+            type: 'private',
+            partner: 'Rideus',
+            title: { KR: '경주월드 프라이빗 이동', EN: 'Gyeongju World Private Transfer' },
+            description: { KR: '우리 일행끼리만 프라이빗하게 경주월드까지 이동하세요.', EN: 'Private transfer for your group only to Gyeongju World.' },
+            features: [{ KR: '경주', EN: 'Gyeongju' }],
+            image: familyVanImg,
+            url: ''
         }
     ];
 
