@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useLanguage } from '../../contexts/LanguageContext';
 import Breadcrumb from './Breadcrumb';
 import Container from './Container';
@@ -135,9 +136,15 @@ const CollectionSection: React.FC<CollectionSectionProps> = ({
                                 )}
                                 {!item.period && item.description && <div className="mb-4" />}
                                 {item.url ? (
-                                    <a href={item.url} target="_blank" rel="noopener noreferrer" className="block w-full py-3 border border-[#E5E5E5] text-sm font-medium text-[#0F1115] hover:border-[#2E5CFF] hover:text-[#2E5CFF] transition-colors text-center">
-                                        {lang === 'KR' ? '자세히 보기' : 'VIEW DETAILS'}
-                                    </a>
+                                    item.url.startsWith('/') ? (
+                                        <Link to={item.url} className="block w-full py-3 border border-[#E5E5E5] text-sm font-medium text-[#0F1115] hover:border-[#2E5CFF] hover:text-[#2E5CFF] transition-colors text-center">
+                                            {lang === 'KR' ? '자세히 보기' : 'VIEW DETAILS'}
+                                        </Link>
+                                    ) : (
+                                        <a href={item.url} target="_blank" rel="noopener noreferrer" className="block w-full py-3 border border-[#E5E5E5] text-sm font-medium text-[#0F1115] hover:border-[#2E5CFF] hover:text-[#2E5CFF] transition-colors text-center">
+                                            {lang === 'KR' ? '자세히 보기' : 'VIEW DETAILS'}
+                                        </a>
+                                    )
                                 ) : (
                                     <button className="w-full py-3 border border-[#E5E5E5] text-sm font-medium text-[#0F1115] hover:border-[#2E5CFF] hover:text-[#2E5CFF] transition-colors">
                                         {lang === 'KR' ? '자세히 보기' : 'VIEW DETAILS'}

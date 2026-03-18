@@ -1,0 +1,349 @@
+import yeojuImg from '../assets/shopping_yeoju_hero.webp';
+import pajuImg from '../assets/shopping_paju_hero.webp';
+import siheungImg from '../assets/shopping_siheung_hero.webp';
+
+export interface ShoppingDestination {
+    id: number;
+    slug: string;
+    type: string;
+    partner: string;
+    name: { KR: string; EN: string };
+    address: { KR: string; EN: string };
+    contact: string;
+    websiteUrl: { KR: string; EN: string };
+    description: { KR: string; EN: string };
+    features: { KR: string; EN: string }[];
+    bookingInfo: { KR: string; EN: string }[];
+    inclusions: { KR: string; EN: string }[];
+    exclusions: { KR: string; EN: string }[];
+    cancellationPolicy: {
+        tier1: {
+            label: { KR: string; EN: string };
+            rules: { KR: string; EN: string }[];
+        };
+        tier2: {
+            label: { KR: string; EN: string };
+            rules: { KR: string; EN: string }[];
+        };
+    };
+    coordinates: { lat: number; lng: number };
+    image: string;
+    bookingUrl: string;
+}
+
+export const shoppingDestinations: ShoppingDestination[] = [
+    {
+        id: 1,
+        slug: 'yeoju',
+        type: 'private',
+        partner: 'Shinsegae',
+        name: { KR: '여주 프리미엄 아울렛', EN: 'Yeoju Premium Outlets' },
+        address: {
+            KR: '경기도 여주시 명품로 360',
+            EN: '360, Myeongpum-ro, Yeoju-si, Gyeonggi-do'
+        },
+        contact: '1644-4001',
+        websiteUrl: {
+            KR: 'https://www.premiumoutlets.co.kr/rpage/main/index/01',
+            EN: 'https://premiumoutlets.co.kr/rpage/en/main/index/01'
+        },
+        description: {
+            KR: '여주 프리미엄아울렛은 신세계사이먼이 2007년 오픈한 대한민국 최초의 정통 프리미엄 아울렛으로, 국내 최고 수준의 명품·하이엔드 럭셔리 브랜드와 스포츠·캐주얼·키즈까지 270여 개의 브랜드가 입점해 있습니다.\n넓고 이국적인 경관, 다양한 야외 이벤트와 각종 편의시설을 제공하여 쇼핑과 여가를 동시에 즐길 수 있는 완벽한 아울렛입니다.',
+            EN: "Yeoju Premium Outlets is Korea's first authentic premium designer outlet. It features an unrivaled selection of over 270 brands, ranging from top-tier luxury and high-end designer labels to sports, casual, and kids' fashion.\nWith its spacious, exotic atmosphere, diverse outdoor events, and various premium amenities, it offers a perfect destination to enjoy both world-class shopping and leisure in one place."
+        },
+        features: [
+            {
+                KR: '럭셔리 패션부터 스포츠, 골프, 키즈 브랜드까지 다양한 카테고리의 쇼핑을 한 번에 즐길 수 있어 가족, 친구, 커플 모두에게 완벽한 코스입니다.',
+                EN: 'With diverse categories from luxury fashion to sports, golf, and kids\' brands, it is a perfect destination for families, friends, and couples.'
+            },
+            {
+                KR: '프리미엄 아울렛 쇼퍼 서비스 예약으로 복잡한 대중교통이나 주차 걱정 없이, 출발부터 귀환까지 온전히 쇼핑에만 집중하실 수 있습니다.',
+                EN: 'By booking our chauffeur service, you can focus entirely on your shopping from departure to return, without worrying about public transportation or parking.'
+            },
+            {
+                KR: '쇼핑 후 무거운 쇼핑백은 저희가 책임집니다. 편안한 좌석에서 충분히 휴식을 취하며 돌아오는 여정까지 완벽한 하루를 경험해보세요.',
+                EN: 'We will take care of your heavy shopping bags after your spree. Experience a perfect day by relaxing in comfortable seats on your journey back.'
+            }
+        ],
+        bookingInfo: [
+            {
+                KR: '예약은 픽업일(서비스 이용일) 기준 최소 2일 전까지 완료해 주세요.',
+                EN: 'Reservations must be made at least 2 days prior to the pickup date.'
+            },
+            {
+                KR: '예약 시 선택하신 날짜 및 탑승 시간에만 이용 가능합니다.',
+                EN: 'Valid only for the selected date and time.'
+            },
+            {
+                KR: '왕복 예약은 동일 날짜 이용 시에만 가능하며, 날짜가 다를 경우 편도로 각각 예약해 주세요.',
+                EN: 'Round-trip reservations are only available for the same date. For different dates, please book one-way trips separately.'
+            },
+            {
+                KR: '모든 가격은 미국 달러(USD) 기준이며 부가세(VAT) 포함입니다.',
+                EN: 'All prices are in US Dollar (USD) and inclusive of VAT.'
+            },
+            {
+                KR: '서비스 이용 후 대기시간이나 경유지 추가 등에 따른 추가 요금이 발생할 수 있습니다.',
+                EN: 'Surcharges may apply for waiting time and extra stops after the service.'
+            }
+        ],
+        inclusions: [
+            { KR: '기본 할증료', EN: 'Base surcharge' },
+            { KR: '유류비', EN: 'Fuel' },
+            { KR: '공항 이용료', EN: 'Airport fee' },
+            { KR: '봉사료', EN: 'Suggested gratuity' }
+        ],
+        exclusions: [
+            { KR: '주차비', EN: 'Parking Fees' }
+        ],
+        cancellationPolicy: {
+            tier1: {
+                label: {
+                    KR: 'Executive Sedan, Premium Sedan, MPV : 24시간 취소 규정',
+                    EN: 'Executive Sedan, Premium Sedan, MPV : 24-hour cancellation policy'
+                },
+                rules: [
+                    {
+                        KR: '24~12시간 전 취소 시: 서비스 요금의 50% 부과',
+                        EN: 'Between 24-12 hours: 50% service charge.'
+                    },
+                    {
+                        KR: '12시간 미만 취소 및 노쇼(No-Show): 서비스 요금의 100% 부과',
+                        EN: 'Less than 12 hours and No-Show: 100% service charge.'
+                    }
+                ]
+            },
+            tier2: {
+                label: {
+                    KR: 'Luxury Sedan, Executive Van, Mini Coach : 48시간 취소 규정',
+                    EN: 'Luxury Sedan, Executive Van, Mini Coach : 48-hour cancellation policy'
+                },
+                rules: [
+                    {
+                        KR: '예정된 서비스 48~24시간 전 취소 시: 서비스 요금의 50% 부과',
+                        EN: 'Between 48-24 hours before the scheduled service will result a 50% service charge.'
+                    },
+                    {
+                        KR: '24시간 미만 취소 및 노쇼(No-Show): 서비스 요금의 100% 부과',
+                        EN: 'Less than 24 hours and No-Show will result in 100% service charge.'
+                    }
+                ]
+            }
+        },
+        coordinates: { lat: 37.2286, lng: 127.6200 },
+        image: yeojuImg,
+        bookingUrl: 'https://booking.triseup.com/premiumoutlets?branch=yeoju'
+    },
+    {
+        id: 2,
+        slug: 'paju',
+        type: 'private',
+        partner: 'Shinsegae',
+        name: { KR: '파주 프리미엄 아울렛', EN: 'Paju Premium Outlets' },
+        address: {
+            KR: '경기도 파주시 탄현면 필승로 200',
+            EN: '200, Pilseung-ro, Paju-si, Gyeonggi-do'
+        },
+        contact: '1644-4001',
+        websiteUrl: {
+            KR: 'https://www.premiumoutlets.co.kr/rpage/store/index/02',
+            EN: 'https://www.premiumoutlets.co.kr/rpage/en/main/index/02'
+        },
+        description: {
+            KR: '신세계 사이먼 파주 프리미엄아울렛은 국내 최대 규모의 정통 아울렛으로 290여 개의 국내외 프리미엄 브랜드가 입점해 있습니다.\n서울과 인접해 접근성이 좋을 뿐 아니라, 아울렛 주변에 임진각 평화누리 공원, 파주 영어마을, 헤이리 예술마을 등 파주 관광지와 연계가 뛰어나며 사계절 다양한 프로모션과 시즌 이벤트가 제공됩니다.\n아르데코 컨셉의 분수 광장, 연못, 시계탑이 유명하며, 다양한 야외 이벤트와 각종 편의시설을 제공하여 쇼핑과 여가를 동시에 즐길 수 있는 완벽한 아울렛입니다.',
+            EN: "Shinsegae Simon Paju Premium Outlets is Korea's largest authentic outlet, featuring over 290 premium domestic and international brands.\nIdeally located near Seoul, it offers great accessibility and connects to popular tourist attractions like Imjingak Pyeongnuri Park, Paju English Village, and Heyri Art Village, with various promotions and seasonal events held year-round.\nFamous for its Art-deco inspired fountain plaza, pond, and clock tower, the outlet provides a beautiful setting with diverse outdoor events and various amenities, making it the perfect destination for both shopping and leisure."
+        },
+        features: [
+            {
+                KR: '럭셔리 패션부터 스포츠, 골프, 키즈 브랜드까지 다양한 카테고리의 쇼핑을 한 번에 즐길 수 있어 가족, 친구, 커플 모두에게 완벽한 코스입니다.',
+                EN: 'With diverse categories from luxury fashion to sports, golf, and kids\' brands, it is a perfect destination for families, friends, and couples.'
+            },
+            {
+                KR: '프리미엄 아울렛 쇼퍼 서비스 예약으로 복잡한 대중교통이나 주차 걱정 없이, 출발부터 귀환까지 온전히 쇼핑에만 집중하실 수 있습니다.',
+                EN: 'By booking our chauffeur service, you can focus entirely on your shopping from departure to return, without worrying about public transportation or parking.'
+            },
+            {
+                KR: '쇼핑 후 무거운 쇼핑백은 저희가 책임집니다. 편안한 좌석에서 충분히 휴식을 취하며 돌아오는 여정까지 완벽한 하루를 경험해보세요.',
+                EN: 'We will take care of your heavy shopping bags after your spree. Experience a perfect day by relaxing in comfortable seats on your journey back.'
+            }
+        ],
+        bookingInfo: [
+            {
+                KR: '예약은 픽업일(서비스 이용일) 기준 최소 2일 전까지 완료해 주세요.',
+                EN: 'Reservations must be made at least 2 days prior to the pickup date.'
+            },
+            {
+                KR: '예약 시 선택하신 날짜 및 탑승 시간에만 이용 가능합니다.',
+                EN: 'Valid only for the selected date and time.'
+            },
+            {
+                KR: '왕복 예약은 동일 날짜 이용 시에만 가능하며, 날짜가 다를 경우 편도로 각각 예약해 주세요.',
+                EN: 'Round-trip reservations are only available for the same date. For different dates, please book one-way trips separately.'
+            },
+            {
+                KR: '모든 가격은 미국 달러(USD) 기준이며 부가세(VAT) 포함입니다.',
+                EN: 'All prices are in US Dollar (USD) and inclusive of VAT.'
+            },
+            {
+                KR: '예약 시 입력하신 이메일로 예약 번호가 포함된 확정서가 발송됩니다.',
+                EN: 'A confirmation with your booking number will be sent to the email address you provided at the time of booking.'
+            },
+            {
+                KR: '서비스 이용 후 대기시간이나 경유지 추가 등에 따른 추가 요금이 발생할 수 있습니다.',
+                EN: 'Surcharges may apply for waiting time and extra stops after the service.'
+            }
+        ],
+        inclusions: [
+            { KR: '기본 할증료', EN: 'Base surcharge' },
+            { KR: '유류비', EN: 'Fuel' },
+            { KR: '공항 이용료', EN: 'Airport fee' },
+            { KR: '봉사료', EN: 'Suggested gratuity' }
+        ],
+        exclusions: [
+            { KR: '주차비', EN: 'Parking Fees' }
+        ],
+        cancellationPolicy: {
+            tier1: {
+                label: {
+                    KR: 'Executive Sedan, Premium Sedan, MPV : 24시간 취소 규정',
+                    EN: 'Executive Sedan, Premium Sedan, MPV : 24-hour cancellation policy'
+                },
+                rules: [
+                    {
+                        KR: '24~12시간 전 취소 시: 서비스 요금의 50% 부과',
+                        EN: 'Between 24-12 hours: 50% service charge.'
+                    },
+                    {
+                        KR: '12시간 미만 취소 및 노쇼(No-Show): 서비스 요금의 100% 부과',
+                        EN: 'Less than 12 hours and No-Show: 100% service charge.'
+                    }
+                ]
+            },
+            tier2: {
+                label: {
+                    KR: 'Luxury Sedan, Executive Van, Mini Coach : 48시간 취소 규정',
+                    EN: 'Luxury Sedan, Executive Van, Mini Coach : 48-hour cancellation policy'
+                },
+                rules: [
+                    {
+                        KR: '예정된 서비스 48~24시간 전 취소 시: 서비스 요금의 50% 부과',
+                        EN: 'Between 48-24 hours before the scheduled service will result a 50% service charge.'
+                    },
+                    {
+                        KR: '24시간 미만 취소 및 노쇼(No-Show): 서비스 요금의 100% 부과',
+                        EN: 'Less than 24 hours and No-Show will result in 100% service charge.'
+                    }
+                ]
+            }
+        },
+        coordinates: { lat: 37.7153, lng: 126.7161 },
+        image: pajuImg,
+        bookingUrl: 'https://booking.triseup.com/premiumoutlets?branch=paju'
+    },
+    {
+        id: 3,
+        slug: 'siheung',
+        type: 'private',
+        partner: 'Shinsegae',
+        name: { KR: '시흥 프리미엄 아울렛', EN: 'Siheung Premium Outlets' },
+        address: {
+            KR: '경기도 시흥시 서해안로 699',
+            EN: '699 Seohaean-ro, Siheung-si, Gyeonggi-do'
+        },
+        contact: '1644-4001',
+        websiteUrl: {
+            KR: 'https://www.premiumoutlets.co.kr/rpage/main/index/05',
+            EN: 'https://www.premiumoutlets.co.kr/rpage/en/main/index/05'
+        },
+        description: {
+            KR: '신세계 사이먼 시흥 프리미엄아울렛은 스페인 해안가 마을 컨셉의 이국적인 외관과 다양한 편의시설, 체험형 콘텐츠가 제공되는 복합 쇼핑 리조트입니다.\n자연 친화적인 조경의 \'센트럴 가든\', 야외에서 휴식을 즐길 수 있는 \'스카이 가든\', \'풋살 경기장\' 등 세계 각국 및 전국의 테마 음식을 즐길 수 있는 \'테이스트 빌리지\' 등의 공간이 마련되어 있습니다.',
+            EN: 'Shinsegae Simon Siheung Premium Outlets can be characterized as a "multi-shopping resort," with an exquisite exterior designed to resemble a Spanish coastal town.\nThe mall offers several convenient facilities and experience-based content, including the eco-friendly Central Garden; Sky Garden, where visitors can enjoy a picnic in the outdoors; a futsal field; and Taste Village, which offers a variety of themed cuisines from all over the world.'
+        },
+        features: [
+            {
+                KR: '럭셔리 패션부터 스포츠, 골프, 키즈 브랜드까지 다양한 카테고리의 쇼핑을 한 번에 즐길 수 있어 가족, 친구, 커플 모두에게 완벽한 코스입니다.',
+                EN: 'With diverse categories from luxury fashion to sports, golf, and kids\' brands, it is a perfect destination for families, friends, and couples.'
+            },
+            {
+                KR: '프리미엄 아울렛 쇼퍼 서비스 예약으로 복잡한 대중교통이나 주차 걱정 없이, 출발부터 귀환까지 온전히 쇼핑에만 집중하실 수 있습니다.',
+                EN: 'By booking our Premium Outlet chauffeur service, you can focus entirely on your shopping from departure to return, without worrying about public transportation or parking.'
+            },
+            {
+                KR: '쇼핑 후 무거운 쇼핑백은 저희가 책임집니다. 편안한 좌석에서 충분히 휴식을 취하며 돌아오는 여정까지 완벽한 하루를 경험해보세요.',
+                EN: 'We will take care of your heavy shopping bags after your spree. Experience a perfect day by relaxing in comfortable seats on your journey back.'
+            }
+        ],
+        bookingInfo: [
+            {
+                KR: '예약은 픽업일(서비스 이용일) 기준 최소 2일 전까지 완료해 주세요.',
+                EN: 'Reservations must be made at least 2 days prior to the pickup date.'
+            },
+            {
+                KR: '예약 시 선택하신 날짜 및 탑승 시간에만 이용 가능합니다.',
+                EN: 'Valid only for the selected date and time.'
+            },
+            {
+                KR: '왕복 예약은 동일 날짜 이용 시에만 가능하며, 날짜가 다를 경우 편도로 각각 예약해 주세요.',
+                EN: 'Round-trip reservations are only available for the same date. For different dates, please book one-way trips separately.'
+            },
+            {
+                KR: '모든 가격은 미국 달러(USD) 기준이며 부가세(VAT) 포함입니다.',
+                EN: 'All prices are in US Dollar (USD) and inclusive of VAT.'
+            },
+            {
+                KR: '예약 시 입력하신 이메일로 예약 번호가 포함된 확정서가 발송됩니다.',
+                EN: 'A confirmation with your booking number will be sent to the email address you provided at the time of booking.'
+            },
+            {
+                KR: '서비스 이용 후 대기시간이나 경유지 추가 등에 따른 추가 요금이 발생할 수 있습니다.',
+                EN: 'Surcharges may apply for waiting time and extra stops after the service.'
+            }
+        ],
+        inclusions: [
+            { KR: '기본 할증료', EN: 'Base surcharge' },
+            { KR: '유류비', EN: 'Fuel' },
+            { KR: '공항 이용료', EN: 'Airport fee' },
+            { KR: '봉사료', EN: 'Suggested gratuity' }
+        ],
+        exclusions: [
+            { KR: '주차비', EN: 'Parking Fees' }
+        ],
+        cancellationPolicy: {
+            tier1: {
+                label: {
+                    KR: 'Executive Sedan, Premium Sedan, MPV : 24시간 취소 규정',
+                    EN: 'Executive Sedan, Premium Sedan, MPV : 24-hour cancellation policy'
+                },
+                rules: [
+                    {
+                        KR: '24~12시간 전 취소 시: 서비스 요금의 50% 부과',
+                        EN: 'Between 24-12 hours: 50% service charge.'
+                    },
+                    {
+                        KR: '12시간 미만 취소 및 노쇼(No-Show): 서비스 요금의 100% 부과',
+                        EN: 'Less than 12 hours and No-Show: 100% service charge.'
+                    }
+                ]
+            },
+            tier2: {
+                label: {
+                    KR: 'Luxury Sedan, Executive Van, Mini Coach : 48시간 취소 규정',
+                    EN: 'Luxury Sedan, Executive Van, Mini Coach : 48-hour cancellation policy'
+                },
+                rules: [
+                    {
+                        KR: '예정된 서비스 48~24시간 전 취소 시: 서비스 요금의 50% 부과',
+                        EN: 'Between 48-24 hours before the scheduled service will result a 50% service charge.'
+                    },
+                    {
+                        KR: '24시간 미만 취소 및 노쇼(No-Show): 서비스 요금의 100% 부과',
+                        EN: 'Less than 24 hours and No-Show will result in 100% service charge.'
+                    }
+                ]
+            }
+        },
+        coordinates: { lat: 37.3797, lng: 126.7332 },
+        image: siheungImg,
+        bookingUrl: 'https://booking.triseup.com/premiumoutlets?branch=siheung'
+    }
+];

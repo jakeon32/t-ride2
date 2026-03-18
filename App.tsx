@@ -6,6 +6,7 @@ import Home from './components/Home';
 const AirportDetails = React.lazy(() => import('./components/AirportDetails'));
 const LeisureDetails = React.lazy(() => import('./components/LeisureDetails'));
 const ShoppingDetails = React.lazy(() => import('./components/ShoppingDetails'));
+const ShoppingItemDetail = React.lazy(() => import('./components/shopping/ShoppingItemDetail'));
 const ThemeParkDetails = React.lazy(() => import('./components/ThemeParkDetails'));
 const EventDetails = React.lazy(() => import('./components/EventDetails'));
 const EventItemDetail = React.lazy(() => import('./components/EventItemDetail'));
@@ -36,6 +37,7 @@ const App: React.FC = () => {
             <Route path="/leisure/vivaldi-park" element={<VivaldiPark />} />
             <Route path="/leisure/ramada-pyeongchang" element={<RamadaPyeongchang />} />
             <Route path="/shopping" element={<ShoppingDetails />} />
+            <Route path="/shopping/:slug" element={<ShoppingItemDetail />} />
             <Route path="/theme-park" element={<ThemeParkDetails />} />
             <Route path="/event" element={<EventDetails />} />
             <Route path="/event/:id" element={<EventItemDetail />} />
