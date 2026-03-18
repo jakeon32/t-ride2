@@ -13,7 +13,7 @@ declare global {
     }
 }
 
-const NAVER_MAP_CLIENT_ID = import.meta.env.VITE_NAVER_MAP_CLIENT_ID;
+const NAVER_MAP_CLIENT_ID = '79rnwdvrt2';
 const SCRIPT_ID = 'naver-map-sdk';
 
 function loadNaverMapScript(): Promise<void> {
