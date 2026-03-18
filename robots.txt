@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /
+
+# TODO: 사이트 런칭 시 아래로 교체
+# User-agent: *
+# Allow: /
+# Sitemap: https://k.rideus.net/sitemap.xml
